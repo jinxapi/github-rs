@@ -1,0 +1,29 @@
+[package]
+name = "jinxapi-github"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["hyper-client"]
+hyper-client = ["hyper", "authentic/hyper_async"]
+reqwest-async = ["reqwest", "authentic/reqwest_async"]
+reqwest-blocking = ["reqwest/blocking", "authentic/reqwest_blocking"]
+
+[dependencies]
+authentic = { version = "0.4", features = ["jwt"] }
+http = "0.2.6"
+hyper = { version = "0.14.17", features = ["client", "http1"], optional = true }
+log = "0.4.16"
+percent-encoding = "2.1.0"
+querylizer = "0.2.0"
+reqwest = { version = "0.11.10", optional = true }
+serde = { version = "1.0.73", features = ["derive"] }
+serde_json = "1.0.74"
+thiserror = "1.0.30"
+url = "2.2.2"
+
+[dev-dependencies]
+env_logger = "0.9.0"
+hyper = { version = "0.14", features = ["full"] }
+hyper-tls = "0.5.0"
+tokio = { version = "1", features = ["full"] }
