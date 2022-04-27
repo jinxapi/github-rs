@@ -1,13 +1,16 @@
 [package]
 edition = "2021"
 name = "jinxapi-github"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Jonathan Giddy"]
 description = "GitHub API client"
 categories = ["api-bindings"]
 keywords = ["github"]
 license = "Apache-2.0"
 repository = "https://github.com/jinxapi/github-rs"
+
+[package.metadata.docs.rs]
+all-features = true
 
 [features]
 default = ["hyper-client"]
