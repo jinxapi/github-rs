@@ -1,11 +1,11 @@
 
 //! Get GitHub Actions permissions for an enterprise
 //! 
-//! Gets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+//! Gets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
 //! 
 //! You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-github-actions-permissions-for-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-permissions-for-an-enterprise)
 
 
 fn url_string(

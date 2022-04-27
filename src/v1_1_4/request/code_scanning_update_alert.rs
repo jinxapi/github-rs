@@ -255,6 +255,10 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default, deserialize_with = "crate::v1_1_4::support::deserialize_some")]
         pub dismissed_reason: ::std::option::Option<::std::option::Option<::std::borrow::Cow<'a, str>>>,
 
+        /// The dismissal note associated with the dismissal of the alert.
+        #[serde(skip_serializing_if = "Option::is_none", default, deserialize_with = "crate::v1_1_4::support::deserialize_some")]
+        pub dismissed_note: ::std::option::Option<::std::option::Option<::std::borrow::Cow<'a, str>>>,
+
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
     }

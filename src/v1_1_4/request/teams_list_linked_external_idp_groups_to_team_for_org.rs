@@ -18,11 +18,11 @@ fn url_string(
     } else {
         base_url.trim_end_matches('/')
     };
-    let mut url = String::with_capacity(trimmed.len() + 55);
+    let mut url = String::with_capacity(trimmed.len() + 47);
     url.push_str(trimmed);
-    url.push_str("/organizations/");
+    url.push_str("/orgs/");
     ::querylizer::Simple::extend(&mut url, &p_org, false, &::querylizer::encode_path)?;
-    url.push_str("/team/");
+    url.push_str("/teams/");
     ::querylizer::Simple::extend(&mut url, &p_team_slug, false, &::querylizer::encode_path)?;
     url.push_str("/external-groups");
     Ok(url)

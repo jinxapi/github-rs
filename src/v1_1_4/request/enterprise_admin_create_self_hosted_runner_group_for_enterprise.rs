@@ -5,7 +5,7 @@
 //! 
 //! You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#create-self-hosted-runner-group-for-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#create-self-hosted-runner-group-for-an-enterprise)
 
 pub struct Content<Body>
 {
@@ -251,6 +251,14 @@ pub mod body {
         /// Whether the runner group can be used by `public` repositories.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub allows_public_repositories: ::std::option::Option<bool>,
+
+        /// If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub restricted_to_workflows: ::std::option::Option<bool>,
+
+        /// List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub selected_workflows: ::std::option::Option<::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>>,
 
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>

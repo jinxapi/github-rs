@@ -1,7 +1,7 @@
 
 //! Disable automated security fixes
 //! 
-//! Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)".
+//! Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/en/articles/configuring-automated-security-fixes)".
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#disable-automated-security-fixes)
 

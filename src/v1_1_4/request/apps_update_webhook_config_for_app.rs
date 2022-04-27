@@ -226,16 +226,6 @@ impl<'a> TryFrom<&crate::v1_1_4::request::apps_update_webhook_config_for_app::bo
 
 /// Types for body parameter in [`super::apps_update_webhook_config_for_app`]
 pub mod body {
-    /// # Example
-    /// 
-    /// ```json
-    /// {
-    ///   "content_type": "json",
-    ///   "insecure_ssl": "0",
-    ///   "secret": "********",
-    ///   "url": "https://example.com/webhook"
-    /// }
-    /// ```
     #[allow(non_snake_case)]
     #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
     pub struct Json<'a> {

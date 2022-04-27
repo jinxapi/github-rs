@@ -1,5 +1,8 @@
 //! Clients for GitHub API.
 //!
+//! Generated from https://github.com/github/rest-api-description/commits/main/descriptions/api.github.com/api.github.com.json
+//! SHA 6985b0b dated 27 April 2022
+//!
 //! # HTTP library support
 //!
 //! The underlying web library can be selected as a feature.

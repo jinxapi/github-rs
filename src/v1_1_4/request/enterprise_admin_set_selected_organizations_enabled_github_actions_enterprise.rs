@@ -5,7 +5,7 @@
 //! 
 //! You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-selected-organizations-enabled-for-github-actions-in-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise)
 
 pub struct Content<Body>
 {

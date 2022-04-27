@@ -5,6 +5,10 @@
 //! 
 //! Team members will include the members of child teams.
 //! 
+//! You must authenticate using an access token with the `read:org` and `repo` scopes with push access to use this
+//! endpoint. GitHub Apps must have the `members` organization permission and `metadata` repository permission to use this
+//! endpoint.
+//! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#check-if-a-user-is-a-repository-collaborator)
 
 

@@ -1,39 +1,47 @@
 
-//! Delete a reaction (Legacy)
+//! Delete a repository secret
 //! 
-//! **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Reactions API. We recommend migrating your existing code to use the new delete reactions endpoints. For more information, see this [blog post](https://developer.github.com/changes/2020-02-26-new-delete-reactions-endpoints/).
+//! Deletes a secret in a repository using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `codespaces_secrets` repository permission to use this endpoint.
 //! 
-//! OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), when deleting a [team discussion](https://docs.github.com/rest/reference/teams#discussions) or [team discussion comment](https://docs.github.com/rest/reference/teams#discussion-comments).
-//! 
-//! [API method documentation](https://docs.github.com/rest/reference/reactions/#delete-a-reaction-legacy)
+//! [API method documentation](https://docs.github.com/rest/reference/codespaces#delete-a-repository-secret)
 
 
 fn url_string(
     base_url: &str,
-    p_reaction_id: i64,
+    p_owner: &str,
+    p_repo: &str,
+    p_secret_name: &str,
 ) -> Result<String, crate::v1_1_4::ApiError> {
     let trimmed = if base_url.is_empty() {
         "https://api.github.com"
     } else {
         base_url.trim_end_matches('/')
     };
-    let mut url = String::with_capacity(trimmed.len() + 28);
+    let mut url = String::with_capacity(trimmed.len() + 47);
     url.push_str(trimmed);
-    url.push_str("/reactions/");
-    ::querylizer::Simple::extend(&mut url, &p_reaction_id, false, &::querylizer::encode_path)?;
+    url.push_str("/repos/");
+    ::querylizer::Simple::extend(&mut url, &p_owner, false, &::querylizer::encode_path)?;
+    url.push('/');
+    ::querylizer::Simple::extend(&mut url, &p_repo, false, &::querylizer::encode_path)?;
+    url.push_str("/codespaces/secrets/");
+    ::querylizer::Simple::extend(&mut url, &p_secret_name, false, &::querylizer::encode_path)?;
     Ok(url)
 }
 
 #[cfg(feature = "hyper")]
 pub fn http_builder(
     base_url: &str,
-    p_reaction_id: i64,
+    p_owner: &str,
+    p_repo: &str,
+    p_secret_name: &str,
     h_user_agent: &str,
     h_accept: ::std::option::Option<&str>,
 ) -> Result<::http::request::Builder, crate::v1_1_4::ApiError> {
     let url = url_string(
         base_url,
-        p_reaction_id,
+        p_owner,
+        p_repo,
+        p_secret_name,
     )?;
     let mut builder = ::http::request::Request::delete(url);
     builder = builder.header(
@@ -60,13 +68,17 @@ pub fn hyper_request(
 #[cfg(feature = "reqwest")]
 pub fn reqwest_builder(
     base_url: &str,
-    p_reaction_id: i64,
+    p_owner: &str,
+    p_repo: &str,
+    p_secret_name: &str,
     h_user_agent: &str,
     h_accept: ::std::option::Option<&str>,
 ) -> Result<::reqwest::Request, crate::v1_1_4::ApiError> {
     let url = url_string(
         base_url,
-        p_reaction_id,
+        p_owner,
+        p_repo,
+        p_secret_name,
     )?;
     let reqwest_url = ::reqwest::Url::parse(&url)?;
     let mut request = ::reqwest::Request::new(::reqwest::Method::DELETE, reqwest_url);
@@ -96,13 +108,17 @@ pub fn reqwest_request(
 #[cfg(feature = "reqwest-blocking")]
 pub fn reqwest_blocking_builder(
     base_url: &str,
-    p_reaction_id: i64,
+    p_owner: &str,
+    p_repo: &str,
+    p_secret_name: &str,
     h_user_agent: &str,
     h_accept: ::std::option::Option<&str>,
 ) -> Result<::reqwest::blocking::Request, crate::v1_1_4::ApiError> {
     let url = url_string(
         base_url,
-        p_reaction_id,
+        p_owner,
+        p_repo,
+        p_secret_name,
     )?;
     let reqwest_url = ::reqwest::Url::parse(&url)?;
     let mut request = ::reqwest::blocking::Request::new(::reqwest::Method::DELETE, reqwest_url);

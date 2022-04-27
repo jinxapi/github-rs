@@ -4,6 +4,10 @@
 //! An import can be updated with credentials or a project choice by passing in the appropriate parameters in this API
 //! request. If no parameters are provided, the import will be restarted.
 //! 
+//! Some servers (e.g. TFS servers) can have several projects at a single URL. In those cases the import progress will
+//! have the status `detection_found_multiple` and the Import Progress response will include a `project_choices` array.
+//! You can select the project to import by providing one of the objects in the `project_choices` array in the update request.
+//! 
 //! [API method documentation](https://docs.github.com/rest/reference/migrations#update-an-import)
 
 pub struct Content<Body>
@@ -249,6 +253,8 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub vcs_password: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
+        /// The type of version control system you are migrating from.
+        /// 
         /// # Example
         /// 
         /// ```json
@@ -257,6 +263,8 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub vcs: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
+        /// For a tfvc import, the name of the project that is being imported.
+        /// 
         /// # Example
         /// 
         /// ```json

@@ -1,7 +1,7 @@
 
 //! Get an installation for the authenticated app
 //! 
-//! Enables an authenticated GitHub App to find an installation's information using the installation id. The installation's account type (`target_type`) will be either an organization or a user account, depending which account the repository belongs to.
+//! Enables an authenticated GitHub App to find an installation's information using the installation id.
 //! 
 //! You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
 //! 

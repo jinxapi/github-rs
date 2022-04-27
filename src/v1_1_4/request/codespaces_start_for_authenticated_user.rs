@@ -5,6 +5,8 @@
 //! 
 //! You must authenticate using an access token with the `codespace` scope to use this endpoint.
 //! 
+//! GitHub Apps must have write access to the `codespaces_lifecycle_admin` repository permission to use this endpoint.
+//! 
 //! [API method documentation](https://docs.github.com/rest/reference/codespaces#start-a-codespace-for-the-authenticated-user)
 
 

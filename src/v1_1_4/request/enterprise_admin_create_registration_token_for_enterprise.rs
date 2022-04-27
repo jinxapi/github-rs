@@ -13,7 +13,7 @@
 //! ./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
 //! ```
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#create-a-registration-token-for-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#create-a-registration-token-for-an-enterprise)
 
 
 fn url_string(

@@ -15,7 +15,7 @@
 //! the API will return a successful merge commit. If merge conflicts prevent the merge from succeeding, the API will
 //! return a failure response.
 //! 
-//! By default, [commit statuses](https://docs.github.com/rest/reference/repos#statuses) for every submitted context must be in a `success`
+//! By default, [commit statuses](https://docs.github.com/rest/reference/commits#commit-statuses) for every submitted context must be in a `success`
 //! state. The `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or to
 //! specify contexts that have not yet been submitted. You are not required to use commit statuses to deploy. If you do
 //! not require any contexts or create any commit statuses, the deployment will always succeed.
@@ -295,7 +295,7 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub auto_merge: ::std::option::Option<bool>,
 
-        /// The [status](https://docs.github.com/rest/reference/repos#statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.
+        /// The [status](https://docs.github.com/rest/reference/commits#commit-statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub required_contexts: ::std::option::Option<::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>>,
 

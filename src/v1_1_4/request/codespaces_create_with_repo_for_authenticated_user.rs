@@ -5,6 +5,8 @@
 //! 
 //! You must authenticate using an access token with the `codespace` scope to use this endpoint.
 //! 
+//! GitHub Apps must have write access to the `codespaces` repository permission to use this endpoint.
+//! 
 //! [API method documentation](https://docs.github.com/rest/reference/codespaces#create-a-codespace-in-a-repository)
 
 pub struct Content<Body>
@@ -202,10 +204,10 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
 }
 
 #[cfg(feature = "hyper")]
-impl<'a> TryFrom<&crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>> for Content<::hyper::Body> {
+impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>>> for Content<::hyper::Body> {
     type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>) -> Result<Self, Self::Error> {
+    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>>) -> Result<Self, Self::Error> {
         Ok(
             Self::new(::serde_json::to_vec(value)?.into())
             .with_content_type(&b"application/json"[..])
@@ -214,10 +216,10 @@ impl<'a> TryFrom<&crate::v1_1_4::request::codespaces_create_with_repo_for_authen
 }
 
 #[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>> for Content<::reqwest::Body> {
+impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>>> for Content<::reqwest::Body> {
     type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>) -> Result<Self, Self::Error> {
+    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>>) -> Result<Self, Self::Error> {
         Ok(
             Self::new(::serde_json::to_vec(value)?.into())
             .with_content_type(&b"application/json"[..])
@@ -226,10 +228,10 @@ impl<'a> TryFrom<&crate::v1_1_4::request::codespaces_create_with_repo_for_authen
 }
 
 #[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>> for Content<::reqwest::blocking::Body> {
+impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>>> for Content<::reqwest::blocking::Body> {
     type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>) -> Result<Self, Self::Error> {
+    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json<'a>>) -> Result<Self, Self::Error> {
         Ok(
             Self::new(::serde_json::to_vec(value)?.into())
             .with_content_type(&b"application/json"[..])
@@ -246,8 +248,9 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub r#ref: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
-        /// Location for this codespace
-        pub location: ::std::borrow::Cow<'a, str>,
+        /// Location for this codespace. Assigned by IP if not provided
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub location: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
         /// Machine type to use for this codespace
         #[serde(skip_serializing_if = "Option::is_none", default)]
@@ -260,6 +263,10 @@ pub mod body {
         /// Time in minutes before codespace stops from inactivity
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub idle_timeout_minutes: ::std::option::Option<i64>,
+
+        /// Display name for this codespace
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub display_name: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>

@@ -7,7 +7,7 @@
 //! 
 //! This endpoint requires write access to the repository by providing either:
 //! 
-//!   - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access token for the command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line)" in the GitHub Help documentation.
+//!   - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access token for the command line](https://docs.github.com/articles/creating-a-personal-access-token-for-the-command-line)" in the GitHub Help documentation.
 //!   - GitHub Apps with both `metadata:read` and `contents:read&write` permissions.
 //! 
 //! This input example shows how you can use the `client_payload` as a test to debug your workflow.
@@ -249,7 +249,7 @@ pub mod body {
     #[allow(non_snake_case)]
     #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
     pub struct Json<'a> {
-        /// A custom webhook event name.
+        /// A custom webhook event name. Must be 100 characters or fewer.
         pub event_type: ::std::borrow::Cow<'a, str>,
 
         #[serde(skip_serializing_if = "Option::is_none", default)]

@@ -5,7 +5,7 @@
 //! 
 //! You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-organization-access-to-a-self-hosted-runner-group-in-a-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#list-organization-access-to-a-self-hosted-runner-group-in-a-enterprise)
 
 
 fn url_string(

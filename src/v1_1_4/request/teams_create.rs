@@ -1,9 +1,9 @@
 
 //! Create a team
 //! 
-//! To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://help.github.com/en/articles/setting-team-creation-permissions-in-your-organization)."
+//! To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://docs.github.com/en/articles/setting-team-creation-permissions-in-your-organization)."
 //! 
-//! When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
+//! When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/teams#create-a-team)
 
@@ -261,8 +261,7 @@ pub mod body {
 
         /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified. Can be one of:  
         /// \* `pull` - team members can pull, but not push to or administer newly-added repositories.  
-        /// \* `push` - team members can pull and push, but not administer newly-added repositories.  
-        /// \* `admin` - team members can pull, push and administer newly-added repositories.
+        /// \* `push` - team members can pull and push, but not administer newly-added repositories.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub permission: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 

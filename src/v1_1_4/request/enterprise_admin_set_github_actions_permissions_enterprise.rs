@@ -1,11 +1,11 @@
 
 //! Set GitHub Actions permissions for an enterprise
 //! 
-//! Sets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
+//! Sets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
 //! 
 //! You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-github-actions-permissions-for-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#set-github-actions-permissions-for-an-enterprise)
 
 pub struct Content<Body>
 {
@@ -236,7 +236,7 @@ pub mod body {
         /// The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions. Can be one of: `all`, `none`, or `selected`.
         pub enabled_organizations: ::std::borrow::Cow<'a, str>,
 
-        /// The permissions policy that controls the actions that are allowed to run. Can be one of: `all`, `local_only`, or `selected`.
+        /// The permissions policy that controls the actions and reusable workflows that are allowed to run. Can be one of: `all`, `local_only`, or `selected`.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub allowed_actions: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 

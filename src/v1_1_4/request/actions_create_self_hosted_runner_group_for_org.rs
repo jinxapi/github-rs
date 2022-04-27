@@ -254,6 +254,14 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub allows_public_repositories: ::std::option::Option<bool>,
 
+        /// If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub restricted_to_workflows: ::std::option::Option<bool>,
+
+        /// List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub selected_workflows: ::std::option::Option<::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>>,
+
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
     }

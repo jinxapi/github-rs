@@ -1,11 +1,11 @@
 
-//! Get allowed actions for an enterprise
+//! Get allowed actions and reusable workflows for an enterprise
 //! 
-//! Gets the selected actions that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+//! Gets the selected actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
 //! 
 //! You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-allowed-actions-for-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#get-allowed-actions-for-an-enterprise)
 
 
 fn url_string(

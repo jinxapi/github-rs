@@ -1,7 +1,11 @@
 
 //! Get public key for the authenticated user
 //! 
-//! Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with one of the 'read:user' or 'user' scopes in their personal access token. User must have Codespaces access to use this endpoint.
+//! Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets.
+//! 
+//! You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+//! 
+//! GitHub Apps must have read access to the `codespaces_user_secrets` user permission to use this endpoint.
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/codespaces#get-public-key-for-the-authenticated-user)
 

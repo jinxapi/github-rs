@@ -113,9 +113,9 @@ where
     }
 
     /// GitHub API Root
-    /// 
+    ///
     /// Get Hypermedia links to resources accessible in GitHub's REST API
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/overview/resources-in-the-rest-api#root-endpoint)
     pub async fn meta_root(
         &self,
@@ -157,11 +157,11 @@ where
     }
 
     /// Get the authenticated app
-    /// 
+    ///
     /// Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/rest/reference/apps#list-installations-for-the-authenticated-app)" endpoint.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-the-authenticated-app)
     pub async fn apps_get_authenticated(
         &self,
@@ -203,23 +203,14 @@ where
     }
 
     /// Create a GitHub App from a manifest
-    /// 
+    ///
     /// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#create-a-github-app-from-a-manifest)
-    ///
-    /// # Content
-    ///
-    /// - [`&request::apps_create_from_manifest::body::Json`](crate::v1_1_4::request::apps_create_from_manifest::body::Json)
-    pub async fn apps_create_from_manifest<Content>(
+    pub async fn apps_create_from_manifest(
         &self,
         code: &str,
-        theContent: Content,
-    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError>
-    where
-        Content: Copy + TryInto<crate::v1_1_4::request::apps_create_from_manifest::Content<::reqwest::Body>>,
-        crate::v1_1_4::ApiError: From<<Content as TryInto<crate::v1_1_4::request::apps_create_from_manifest::Content<::reqwest::Body>>>::Error>
-    {
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
         let mut theScheme = AuthScheme::from(&self.config.authentication);
 
         let theResponse = loop {
@@ -241,10 +232,8 @@ where
             )?
             .with_authentication(&theScheme)?;
 
-            let theRequest = crate::v1_1_4::request::apps_create_from_manifest::reqwest_request(
-                theBuilder,
-                theContent.try_into()?,
-            )?;
+            let theRequest =
+                crate::v1_1_4::request::apps_create_from_manifest::reqwest_request(theBuilder)?;
 
             ::log::debug!("HTTP request: {:?}", &theRequest);
 
@@ -260,11 +249,11 @@ where
     }
 
     /// Get a webhook configuration for an app
-    /// 
+    ///
     /// Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-a-webhook-configuration-for-an-app)
     pub async fn apps_get_webhook_config_for_app(
         &self,
@@ -306,11 +295,11 @@ where
     }
 
     /// Update a webhook configuration for an app
-    /// 
+    ///
     /// Updates the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#update-a-webhook-configuration-for-an-app)
     ///
     /// # Content
@@ -363,11 +352,11 @@ where
     }
 
     /// List deliveries for an app webhook
-    /// 
+    ///
     /// Returns a list of webhook deliveries for the webhook configured for a GitHub App.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-deliveries-for-an-app-webhook)
     pub async fn apps_list_webhook_deliveries(
         &self,
@@ -413,11 +402,11 @@ where
     }
 
     /// Get a delivery for an app webhook
-    /// 
+    ///
     /// Returns a delivery for the webhook configured for a GitHub App.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-a-delivery-for-an-app-webhook)
     pub async fn apps_get_webhook_delivery(
         &self,
@@ -461,11 +450,11 @@ where
     }
 
     /// Redeliver a delivery for an app webhook
-    /// 
+    ///
     /// Redeliver a delivery for the webhook configured for a GitHub App.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#redeliver-a-delivery-for-an-app-webhook)
     pub async fn apps_redeliver_webhook_delivery(
         &self,
@@ -509,11 +498,11 @@ where
     }
 
     /// List installations for the authenticated app
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// The permissions the installation has are included under the `permissions` key.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-installations-for-the-authenticated-app)
     pub async fn apps_list_installations(
         &self,
@@ -563,11 +552,11 @@ where
     }
 
     /// Get an installation for the authenticated app
-    /// 
-    /// Enables an authenticated GitHub App to find an installation's information using the installation id. The installation's account type (`target_type`) will be either an organization or a user account, depending which account the repository belongs to.
-    /// 
+    ///
+    /// Enables an authenticated GitHub App to find an installation's information using the installation id.
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-an-installation-for-the-authenticated-app)
     pub async fn apps_get_installation(
         &self,
@@ -611,11 +600,11 @@ where
     }
 
     /// Delete an installation for the authenticated app
-    /// 
+    ///
     /// Uninstalls a GitHub App on a user, organization, or business account. If you prefer to temporarily suspend an app's access to your account's resources, then we recommend the "[Suspend an app installation](https://docs.github.com/rest/reference/apps/#suspend-an-app-installation)" endpoint.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#delete-an-installation-for-the-authenticated-app)
     pub async fn apps_delete_installation(
         &self,
@@ -659,11 +648,11 @@ where
     }
 
     /// Create an installation access token for an app
-    /// 
+    ///
     /// Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access. To restrict the access to specific repositories, you can provide the `repository_ids` when creating the token. When you omit `repository_ids`, the response does not contain the `repositories` key.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps/#create-an-installation-access-token-for-an-app)
     ///
     /// # Content
@@ -718,11 +707,11 @@ where
     }
 
     /// Suspend an app installation
-    /// 
+    ///
     /// Suspends a GitHub App on a user, organization, or business account, which blocks the app from accessing the account's resources. When a GitHub App is suspended, the app's access to the GitHub API or webhook events is blocked for that account.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#suspend-an-app-installation)
     pub async fn apps_suspend_installation(
         &self,
@@ -766,11 +755,11 @@ where
     }
 
     /// Unsuspend an app installation
-    /// 
+    ///
     /// Removes a GitHub App installation suspension.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#unsuspend-an-app-installation)
     pub async fn apps_unsuspend_installation(
         &self,
@@ -814,11 +803,11 @@ where
     }
 
     /// List your grants
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// You can use this API to list the set of OAuth applications that have been granted access to your account. Unlike the [list your authorizations](https://docs.github.com/rest/reference/oauth-authorizations#list-your-authorizations) API, this API does not manage individual tokens. This API will return one entry for each OAuth application that has been granted access to your account, regardless of the number of tokens an application has generated for your user. The list of OAuth applications returned matches what is shown on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized). The `scopes` returned are the union of scopes authorized for the application. For example, if an application has one token with `repo` scope and another token with `user` scope, the grant will return `["repo", "user"]`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#list-your-grants)
     pub async fn oauth_authorizations_list_grants(
         &self,
@@ -866,9 +855,9 @@ where
     }
 
     /// Get a single grant
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#get-a-single-grant)
     pub async fn oauth_authorizations_get_grant(
         &self,
@@ -912,11 +901,11 @@ where
     }
 
     /// Delete a grant
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// Deleting an OAuth application's grant will also delete all OAuth tokens associated with the application for your user. Once deleted, the application has no access to your account and is no longer listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#delete-a-grant)
     pub async fn oauth_authorizations_delete_grant(
         &self,
@@ -960,10 +949,10 @@ where
     }
 
     /// Delete an app authorization
-    /// 
+    ///
     /// OAuth application owners can revoke a grant for their OAuth application and a specific user. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
     /// Deleting an OAuth application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#delete-an-app-authorization)
     ///
     /// # Content
@@ -1018,9 +1007,9 @@ where
     }
 
     /// Check a token
-    /// 
+    ///
     /// OAuth applications can use a special API method for checking OAuth token validity without exceeding the normal rate limits for failed login attempts. Authentication works differently with this particular endpoint. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) to use this endpoint, where the username is the OAuth application `client_id` and the password is its `client_secret`. Invalid tokens will return `404 NOT FOUND`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#check-a-token)
     ///
     /// # Content
@@ -1075,9 +1064,9 @@ where
     }
 
     /// Delete an app token
-    /// 
+    ///
     /// OAuth application owners can revoke a single token for an OAuth application. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#delete-an-app-token)
     ///
     /// # Content
@@ -1132,9 +1121,9 @@ where
     }
 
     /// Reset a token
-    /// 
+    ///
     /// OAuth applications can use this API method to reset a valid OAuth token without end-user involvement. Applications must save the "token" property in the response because changes take effect immediately. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#reset-a-token)
     ///
     /// # Content
@@ -1189,9 +1178,9 @@ where
     }
 
     /// Create a scoped access token
-    /// 
+    ///
     /// Use a non-scoped user-to-server OAuth access token to create a repository scoped and/or permission scoped user-to-server OAuth access token. You can specify which repositories the token can access and which permissions are granted to the token. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. Invalid tokens will return `404 NOT FOUND`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#create-a-scoped-access-token)
     ///
     /// # Content
@@ -1246,11 +1235,11 @@ where
     }
 
     /// Get an app
-    /// 
+    ///
     /// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
-    /// 
-    /// If the GitHub App you specify is public, you can access this endpoint without authenticating. If the GitHub App you specify is private, you must authenticate with a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or an [installation access token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
-    /// 
+    ///
+    /// If the GitHub App you specify is public, you can access this endpoint without authenticating. If the GitHub App you specify is private, you must authenticate with a [personal access token](https://docs.github.com/articles/creating-a-personal-access-token-for-the-command-line/) or an [installation access token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps/#get-an-app)
     pub async fn apps_get_by_slug(
         &self,
@@ -1294,9 +1283,9 @@ where
     }
 
     /// List your authorizations
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#list-your-authorizations)
     pub async fn oauth_authorizations_list_authorizations(
         &self,
@@ -1344,19 +1333,19 @@ where
     }
 
     /// Create a new authorization
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// **Warning:** Apps must use the [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will be unable to access GitHub SAML organizations. For more information, see the [blog post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
-    /// 
+    ///
     /// Creates OAuth tokens using [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication). If you have two-factor authentication setup, Basic Authentication for this endpoint requires that you use a one-time password (OTP) and your username and password instead of tokens. For more information, see "[Working with two-factor authentication](https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
-    /// 
+    ///
     /// To create tokens for a particular OAuth application using this endpoint, you must authenticate as the user you want to create an authorization for and provide the app's client ID and secret, found on your OAuth application's settings page. If your OAuth application intends to create multiple tokens for one user, use `fingerprint` to differentiate between them.
-    /// 
-    /// You can also create tokens on GitHub from the [personal access tokens settings](https://github.com/settings/tokens) page. Read more about these tokens in [the GitHub Help documentation](https://help.github.com/articles/creating-an-access-token-for-command-line-use).
-    /// 
-    /// Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about allowing tokens in [the GitHub Help documentation](https://help.github.com/articles/about-identity-and-access-management-with-saml-single-sign-on).
-    /// 
+    ///
+    /// You can also create tokens on GitHub from the [personal access tokens settings](https://github.com/settings/tokens) page. Read more about these tokens in [the GitHub Help documentation](https://docs.github.com/articles/creating-an-access-token-for-command-line-use).
+    ///
+    /// Organizations that enforce SAML SSO require personal access tokens to be allowed. Read more about allowing tokens in [the GitHub Help documentation](https://docs.github.com/articles/about-identity-and-access-management-with-saml-single-sign-on).
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#create-a-new-authorization)
     ///
     /// # Content
@@ -1409,17 +1398,17 @@ where
     }
 
     /// Get-or-create an authorization for a specific app
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// **Warning:** Apps must use the [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will be unable to access GitHub SAML organizations. For more information, see the [blog post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
-    /// 
+    ///
     /// Creates a new authorization for the specified OAuth application, only if an authorization for that application doesn't already exist for the user. The URL includes the 20 character client ID for the OAuth app that is requesting the token. It returns the user's existing authorization for the application if one is present. Otherwise, it creates and returns a new one.
-    /// 
+    ///
     /// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that you use a one-time password (OTP) and your username and password instead of tokens. For more information, see "[Working with two-factor authentication](https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#get-or-create-an-authorization-for-a-specific-app)
     ///
     /// # Content
@@ -1474,15 +1463,15 @@ where
     }
 
     /// Get-or-create an authorization for a specific app and fingerprint
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// **Warning:** Apps must use the [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow) to obtain OAuth tokens that work with GitHub SAML organizations. OAuth tokens created using the Authorizations API will be unable to access GitHub SAML organizations. For more information, see the [blog post](https://developer.github.com/changes/2019-11-05-deprecated-passwords-and-authorizations-api).
-    /// 
+    ///
     /// This method will create a new authorization for the specified OAuth application, only if an authorization for that application and fingerprint do not already exist for the user. The URL includes the 20 character client ID for the OAuth app that is requesting the token. `fingerprint` is a unique string to distinguish an authorization from others created for the same client ID and user. It returns the user's existing authorization for the application if one is present. Otherwise, it creates and returns a new one.
-    /// 
+    ///
     /// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that you use a one-time password (OTP) and your username and password instead of tokens. For more information, see "[Working with two-factor authentication](https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#get-or-create-an-authorization-for-a-specific-app-and-fingerprint)
     ///
     /// # Content
@@ -1539,9 +1528,9 @@ where
     }
 
     /// Get a single authorization
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#get-a-single-authorization)
     pub async fn oauth_authorizations_get_authorization(
         &self,
@@ -1585,9 +1574,9 @@ where
     }
 
     /// Delete an authorization
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#delete-an-authorization)
     pub async fn oauth_authorizations_delete_authorization(
         &self,
@@ -1631,13 +1620,13 @@ where
     }
 
     /// Update an existing authorization
-    /// 
+    ///
     /// **Deprecation Notice:** GitHub will discontinue the [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations/), which is used by integrations to create personal access tokens and OAuth tokens, and you must now create these tokens using our [web application flow](https://docs.github.com/developers/apps/authorizing-oauth-apps#web-application-flow). The [OAuth Authorizations API](https://docs.github.com/rest/reference/oauth-authorizations) will be removed on November, 13, 2020. For more information, including scheduled brownouts, see the [blog post](https://developer.github.com/changes/2020-02-14-deprecating-oauth-auth-endpoint/).
-    /// 
+    ///
     /// If you have two-factor authentication setup, Basic Authentication for this endpoint requires that you use a one-time password (OTP) and your username and password instead of tokens. For more information, see "[Working with two-factor authentication](https://docs.github.com/rest/overview/other-authentication-methods#working-with-two-factor-authentication)."
-    /// 
+    ///
     /// You can only send one of these scope keys at a time.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/oauth-authorizations#update-an-existing-authorization)
     ///
     /// # Content
@@ -1692,7 +1681,7 @@ where
     }
 
     /// Get all codes of conduct
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codes-of-conduct#get-all-codes-of-conduct)
     pub async fn codes_of_conduct_get_all_codes_of_conduct(
         &self,
@@ -1734,7 +1723,7 @@ where
     }
 
     /// Get a code of conduct
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codes-of-conduct#get-a-code-of-conduct)
     pub async fn codes_of_conduct_get_conduct_code(
         &self,
@@ -1778,9 +1767,9 @@ where
     }
 
     /// Get emojis
-    /// 
+    ///
     /// Lists all the emojis available to use on GitHub.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/emojis#get-emojis)
     pub async fn emojis_get(
         &self,
@@ -1821,13 +1810,61 @@ where
         Ok(theResponse)
     }
 
-    /// Get GitHub Actions permissions for an enterprise
-    /// 
-    /// Gets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
-    /// 
+    /// Get GitHub Actions cache usage for an enterprise
+    ///
+    /// Gets the total GitHub Actions cache usage for an enterprise.
+    /// The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-github-actions-permissions-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-cache-usage-for-an-enterprise)
+    pub async fn actions_get_actions_cache_usage_for_enterprise(
+        &self,
+        enterprise: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_actions_cache_usage_for_enterprise::reqwest_builder(
+                self.config.base_url.as_ref(),
+                enterprise,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_actions_cache_usage_for_enterprise::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Get GitHub Actions permissions for an enterprise
+    ///
+    /// Gets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
+    ///
+    /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-permissions-for-an-enterprise)
     pub async fn enterprise_admin_get_github_actions_permissions_enterprise(
         &self,
         enterprise: &str,
@@ -1870,12 +1907,12 @@ where
     }
 
     /// Set GitHub Actions permissions for an enterprise
-    /// 
-    /// Sets the GitHub Actions permissions policy for organizations and allowed actions in an enterprise.
-    /// 
+    ///
+    /// Sets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.
+    ///
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-github-actions-permissions-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-github-actions-permissions-for-an-enterprise)
     ///
     /// # Content
     ///
@@ -1929,12 +1966,12 @@ where
     }
 
     /// List selected organizations enabled for GitHub Actions in an enterprise
-    /// 
+    ///
     /// Lists the organizations that are selected to have GitHub Actions enabled in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-selected-organizations-enabled-for-github-actions-in-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-selected-organizations-enabled-for-github-actions-in-an-enterprise)
     pub async fn enterprise_admin_list_selected_organizations_enabled_github_actions_enterprise(
         &self,
         enterprise: &str,
@@ -1981,12 +2018,12 @@ where
     }
 
     /// Set selected organizations enabled for GitHub Actions in an enterprise
-    /// 
+    ///
     /// Replaces the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-selected-organizations-enabled-for-github-actions-in-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-selected-organizations-enabled-for-github-actions-in-an-enterprise)
     ///
     /// # Content
     ///
@@ -2040,12 +2077,12 @@ where
     }
 
     /// Enable a selected organization for GitHub Actions in an enterprise
-    /// 
+    ///
     /// Adds an organization to the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#enable-a-selected-organization-for-github-actions-in-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#enable-a-selected-organization-for-github-actions-in-an-enterprise)
     pub async fn enterprise_admin_enable_selected_organization_github_actions_enterprise(
         &self,
         enterprise: &str,
@@ -2090,12 +2127,12 @@ where
     }
 
     /// Disable a selected organization for GitHub Actions in an enterprise
-    /// 
+    ///
     /// Removes an organization from the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#disable-a-selected-organization-for-github-actions-in-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#disable-a-selected-organization-for-github-actions-in-an-enterprise)
     pub async fn enterprise_admin_disable_selected_organization_github_actions_enterprise(
         &self,
         enterprise: &str,
@@ -2139,13 +2176,13 @@ where
         Ok(theResponse)
     }
 
-    /// Get allowed actions for an enterprise
-    /// 
-    /// Gets the selected actions that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
-    /// 
+    /// Get allowed actions and reusable workflows for an enterprise
+    ///
+    /// Gets the selected actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+    ///
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-allowed-actions-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-allowed-actions-for-an-enterprise)
     pub async fn enterprise_admin_get_allowed_actions_enterprise(
         &self,
         enterprise: &str,
@@ -2187,13 +2224,13 @@ where
         Ok(theResponse)
     }
 
-    /// Set allowed actions for an enterprise
-    /// 
-    /// Sets the actions that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
-    /// 
+    /// Set allowed actions and reusable workflows for an enterprise
+    ///
+    /// Sets the actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+    ///
     /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-allowed-actions-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-allowed-actions-for-an-enterprise)
     ///
     /// # Content
     ///
@@ -2246,18 +2283,132 @@ where
         Ok(theResponse)
     }
 
+    /// Get default workflow permissions for an enterprise
+    ///
+    /// Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise,
+    /// as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
+    /// "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
+    ///
+    /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+    /// GitHub Apps must have the `enterprise_administration:write` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-default-workflow-permissions-for-an-enterprise)
+    pub async fn actions_get_github_actions_default_workflow_permissions_enterprise(
+        &self,
+        enterprise: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_github_actions_default_workflow_permissions_enterprise::reqwest_builder(
+                self.config.base_url.as_ref(),
+                enterprise,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_github_actions_default_workflow_permissions_enterprise::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Set default workflow permissions for an enterprise
+    ///
+    /// Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an enterprise, and sets
+    /// whether GitHub Actions can submit approving pull request reviews. For more information, see
+    /// "[Enforcing a policy for workflow permissions in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-policies-for-github-actions-in-your-enterprise#enforcing-a-policy-for-workflow-permissions-in-your-enterprise)."
+    ///
+    /// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
+    /// GitHub Apps must have the `enterprise_administration:write` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-default-workflow-permissions-for-an-enterprise)
+    ///
+    /// # Content
+    ///
+    /// - [`&schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
+    pub async fn actions_set_github_actions_default_workflow_permissions_enterprise<Content>(
+        &self,
+        enterprise: &str,
+        theContent: Content,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError>
+    where
+        Content: Copy + TryInto<crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_enterprise::Content<::reqwest::Body>>,
+        crate::v1_1_4::ApiError: From<<Content as TryInto<crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_enterprise::Content<::reqwest::Body>>>::Error>
+    {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_enterprise::reqwest_builder(
+                self.config.base_url.as_ref(),
+                enterprise,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest = crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_enterprise::reqwest_request(
+                theBuilder,
+                theContent.try_into()?,
+            )?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List self-hosted runner groups for an enterprise
-    /// 
+    ///
     /// Lists all self-hosted runner groups for an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-self-hosted-runner-groups-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-self-hosted-runner-groups-for-an-enterprise)
     pub async fn enterprise_admin_list_self_hosted_runner_groups_for_enterprise(
         &self,
         enterprise: &str,
         per_page: ::std::option::Option<i64>,
         page: ::std::option::Option<i64>,
+        visible_to_organization: ::std::option::Option<&str>,
     ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
         let mut theScheme = AuthScheme::from(&self.config.authentication);
 
@@ -2277,6 +2428,7 @@ where
                 enterprise,
                 per_page,
                 page,
+                visible_to_organization,
                 self.config.user_agent.as_ref(),
                 self.config.accept.as_deref(),
             )?
@@ -2299,12 +2451,12 @@ where
     }
 
     /// Create a self-hosted runner group for an enterprise
-    /// 
+    ///
     /// Creates a new self-hosted runner group for an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#create-self-hosted-runner-group-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#create-self-hosted-runner-group-for-an-enterprise)
     ///
     /// # Content
     ///
@@ -2358,12 +2510,12 @@ where
     }
 
     /// Get a self-hosted runner group for an enterprise
-    /// 
+    ///
     /// Gets a specific self-hosted runner group for an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-a-self-hosted-runner-group-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-self-hosted-runner-group-for-an-enterprise)
     pub async fn enterprise_admin_get_self_hosted_runner_group_for_enterprise(
         &self,
         enterprise: &str,
@@ -2408,12 +2560,12 @@ where
     }
 
     /// Delete a self-hosted runner group from an enterprise
-    /// 
+    ///
     /// Deletes a self-hosted runner group for an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#delete-a-self-hosted-runner-group-from-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-a-self-hosted-runner-group-from-an-enterprise)
     pub async fn enterprise_admin_delete_self_hosted_runner_group_from_enterprise(
         &self,
         enterprise: &str,
@@ -2458,12 +2610,12 @@ where
     }
 
     /// Update a self-hosted runner group for an enterprise
-    /// 
+    ///
     /// Updates the `name` and `visibility` of a self-hosted runner group in an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#update-a-self-hosted-runner-group-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#update-a-self-hosted-runner-group-for-an-enterprise)
     ///
     /// # Content
     ///
@@ -2519,12 +2671,12 @@ where
     }
 
     /// List organization access to a self-hosted runner group in an enterprise
-    /// 
+    ///
     /// Lists the organizations with access to a self-hosted runner group.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-organization-access-to-a-self-hosted-runner-group-in-a-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-organization-access-to-a-self-hosted-runner-group-in-a-enterprise)
     pub async fn enterprise_admin_list_org_access_to_self_hosted_runner_group_in_enterprise(
         &self,
         enterprise: &str,
@@ -2573,12 +2725,12 @@ where
     }
 
     /// Set organization access for a self-hosted runner group in an enterprise
-    /// 
+    ///
     /// Replaces the list of organizations that have access to a self-hosted runner configured in an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
     ///
     /// # Content
     ///
@@ -2634,12 +2786,12 @@ where
     }
 
     /// Add organization access to a self-hosted runner group in an enterprise
-    /// 
+    ///
     /// Adds an organization to the list of selected organizations that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
     pub async fn enterprise_admin_add_org_access_to_self_hosted_runner_group_in_enterprise(
         &self,
         enterprise: &str,
@@ -2686,12 +2838,12 @@ where
     }
 
     /// Remove organization access to a self-hosted runner group in an enterprise
-    /// 
+    ///
     /// Removes an organization from the list of selected organizations that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an enterprise](#create-a-self-hosted-runner-group-for-an-enterprise)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
     pub async fn enterprise_admin_remove_org_access_to_self_hosted_runner_group_in_enterprise(
         &self,
         enterprise: &str,
@@ -2738,12 +2890,12 @@ where
     }
 
     /// List self-hosted runners in a group for an enterprise
-    /// 
+    ///
     /// Lists the self-hosted runners that are in a specific enterprise group.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-self-hosted-runners-in-a-group-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-self-hosted-runners-in-a-group-for-an-enterprise)
     pub async fn enterprise_admin_list_self_hosted_runners_in_group_for_enterprise(
         &self,
         enterprise: &str,
@@ -2792,12 +2944,12 @@ where
     }
 
     /// Set self-hosted runners in a group for an enterprise
-    /// 
+    ///
     /// Replaces the list of self-hosted runners that are part of an enterprise runner group.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-self-hosted-runners-in-a-group-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-self-hosted-runners-in-a-group-for-an-enterprise)
     ///
     /// # Content
     ///
@@ -2853,13 +3005,13 @@ where
     }
 
     /// Add a self-hosted runner to a group for an enterprise
-    /// 
+    ///
     /// Adds a self-hosted runner to a runner group configured in an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise`
     /// scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#add-a-self-hosted-runner-to-a-group-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#add-a-self-hosted-runner-to-a-group-for-an-enterprise)
     pub async fn enterprise_admin_add_self_hosted_runner_to_group_for_enterprise(
         &self,
         enterprise: &str,
@@ -2906,12 +3058,12 @@ where
     }
 
     /// Remove a self-hosted runner from a group for an enterprise
-    /// 
+    ///
     /// Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned to the default group.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#remove-a-self-hosted-runner-from-a-group-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-a-self-hosted-runner-from-a-group-for-an-enterprise)
     pub async fn enterprise_admin_remove_self_hosted_runner_from_group_for_enterprise(
         &self,
         enterprise: &str,
@@ -2958,12 +3110,12 @@ where
     }
 
     /// List self-hosted runners for an enterprise
-    /// 
+    ///
     /// Lists all self-hosted runners configured for an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-self-hosted-runners-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-self-hosted-runners-for-an-enterprise)
     pub async fn enterprise_admin_list_self_hosted_runners_for_enterprise(
         &self,
         enterprise: &str,
@@ -3010,12 +3162,12 @@ where
     }
 
     /// List runner applications for an enterprise
-    /// 
+    ///
     /// Lists binaries for the runner application that you can download and run.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-runner-applications-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-runner-applications-for-an-enterprise)
     pub async fn enterprise_admin_list_runner_applications_for_enterprise(
         &self,
         enterprise: &str,
@@ -3058,20 +3210,20 @@ where
     }
 
     /// Create a registration token for an enterprise
-    /// 
+    ///
     /// Returns a token that you can pass to the `config` script. The token expires after one hour.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
+    ///
     /// #### Example using registration token
-    /// 
+    ///
     /// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
-    /// 
+    ///
     /// ```text
     /// ./config.sh --url https://github.com/enterprises/octo-enterprise --token TOKEN
     /// ```
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#create-a-registration-token-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-registration-token-for-an-enterprise)
     pub async fn enterprise_admin_create_registration_token_for_enterprise(
         &self,
         enterprise: &str,
@@ -3114,21 +3266,21 @@ where
     }
 
     /// Create a remove token for an enterprise
-    /// 
+    ///
     /// Returns a token that you can pass to the `config` script to remove a self-hosted runner from an enterprise. The token expires after one hour.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
+    ///
     /// #### Example using remove token
-    /// 
+    ///
     /// To remove your self-hosted runner from an enterprise, replace `TOKEN` with the remove token provided by this
     /// endpoint.
-    /// 
+    ///
     /// ```text
     /// ./config.sh remove --token TOKEN
     /// ```
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#create-a-remove-token-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-remove-token-for-an-enterprise)
     pub async fn enterprise_admin_create_remove_token_for_enterprise(
         &self,
         enterprise: &str,
@@ -3171,12 +3323,12 @@ where
     }
 
     /// Get a self-hosted runner for an enterprise
-    /// 
+    ///
     /// Gets a specific self-hosted runner configured in an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-a-self-hosted-runner-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-self-hosted-runner-for-an-enterprise)
     pub async fn enterprise_admin_get_self_hosted_runner_for_enterprise(
         &self,
         enterprise: &str,
@@ -3221,12 +3373,12 @@ where
     }
 
     /// Delete a self-hosted runner from an enterprise
-    /// 
+    ///
     /// Forces the removal of a self-hosted runner from an enterprise. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#delete-self-hosted-runner-from-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-self-hosted-runner-from-an-enterprise)
     pub async fn enterprise_admin_delete_self_hosted_runner_from_enterprise(
         &self,
         enterprise: &str,
@@ -3271,12 +3423,12 @@ where
     }
 
     /// List labels for a self-hosted runner for an enterprise
-    /// 
+    ///
     /// Lists all labels for a self-hosted runner configured in an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-labels-for-a-self-hosted-runner-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-labels-for-a-self-hosted-runner-for-an-enterprise)
     pub async fn enterprise_admin_list_labels_for_self_hosted_runner_for_enterprise(
         &self,
         enterprise: &str,
@@ -3321,13 +3473,13 @@ where
     }
 
     /// Set custom labels for a self-hosted runner for an enterprise
-    /// 
+    ///
     /// Remove all previous custom labels and set the new custom labels for a specific
     /// self-hosted runner configured in an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-custom-labels-for-a-self-hosted-runner-for-an-enterprise)
     ///
     /// # Content
     ///
@@ -3383,12 +3535,12 @@ where
     }
 
     /// Add custom labels to a self-hosted runner for an enterprise
-    /// 
+    ///
     /// Add custom labels to a self-hosted runner configured in an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#add-custom-labels-to-a-self-hosted-runner-for-an-enterprise)
     ///
     /// # Content
     ///
@@ -3444,13 +3596,13 @@ where
     }
 
     /// Remove all custom labels from a self-hosted runner for an enterprise
-    /// 
+    ///
     /// Remove all custom labels from a self-hosted runner configured in an
     /// enterprise. Returns the remaining read-only labels from the runner.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-all-custom-labels-from-a-self-hosted-runner-for-an-enterprise)
     pub async fn enterprise_admin_remove_all_custom_labels_from_self_hosted_runner_for_enterprise(
         &self,
         enterprise: &str,
@@ -3495,16 +3647,16 @@ where
     }
 
     /// Remove a custom label from a self-hosted runner for an enterprise
-    /// 
+    ///
     /// Remove a custom label from a self-hosted runner configured
     /// in an enterprise. Returns the remaining labels from the runner.
-    /// 
+    ///
     /// This endpoint returns a `404 Not Found` status if the custom label is not
     /// present on the runner.
-    /// 
+    ///
     /// You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise)
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-a-custom-label-from-a-self-hosted-runner-for-an-enterprise)
     pub async fn enterprise_admin_remove_custom_label_from_self_hosted_runner_for_enterprise(
         &self,
         enterprise: &str,
@@ -3551,9 +3703,9 @@ where
     }
 
     /// Get the audit log for an enterprise
-    /// 
+    ///
     /// Gets the audit log for an enterprise. To use this endpoint, you must be an enterprise admin, and you must use an access token with the `admin:enterprise` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-the-audit-log-for-an-enterprise)
     #[allow(clippy::too_many_arguments)]
     pub async fn enterprise_admin_get_audit_log(
@@ -3612,10 +3764,10 @@ where
     }
 
     /// List secret scanning alerts for an enterprise
-    /// 
+    ///
     /// Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
     /// To use this endpoint, you must be a member of the enterprise, and you must use an access token with the `repo` scope or `security_events` scope. Alerts are only returned for organizations in the enterprise for which you are an organization owner or a [security manager](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/secret-scanning#list-secret-scanning-alerts-for-an-enterprise)
     #[allow(clippy::too_many_arguments)]
     pub async fn secret_scanning_list_alerts_for_enterprise(
@@ -3672,13 +3824,13 @@ where
     }
 
     /// Get GitHub Actions billing for an enterprise
-    /// 
+    ///
     /// Gets the summary of the free and paid GitHub Actions minutes used.
-    /// 
-    /// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-    /// 
+    ///
+    /// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+    ///
     /// The authenticated user must be an enterprise admin.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-github-actions-billing-for-an-enterprise)
     pub async fn billing_get_github_actions_billing_ghe(
         &self,
@@ -3722,10 +3874,10 @@ where
     }
 
     /// Get GitHub Advanced Security active committers for an enterprise
-    /// 
+    ///
     /// Gets the GitHub Advanced Security active committers for an enterprise per repository.
     /// Each distinct user login across all repositories is counted as a single Advanced Security seat, so the total_advanced_security_committers is not the sum of active_users for each repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#export-advanced-security-active-committers-data-for-enterprise)
     pub async fn billing_get_github_advanced_security_billing_ghe(
         &self,
@@ -3773,13 +3925,13 @@ where
     }
 
     /// Get GitHub Packages billing for an enterprise
-    /// 
+    ///
     /// Gets the free and paid storage used for GitHub Packages in gigabytes.
-    /// 
-    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    /// 
+    ///
+    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+    ///
     /// The authenticated user must be an enterprise admin.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-github-packages-billing-for-an-enterprise)
     pub async fn billing_get_github_packages_billing_ghe(
         &self,
@@ -3823,13 +3975,13 @@ where
     }
 
     /// Get shared storage billing for an enterprise
-    /// 
-    /// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
-    /// 
-    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    /// 
+    ///
+    /// Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+    ///
+    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+    ///
     /// The authenticated user must be an enterprise admin.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-shared-storage-billing-for-an-enterprise)
     pub async fn billing_get_shared_storage_billing_ghe(
         &self,
@@ -3873,9 +4025,9 @@ where
     }
 
     /// List public events
-    /// 
+    ///
     /// We delay the public events feed by five minutes, which means the most recent event returned by the public events API actually occurred at least five minutes ago.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-public-events)
     pub async fn activity_list_public_events(
         &self,
@@ -3921,9 +4073,9 @@ where
     }
 
     /// Get feeds
-    /// 
+    ///
     /// GitHub provides several timeline resources in [Atom](http://en.wikipedia.org/wiki/Atom_(standard)) format. The Feeds API lists all the feeds available to the authenticated user:
-    /// 
+    ///
     /// *   **Timeline**: The GitHub global public timeline
     /// *   **User**: The public timeline for any user, using [URI template](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia)
     /// *   **Current user public**: The public timeline for the authenticated user
@@ -3931,9 +4083,9 @@ where
     /// *   **Current user actor**: The private timeline for activity created by the authenticated user
     /// *   **Current user organizations**: The private timeline for the organizations the authenticated user is a member of.
     /// *   **Security advisories**: A collection of public announcements that provide information about security-related vulnerabilities in software on GitHub.
-    /// 
+    ///
     /// **Note**: Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) since current feed URIs use the older, non revocable auth tokens.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#get-feeds)
     pub async fn activity_get_feeds(
         &self,
@@ -3975,9 +4127,9 @@ where
     }
 
     /// List gists for the authenticated user
-    /// 
+    ///
     /// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#list-gists-for-the-authenticated-user)
     pub async fn gists_list(
         &self,
@@ -4025,11 +4177,11 @@ where
     }
 
     /// Create a gist
-    /// 
+    ///
     /// Allows you to add a new gist with one or more files.
-    /// 
+    ///
     /// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#create-a-gist)
     ///
     /// # Content
@@ -4082,11 +4234,11 @@ where
     }
 
     /// List public gists
-    /// 
+    ///
     /// List public gists sorted by most recently updated to least recently updated.
-    /// 
+    ///
     /// Note: With [pagination](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#list-public-gists)
     pub async fn gists_list_public(
         &self,
@@ -4134,9 +4286,9 @@ where
     }
 
     /// List starred gists
-    /// 
+    ///
     /// List the authenticated user's starred gists:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#list-starred-gists)
     pub async fn gists_list_starred(
         &self,
@@ -4184,7 +4336,7 @@ where
     }
 
     /// Get a gist
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#get-a-gist)
     pub async fn gists_get(
         &self,
@@ -4228,7 +4380,7 @@ where
     }
 
     /// Delete a gist
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#delete-a-gist)
     pub async fn gists_delete(
         &self,
@@ -4272,9 +4424,9 @@ where
     }
 
     /// Update a gist
-    /// 
+    ///
     /// Allows you to update or delete a gist file and rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists/#update-a-gist)
     ///
     /// # Content
@@ -4329,7 +4481,7 @@ where
     }
 
     /// List gist comments
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#list-gist-comments)
     pub async fn gists_list_comments(
         &self,
@@ -4377,7 +4529,7 @@ where
     }
 
     /// Create a gist comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#create-a-gist-comment)
     ///
     /// # Content
@@ -4432,7 +4584,7 @@ where
     }
 
     /// Get a gist comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#get-a-gist-comment)
     pub async fn gists_get_comment(
         &self,
@@ -4478,7 +4630,7 @@ where
     }
 
     /// Delete a gist comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#delete-a-gist-comment)
     pub async fn gists_delete_comment(
         &self,
@@ -4524,7 +4676,7 @@ where
     }
 
     /// Update a gist comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#update-a-gist-comment)
     ///
     /// # Content
@@ -4581,7 +4733,7 @@ where
     }
 
     /// List gist commits
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#list-gist-commits)
     pub async fn gists_list_commits(
         &self,
@@ -4629,7 +4781,7 @@ where
     }
 
     /// List gist forks
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#list-gist-forks)
     pub async fn gists_list_forks(
         &self,
@@ -4677,9 +4829,9 @@ where
     }
 
     /// Fork a gist
-    /// 
+    ///
     /// **Note**: This was previously `/gists/:gist_id/fork`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#fork-a-gist)
     pub async fn gists_fork(
         &self,
@@ -4723,7 +4875,7 @@ where
     }
 
     /// Check if a gist is starred
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#check-if-a-gist-is-starred)
     pub async fn gists_check_is_starred(
         &self,
@@ -4767,9 +4919,9 @@ where
     }
 
     /// Star a gist
-    /// 
+    ///
     /// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#star-a-gist)
     pub async fn gists_star(
         &self,
@@ -4813,7 +4965,7 @@ where
     }
 
     /// Unstar a gist
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#unstar-a-gist)
     pub async fn gists_unstar(
         &self,
@@ -4857,7 +5009,7 @@ where
     }
 
     /// Get a gist revision
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#get-a-gist-revision)
     pub async fn gists_get_revision(
         &self,
@@ -4903,9 +5055,9 @@ where
     }
 
     /// Get all gitignore templates
-    /// 
+    ///
     /// List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/reference/repos#create-a-repository-for-the-authenticated-user).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gitignore#get-all-gitignore-templates)
     pub async fn gitignore_get_all_templates(
         &self,
@@ -4947,10 +5099,10 @@ where
     }
 
     /// Get a gitignore template
-    /// 
+    ///
     /// The API also allows fetching the source of a single template.
     /// Use the raw [media type](https://docs.github.com/rest/overview/media-types/) to get the raw contents.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gitignore#get-a-gitignore-template)
     pub async fn gitignore_get_template(
         &self,
@@ -4994,11 +5146,11 @@ where
     }
 
     /// List repositories accessible to the app installation
-    /// 
+    ///
     /// List repositories that an app installation can access.
-    /// 
+    ///
     /// You must use an [installation access token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-repositories-accessible-to-the-app-installation)
     pub async fn apps_list_repos_accessible_to_installation(
         &self,
@@ -5044,13 +5196,13 @@ where
     }
 
     /// Revoke an installation access token
-    /// 
+    ///
     /// Revokes the installation token you're using to authenticate as an installation and access this endpoint.
-    /// 
+    ///
     /// Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/rest/reference/apps#create-an-installation-access-token-for-an-app)" endpoint.
-    /// 
+    ///
     /// You must use an [installation access token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-an-installation) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#revoke-an-installation-access-token)
     pub async fn apps_revoke_installation_access_token(
         &self,
@@ -5092,17 +5244,17 @@ where
     }
 
     /// List issues assigned to the authenticated user
-    /// 
+    ///
     /// List issues assigned to the authenticated user across all visible repositories including owned repositories, member
     /// repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not
     /// necessarily assigned to you.
-    /// 
-    /// 
+    ///
+    ///
     /// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request. For this
     /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
     /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     /// request id, use the "[List pull requests](https://docs.github.com/rest/reference/pulls#list-pull-requests)" endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-issues-assigned-to-the-authenticated-user)
     #[allow(clippy::too_many_arguments)]
     pub async fn issues_list(
@@ -5166,7 +5318,7 @@ where
     }
 
     /// Get all commonly used licenses
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/licenses#get-all-commonly-used-licenses)
     pub async fn licenses_get_all_commonly_used(
         &self,
@@ -5214,7 +5366,7 @@ where
     }
 
     /// Get a license
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/licenses#get-a-license)
     pub async fn licenses_get(
         &self,
@@ -5258,7 +5410,7 @@ where
     }
 
     /// Render a Markdown document
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/markdown#render-a-markdown-document)
     ///
     /// # Content
@@ -5311,9 +5463,9 @@ where
     }
 
     /// Render a Markdown document in raw mode
-    /// 
+    ///
     /// You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/markdown#render-a-markdown-document-in-raw-mode)
     ///
     /// # Content
@@ -5366,11 +5518,11 @@ where
     }
 
     /// Get a subscription plan for an account
-    /// 
+    ///
     /// Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
-    /// 
+    ///
     /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-a-subscription-plan-for-an-account)
     pub async fn apps_get_subscription_plan_for_account(
         &self,
@@ -5414,11 +5566,11 @@ where
     }
 
     /// List plans
-    /// 
+    ///
     /// Lists all plans that are part of your GitHub Marketplace listing.
-    /// 
+    ///
     /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-plans)
     pub async fn apps_list_plans(
         &self,
@@ -5464,11 +5616,11 @@ where
     }
 
     /// List accounts for a plan
-    /// 
+    ///
     /// Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
-    /// 
+    ///
     /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-accounts-for-a-plan)
     pub async fn apps_list_accounts_for_plan(
         &self,
@@ -5520,11 +5672,11 @@ where
     }
 
     /// Get a subscription plan for an account (stubbed)
-    /// 
+    ///
     /// Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
-    /// 
+    ///
     /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-a-subscription-plan-for-an-account-stubbed)
     pub async fn apps_get_subscription_plan_for_account_stubbed(
         &self,
@@ -5568,11 +5720,11 @@ where
     }
 
     /// List plans (stubbed)
-    /// 
+    ///
     /// Lists all plans that are part of your GitHub Marketplace listing.
-    /// 
+    ///
     /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-plans-stubbed)
     pub async fn apps_list_plans_stubbed(
         &self,
@@ -5618,11 +5770,11 @@ where
     }
 
     /// List accounts for a plan (stubbed)
-    /// 
+    ///
     /// Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
-    /// 
+    ///
     /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth Apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-accounts-for-a-plan-stubbed)
     pub async fn apps_list_accounts_for_plan_stubbed(
         &self,
@@ -5674,11 +5826,11 @@ where
     }
 
     /// Get GitHub meta information
-    /// 
-    /// Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://help.github.com/articles/about-github-s-ip-addresses/)."
-    /// 
+    ///
+    /// Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/articles/about-github-s-ip-addresses/)."
+    ///
     /// **Note:** The IP addresses shown in the documentation's response are only example values. You must always query the API directly to get the latest list of IP addresses.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/meta#get-github-meta-information)
     pub async fn meta_get(
         &self,
@@ -5720,7 +5872,7 @@ where
     }
 
     /// List public events for a network of repositories
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-public-events-for-a-network-of-repositories)
     pub async fn activity_list_public_events_for_repo_network(
         &self,
@@ -5770,9 +5922,9 @@ where
     }
 
     /// List notifications for the authenticated user
-    /// 
+    ///
     /// List all notifications for the current user, sorted by most recently updated.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-notifications-for-the-authenticated-user)
     pub async fn activity_list_notifications_for_authenticated_user(
         &self,
@@ -5826,9 +5978,9 @@ where
     }
 
     /// Mark notifications as read
-    /// 
+    ///
     /// Marks all notifications as "read" removes it from the [default view on GitHub](https://github.com/notifications). If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List notifications for the authenticated user](https://docs.github.com/rest/reference/activity#list-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#mark-notifications-as-read)
     ///
     /// # Content
@@ -5881,7 +6033,7 @@ where
     }
 
     /// Get a thread
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#get-a-thread)
     pub async fn activity_get_thread(
         &self,
@@ -5925,7 +6077,7 @@ where
     }
 
     /// Mark a thread as read
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#mark-a-thread-as-read)
     pub async fn activity_mark_thread_as_read(
         &self,
@@ -5969,11 +6121,11 @@ where
     }
 
     /// Get a thread subscription for the authenticated user
-    /// 
+    ///
     /// This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/rest/reference/activity#get-a-repository-subscription).
-    /// 
+    ///
     /// Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#get-a-thread-subscription-for-the-authenticated-user)
     pub async fn activity_get_thread_subscription_for_authenticated_user(
         &self,
@@ -6017,13 +6169,13 @@ where
     }
 
     /// Set a thread subscription
-    /// 
+    ///
     /// If you are watching a repository, you receive notifications for all threads by default. Use this endpoint to ignore future notifications for threads until you comment on the thread or get an **@mention**.
-    /// 
+    ///
     /// You can also use this endpoint to subscribe to threads that you are currently not receiving notifications for or to subscribed to threads that you have previously ignored.
-    /// 
+    ///
     /// Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/rest/reference/activity#delete-a-thread-subscription) endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#set-a-thread-subscription)
     ///
     /// # Content
@@ -6078,9 +6230,9 @@ where
     }
 
     /// Delete a thread subscription
-    /// 
+    ///
     /// Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/rest/reference/activity#set-a-thread-subscription) endpoint and set `ignore` to `true`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#delete-a-thread-subscription)
     pub async fn activity_delete_thread_subscription(
         &self,
@@ -6124,9 +6276,9 @@ where
     }
 
     /// Get Octocat
-    /// 
+    ///
     /// Get the octocat as ASCII art
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/meta#get-octocat)
     pub async fn meta_get_octocat(
         &self,
@@ -6170,11 +6322,11 @@ where
     }
 
     /// List organizations
-    /// 
+    ///
     /// Lists all organizations, in the order that they were created on GitHub.
-    /// 
+    ///
     /// **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the URL for the next page of organizations.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-organizations)
     pub async fn orgs_list(
         &self,
@@ -6220,12 +6372,12 @@ where
     }
 
     /// List custom repository roles in an organization
-    /// 
+    ///
     /// List the custom repository roles available in this organization. In order to see custom
     /// repository roles in an organization, the authenticated user must be an organization owner.
-    /// 
+    ///
     /// For more information on custom repository roles, see "[Managing custom repository roles for an organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-custom-repository-roles-for-an-organization)".
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-custom-repository-roles-in-an-organization)
     pub async fn orgs_list_custom_roles(
         &self,
@@ -6268,62 +6420,12 @@ where
         Ok(theResponse)
     }
 
-    /// List a connection between an external group and a team
-    /// 
-    /// Lists a connection between a team and an external group.
-    /// 
-    /// You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/teams#list-external-idp-group-team-connection)
-    pub async fn teams_list_linked_external_idp_groups_to_team_for_org(
-        &self,
-        org: &str,
-        team_slug: &str,
-    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
-        let mut theScheme = AuthScheme::from(&self.config.authentication);
-
-        let theResponse = loop {
-            while let Some(auth_step) = theScheme.step()? {
-                match auth_step {
-                    ::authentic::AuthenticationStep::Request(auth_request) => {
-                        theScheme.respond(self.client.execute(auth_request).await);
-                    }
-                    ::authentic::AuthenticationStep::WaitFor(duration) => {
-                        (self.sleep)(duration).await;
-                    }
-                }
-            }
-            let theBuilder = crate::v1_1_4::request::teams_list_linked_external_idp_groups_to_team_for_org::reqwest_builder(
-                self.config.base_url.as_ref(),
-                org,
-                team_slug,
-                self.config.user_agent.as_ref(),
-                self.config.accept.as_deref(),
-            )?
-            .with_authentication(&theScheme)?;
-
-            let theRequest =
-                crate::v1_1_4::request::teams_list_linked_external_idp_groups_to_team_for_org::reqwest_request(theBuilder)?;
-
-            ::log::debug!("HTTP request: {:?}", &theRequest);
-
-            let theResponse = self.client.execute(theRequest).await?;
-
-            ::log::debug!("HTTP response: {:?}", &theResponse);
-
-            if theScheme.has_completed(&theResponse)? {
-                break theResponse;
-            }
-        };
-        Ok(theResponse)
-    }
-
     /// Get an organization
-    /// 
-    /// To see many of the organization response values, you need to be an authenticated organization owner with the `admin:org` scope. When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, and outside collaborators to enable [two-factor authentication](https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/).
-    /// 
+    ///
+    /// To see many of the organization response values, you need to be an authenticated organization owner with the `admin:org` scope. When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, and outside collaborators to enable [two-factor authentication](https://docs.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/).
+    ///
     /// GitHub Apps with the `Organization plan` permission can use this endpoint to retrieve information about an organization's GitHub plan. See "[Authenticating with GitHub Apps](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/)" for details. For an example response, see 'Response with GitHub plan information' below."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#get-an-organization)
     pub async fn orgs_get(
         &self,
@@ -6367,11 +6469,11 @@ where
     }
 
     /// Update an organization
-    /// 
+    ///
     /// **Parameter Deprecation Notice:** GitHub will replace and discontinue `members_allowed_repository_creation_type` in favor of more granular permissions. The new input parameters are `members_can_create_public_repositories`, `members_can_create_private_repositories` for all organizations and `members_can_create_internal_repositories` for organizations associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see the [blog post](https://developer.github.com/changes/2019-12-03-internal-visibility-changes).
-    /// 
+    ///
     /// Enables an authenticated organization owner with the `admin:org` scope to update the organization's profile and member privileges.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs/#update-an-organization)
     ///
     /// # Content
@@ -6425,12 +6527,112 @@ where
         Ok(theResponse)
     }
 
+    /// Get GitHub Actions cache usage for an organization
+    ///
+    /// Gets the total GitHub Actions cache usage for an organization.
+    /// The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+    /// You must authenticate using an access token with the `read:org` scope to use this endpoint. GitHub Apps must have the `organization_admistration:read` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-cache-usage-for-an-organization)
+    pub async fn actions_get_actions_cache_usage_for_org(
+        &self,
+        org: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_actions_cache_usage_for_org::reqwest_builder(
+                self.config.base_url.as_ref(),
+                org,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_actions_cache_usage_for_org::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// List repositories with GitHub Actions cache usage for an organization
+    ///
+    /// Lists repositories and their GitHub Actions cache usage for an organization.
+    /// The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+    /// You must authenticate using an access token with the `read:org` scope to use this endpoint. GitHub Apps must have the `organization_admistration:read` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#list-repositories-with-github-actions-cache-usage-for-an-organization)
+    pub async fn actions_get_actions_cache_usage_by_repo_for_org(
+        &self,
+        org: &str,
+        per_page: ::std::option::Option<i64>,
+        page: ::std::option::Option<i64>,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_actions_cache_usage_by_repo_for_org::reqwest_builder(
+                self.config.base_url.as_ref(),
+                org,
+                per_page,
+                page,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_actions_cache_usage_by_repo_for_org::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// Get GitHub Actions permissions for an organization
-    /// 
-    /// Gets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
-    /// 
+    ///
+    /// Gets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization.
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-permissions-for-an-organization)
     pub async fn actions_get_github_actions_permissions_organization(
         &self,
@@ -6474,13 +6676,13 @@ where
     }
 
     /// Set GitHub Actions permissions for an organization
-    /// 
-    /// Sets the GitHub Actions permissions policy for repositories and allowed actions in an organization.
-    /// 
-    /// If the organization belongs to an enterprise that has set restrictive permissions at the enterprise level, such as `allowed_actions` to `selected` actions, then you cannot override them for the organization.
-    /// 
+    ///
+    /// Sets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization.
+    ///
+    /// If the organization belongs to an enterprise that has set restrictive permissions at the enterprise level, such as `allowed_actions` to `selected` actions and reusable workflows, then you cannot override them for the organization.
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-github-actions-permissions-for-an-organization)
     ///
     /// # Content
@@ -6535,11 +6737,11 @@ where
     }
 
     /// List selected repositories enabled for GitHub Actions in an organization
-    /// 
+    ///
     /// Lists the selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-selected-repositories-enabled-for-github-actions-in-an-organization)
     pub async fn actions_list_selected_repositories_enabled_github_actions_organization(
         &self,
@@ -6587,11 +6789,11 @@ where
     }
 
     /// Set selected repositories enabled for GitHub Actions in an organization
-    /// 
+    ///
     /// Replaces the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-selected-repositories-enabled-for-github-actions-in-an-organization)
     ///
     /// # Content
@@ -6646,11 +6848,11 @@ where
     }
 
     /// Enable a selected repository for GitHub Actions in an organization
-    /// 
+    ///
     /// Adds a repository to the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#enable-a-selected-repository-for-github-actions-in-an-organization)
     pub async fn actions_enable_selected_repository_github_actions_organization(
         &self,
@@ -6696,11 +6898,11 @@ where
     }
 
     /// Disable a selected repository for GitHub Actions in an organization
-    /// 
+    ///
     /// Removes a repository from the list of selected repositories that are enabled for GitHub Actions in an organization. To use this endpoint, the organization permission policy for `enabled_repositories` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#disable-a-selected-repository-for-github-actions-in-an-organization)
     pub async fn actions_disable_selected_repository_github_actions_organization(
         &self,
@@ -6745,12 +6947,12 @@ where
         Ok(theResponse)
     }
 
-    /// Get allowed actions for an organization
-    /// 
-    /// Gets the selected actions that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization).""
-    /// 
+    /// Get allowed actions and reusable workflows for an organization
+    ///
+    /// Gets the selected actions and reusable workflows that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization).""
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-allowed-actions-for-an-organization)
     pub async fn actions_get_allowed_actions_organization(
         &self,
@@ -6793,16 +6995,16 @@ where
         Ok(theResponse)
     }
 
-    /// Set allowed actions for an organization
-    /// 
-    /// Sets the actions that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
-    /// 
-    /// If the organization belongs to an enterprise that has `selected` actions set at the enterprise level, then you cannot override any of the enterprise's allowed actions settings.
-    /// 
+    /// Set allowed actions and reusable workflows for an organization
+    ///
+    /// Sets the actions and reusable workflows that are allowed in an organization. To use this endpoint, the organization permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an organization](#set-github-actions-permissions-for-an-organization)."
+    ///
+    /// If the organization belongs to an enterprise that has `selected` actions and reusable workflows set at the enterprise level, then you cannot override any of the enterprise's allowed actions and reusable workflows settings.
+    ///
     /// To use the `patterns_allowed` setting for private repositories, the organization must belong to an enterprise. If the organization does not belong to an enterprise, then the `patterns_allowed` setting only applies to public repositories in the organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-allowed-actions-for-an-organization)
     ///
     /// # Content
@@ -6856,20 +7058,132 @@ where
         Ok(theResponse)
     }
 
+    /// Get default workflow permissions for an organization
+    ///
+    /// Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization,
+    /// as well as whether GitHub Actions can submit approving pull request reviews. For more information, see
+    /// "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+    ///
+    /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-default-workflow-permissions)
+    pub async fn actions_get_github_actions_default_workflow_permissions_organization(
+        &self,
+        org: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_github_actions_default_workflow_permissions_organization::reqwest_builder(
+                self.config.base_url.as_ref(),
+                org,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_github_actions_default_workflow_permissions_organization::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Set default workflow permissions for an organization
+    ///
+    /// Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization, and sets if GitHub Actions
+    /// can submit approving pull request reviews. For more information, see
+    /// "[Setting the permissions of the GITHUB_TOKEN for your organization](https://docs.github.com/organizations/managing-organization-settings/disabling-or-limiting-github-actions-for-your-organization#setting-the-permissions-of-the-github_token-for-your-organization)."
+    ///
+    /// You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `administration` organization permission to use this API.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-default-workflow-permissions)
+    ///
+    /// # Content
+    ///
+    /// - [`&schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
+    pub async fn actions_set_github_actions_default_workflow_permissions_organization<Content>(
+        &self,
+        org: &str,
+        theContent: Content,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError>
+    where
+        Content: Copy + TryInto<crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_organization::Content<::reqwest::Body>>,
+        crate::v1_1_4::ApiError: From<<Content as TryInto<crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_organization::Content<::reqwest::Body>>>::Error>
+    {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_organization::reqwest_builder(
+                self.config.base_url.as_ref(),
+                org,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest = crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_organization::reqwest_request(
+                theBuilder,
+                theContent.try_into()?,
+            )?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List self-hosted runner groups for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Lists all self-hosted runner groups configured in an organization and inherited from an enterprise.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-self-hosted-runner-groups-for-an-organization)
     pub async fn actions_list_self_hosted_runner_groups_for_org(
         &self,
         org: &str,
         per_page: ::std::option::Option<i64>,
         page: ::std::option::Option<i64>,
+        visible_to_repository: ::std::option::Option<&str>,
     ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
         let mut theScheme = AuthScheme::from(&self.config.authentication);
 
@@ -6889,6 +7203,7 @@ where
                 org,
                 per_page,
                 page,
+                visible_to_repository,
                 self.config.user_agent.as_ref(),
                 self.config.accept.as_deref(),
             )?
@@ -6911,13 +7226,13 @@ where
     }
 
     /// Create a self-hosted runner group for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub Enterprise Server. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Creates a new self-hosted runner group for an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-self-hosted-runner-group-for-an-organization)
     ///
     /// # Content
@@ -6972,13 +7287,13 @@ where
     }
 
     /// Get a self-hosted runner group for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Gets a specific self-hosted runner group for an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-self-hosted-runner-group-for-an-organization)
     pub async fn actions_get_self_hosted_runner_group_for_org(
         &self,
@@ -7024,13 +7339,13 @@ where
     }
 
     /// Delete a self-hosted runner group from an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Deletes a self-hosted runner group for an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-a-self-hosted-runner-group-from-an-organization)
     pub async fn actions_delete_self_hosted_runner_group_from_org(
         &self,
@@ -7076,13 +7391,13 @@ where
     }
 
     /// Update a self-hosted runner group for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Updates the `name` and `visibility` of a self-hosted runner group in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#update-a-self-hosted-runner-group-for-an-organization)
     ///
     /// # Content
@@ -7139,13 +7454,13 @@ where
     }
 
     /// List repository access to a self-hosted runner group in an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub Enterprise Server. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Lists the repositories with access to a self-hosted runner group configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-repository-access-to-a-self-hosted-runner-group-in-an-organization)
     pub async fn actions_list_repo_access_to_self_hosted_runner_group_in_org(
         &self,
@@ -7195,13 +7510,13 @@ where
     }
 
     /// Set repository access for a self-hosted runner group in an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Replaces the list of repositories that have access to a self-hosted runner group configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-repository-access-to-a-self-hosted-runner-group-in-an-organization)
     ///
     /// # Content
@@ -7258,15 +7573,15 @@ where
     }
 
     /// Add repository access to a self-hosted runner group in an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
-    /// 
+    ///
+    ///
     /// Adds a repository to the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org`
     /// scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#add-repository-acess-to-a-self-hosted-runner-group-in-an-organization)
     pub async fn actions_add_repo_access_to_self_hosted_runner_group_in_org(
         &self,
@@ -7314,14 +7629,14 @@ where
     }
 
     /// Remove repository access to a self-hosted runner group in an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
-    /// 
+    ///
+    ///
     /// Removes a repository from the list of selected repositories that can access a self-hosted runner group. The runner group must have `visibility` set to `selected`. For more information, see "[Create a self-hosted runner group for an organization](#create-a-self-hosted-runner-group-for-an-organization)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization)
     pub async fn actions_remove_repo_access_to_self_hosted_runner_group_in_org(
         &self,
@@ -7369,13 +7684,13 @@ where
     }
 
     /// List self-hosted runners in a group for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Lists self-hosted runners that are in a specific organization group.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-self-hosted-runners-in-a-group-for-an-organization)
     pub async fn actions_list_self_hosted_runners_in_group_for_org(
         &self,
@@ -7425,13 +7740,13 @@ where
     }
 
     /// Set self-hosted runners in a group for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
+    ///
     /// Replaces the list of self-hosted runners that are part of an organization runner group.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-self-hosted-runners-in-a-group-for-an-organization)
     ///
     /// # Content
@@ -7488,15 +7803,15 @@ where
     }
 
     /// Add a self-hosted runner to a group for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
-    /// 
+    ///
+    ///
     /// Adds a self-hosted runner to a runner group configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org`
     /// scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#add-a-self-hosted-runner-to-a-group-for-an-organization)
     pub async fn actions_add_self_hosted_runner_to_group_for_org(
         &self,
@@ -7544,14 +7859,14 @@ where
     }
 
     /// Remove a self-hosted runner from a group for an organization
-    /// 
+    ///
     /// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)."
-    /// 
-    /// 
+    ///
+    ///
     /// Removes a self-hosted runner from a group configured in an organization. The runner is then returned to the default group.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-a-self-hosted-runner-from-a-group-for-an-organization)
     pub async fn actions_remove_self_hosted_runner_from_group_for_org(
         &self,
@@ -7599,11 +7914,11 @@ where
     }
 
     /// List self-hosted runners for an organization
-    /// 
+    ///
     /// Lists all self-hosted runners configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-self-hosted-runners-for-an-organization)
     pub async fn actions_list_self_hosted_runners_for_org(
         &self,
@@ -7651,11 +7966,11 @@ where
     }
 
     /// List runner applications for an organization
-    /// 
+    ///
     /// Lists binaries for the runner application that you can download and run.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-runner-applications-for-an-organization)
     pub async fn actions_list_runner_applications_for_org(
         &self,
@@ -7699,19 +8014,19 @@ where
     }
 
     /// Create a registration token for an organization
-    /// 
+    ///
     /// Returns a token that you can pass to the `config` script. The token expires after one hour.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// #### Example using registration token
-    /// 
+    ///
     /// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
-    /// 
+    ///
     /// ```text
     /// ./config.sh --url https://github.com/octo-org --token TOKEN
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-registration-token-for-an-organization)
     pub async fn actions_create_registration_token_for_org(
         &self,
@@ -7755,20 +8070,20 @@ where
     }
 
     /// Create a remove token for an organization
-    /// 
+    ///
     /// Returns a token that you can pass to the `config` script to remove a self-hosted runner from an organization. The token expires after one hour.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// #### Example using remove token
-    /// 
+    ///
     /// To remove your self-hosted runner from an organization, replace `TOKEN` with the remove token provided by this
     /// endpoint.
-    /// 
+    ///
     /// ```text
     /// ./config.sh remove --token TOKEN
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-remove-token-for-an-organization)
     pub async fn actions_create_remove_token_for_org(
         &self,
@@ -7812,11 +8127,11 @@ where
     }
 
     /// Get a self-hosted runner for an organization
-    /// 
+    ///
     /// Gets a specific self-hosted runner configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-self-hosted-runner-for-an-organization)
     pub async fn actions_get_self_hosted_runner_for_org(
         &self,
@@ -7862,11 +8177,11 @@ where
     }
 
     /// Delete a self-hosted runner from an organization
-    /// 
+    ///
     /// Forces the removal of a self-hosted runner from an organization. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-a-self-hosted-runner-from-an-organization)
     pub async fn actions_delete_self_hosted_runner_from_org(
         &self,
@@ -7912,11 +8227,11 @@ where
     }
 
     /// List labels for a self-hosted runner for an organization
-    /// 
+    ///
     /// Lists all labels for a self-hosted runner configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-labels-for-a-self-hosted-runner-for-an-organization)
     pub async fn actions_list_labels_for_self_hosted_runner_for_org(
         &self,
@@ -7962,12 +8277,12 @@ where
     }
 
     /// Set custom labels for a self-hosted runner for an organization
-    /// 
+    ///
     /// Remove all previous custom labels and set the new custom labels for a specific
     /// self-hosted runner configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-custom-labels-for-a-self-hosted-runner-for-an-organization)
     ///
     /// # Content
@@ -8024,11 +8339,11 @@ where
     }
 
     /// Add custom labels to a self-hosted runner for an organization
-    /// 
+    ///
     /// Add custom labels to a self-hosted runner configured in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#add-custom-labels-to-a-self-hosted-runner-for-an-organization)
     ///
     /// # Content
@@ -8085,12 +8400,12 @@ where
     }
 
     /// Remove all custom labels from a self-hosted runner for an organization
-    /// 
+    ///
     /// Remove all custom labels from a self-hosted runner configured in an
     /// organization. Returns the remaining read-only labels from the runner.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization)
     pub async fn actions_remove_all_custom_labels_from_self_hosted_runner_for_org(
         &self,
@@ -8136,15 +8451,15 @@ where
     }
 
     /// Remove a custom label from a self-hosted runner for an organization
-    /// 
+    ///
     /// Remove a custom label from a self-hosted runner configured
     /// in an organization. Returns the remaining labels from the runner.
-    /// 
+    ///
     /// This endpoint returns a `404 Not Found` status if the custom label is not
     /// present on the runner.
-    /// 
+    ///
     /// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization)
     pub async fn actions_remove_custom_label_from_self_hosted_runner_for_org(
         &self,
@@ -8192,9 +8507,9 @@ where
     }
 
     /// List organization secrets
-    /// 
+    ///
     /// Lists all secrets available in an organization without revealing their encrypted values. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-organization-secrets)
     pub async fn actions_list_org_secrets(
         &self,
@@ -8242,9 +8557,9 @@ where
     }
 
     /// Get an organization public key
-    /// 
+    ///
     /// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-an-organization-public-key)
     pub async fn actions_get_org_public_key(
         &self,
@@ -8288,9 +8603,9 @@ where
     }
 
     /// Get an organization secret
-    /// 
+    ///
     /// Gets a single organization secret without revealing its encrypted value. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-an-organization-secret)
     pub async fn actions_get_org_secret(
         &self,
@@ -8336,44 +8651,44 @@ where
     }
 
     /// Create or update an organization secret
-    /// 
+    ///
     /// Creates or updates an organization secret with an encrypted value. Encrypt your secret using
     /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access
     /// token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to
     /// use this endpoint.
-    /// 
+    ///
     /// #### Example encrypting a secret using Node.js
-    /// 
+    ///
     /// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-    /// 
+    ///
     /// ```text
     /// const sodium = require('tweetsodium');
-    /// 
+    ///
     /// const key = "base64-encoded-public-key";
     /// const value = "plain-text-secret";
-    /// 
+    ///
     /// // Convert the message and key to Uint8Array's (Buffer implements that interface)
     /// const messageBytes = Buffer.from(value);
     /// const keyBytes = Buffer.from(key, 'base64');
-    /// 
+    ///
     /// // Encrypt using LibSodium.
     /// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-    /// 
+    ///
     /// // Base64 the encrypted secret
     /// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-    /// 
+    ///
     /// console.log(encrypted);
     /// ```
-    /// 
-    /// 
+    ///
+    ///
     /// #### Example encrypting a secret using Python
-    /// 
+    ///
     /// Encrypt your secret using [pynacl](https://pynacl.readthedocs.io/en/latest/public/#nacl-public-sealedbox) with Python 3.
-    /// 
+    ///
     /// ```text
     /// from base64 import b64encode
     /// from nacl import encoding, public
-    /// 
+    ///
     /// def encrypt(public_key: str, secret_value: str) -> str:
     ///   """Encrypt a Unicode string using the public key."""
     ///   public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
@@ -8381,38 +8696,38 @@ where
     ///   encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
     ///   return b64encode(encrypted).decode("utf-8")
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using C#
-    /// 
+    ///
     /// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-    /// 
+    ///
     /// ```text
     /// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
     /// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-    /// 
+    ///
     /// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-    /// 
+    ///
     /// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using Ruby
-    /// 
+    ///
     /// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-    /// 
+    ///
     /// ```ruby
     /// require "rbnacl"
     /// require "base64"
-    /// 
+    ///
     /// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
     /// public_key = RbNaCl::PublicKey.new(key)
-    /// 
+    ///
     /// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
     /// encrypted_secret = box.encrypt("my_secret")
-    /// 
+    ///
     /// # Print the base64 encoded secret
     /// puts Base64.strict_encode64(encrypted_secret)
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret)
     ///
     /// # Content
@@ -8469,9 +8784,9 @@ where
     }
 
     /// Delete an organization secret
-    /// 
+    ///
     /// Deletes a secret in an organization using the secret name. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-an-organization-secret)
     pub async fn actions_delete_org_secret(
         &self,
@@ -8517,9 +8832,9 @@ where
     }
 
     /// List selected repositories for an organization secret
-    /// 
+    ///
     /// Lists all repositories that have been selected when the `visibility` for repository access to a secret is set to `selected`. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-selected-repositories-for-an-organization-secret)
     pub async fn actions_list_selected_repos_for_org_secret(
         &self,
@@ -8569,9 +8884,9 @@ where
     }
 
     /// Set selected repositories for an organization secret
-    /// 
+    ///
     /// Replaces all repositories for an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-selected-repositories-for-an-organization-secret)
     ///
     /// # Content
@@ -8628,9 +8943,9 @@ where
     }
 
     /// Add selected repository to an organization secret
-    /// 
+    ///
     /// Adds a repository to an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#add-selected-repository-to-an-organization-secret)
     pub async fn actions_add_selected_repo_to_org_secret(
         &self,
@@ -8678,9 +8993,9 @@ where
     }
 
     /// Remove selected repository from an organization secret
-    /// 
+    ///
     /// Removes a repository from an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/reference/actions#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-selected-repository-from-an-organization-secret)
     pub async fn actions_remove_selected_repo_from_org_secret(
         &self,
@@ -8728,11 +9043,15 @@ where
     }
 
     /// Get the audit log for an organization
-    /// 
+    ///
     /// Gets the audit log for an organization. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."
-    /// 
-    /// To use this endpoint, you must be an organization owner, and you must use an access token with the `admin:org` scope. GitHub Apps must have the `organization_administration` read permission to use this endpoint.
-    /// 
+    ///
+    /// This endpoint is available for organizations on GitHub Enterprise Cloud. To use this endpoint, you must be an organization owner, and you must use an access token with the `admin:org` scope. GitHub Apps must have the `organization_administration` read permission to use this endpoint.
+    ///
+    /// By default, the response includes up to 30 events from the past three months. Use the `phrase` parameter to filter results and retrieve older events. For example, use the `phrase` parameter with the `created` qualifier to filter events based on when the events occurred. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization#searching-the-audit-log)."
+    ///
+    /// Use pagination to retrieve fewer or more than 30 events. For more information, see "[Resources in the REST API](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination)."
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#get-audit-log)
     #[allow(clippy::too_many_arguments)]
     pub async fn orgs_get_audit_log(
@@ -8789,9 +9108,9 @@ where
     }
 
     /// List users blocked by an organization
-    /// 
+    ///
     /// List the users blocked by an organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-users-blocked-by-an-organization)
     pub async fn orgs_list_blocked_users(
         &self,
@@ -8835,7 +9154,7 @@ where
     }
 
     /// Check if a user is blocked by an organization
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#check-if-a-user-is-blocked-by-an-organization)
     pub async fn orgs_check_blocked_user(
         &self,
@@ -8881,7 +9200,7 @@ where
     }
 
     /// Block a user from an organization
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#block-a-user-from-an-organization)
     pub async fn orgs_block_user(
         &self,
@@ -8927,7 +9246,7 @@ where
     }
 
     /// Unblock a user from an organization
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#unblock-a-user-from-an-organization)
     pub async fn orgs_unblock_user(
         &self,
@@ -8972,12 +9291,81 @@ where
         Ok(theResponse)
     }
 
+    /// List code scanning alerts for an organization
+    ///
+    /// Lists all code scanning alerts for the default branch (usually `main`
+    /// or `master`) for all eligible repositories in an organization.
+    /// To use this endpoint, you must be an administrator or security manager for the organization, and you must use an access token with the `repo` scope or `security_events` scope.
+    ///
+    /// GitHub Apps must have the `security_events` read permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#list-code-scanning-alerts-by-organization)
+    #[allow(clippy::too_many_arguments)]
+    pub async fn code_scanning_list_alerts_for_org(
+        &self,
+        org: &str,
+        tool_name: ::std::option::Option<&str>,
+        tool_guid: ::std::option::Option<::std::option::Option<&str>>,
+        before: ::std::option::Option<&str>,
+        after: ::std::option::Option<&str>,
+        page: ::std::option::Option<i64>,
+        per_page: ::std::option::Option<i64>,
+        state: ::std::option::Option<&str>,
+        sort: &crate::types::Sort<'_>,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let (sort, direction) = sort.extract();
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::code_scanning_list_alerts_for_org::reqwest_builder(
+                self.config.base_url.as_ref(),
+                org,
+                tool_name,
+                tool_guid,
+                before,
+                after,
+                page,
+                per_page,
+                direction,
+                state,
+                sort,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::code_scanning_list_alerts_for_org::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List SAML SSO authorizations for an organization
-    /// 
-    /// Listing and deleting credential authorizations is available to organizations with GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products).
-    /// 
-    /// An authenticated organization owner with the `read:org` scope can list all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://help.github.com/en/articles/about-authentication-with-saml-single-sign-on).
-    /// 
+    ///
+    /// Listing and deleting credential authorizations is available to organizations with GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products).
+    ///
+    /// An authenticated organization owner with the `read:org` scope can list all credential authorizations for an organization that uses SAML single sign-on (SSO). The credentials are either personal access tokens or SSH keys that organization members have authorized for the organization. For more information, see [About authentication with SAML single sign-on](https://docs.github.com/en/articles/about-authentication-with-saml-single-sign-on).
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-saml-sso-authorizations-for-an-organization)
     pub async fn orgs_list_saml_sso_authorizations(
         &self,
@@ -9027,11 +9415,11 @@ where
     }
 
     /// Remove a SAML SSO authorization for an organization
-    /// 
-    /// Listing and deleting credential authorizations is available to organizations with GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products).
-    /// 
+    ///
+    /// Listing and deleting credential authorizations is available to organizations with GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products).
+    ///
     /// An authenticated organization owner with the `admin:org` scope can remove a credential authorization for an organization that uses SAML SSO. Once you remove someone's credential authorization, they will need to create a new personal access token or SSH key and authorize it for the organization they want to access.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#remove-a-saml-sso-authorization-for-an-organization)
     pub async fn orgs_remove_saml_sso_authorization(
         &self,
@@ -9077,9 +9465,9 @@ where
     }
 
     /// List organization secrets
-    /// 
+    ///
     /// Lists all secrets available in an organization without revealing their encrypted values. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#list-organization-secrets)
     pub async fn dependabot_list_org_secrets(
         &self,
@@ -9127,9 +9515,9 @@ where
     }
 
     /// Get an organization public key
-    /// 
+    ///
     /// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#get-an-organization-public-key)
     pub async fn dependabot_get_org_public_key(
         &self,
@@ -9173,9 +9561,9 @@ where
     }
 
     /// Get an organization secret
-    /// 
+    ///
     /// Gets a single organization secret without revealing its encrypted value. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#get-an-organization-secret)
     pub async fn dependabot_get_org_secret(
         &self,
@@ -9221,44 +9609,44 @@ where
     }
 
     /// Create or update an organization secret
-    /// 
+    ///
     /// Creates or updates an organization secret with an encrypted value. Encrypt your secret using
     /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access
     /// token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization
     /// permission to use this endpoint.
-    /// 
+    ///
     /// #### Example encrypting a secret using Node.js
-    /// 
+    ///
     /// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-    /// 
+    ///
     /// ```text
     /// const sodium = require('tweetsodium');
-    /// 
+    ///
     /// const key = "base64-encoded-public-key";
     /// const value = "plain-text-secret";
-    /// 
+    ///
     /// // Convert the message and key to Uint8Array's (Buffer implements that interface)
     /// const messageBytes = Buffer.from(value);
     /// const keyBytes = Buffer.from(key, 'base64');
-    /// 
+    ///
     /// // Encrypt using LibSodium.
     /// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-    /// 
+    ///
     /// // Base64 the encrypted secret
     /// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-    /// 
+    ///
     /// console.log(encrypted);
     /// ```
-    /// 
-    /// 
+    ///
+    ///
     /// #### Example encrypting a secret using Python
-    /// 
+    ///
     /// Encrypt your secret using [pynacl](https://pynacl.readthedocs.io/en/latest/public/#nacl-public-sealedbox) with Python 3.
-    /// 
+    ///
     /// ```text
     /// from base64 import b64encode
     /// from nacl import encoding, public
-    /// 
+    ///
     /// def encrypt(public_key: str, secret_value: str) -> str:
     ///   """Encrypt a Unicode string using the public key."""
     ///   public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
@@ -9266,38 +9654,38 @@ where
     ///   encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
     ///   return b64encode(encrypted).decode("utf-8")
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using C#
-    /// 
+    ///
     /// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-    /// 
+    ///
     /// ```text
     /// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
     /// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-    /// 
+    ///
     /// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-    /// 
+    ///
     /// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using Ruby
-    /// 
+    ///
     /// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-    /// 
+    ///
     /// ```ruby
     /// require "rbnacl"
     /// require "base64"
-    /// 
+    ///
     /// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
     /// public_key = RbNaCl::PublicKey.new(key)
-    /// 
+    ///
     /// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
     /// encrypted_secret = box.encrypt("my_secret")
-    /// 
+    ///
     /// # Print the base64 encoded secret
     /// puts Base64.strict_encode64(encrypted_secret)
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#create-or-update-an-organization-secret)
     ///
     /// # Content
@@ -9354,9 +9742,9 @@ where
     }
 
     /// Delete an organization secret
-    /// 
+    ///
     /// Deletes a secret in an organization using the secret name. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#delete-an-organization-secret)
     pub async fn dependabot_delete_org_secret(
         &self,
@@ -9402,9 +9790,9 @@ where
     }
 
     /// List selected repositories for an organization secret
-    /// 
+    ///
     /// Lists all repositories that have been selected when the `visibility` for repository access to a secret is set to `selected`. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#list-selected-repositories-for-an-organization-secret)
     pub async fn dependabot_list_selected_repos_for_org_secret(
         &self,
@@ -9454,9 +9842,9 @@ where
     }
 
     /// Set selected repositories for an organization secret
-    /// 
+    ///
     /// Replaces all repositories for an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/reference/dependabot#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#set-selected-repositories-for-an-organization-secret)
     ///
     /// # Content
@@ -9513,9 +9901,9 @@ where
     }
 
     /// Add selected repository to an organization secret
-    /// 
+    ///
     /// Adds a repository to an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/reference/dependabot#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#add-selected-repository-to-an-organization-secret)
     pub async fn dependabot_add_selected_repo_to_org_secret(
         &self,
@@ -9563,9 +9951,9 @@ where
     }
 
     /// Remove selected repository from an organization secret
-    /// 
+    ///
     /// Removes a repository from an organization secret when the `visibility` for repository access is set to `selected`. The visibility is set when you [Create or update an organization secret](https://docs.github.com/rest/reference/dependabot#create-or-update-an-organization-secret). You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#remove-selected-repository-from-an-organization-secret)
     pub async fn dependabot_remove_selected_repo_from_org_secret(
         &self,
@@ -9613,7 +10001,7 @@ where
     }
 
     /// List public organization events
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-public-organization-events)
     pub async fn activity_list_public_org_events(
         &self,
@@ -9661,11 +10049,11 @@ where
     }
 
     /// Get an external group
-    /// 
+    ///
     /// Displays information about the specific group's usage.  Provides a list of the group's external members as well as a list of teams that this group is connected to.
-    /// 
+    ///
     /// You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#external-idp-group-info-for-an-organization)
     pub async fn teams_external_idp_group_info_for_org(
         &self,
@@ -9711,11 +10099,11 @@ where
     }
 
     /// List external groups in an organization
-    /// 
+    ///
     /// Lists external groups available in an organization. You can query the groups using the `display_name` parameter, only groups with a `group_name` containing the text provided in the `display_name` parameter will be returned.  You can also limit your page results using the `per_page` parameter. GitHub generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
-    /// 
+    ///
     /// You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-external-idp-groups-for-an-organization)
     pub async fn teams_list_external_idp_groups_for_org(
         &self,
@@ -9765,9 +10153,9 @@ where
     }
 
     /// List failed organization invitations
-    /// 
+    ///
     /// The return hash contains `failed_at` and `failed_reason` fields which represent the time at which the invitation failed and the reason for the failure.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-failed-organization-invitations)
     pub async fn orgs_list_failed_invitations(
         &self,
@@ -9815,7 +10203,7 @@ where
     }
 
     /// List organization webhooks
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-organization-webhooks)
     pub async fn orgs_list_webhooks(
         &self,
@@ -9863,9 +10251,9 @@ where
     }
 
     /// Create an organization webhook
-    /// 
+    ///
     /// Here's how you can create a hook that posts payloads in JSON format:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#create-an-organization-webhook)
     ///
     /// # Content
@@ -9920,9 +10308,9 @@ where
     }
 
     /// Get an organization webhook
-    /// 
+    ///
     /// Returns a webhook configured in an organization. To get only the webhook `config` properties, see "[Get a webhook configuration for an organization](/rest/reference/orgs#get-a-webhook-configuration-for-an-organization)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#get-an-organization-webhook)
     pub async fn orgs_get_webhook(
         &self,
@@ -9968,7 +10356,7 @@ where
     }
 
     /// Delete an organization webhook
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#delete-an-organization-webhook)
     pub async fn orgs_delete_webhook(
         &self,
@@ -10014,9 +10402,9 @@ where
     }
 
     /// Update an organization webhook
-    /// 
+    ///
     /// Updates a webhook configured in an organization. When you update a webhook, the `secret` will be overwritten. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for an organization](/rest/reference/orgs#update-a-webhook-configuration-for-an-organization)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#update-an-organization-webhook)
     ///
     /// # Content
@@ -10073,11 +10461,11 @@ where
     }
 
     /// Get a webhook configuration for an organization
-    /// 
+    ///
     /// Returns the webhook configuration for an organization. To get more information about the webhook, including the `active` state and `events`, use "[Get an organization webhook ](/rest/reference/orgs#get-an-organization-webhook)."
-    /// 
+    ///
     /// Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the `organization_hooks:read` permission.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#get-a-webhook-configuration-for-an-organization)
     pub async fn orgs_get_webhook_config_for_org(
         &self,
@@ -10123,11 +10511,11 @@ where
     }
 
     /// Update a webhook configuration for an organization
-    /// 
+    ///
     /// Updates the webhook configuration for an organization. To update more information about the webhook, including the `active` state and `events`, use "[Update an organization webhook ](/rest/reference/orgs#update-an-organization-webhook)."
-    /// 
+    ///
     /// Access tokens must have the `admin:org_hook` scope, and GitHub Apps must have the `organization_hooks:write` permission.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#update-a-webhook-configuration-for-an-organization)
     ///
     /// # Content
@@ -10184,9 +10572,9 @@ where
     }
 
     /// List deliveries for an organization webhook
-    /// 
+    ///
     /// Returns a list of webhook deliveries for a webhook configured in an organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-deliveries-for-an-organization-webhook)
     pub async fn orgs_list_webhook_deliveries(
         &self,
@@ -10236,9 +10624,9 @@ where
     }
 
     /// Get a webhook delivery for an organization webhook
-    /// 
+    ///
     /// Returns a delivery for a webhook configured in an organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#get-a-webhook-delivery-for-an-organization-webhook)
     pub async fn orgs_get_webhook_delivery(
         &self,
@@ -10286,9 +10674,9 @@ where
     }
 
     /// Redeliver a delivery for an organization webhook
-    /// 
+    ///
     /// Redeliver a delivery for a webhook configured in an organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#redeliver-a-delivery-for-an-organization-webhook)
     pub async fn orgs_redeliver_webhook_delivery(
         &self,
@@ -10336,9 +10724,9 @@ where
     }
 
     /// Ping an organization webhook
-    /// 
+    ///
     /// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the hook.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#ping-an-organization-webhook)
     pub async fn orgs_ping_webhook(
         &self,
@@ -10384,11 +10772,11 @@ where
     }
 
     /// Get an organization installation for the authenticated app
-    /// 
+    ///
     /// Enables an authenticated GitHub App to find the organization's installation information.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-an-organization-installation-for-the-authenticated-app)
     pub async fn apps_get_org_installation(
         &self,
@@ -10432,9 +10820,9 @@ where
     }
 
     /// List app installations for an organization
-    /// 
+    ///
     /// Lists all GitHub Apps in an organization. The installation count includes all GitHub Apps installed on repositories in the organization. You must be an organization owner with `admin:read` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-app-installations-for-an-organization)
     pub async fn orgs_list_app_installations(
         &self,
@@ -10482,9 +10870,9 @@ where
     }
 
     /// Get interaction restrictions for an organization
-    /// 
+    ///
     /// Shows which type of GitHub user can interact with this organization and when the restriction expires. If there is no restrictions, you will see an empty response.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#get-interaction-restrictions-for-an-organization)
     pub async fn interactions_get_restrictions_for_org(
         &self,
@@ -10528,9 +10916,9 @@ where
     }
 
     /// Set interaction restrictions for an organization
-    /// 
+    ///
     /// Temporarily restricts interactions to a certain type of GitHub user in any public repository in the given organization. You must be an organization owner to set these restrictions. Setting the interaction limit at the organization level will overwrite any interaction limits that are set for individual repositories owned by the organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#set-interaction-restrictions-for-an-organization)
     ///
     /// # Content
@@ -10585,9 +10973,9 @@ where
     }
 
     /// Remove interaction restrictions for an organization
-    /// 
+    ///
     /// Removes all interaction restrictions from public repositories in the given organization. You must be an organization owner to remove restrictions.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#remove-interaction-restrictions-for-an-organization)
     pub async fn interactions_remove_restrictions_for_org(
         &self,
@@ -10631,9 +11019,9 @@ where
     }
 
     /// List pending organization invitations
-    /// 
+    ///
     /// The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be `null`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-pending-organization-invitations)
     pub async fn orgs_list_pending_invitations(
         &self,
@@ -10681,11 +11069,11 @@ where
     }
 
     /// Create an organization invitation
-    /// 
+    ///
     /// Invite people to an organization by using their GitHub user ID or their email address. In order to create invitations in an organization, the authenticated user must be an organization owner.
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#create-an-organization-invitation)
     ///
     /// # Content
@@ -10740,11 +11128,11 @@ where
     }
 
     /// Cancel an organization invitation
-    /// 
+    ///
     /// Cancel an organization invitation. In order to cancel an organization invitation, the authenticated user must be an organization owner.
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#cancel-an-organization-invitation)
     pub async fn orgs_cancel_invitation(
         &self,
@@ -10790,9 +11178,9 @@ where
     }
 
     /// List organization invitation teams
-    /// 
+    ///
     /// List all teams associated with an invitation. In order to see invitations in an organization, the authenticated user must be an organization owner.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-organization-invitation-teams)
     pub async fn orgs_list_invitation_teams(
         &self,
@@ -10842,14 +11230,14 @@ where
     }
 
     /// List organization issues assigned to the authenticated user
-    /// 
+    ///
     /// List issues in an organization assigned to the authenticated user.
-    /// 
+    ///
     /// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request. For this
     /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
     /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     /// request id, use the "[List pull requests](https://docs.github.com/rest/reference/pulls#list-pull-requests)" endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-organization-issues-assigned-to-the-authenticated-user)
     #[allow(clippy::too_many_arguments)]
     pub async fn issues_list_for_org(
@@ -10910,9 +11298,9 @@ where
     }
 
     /// List organization members
-    /// 
+    ///
     /// List all users who are members of an organization. If the authenticated user is also a member of this organization then both concealed and public members will be returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-organization-members)
     pub async fn orgs_list_members(
         &self,
@@ -10964,9 +11352,9 @@ where
     }
 
     /// Check organization membership for a user
-    /// 
+    ///
     /// Check if a user is, publicly or privately, a member of the organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#check-organization-membership-for-a-user)
     pub async fn orgs_check_membership_for_user(
         &self,
@@ -11012,9 +11400,9 @@ where
     }
 
     /// Remove an organization member
-    /// 
+    ///
     /// Removing a user from this list will remove them from all teams and they will no longer have any access to the organization's repositories.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#remove-an-organization-member)
     pub async fn orgs_remove_member(
         &self,
@@ -11060,9 +11448,9 @@ where
     }
 
     /// Get organization membership for a user
-    /// 
+    ///
     /// In order to get a user's membership with an organization, the authenticated user must be an organization member. The `state` parameter in the response can be used to identify the user's membership status.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#get-organization-membership-for-a-user)
     pub async fn orgs_get_membership_for_user(
         &self,
@@ -11108,17 +11496,17 @@ where
     }
 
     /// Set organization membership for a user
-    /// 
+    ///
     /// Only authenticated organization owners can add a member to the organization or update the member's role.
-    /// 
+    ///
     /// *   If the authenticated user is _adding_ a member to the organization, the invited user will receive an email inviting them to the organization. The user's [membership status](https://docs.github.com/rest/reference/orgs#get-organization-membership-for-a-user) will be `pending` until they accept the invitation.
-    ///     
+    ///
     /// *   Authenticated users can _update_ a user's membership by passing the `role` parameter. If the authenticated user changes a member's role to `admin`, the affected user will receive an email notifying them that they've been made an organization owner. If the authenticated user changes an owner's role to `member`, no email will be sent.
-    /// 
+    ///
     /// **Rate limits**
-    /// 
+    ///
     /// To prevent abuse, the authenticated user is limited to 50 organization invitations per 24 hour period. If the organization is more than one month old or on a paid plan, the limit is 500 invitations per 24 hour period.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#set-organization-membership-for-a-user)
     ///
     /// # Content
@@ -11175,11 +11563,11 @@ where
     }
 
     /// Remove organization membership for a user
-    /// 
+    ///
     /// In order to remove a user's membership with an organization, the authenticated user must be an organization owner.
-    /// 
+    ///
     /// If the specified user is an active member of the organization, this will remove them from the organization. If the specified user has been invited to the organization, this will cancel their invitation. The specified user will receive an email notification in both cases.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#remove-organization-membership-for-a-user)
     pub async fn orgs_remove_membership_for_user(
         &self,
@@ -11225,9 +11613,9 @@ where
     }
 
     /// List organization migrations
-    /// 
+    ///
     /// Lists the most recent migrations.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#list-organization-migrations)
     pub async fn migrations_list_for_org(
         &self,
@@ -11277,9 +11665,9 @@ where
     }
 
     /// Start an organization migration
-    /// 
+    ///
     /// Initiates the generation of a migration archive.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#start-an-organization-migration)
     ///
     /// # Content
@@ -11334,16 +11722,16 @@ where
     }
 
     /// Get an organization migration status
-    /// 
+    ///
     /// Fetches the status of a migration.
-    /// 
+    ///
     /// The `state` of a migration can be one of the following values:
-    /// 
+    ///
     /// *   `pending`, which means the migration hasn't started yet.
     /// *   `exporting`, which means the migration is in progress.
     /// *   `exported`, which means the migration finished successfully.
     /// *   `failed`, which means the migration failed.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#get-an-organization-migration-status)
     pub async fn migrations_get_status_for_org(
         &self,
@@ -11391,9 +11779,9 @@ where
     }
 
     /// Download an organization migration archive
-    /// 
+    ///
     /// Fetches the URL to a migration archive.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#download-an-organization-migration-archive)
     pub async fn migrations_download_archive_for_org(
         &self,
@@ -11439,9 +11827,9 @@ where
     }
 
     /// Delete an organization migration archive
-    /// 
+    ///
     /// Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#delete-an-organization-migration-archive)
     pub async fn migrations_delete_archive_for_org(
         &self,
@@ -11487,9 +11875,9 @@ where
     }
 
     /// Unlock an organization repository
-    /// 
+    ///
     /// Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/rest/reference/repos#delete-a-repository) when the migration is complete and you no longer need the source data.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#unlock-an-organization-repository)
     pub async fn migrations_unlock_repo_for_org(
         &self,
@@ -11537,9 +11925,9 @@ where
     }
 
     /// List repositories in an organization migration
-    /// 
+    ///
     /// List all the repositories for this organization migration.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#list-repositories-in-an-organization-migration)
     pub async fn migrations_list_repos_for_org(
         &self,
@@ -11589,9 +11977,9 @@ where
     }
 
     /// List outside collaborators for an organization
-    /// 
+    ///
     /// List all users who are outside collaborators of an organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-outside-collaborators-for-an-organization)
     pub async fn orgs_list_outside_collaborators(
         &self,
@@ -11641,9 +12029,9 @@ where
     }
 
     /// Convert an organization member to outside collaborator
-    /// 
-    /// When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://help.github.com/articles/converting-an-organization-member-to-an-outside-collaborator/)".
-    /// 
+    ///
+    /// When an organization member is converted to an outside collaborator, they'll only have access to the repositories that their current team membership allows. The user will no longer be a member of the organization. For more information, see "[Converting an organization member to an outside collaborator](https://docs.github.com/articles/converting-an-organization-member-to-an-outside-collaborator/)". Converting an organization member to an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#convert-an-organization-member-to-outside-collaborator)
     pub async fn orgs_convert_member_to_outside_collaborator(
         &self,
@@ -11689,9 +12077,9 @@ where
     }
 
     /// Remove outside collaborator from an organization
-    /// 
+    ///
     /// Removing a user from this list will remove them from all the organization's repositories.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#remove-outside-collaborator-from-an-organization)
     pub async fn orgs_remove_outside_collaborator(
         &self,
@@ -11737,12 +12125,12 @@ where
     }
 
     /// List packages for an organization
-    /// 
+    ///
     /// Lists all packages in an organization readable by the user.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#list-packages-for-an-organization)
     pub async fn packages_list_packages_for_organization(
         &self,
@@ -11790,12 +12178,12 @@ where
     }
 
     /// Get a package for an organization
-    /// 
+    ///
     /// Gets a specific package in an organization.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-a-package-for-an-organization)
     pub async fn packages_get_package_for_organization(
         &self,
@@ -11843,13 +12231,13 @@ where
     }
 
     /// Delete a package for an organization
-    /// 
+    ///
     /// Deletes an entire package in an organization. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
-    /// 
+    ///
     /// To use this endpoint, you must have admin permissions in the organization and authenticate using an access token with the `packages:read` and `packages:delete` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container you want to delete.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#delete-a-package-for-an-organization)
     pub async fn packages_delete_package_for_org(
         &self,
@@ -11897,17 +12285,17 @@ where
     }
 
     /// Restore a package for an organization
-    /// 
+    ///
     /// Restores an entire package in an organization.
-    /// 
+    ///
     /// You can restore a deleted package under the following conditions:
     ///   - The package was deleted within the last 30 days.
     ///   - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
-    /// 
+    ///
     /// To use this endpoint, you must have admin permissions in the organization and authenticate using an access token with the `packages:read` and `packages:write` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container that you want to restore.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#restore-a-package-for-an-organization)
     pub async fn packages_restore_package_for_org(
         &self,
@@ -11957,12 +12345,12 @@ where
     }
 
     /// Get all package versions for a package owned by an organization
-    /// 
+    ///
     /// Returns all package versions for a package owned by an organization.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-all-package-versions-for-a-package-owned-by-an-organization)
     pub async fn packages_get_all_package_versions_for_package_owned_by_org(
         &self,
@@ -12016,12 +12404,12 @@ where
     }
 
     /// Get a package version for an organization
-    /// 
+    ///
     /// Gets a specific package version in an organization.
-    /// 
+    ///
     /// You must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-a-package-version-for-an-organization)
     pub async fn packages_get_package_version_for_organization(
         &self,
@@ -12071,13 +12459,13 @@ where
     }
 
     /// Delete package version for an organization
-    /// 
+    ///
     /// Deletes a specific package version in an organization. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
-    /// 
+    ///
     /// To use this endpoint, you must have admin permissions in the organization and authenticate using an access token with the `packages:read` and `packages:delete` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container you want to delete.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#delete-a-package-version-for-an-organization)
     pub async fn packages_delete_package_version_for_org(
         &self,
@@ -12127,17 +12515,17 @@ where
     }
 
     /// Restore package version for an organization
-    /// 
+    ///
     /// Restores a specific package version in an organization.
-    /// 
+    ///
     /// You can restore a deleted package under the following conditions:
     ///   - The package was deleted within the last 30 days.
     ///   - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
-    /// 
+    ///
     /// To use this endpoint, you must have admin permissions in the organization and authenticate using an access token with the `packages:read` and `packages:write` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container that you want to restore.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#restore-a-package-version-for-an-organization)
     pub async fn packages_restore_package_version_for_org(
         &self,
@@ -12187,9 +12575,9 @@ where
     }
 
     /// List organization projects
-    /// 
+    ///
     /// Lists the projects in an organization. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#list-organization-projects)
     pub async fn projects_list_for_org(
         &self,
@@ -12239,9 +12627,9 @@ where
     }
 
     /// Create an organization project
-    /// 
+    ///
     /// Creates an organization project board. Returns a `404 Not Found` status if projects are disabled in the organization. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#create-an-organization-project)
     ///
     /// # Content
@@ -12296,9 +12684,9 @@ where
     }
 
     /// List public organization members
-    /// 
+    ///
     /// Members of an organization can choose to have their membership publicized or not.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-public-organization-members)
     pub async fn orgs_list_public_members(
         &self,
@@ -12346,7 +12734,7 @@ where
     }
 
     /// Check public organization membership for a user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#check-public-organization-membership-for-a-user)
     pub async fn orgs_check_public_membership_for_user(
         &self,
@@ -12392,11 +12780,11 @@ where
     }
 
     /// Set public organization membership for the authenticated user
-    /// 
+    ///
     /// The user can publicize their own membership. (A user cannot publicize the membership for another user.)
-    /// 
+    ///
     /// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#set-public-organization-membership-for-the-authenticated-user)
     pub async fn orgs_set_public_membership_for_authenticated_user(
         &self,
@@ -12442,7 +12830,7 @@ where
     }
 
     /// Remove public organization membership for the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#remove-public-organization-membership-for-the-authenticated-user)
     pub async fn orgs_remove_public_membership_for_authenticated_user(
         &self,
@@ -12488,9 +12876,9 @@ where
     }
 
     /// List organization repositories
-    /// 
+    ///
     /// Lists repositories for the specified organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-organization-repositories)
     pub async fn repos_list_for_org(
         &self,
@@ -12544,16 +12932,16 @@ where
     }
 
     /// Create an organization repository
-    /// 
+    ///
     /// Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
-    /// 
+    ///
     /// **OAuth scope requirements**
-    /// 
+    ///
     /// When using [OAuth](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-    /// 
+    ///
     /// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use `repo` scope to create an internal repository.
     /// *   `repo` scope to create a private repository
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-an-organization-repository)
     ///
     /// # Content
@@ -12608,12 +12996,12 @@ where
     }
 
     /// List secret scanning alerts for an organization
-    /// 
+    ///
     /// Lists secret scanning alerts for eligible repositories in an organization, from newest to oldest.
-    /// To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
-    /// 
+    /// To use this endpoint, you must be an administrator or security manager for the organization, and you must use an access token with the `repo` scope or `security_events` scope.
+    ///
     /// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/secret-scanning#list-secret-scanning-alerts-for-an-organization)
     pub async fn secret_scanning_list_alerts_for_org(
         &self,
@@ -12667,13 +13055,13 @@ where
     }
 
     /// Get GitHub Actions billing for an organization
-    /// 
+    ///
     /// Gets the summary of the free and paid GitHub Actions minutes used.
-    /// 
-    /// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-    /// 
+    ///
+    /// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+    ///
     /// Access tokens must have the `repo` or `admin:org` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-github-actions-billing-for-an-organization)
     pub async fn billing_get_github_actions_billing_org(
         &self,
@@ -12717,11 +13105,11 @@ where
     }
 
     /// Get GitHub Advanced Security active committers for an organization
-    /// 
+    ///
     /// Gets the GitHub Advanced Security active committers for an organization per repository.
     /// Each distinct user login across all repositories is counted as a single Advanced Security seat, so the total_advanced_security_committers is not the sum of advanced_security_committers for each repository.
     /// If this organization defers to an enterprise for billing, the total_advanced_security_committers returned from the organization API may include some users that are in more than one organization, so they will only consume a single Advanced Security seat at the enterprise level.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-github-advanced-security-active-committers-for-an-organization)
     pub async fn billing_get_github_advanced_security_billing_org(
         &self,
@@ -12769,13 +13157,13 @@ where
     }
 
     /// Get GitHub Packages billing for an organization
-    /// 
+    ///
     /// Gets the free and paid storage used for GitHub Packages in gigabytes.
-    /// 
-    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    /// 
+    ///
+    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+    ///
     /// Access tokens must have the `repo` or `admin:org` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-github-packages-billing-for-an-organization)
     pub async fn billing_get_github_packages_billing_org(
         &self,
@@ -12819,13 +13207,13 @@ where
     }
 
     /// Get shared storage billing for an organization
-    /// 
-    /// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
-    /// 
-    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    /// 
+    ///
+    /// Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+    ///
+    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+    ///
     /// Access tokens must have the `repo` or `admin:org` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-shared-storage-billing-for-an-organization)
     pub async fn billing_get_shared_storage_billing_org(
         &self,
@@ -12869,11 +13257,11 @@ where
     }
 
     /// List IdP groups for an organization
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// List IdP groups available in an organization. You can limit your page results using the `per_page` parameter. GitHub generates a url-encoded `page` token using a cursor value for where the next page begins. For more information on cursor pagination, see "[Offset and Cursor Pagination explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-idp-groups-for-an-organization)
     pub async fn teams_list_idp_groups_for_org(
         &self,
@@ -12921,9 +13309,9 @@ where
     }
 
     /// List teams
-    /// 
+    ///
     /// Lists all teams in an organization that are visible to the authenticated user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-teams)
     pub async fn teams_list(
         &self,
@@ -12971,11 +13359,11 @@ where
     }
 
     /// Create a team
-    /// 
-    /// To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://help.github.com/en/articles/setting-team-creation-permissions-in-your-organization)."
-    /// 
-    /// When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
-    /// 
+    ///
+    /// To create a team, the authenticated user must be a member or owner of `{org}`. By default, organization members can create teams. Organization owners can limit team creation to organization owners. For more information, see "[Setting team creation permissions](https://docs.github.com/en/articles/setting-team-creation-permissions-in-your-organization)."
+    ///
+    /// When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/about-teams)".
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#create-a-team)
     ///
     /// # Content
@@ -13030,11 +13418,11 @@ where
     }
 
     /// Get a team by name
-    /// 
+    ///
     /// Gets a team using the team's `slug`. GitHub generates the `slug` from the team `name`.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-a-team-by-name)
     pub async fn teams_get_by_name(
         &self,
@@ -13080,13 +13468,13 @@ where
     }
 
     /// Delete a team
-    /// 
+    ///
     /// To delete a team, the authenticated user must be an organization owner or team maintainer.
-    /// 
+    ///
     /// If you are an organization owner, deleting a parent team will delete all of its child teams as well.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#delete-a-team)
     pub async fn teams_delete_in_org(
         &self,
@@ -13132,11 +13520,11 @@ where
     }
 
     /// Update a team
-    /// 
+    ///
     /// To edit a team, the authenticated user must either be an organization owner or a team maintainer.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#update-a-team)
     ///
     /// # Content
@@ -13193,11 +13581,11 @@ where
     }
 
     /// List discussions
-    /// 
+    ///
     /// List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-discussions)
     pub async fn teams_list_discussions_in_org(
         &self,
@@ -13251,13 +13639,13 @@ where
     }
 
     /// Create a discussion
-    /// 
+    ///
     /// Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#create-a-discussion)
     ///
     /// # Content
@@ -13314,11 +13702,11 @@ where
     }
 
     /// Get a discussion
-    /// 
+    ///
     /// Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-a-discussion)
     pub async fn teams_get_discussion_in_org(
         &self,
@@ -13366,11 +13754,11 @@ where
     }
 
     /// Delete a discussion
-    /// 
+    ///
     /// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#delete-a-discussion)
     pub async fn teams_delete_discussion_in_org(
         &self,
@@ -13418,11 +13806,11 @@ where
     }
 
     /// Update a discussion
-    /// 
+    ///
     /// Edits the title and body text of a discussion post. Only the parameters you provide are updated. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#update-a-discussion)
     ///
     /// # Content
@@ -13481,11 +13869,11 @@ where
     }
 
     /// List discussion comments
-    /// 
+    ///
     /// List all comments on a team discussion. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-discussion-comments)
     pub async fn teams_list_discussion_comments_in_org(
         &self,
@@ -13539,13 +13927,13 @@ where
     }
 
     /// Create a discussion comment
-    /// 
+    ///
     /// Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#create-a-discussion-comment)
     ///
     /// # Content
@@ -13604,11 +13992,11 @@ where
     }
 
     /// Get a discussion comment
-    /// 
+    ///
     /// Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-a-discussion-comment)
     pub async fn teams_get_discussion_comment_in_org(
         &self,
@@ -13658,11 +14046,11 @@ where
     }
 
     /// Delete a discussion comment
-    /// 
+    ///
     /// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#delete-a-discussion-comment)
     pub async fn teams_delete_discussion_comment_in_org(
         &self,
@@ -13712,11 +14100,11 @@ where
     }
 
     /// Update a discussion comment
-    /// 
+    ///
     /// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments/{comment_number}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#update-a-discussion-comment)
     ///
     /// # Content
@@ -13777,11 +14165,11 @@ where
     }
 
     /// List reactions for a team discussion comment
-    /// 
+    ///
     /// List the reactions to a [team discussion comment](https://docs.github.com/rest/reference/teams#discussion-comments/). OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#list-reactions-for-a-team-discussion-comment)
     #[allow(clippy::too_many_arguments)]
     pub async fn reactions_list_for_team_discussion_comment_in_org(
@@ -13838,11 +14226,11 @@ where
     }
 
     /// Create reaction for a team discussion comment
-    /// 
+    ///
     /// Create a reaction to a [team discussion comment](https://docs.github.com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#create-reaction-for-a-team-discussion-comment)
     ///
     /// # Content
@@ -13903,11 +14291,11 @@ where
     }
 
     /// Delete team discussion comment reaction
-    /// 
+    ///
     /// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
-    /// 
+    ///
     /// Delete a reaction to a [team discussion comment](https://docs.github.com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#delete-team-discussion-comment-reaction)
     pub async fn reactions_delete_for_team_discussion_comment(
         &self,
@@ -13959,11 +14347,11 @@ where
     }
 
     /// List reactions for a team discussion
-    /// 
+    ///
     /// List the reactions to a [team discussion](https://docs.github.com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#list-reactions-for-a-team-discussion)
     pub async fn reactions_list_for_team_discussion_in_org(
         &self,
@@ -14017,11 +14405,11 @@ where
     }
 
     /// Create reaction for a team discussion
-    /// 
+    ///
     /// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions). OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#create-reaction-for-a-team-discussion)
     ///
     /// # Content
@@ -14080,11 +14468,11 @@ where
     }
 
     /// Delete team discussion reaction
-    /// 
+    ///
     /// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions/:reaction_id`.
-    /// 
+    ///
     /// Delete a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions). OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#delete-team-discussion-reaction)
     pub async fn reactions_delete_for_team_discussion(
         &self,
@@ -14133,12 +14521,62 @@ where
         Ok(theResponse)
     }
 
+    /// List a connection between an external group and a team
+    ///
+    /// Lists a connection between a team and an external group.
+    ///
+    /// You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/teams#list-external-idp-group-team-connection)
+    pub async fn teams_list_linked_external_idp_groups_to_team_for_org(
+        &self,
+        org: &str,
+        team_slug: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::teams_list_linked_external_idp_groups_to_team_for_org::reqwest_builder(
+                self.config.base_url.as_ref(),
+                org,
+                team_slug,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::teams_list_linked_external_idp_groups_to_team_for_org::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// Remove the connection between an external group and a team
-    /// 
+    ///
     /// Deletes a connection between a team and an external group.
-    /// 
+    ///
     /// You can manage team membership with your IdP using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#unlink-external-idp-group-team-connection)
     pub async fn teams_unlink_external_idp_group_from_team_for_org(
         &self,
@@ -14184,11 +14622,11 @@ where
     }
 
     /// Update the connection between an external group and a team
-    /// 
+    ///
     /// Creates a connection between a team and an external group.  Only one external group can be linked to a team.
-    /// 
+    ///
     /// You can manage team membership with your identity provider using Enterprise Managed Users for GitHub Enterprise Cloud. For more information, see "[GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products)" in the GitHub Help documentation.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#link-external-idp-group-team-connection)
     ///
     /// # Content
@@ -14245,11 +14683,11 @@ where
     }
 
     /// List pending team invitations
-    /// 
+    ///
     /// The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be `null`.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/invitations`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-pending-team-invitations)
     pub async fn teams_list_pending_invitations_in_org(
         &self,
@@ -14299,11 +14737,11 @@ where
     }
 
     /// List team members
-    /// 
+    ///
     /// Team members will include the members of child teams.
-    /// 
+    ///
     /// To list members in a team, the team must be visible to the authenticated user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-team-members)
     pub async fn teams_list_members_in_org(
         &self,
@@ -14355,18 +14793,18 @@ where
     }
 
     /// Get team membership for a user
-    /// 
+    ///
     /// Team members will include the members of child teams.
-    /// 
+    ///
     /// To get a user's membership with a team, the team must be visible to the authenticated user.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/memberships/{username}`.
-    /// 
+    ///
     /// **Note:**
     /// The response contains the `state` of the membership and the member's `role`.
-    /// 
+    ///
     /// The `role` for organization owners is set to `maintainer`. For more information about `maintainer` roles, see see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user)
     pub async fn teams_get_membership_for_user_in_org(
         &self,
@@ -14414,19 +14852,19 @@ where
     }
 
     /// Add or update team membership for a user
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Adds an organization member to a team. An authenticated organization owner or team maintainer can add organization members to a team.
-    /// 
-    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-    /// 
+    ///
+    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://docs.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+    ///
     /// An organization owner can add someone who is not part of the team's organization to a team. When an organization owner adds someone to a team who is not an organization member, this endpoint will send an invitation to the person via email. This newly-created membership will be in the "pending" state until the person accepts the invitation, at which point the membership will transition to the "active" state and the user will be added as a member of the team.
-    /// 
+    ///
     /// If the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/memberships/{username}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user)
     ///
     /// # Content
@@ -14485,15 +14923,15 @@ where
     }
 
     /// Remove team membership for a user
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// To remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.
-    /// 
-    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-    /// 
+    ///
+    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://docs.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/memberships/{username}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user)
     pub async fn teams_remove_membership_for_user_in_org(
         &self,
@@ -14541,11 +14979,11 @@ where
     }
 
     /// List team projects
-    /// 
+    ///
     /// Lists the organization projects for a team.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/projects`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-team-projects)
     pub async fn teams_list_projects_in_org(
         &self,
@@ -14595,11 +15033,11 @@ where
     }
 
     /// Check team permissions for a project
-    /// 
+    ///
     /// Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The response includes projects inherited from a parent team.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project)
     pub async fn teams_check_permissions_for_project_in_org(
         &self,
@@ -14647,11 +15085,11 @@ where
     }
 
     /// Add or update team project permissions
-    /// 
+    ///
     /// Adds an organization project to a team. To add a project to a team or update the team's permission on a project, the authenticated user must have `admin` permissions for the project. The project and team must be part of the same organization.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#add-or-update-team-project-permissions)
     ///
     /// # Content
@@ -14710,11 +15148,11 @@ where
     }
 
     /// Remove a project from a team
-    /// 
+    ///
     /// Removes an organization project from a team. An organization owner or a team maintainer can remove any project from the team. To remove a project from a team as an organization member, the authenticated user must have `read` access to both the team and project, or `admin` access to the team or project. This endpoint removes the project from the team, but does not delete the project.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/projects/{project_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#remove-a-project-from-a-team)
     pub async fn teams_remove_project_in_org(
         &self,
@@ -14762,11 +15200,11 @@ where
     }
 
     /// List team repositories
-    /// 
+    ///
     /// Lists a team's repositories visible to the authenticated user.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-team-repositories)
     pub async fn teams_list_repos_in_org(
         &self,
@@ -14816,15 +15254,15 @@ where
     }
 
     /// Check team permissions for a repository
-    /// 
+    ///
     /// Checks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a repository. Repositories inherited through a parent team will also be checked.
-    /// 
+    ///
     /// You can also get information about the specified repository, including what permissions the team grants on it, by passing the following custom [media type](https://docs.github.com/rest/overview/media-types/) via the `application/vnd.github.v3.repository+json` accept header.
-    /// 
+    ///
     /// If a team doesn't have permission for the repository, you will receive a `404 Not Found` response status.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#check-team-permissions-for-a-repository)
     pub async fn teams_check_permissions_for_repo_in_org(
         &self,
@@ -14874,13 +15312,13 @@ where
     }
 
     /// Add or update team repository permissions
-    /// 
+    ///
     /// To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not owned by the organization. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PUT /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
-    /// 
-    /// For more information about the permission levels, see "[Repository permission levels for an organization](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
-    /// 
+    ///
+    /// For more information about the permission levels, see "[Repository permission levels for an organization](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)".
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#add-or-update-team-repository-permissions)
     ///
     /// # Content
@@ -14941,11 +15379,11 @@ where
     }
 
     /// Remove a repository from a team
-    /// 
+    ///
     /// If the authenticated user is an organization owner or a team maintainer, they can remove any repositories from the team. To remove a repository from a team as an organization member, the authenticated user must have admin access to the repository and must be able to see the team. This does not delete the repository, it just removes it from the team.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `DELETE /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#remove-a-repository-from-a-team)
     pub async fn teams_remove_repo_in_org(
         &self,
@@ -14995,13 +15433,13 @@ where
     }
 
     /// List IdP groups for a team
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// List IdP groups connected to a team on GitHub.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-idp-groups-for-a-team)
     pub async fn teams_list_idp_groups_in_org(
         &self,
@@ -15047,13 +15485,13 @@ where
     }
 
     /// Create or update IdP group connections
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `PATCH /organizations/{org_id}/team/{team_id}/team-sync/group-mappings`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections)
     ///
     /// # Content
@@ -15110,11 +15548,11 @@ where
     }
 
     /// List child teams
-    /// 
+    ///
     /// Lists the child teams of the team specified by `{team_slug}`.
-    /// 
+    ///
     /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/teams`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-child-teams)
     pub async fn teams_list_child_in_org(
         &self,
@@ -15164,7 +15602,7 @@ where
     }
 
     /// Get a project card
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#get-a-project-card)
     pub async fn projects_get_card(
         &self,
@@ -15208,7 +15646,7 @@ where
     }
 
     /// Delete a project card
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#delete-a-project-card)
     pub async fn projects_delete_card(
         &self,
@@ -15252,7 +15690,7 @@ where
     }
 
     /// Update an existing project card
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#update-a-project-card)
     ///
     /// # Content
@@ -15307,7 +15745,7 @@ where
     }
 
     /// Move a project card
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#move-a-project-card)
     ///
     /// # Content
@@ -15362,7 +15800,7 @@ where
     }
 
     /// Get a project column
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#get-a-project-column)
     pub async fn projects_get_column(
         &self,
@@ -15406,7 +15844,7 @@ where
     }
 
     /// Delete a project column
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#delete-a-project-column)
     pub async fn projects_delete_column(
         &self,
@@ -15450,7 +15888,7 @@ where
     }
 
     /// Update an existing project column
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#update-a-project-column)
     ///
     /// # Content
@@ -15505,7 +15943,7 @@ where
     }
 
     /// List project cards
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#list-project-cards)
     pub async fn projects_list_cards(
         &self,
@@ -15555,7 +15993,7 @@ where
     }
 
     /// Create a project card
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#create-a-project-card)
     ///
     /// # Content
@@ -15610,7 +16048,7 @@ where
     }
 
     /// Move a project column
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#move-a-project-column)
     ///
     /// # Content
@@ -15665,9 +16103,9 @@ where
     }
 
     /// Get a project
-    /// 
+    ///
     /// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#get-a-project)
     pub async fn projects_get(
         &self,
@@ -15711,9 +16149,9 @@ where
     }
 
     /// Delete a project
-    /// 
+    ///
     /// Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#delete-a-project)
     pub async fn projects_delete(
         &self,
@@ -15757,9 +16195,9 @@ where
     }
 
     /// Update a project
-    /// 
+    ///
     /// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#update-a-project)
     ///
     /// # Content
@@ -15814,9 +16252,9 @@ where
     }
 
     /// List project collaborators
-    /// 
+    ///
     /// Lists the collaborators for an organization project. For a project, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners. You must be an organization owner or a project `admin` to list collaborators.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#list-project-collaborators)
     pub async fn projects_list_collaborators(
         &self,
@@ -15866,9 +16304,9 @@ where
     }
 
     /// Add project collaborator
-    /// 
+    ///
     /// Adds a collaborator to an organization project and sets their permission level. You must be an organization owner or a project `admin` to add a collaborator.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#add-project-collaborator)
     ///
     /// # Content
@@ -15925,9 +16363,9 @@ where
     }
 
     /// Remove user as a collaborator
-    /// 
+    ///
     /// Removes a collaborator from an organization project. You must be an organization owner or a project `admin` to remove a collaborator.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#remove-project-collaborator)
     pub async fn projects_remove_collaborator(
         &self,
@@ -15973,9 +16411,9 @@ where
     }
 
     /// Get project permission for a user
-    /// 
+    ///
     /// Returns the collaborator's permission level for an organization project. Possible values for the `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project `admin` to review a user's permission level.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#get-project-permission-for-a-user)
     pub async fn projects_get_permission_for_user(
         &self,
@@ -16021,7 +16459,7 @@ where
     }
 
     /// List project columns
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#list-project-columns)
     pub async fn projects_list_columns(
         &self,
@@ -16069,7 +16507,7 @@ where
     }
 
     /// Create a project column
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#create-a-project-column)
     ///
     /// # Content
@@ -16124,11 +16562,11 @@ where
     }
 
     /// Get rate limit status for the authenticated user
-    /// 
+    ///
     /// **Note:** Accessing this endpoint does not count against your REST API rate limit.
-    /// 
+    ///
     /// **Note:** The `rate` object is deprecated. If you're writing new API client code or updating existing code, you should use the `core` object instead of the `rate` object. The `core` object contains the same information that is present in the `rate` object.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/rate-limit#get-rate-limit-status-for-the-authenticated-user)
     pub async fn rate_limit_get(
         &self,
@@ -16169,58 +16607,10 @@ where
         Ok(theResponse)
     }
 
-    /// Delete a reaction (Legacy)
-    /// 
-    /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Reactions API. We recommend migrating your existing code to use the new delete reactions endpoints. For more information, see this [blog post](https://developer.github.com/changes/2020-02-26-new-delete-reactions-endpoints/).
-    /// 
-    /// OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), when deleting a [team discussion](https://docs.github.com/rest/reference/teams#discussions) or [team discussion comment](https://docs.github.com/rest/reference/teams#discussion-comments).
-    /// 
-    /// [API method documentation](https://docs.github.com/rest/reference/reactions/#delete-a-reaction-legacy)
-    pub async fn reactions_delete_legacy(
-        &self,
-        reaction_id: i64,
-    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
-        let mut theScheme = AuthScheme::from(&self.config.authentication);
-
-        let theResponse = loop {
-            while let Some(auth_step) = theScheme.step()? {
-                match auth_step {
-                    ::authentic::AuthenticationStep::Request(auth_request) => {
-                        theScheme.respond(self.client.execute(auth_request).await);
-                    }
-                    ::authentic::AuthenticationStep::WaitFor(duration) => {
-                        (self.sleep)(duration).await;
-                    }
-                }
-            }
-            let theBuilder = crate::v1_1_4::request::reactions_delete_legacy::reqwest_builder(
-                self.config.base_url.as_ref(),
-                reaction_id,
-                self.config.user_agent.as_ref(),
-                self.config.accept.as_deref(),
-            )?
-            .with_authentication(&theScheme)?;
-
-            let theRequest =
-                crate::v1_1_4::request::reactions_delete_legacy::reqwest_request(theBuilder)?;
-
-            ::log::debug!("HTTP request: {:?}", &theRequest);
-
-            let theResponse = self.client.execute(theRequest).await?;
-
-            ::log::debug!("HTTP response: {:?}", &theResponse);
-
-            if theScheme.has_completed(&theResponse)? {
-                break theResponse;
-            }
-        };
-        Ok(theResponse)
-    }
-
     /// Get a repository
-    /// 
+    ///
     /// The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-repository)
     pub async fn repos_get(
         &self,
@@ -16266,12 +16656,12 @@ where
     }
 
     /// Delete a repository
-    /// 
+    ///
     /// Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.
-    /// 
+    ///
     /// If an organization owner has configured the organization to prevent members from deleting organization-owned
     /// repositories, you will get a `403 Forbidden` response.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-repository)
     pub async fn repos_delete(
         &self,
@@ -16317,9 +16707,9 @@ where
     }
 
     /// Update a repository
-    /// 
+    ///
     /// **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/rest/reference/repos#replace-all-repository-topics) endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos/#update-a-repository)
     ///
     /// # Content
@@ -16376,9 +16766,9 @@ where
     }
 
     /// List artifacts for a repository
-    /// 
+    ///
     /// Lists all artifacts for a repository. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-artifacts-for-a-repository)
     pub async fn actions_list_artifacts_for_repo(
         &self,
@@ -16428,9 +16818,9 @@ where
     }
 
     /// Get an artifact
-    /// 
+    ///
     /// Gets a specific artifact for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-an-artifact)
     pub async fn actions_get_artifact(
         &self,
@@ -16478,9 +16868,9 @@ where
     }
 
     /// Delete an artifact
-    /// 
+    ///
     /// Deletes an artifact for a workflow run. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-an-artifact)
     pub async fn actions_delete_artifact(
         &self,
@@ -16528,12 +16918,12 @@ where
     }
 
     /// Download an artifact
-    /// 
+    ///
     /// Gets a redirect URL to download an archive for a repository. This URL expires after 1 minute. Look for `Location:` in
     /// the response header to find the URL for the download. The `:archive_format` must be `zip`. Anyone with read access to
     /// the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope.
     /// GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#download-an-artifact)
     pub async fn actions_download_artifact(
         &self,
@@ -16582,10 +16972,60 @@ where
         Ok(theResponse)
     }
 
+    /// Get GitHub Actions cache usage for a repository
+    ///
+    /// Gets GitHub Actions cache usage for a repository.
+    /// The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
+    /// Anyone with read access to the repository can use this endpoint. If the repository is private, you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-cache-usage-for-a-repository)
+    pub async fn actions_get_actions_cache_usage(
+        &self,
+        owner: &str,
+        repo: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_actions_cache_usage::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_actions_cache_usage::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// Get a job for a workflow run
-    /// 
+    ///
     /// Gets a specific job in a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-job-for-a-workflow-run)
     pub async fn actions_get_job_for_workflow_run(
         &self,
@@ -16633,12 +17073,12 @@ where
     }
 
     /// Download job logs for a workflow run
-    /// 
+    ///
     /// Gets a redirect URL to download a plain text file of logs for a workflow job. This link expires after 1 minute. Look
     /// for `Location:` in the response header to find the URL for the download. Anyone with read access to the repository can
     /// use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must
     /// have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run)
     pub async fn actions_download_job_logs_for_workflow_run(
         &self,
@@ -16685,13 +17125,62 @@ where
         Ok(theResponse)
     }
 
+    /// Re-run a job from a workflow run
+    ///
+    /// Re-run a job and its dependent jobs in a workflow run. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#re-run-job-for-workflow-run)
+    pub async fn actions_re_run_job_for_workflow_run(
+        &self,
+        owner: &str,
+        repo: &str,
+        job_id: i64,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_re_run_job_for_workflow_run::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                job_id,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_re_run_job_for_workflow_run::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// Get GitHub Actions permissions for a repository
-    /// 
-    /// Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions allowed to run in the repository.
-    /// 
-    /// You must authenticate using an access token with the `repo` scope to use this
-    /// endpoint. GitHub Apps must have the `administration` repository permission to use this API.
-    /// 
+    ///
+    /// Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions and reusable workflows allowed to run in the repository.
+    ///
+    /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `administration` repository permission to use this API.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-permissions-for-a-repository)
     pub async fn actions_get_github_actions_permissions_repository(
         &self,
@@ -16737,13 +17226,13 @@ where
     }
 
     /// Set GitHub Actions permissions for a repository
-    /// 
-    /// Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions in the repository.
-    /// 
-    /// If the repository belongs to an organization or enterprise that has set restrictive permissions at the organization or enterprise levels, such as `allowed_actions` to `selected` actions, then you cannot override them for the repository.
-    /// 
+    ///
+    /// Sets the GitHub Actions permissions policy for enabling GitHub Actions and allowed actions and reusable workflows in the repository.
+    ///
+    /// If the repository belongs to an organization or enterprise that has set restrictive permissions at the organization or enterprise levels, such as `allowed_actions` to `selected` actions and reusable workflows, then you cannot override them for the repository.
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `administration` repository permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-github-actions-permissions-for-a-repository)
     ///
     /// # Content
@@ -16799,12 +17288,127 @@ where
         Ok(theResponse)
     }
 
-    /// Get allowed actions for a repository
-    /// 
-    /// Gets the settings for selected actions that are allowed in a repository. To use this endpoint, the repository policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
-    /// 
+    /// Get the level of access for workflows outside of the repository
+    ///
+    /// Gets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
+    /// This endpoint only applies to internal repositories. For more information, see "[Managing GitHub Actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
+    ///
+    /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the
+    /// repository `administration` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-workflow-access-level-to-a-repository)
+    pub async fn actions_get_workflow_access_to_repository(
+        &self,
+        owner: &str,
+        repo: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_workflow_access_to_repository::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_workflow_access_to_repository::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Set the level of access for workflows outside of the repository
+    ///
+    /// Sets the level of access that workflows outside of the repository have to actions and reusable workflows in the repository.
+    /// This endpoint only applies to internal repositories. For more information, see "[Managing GitHub Actions settings for a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#allowing-access-to-components-in-an-internal-repository)."
+    ///
+    /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the
+    /// repository `administration` permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-workflow-access-to-a-repository)
+    ///
+    /// # Content
+    ///
+    /// - [`&schema::ActionsWorkflowAccessToRepository`](crate::v1_1_4::schema::ActionsWorkflowAccessToRepository)
+    pub async fn actions_set_workflow_access_to_repository<Content>(
+        &self,
+        owner: &str,
+        repo: &str,
+        theContent: Content,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError>
+    where
+        Content: Copy + TryInto<crate::v1_1_4::request::actions_set_workflow_access_to_repository::Content<::reqwest::Body>>,
+        crate::v1_1_4::ApiError: From<<Content as TryInto<crate::v1_1_4::request::actions_set_workflow_access_to_repository::Content<::reqwest::Body>>>::Error>
+    {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_set_workflow_access_to_repository::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest = crate::v1_1_4::request::actions_set_workflow_access_to_repository::reqwest_request(
+                theBuilder,
+                theContent.try_into()?,
+            )?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Get allowed actions and reusable workflows for a repository
+    ///
+    /// Gets the settings for selected actions and reusable workflows that are allowed in a repository. To use this endpoint, the repository policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `administration` repository permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-allowed-actions-for-a-repository)
     pub async fn actions_get_allowed_actions_repository(
         &self,
@@ -16849,16 +17453,16 @@ where
         Ok(theResponse)
     }
 
-    /// Set allowed actions for a repository
-    /// 
-    /// Sets the actions that are allowed in a repository. To use this endpoint, the repository permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
-    /// 
-    /// If the repository belongs to an organization or enterprise that has `selected` actions set at the organization or enterprise levels, then you cannot override any of the allowed actions settings.
-    /// 
+    /// Set allowed actions and reusable workflows for a repository
+    ///
+    /// Sets the actions and reusable workflows that are allowed in a repository. To use this endpoint, the repository permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for a repository](#set-github-actions-permissions-for-a-repository)."
+    ///
+    /// If the repository belongs to an organization or enterprise that has `selected` actions and reusable workflows set at the organization or enterprise levels, then you cannot override any of the allowed actions and reusable workflows settings.
+    ///
     /// To use the `patterns_allowed` setting for private repositories, the repository must belong to an enterprise. If the repository does not belong to an enterprise, then the `patterns_allowed` setting only applies to public repositories.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `administration` repository permission to use this API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-allowed-actions-for-a-repository)
     ///
     /// # Content
@@ -16914,10 +17518,125 @@ where
         Ok(theResponse)
     }
 
+    /// Get default workflow permissions for a repository
+    ///
+    /// Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository,
+    /// as well as if GitHub Actions can submit approving pull request reviews.
+    /// For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+    ///
+    /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the repository `administration` permission to use this API.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#get-default-workflow-permissions-for-a-repository)
+    pub async fn actions_get_github_actions_default_workflow_permissions_repository(
+        &self,
+        owner: &str,
+        repo: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_get_github_actions_default_workflow_permissions_repository::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_get_github_actions_default_workflow_permissions_repository::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Set default workflow permissions for a repository
+    ///
+    /// Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository, and sets if GitHub Actions
+    /// can submit approving pull request reviews.
+    /// For more information, see "[Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)."
+    ///
+    /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the repository `administration` permission to use this API.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#set-default-workflow-permissions-for-a-repository)
+    ///
+    /// # Content
+    ///
+    /// - [`&schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
+    pub async fn actions_set_github_actions_default_workflow_permissions_repository<Content>(
+        &self,
+        owner: &str,
+        repo: &str,
+        theContent: Content,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError>
+    where
+        Content: Copy + TryInto<crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_repository::Content<::reqwest::Body>>,
+        crate::v1_1_4::ApiError: From<<Content as TryInto<crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_repository::Content<::reqwest::Body>>>::Error>
+    {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_repository::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest = crate::v1_1_4::request::actions_set_github_actions_default_workflow_permissions_repository::reqwest_request(
+                theBuilder,
+                theContent.try_into()?,
+            )?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List self-hosted runners for a repository
-    /// 
+    ///
     /// Lists all self-hosted runners configured in a repository. You must authenticate using an access token with the `repo` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-self-hosted-runners-for-a-repository)
     pub async fn actions_list_self_hosted_runners_for_repo(
         &self,
@@ -16967,11 +17686,11 @@ where
     }
 
     /// List runner applications for a repository
-    /// 
+    ///
     /// Lists binaries for the runner application that you can download and run.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-runner-applications-for-a-repository)
     pub async fn actions_list_runner_applications_for_repo(
         &self,
@@ -17017,18 +17736,18 @@ where
     }
 
     /// Create a registration token for a repository
-    /// 
+    ///
     /// Returns a token that you can pass to the `config` script. The token expires after one hour. You must authenticate
     /// using an access token with the `repo` scope to use this endpoint.
-    /// 
+    ///
     /// #### Example using registration token
-    ///  
+    ///
     /// Configure your self-hosted runner, replacing `TOKEN` with the registration token provided by this endpoint.
-    /// 
+    ///
     /// ```text
     /// ./config.sh --url https://github.com/octo-org/octo-repo-artifacts --token TOKEN
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-registration-token-for-a-repository)
     pub async fn actions_create_registration_token_for_repo(
         &self,
@@ -17074,18 +17793,18 @@ where
     }
 
     /// Create a remove token for a repository
-    /// 
+    ///
     /// Returns a token that you can pass to remove a self-hosted runner from a repository. The token expires after one hour.
     /// You must authenticate using an access token with the `repo` scope to use this endpoint.
-    /// 
+    ///
     /// #### Example using remove token
-    ///  
+    ///
     /// To remove your self-hosted runner from a repository, replace TOKEN with the remove token provided by this endpoint.
-    /// 
+    ///
     /// ```text
     /// ./config.sh remove --token TOKEN
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-remove-token-for-a-repository)
     pub async fn actions_create_remove_token_for_repo(
         &self,
@@ -17131,12 +17850,12 @@ where
     }
 
     /// Get a self-hosted runner for a repository
-    /// 
+    ///
     /// Gets a specific self-hosted runner configured in a repository.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this
     /// endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-self-hosted-runner-for-a-repository)
     pub async fn actions_get_self_hosted_runner_for_repo(
         &self,
@@ -17184,12 +17903,12 @@ where
     }
 
     /// Delete a self-hosted runner from a repository
-    /// 
+    ///
     /// Forces the removal of a self-hosted runner from a repository. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo`
     /// scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-a-self-hosted-runner-from-a-repository)
     pub async fn actions_delete_self_hosted_runner_from_repo(
         &self,
@@ -17237,12 +17956,12 @@ where
     }
 
     /// List labels for a self-hosted runner for a repository
-    /// 
+    ///
     /// Lists all labels for a self-hosted runner configured in a repository.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this
     /// endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-labels-for-a-self-hosted-runner-for-a-repository)
     pub async fn actions_list_labels_for_self_hosted_runner_for_repo(
         &self,
@@ -17290,13 +18009,13 @@ where
     }
 
     /// Set custom labels for a self-hosted runner for a repository
-    /// 
+    ///
     /// Remove all previous custom labels and set the new custom labels for a specific
     /// self-hosted runner configured in a repository.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this
     /// endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#set-custom-labels-for-a-self-hosted-runner-for-a-repository)
     ///
     /// # Content
@@ -17355,12 +18074,12 @@ where
     }
 
     /// Add custom labels to a self-hosted runner for a repository
-    /// 
+    ///
     /// Add custom labels to a self-hosted runner configured in a repository.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this
     /// endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#add-custom-labels-to-a-self-hosted-runner-for-a-repository)
     ///
     /// # Content
@@ -17419,13 +18138,13 @@ where
     }
 
     /// Remove all custom labels from a self-hosted runner for a repository
-    /// 
+    ///
     /// Remove all custom labels from a self-hosted runner configured in a
     /// repository. Returns the remaining read-only labels from the runner.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this
     /// endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository)
     pub async fn actions_remove_all_custom_labels_from_self_hosted_runner_for_repo(
         &self,
@@ -17473,16 +18192,16 @@ where
     }
 
     /// Remove a custom label from a self-hosted runner for a repository
-    /// 
+    ///
     /// Remove a custom label from a self-hosted runner configured
     /// in a repository. Returns the remaining labels from the runner.
-    /// 
+    ///
     /// This endpoint returns a `404 Not Found` status if the custom label is not
     /// present on the runner.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this
     /// endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository)
     pub async fn actions_remove_custom_label_from_self_hosted_runner_for_repo(
         &self,
@@ -17532,11 +18251,11 @@ where
     }
 
     /// List workflow runs for a repository
-    /// 
+    ///
     /// Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters).
-    /// 
+    ///
     /// Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-workflow-runs-for-a-repository)
     #[allow(clippy::too_many_arguments)]
     pub async fn actions_list_workflow_runs_for_repo(
@@ -17601,9 +18320,9 @@ where
     }
 
     /// Get a workflow run
-    /// 
+    ///
     /// Gets a specific workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-workflow-run)
     pub async fn actions_get_workflow_run(
         &self,
@@ -17653,11 +18372,11 @@ where
     }
 
     /// Delete a workflow run
-    /// 
+    ///
     /// Delete a specific workflow run. Anyone with write access to the repository can use this endpoint. If the repository is
     /// private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:write` permission to use
     /// this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-a-workflow-run)
     pub async fn actions_delete_workflow_run(
         &self,
@@ -17705,9 +18424,9 @@ where
     }
 
     /// Get the review history for a workflow run
-    /// 
+    ///
     /// Anyone with read access to the repository can use this endpoint. If the repository is private, you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-the-review-history-for-a-workflow-run)
     pub async fn actions_get_reviews_for_run(
         &self,
@@ -17755,11 +18474,11 @@ where
     }
 
     /// Approve a workflow run for a fork pull request
-    /// 
+    ///
     /// Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#approve-a-workflow-run-for-a-fork-pull-request)
     pub async fn actions_approve_workflow_run(
         &self,
@@ -17807,9 +18526,9 @@ where
     }
 
     /// List workflow run artifacts
-    /// 
+    ///
     /// Lists artifacts for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-workflow-run-artifacts)
     pub async fn actions_list_workflow_run_artifacts(
         &self,
@@ -17861,12 +18580,12 @@ where
     }
 
     /// Get a workflow run attempt
-    /// 
+    ///
     /// Gets a specific workflow run attempt. Anyone with read access to the repository
     /// can use this endpoint. If the repository is private you must use an access token
     /// with the `repo` scope. GitHub Apps must have the `actions:read` permission to
     /// use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-workflow-run-attempt)
     pub async fn actions_get_workflow_run_attempt(
         &self,
@@ -17918,9 +18637,9 @@ where
     }
 
     /// List jobs for a workflow run attempt
-    /// 
+    ///
     /// Lists jobs for a specific workflow run attempt. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-jobs-for-a-workflow-run-attempt)
     pub async fn actions_list_jobs_for_workflow_run_attempt(
         &self,
@@ -17974,12 +18693,12 @@ where
     }
 
     /// Download workflow run attempt logs
-    /// 
+    ///
     /// Gets a redirect URL to download an archive of log files for a specific workflow run attempt. This link expires after
     /// 1 minute. Look for `Location:` in the response header to find the URL for the download. Anyone with read access to
     /// the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope.
     /// GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#download-workflow-run-attempt-logs)
     pub async fn actions_download_workflow_run_attempt_logs(
         &self,
@@ -18029,9 +18748,9 @@ where
     }
 
     /// Cancel a workflow run
-    /// 
+    ///
     /// Cancels a workflow run using its `id`. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#cancel-a-workflow-run)
     pub async fn actions_cancel_workflow_run(
         &self,
@@ -18079,9 +18798,9 @@ where
     }
 
     /// List jobs for a workflow run
-    /// 
+    ///
     /// Lists jobs for a workflow run. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-jobs-for-a-workflow-run)
     pub async fn actions_list_jobs_for_workflow_run(
         &self,
@@ -18135,12 +18854,12 @@ where
     }
 
     /// Download workflow run logs
-    /// 
+    ///
     /// Gets a redirect URL to download an archive of log files for a workflow run. This link expires after 1 minute. Look for
     /// `Location:` in the response header to find the URL for the download. Anyone with read access to the repository can use
     /// this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have
     /// the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#download-workflow-run-logs)
     pub async fn actions_download_workflow_run_logs(
         &self,
@@ -18188,9 +18907,9 @@ where
     }
 
     /// Delete workflow run logs
-    /// 
+    ///
     /// Deletes all logs for a workflow run. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-workflow-run-logs)
     pub async fn actions_delete_workflow_run_logs(
         &self,
@@ -18238,11 +18957,11 @@ where
     }
 
     /// Get pending deployments for a workflow run
-    /// 
+    ///
     /// Get all deployment environments for a workflow run that are waiting for protection rules to pass.
-    /// 
+    ///
     /// Anyone with read access to the repository can use this endpoint. If the repository is private, you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-pending-deployments-for-a-workflow-run)
     pub async fn actions_get_pending_deployments_for_run(
         &self,
@@ -18290,11 +19009,11 @@ where
     }
 
     /// Review pending deployments for a workflow run
-    /// 
+    ///
     /// Approve or reject pending deployments that are waiting on approval by a required reviewer.
-    /// 
+    ///
     /// Anyone with read access to the repository contents and deployments can use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#review-pending-deployments-for-a-workflow-run)
     ///
     /// # Content
@@ -18353,9 +19072,9 @@ where
     }
 
     /// Re-run a workflow
-    /// 
+    ///
     /// Re-runs your workflow run using its `id`. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#re-run-a-workflow)
     pub async fn actions_re_run_workflow(
         &self,
@@ -18402,12 +19121,62 @@ where
         Ok(theResponse)
     }
 
+    /// Re-run failed jobs from a workflow run
+    ///
+    /// Re-run all of the failed jobs and their dependent jobs in a workflow run using the `id` of the workflow run. You must authenticate using an access token with the `repo` scope to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/actions#re-run-workflow-failed-jobs)
+    pub async fn actions_re_run_workflow_failed_jobs(
+        &self,
+        owner: &str,
+        repo: &str,
+        run_id: i64,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::actions_re_run_workflow_failed_jobs::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                run_id,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::actions_re_run_workflow_failed_jobs::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// Get workflow run usage
-    /// 
-    /// Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-    /// 
+    ///
+    /// Gets the number of billable minutes and total run time for a specific workflow run. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+    ///
     /// Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-workflow-run-usage)
     pub async fn actions_get_workflow_run_usage(
         &self,
@@ -18455,9 +19224,9 @@ where
     }
 
     /// List repository secrets
-    /// 
+    ///
     /// Lists all secrets available in a repository without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-repository-secrets)
     pub async fn actions_list_repo_secrets(
         &self,
@@ -18507,9 +19276,9 @@ where
     }
 
     /// Get a repository public key
-    /// 
+    ///
     /// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-repository-public-key)
     pub async fn actions_get_repo_public_key(
         &self,
@@ -18555,9 +19324,9 @@ where
     }
 
     /// Get a repository secret
-    /// 
+    ///
     /// Gets a single repository secret without revealing its encrypted value. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-repository-secret)
     pub async fn actions_get_repo_secret(
         &self,
@@ -18605,44 +19374,44 @@ where
     }
 
     /// Create or update a repository secret
-    /// 
+    ///
     /// Creates or updates a repository secret with an encrypted value. Encrypt your secret using
     /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access
     /// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use
     /// this endpoint.
-    /// 
+    ///
     /// #### Example encrypting a secret using Node.js
-    /// 
+    ///
     /// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-    /// 
+    ///
     /// ```text
     /// const sodium = require('tweetsodium');
-    /// 
+    ///
     /// const key = "base64-encoded-public-key";
     /// const value = "plain-text-secret";
-    /// 
+    ///
     /// // Convert the message and key to Uint8Array's (Buffer implements that interface)
     /// const messageBytes = Buffer.from(value);
     /// const keyBytes = Buffer.from(key, 'base64');
-    /// 
+    ///
     /// // Encrypt using LibSodium.
     /// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-    /// 
+    ///
     /// // Base64 the encrypted secret
     /// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-    /// 
+    ///
     /// console.log(encrypted);
     /// ```
-    /// 
-    /// 
+    ///
+    ///
     /// #### Example encrypting a secret using Python
-    /// 
+    ///
     /// Encrypt your secret using [pynacl](https://pynacl.readthedocs.io/en/latest/public/#nacl-public-sealedbox) with Python 3.
-    /// 
+    ///
     /// ```text
     /// from base64 import b64encode
     /// from nacl import encoding, public
-    /// 
+    ///
     /// def encrypt(public_key: str, secret_value: str) -> str:
     ///   """Encrypt a Unicode string using the public key."""
     ///   public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
@@ -18650,38 +19419,38 @@ where
     ///   encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
     ///   return b64encode(encrypted).decode("utf-8")
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using C#
-    /// 
+    ///
     /// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-    /// 
+    ///
     /// ```text
     /// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
     /// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-    /// 
+    ///
     /// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-    /// 
+    ///
     /// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using Ruby
-    /// 
+    ///
     /// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-    /// 
+    ///
     /// ```ruby
     /// require "rbnacl"
     /// require "base64"
-    /// 
+    ///
     /// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
     /// public_key = RbNaCl::PublicKey.new(key)
-    /// 
+    ///
     /// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
     /// encrypted_secret = box.encrypt("my_secret")
-    /// 
+    ///
     /// # Print the base64 encoded secret
     /// puts Base64.strict_encode64(encrypted_secret)
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-or-update-a-repository-secret)
     ///
     /// # Content
@@ -18740,9 +19509,9 @@ where
     }
 
     /// Delete a repository secret
-    /// 
+    ///
     /// Deletes a secret in a repository using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-a-repository-secret)
     pub async fn actions_delete_repo_secret(
         &self,
@@ -18790,9 +19559,9 @@ where
     }
 
     /// List repository workflows
-    /// 
+    ///
     /// Lists the workflows in a repository. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-repository-workflows)
     pub async fn actions_list_repo_workflows(
         &self,
@@ -18842,9 +19611,9 @@ where
     }
 
     /// Get a workflow
-    /// 
+    ///
     /// Gets a specific workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-a-workflow)
     pub async fn actions_get_workflow(
         &self,
@@ -18892,11 +19661,11 @@ where
     }
 
     /// Disable a workflow
-    /// 
+    ///
     /// Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#disable-a-workflow)
     pub async fn actions_disable_workflow(
         &self,
@@ -18944,13 +19713,13 @@ where
     }
 
     /// Create a workflow dispatch event
-    /// 
+    ///
     /// You can use this endpoint to manually trigger a GitHub Actions workflow run. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
-    /// 
+    ///
     /// You must configure your GitHub Actions workflow to run when the [`workflow_dispatch` webhook](/developers/webhooks-and-events/webhook-events-and-payloads#workflow_dispatch) event occurs. The `inputs` are configured in the workflow file. For more information about how to configure the `workflow_dispatch` event in the workflow file, see "[Events that trigger workflows](/actions/reference/events-that-trigger-workflows#workflow_dispatch)."
-    /// 
-    /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint. For more information, see "[Creating a personal access token for the command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line)."
-    /// 
+    ///
+    /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint. For more information, see "[Creating a personal access token for the command line](https://docs.github.com/articles/creating-a-personal-access-token-for-the-command-line)."
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-a-workflow-dispatch-event)
     ///
     /// # Content
@@ -19009,11 +19778,11 @@ where
     }
 
     /// Enable a workflow
-    /// 
+    ///
     /// Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.
-    /// 
+    ///
     /// You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#enable-a-workflow)
     pub async fn actions_enable_workflow(
         &self,
@@ -19061,11 +19830,11 @@ where
     }
 
     /// List workflow runs
-    /// 
+    ///
     /// List all workflow runs for a workflow. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters).
-    /// 
+    ///
     /// Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-workflow-runs)
     #[allow(clippy::too_many_arguments)]
     pub async fn actions_list_workflow_runs(
@@ -19132,11 +19901,11 @@ where
     }
 
     /// Get workflow usage
-    /// 
-    /// Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-    /// 
+    ///
+    /// Gets the number of billable minutes used by a specific workflow during the current billing cycle. Billable minutes only apply to workflows in private repositories that use GitHub-hosted runners. Usage is listed for each GitHub-hosted runner operating system in milliseconds. Any job re-runs are also included in the usage. The usage does not include the multiplier for macOS and Windows runners and is not rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+    ///
     /// You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-workflow-usage)
     pub async fn actions_get_workflow_usage(
         &self,
@@ -19184,9 +19953,9 @@ where
     }
 
     /// List assignees
-    /// 
-    /// Lists the [available assignees](https://help.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
-    /// 
+    ///
+    /// Lists the [available assignees](https://docs.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-assignees)
     pub async fn issues_list_assignees(
         &self,
@@ -19236,13 +20005,13 @@ where
     }
 
     /// Check if a user can be assigned
-    /// 
+    ///
     /// Checks if a user has permission to be assigned to an issue in this repository.
-    /// 
+    ///
     /// If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned.
-    /// 
+    ///
     /// Otherwise a `404` status code is returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#check-if-a-user-can-be-assigned)
     pub async fn issues_check_user_can_be_assigned(
         &self,
@@ -19290,11 +20059,11 @@ where
     }
 
     /// List all autolinks of a repository
-    /// 
+    ///
     /// This returns a list of autolinks configured for the given repository.
-    /// 
+    ///
     /// Information about autolinks are only available to repository administrators.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/v3/repos#list-autolinks)
     pub async fn repos_list_autolinks(
         &self,
@@ -19342,9 +20111,9 @@ where
     }
 
     /// Create an autolink reference for a repository
-    /// 
+    ///
     /// Users with admin access to the repository can create an autolink.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/v3/repos#create-an-autolink)
     ///
     /// # Content
@@ -19401,11 +20170,11 @@ where
     }
 
     /// Get an autolink reference of a repository
-    /// 
+    ///
     /// This returns a single autolink reference by ID that was configured for the given repository.
-    /// 
+    ///
     /// Information about autolinks are only available to repository administrators.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/v3/repos#get-autolink)
     pub async fn repos_get_autolink(
         &self,
@@ -19453,11 +20222,11 @@ where
     }
 
     /// Delete an autolink reference from a repository
-    /// 
+    ///
     /// This deletes a single autolink reference by ID that was configured for the given repository.
-    /// 
+    ///
     /// Information about autolinks are only available to repository administrators.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/v3/repos#delete-autolink)
     pub async fn repos_delete_autolink(
         &self,
@@ -19505,9 +20274,9 @@ where
     }
 
     /// Enable automated security fixes
-    /// 
-    /// Enables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)".
-    /// 
+    ///
+    /// Enables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/en/articles/configuring-automated-security-fixes)".
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#enable-automated-security-fixes)
     pub async fn repos_enable_automated_security_fixes(
         &self,
@@ -19553,9 +20322,9 @@ where
     }
 
     /// Disable automated security fixes
-    /// 
-    /// Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://help.github.com/en/articles/configuring-automated-security-fixes)".
-    /// 
+    ///
+    /// Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/en/articles/configuring-automated-security-fixes)".
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#disable-automated-security-fixes)
     pub async fn repos_disable_automated_security_fixes(
         &self,
@@ -19601,7 +20370,7 @@ where
     }
 
     /// List branches
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-branches)
     pub async fn repos_list_branches(
         &self,
@@ -19653,7 +20422,7 @@ where
     }
 
     /// Get a branch
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-branch)
     pub async fn repos_get_branch(
         &self,
@@ -19701,9 +20470,9 @@ where
     }
 
     /// Get branch protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-branch-protection)
     pub async fn repos_get_branch_protection(
         &self,
@@ -19751,15 +20520,15 @@ where
     }
 
     /// Update branch protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Protecting a branch requires admin or owner permissions to the repository.
-    /// 
+    ///
     /// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
-    /// 
+    ///
     /// **Note**: The list of users, apps, and teams in total is limited to 100 items.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-branch-protection)
     ///
     /// # Content
@@ -19818,9 +20587,9 @@ where
     }
 
     /// Delete branch protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-branch-protection)
     pub async fn repos_delete_branch_protection(
         &self,
@@ -19868,9 +20637,9 @@ where
     }
 
     /// Get admin branch protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-admin-branch-protection)
     pub async fn repos_get_admin_branch_protection(
         &self,
@@ -19918,11 +20687,11 @@ where
     }
 
     /// Set admin branch protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#set-admin-branch-protection)
     pub async fn repos_set_admin_branch_protection(
         &self,
@@ -19970,11 +20739,11 @@ where
     }
 
     /// Delete admin branch protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Removing admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-admin-branch-protection)
     pub async fn repos_delete_admin_branch_protection(
         &self,
@@ -20022,9 +20791,9 @@ where
     }
 
     /// Get pull request review protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-pull-request-review-protection)
     pub async fn repos_get_pull_request_review_protection(
         &self,
@@ -20072,9 +20841,9 @@ where
     }
 
     /// Delete pull request review protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-pull-request-review-protection)
     pub async fn repos_delete_pull_request_review_protection(
         &self,
@@ -20122,13 +20891,13 @@ where
     }
 
     /// Update pull request review protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Updating pull request review enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
-    /// 
+    ///
     /// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-pull-request-review-protection)
     ///
     /// # Content
@@ -20187,13 +20956,13 @@ where
     }
 
     /// Get commit signature protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
-    /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://help.github.com/articles/signing-commits-with-gpg) in GitHub Help.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
+    /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/articles/signing-commits-with-gpg) in GitHub Help.
+    ///
     /// **Note**: You must enable branch protection to require signed commits.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-commit-signature-protection)
     pub async fn repos_get_commit_signature_protection(
         &self,
@@ -20241,11 +21010,11 @@ where
     }
 
     /// Create commit signature protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to require signed commits on a branch. You must enable branch protection to require signed commits.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-commit-signature-protection)
     pub async fn repos_create_commit_signature_protection(
         &self,
@@ -20293,11 +21062,11 @@ where
     }
 
     /// Delete commit signature protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to disable required signed commits on a branch. You must enable branch protection to require signed commits.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-commit-signature-protection)
     pub async fn repos_delete_commit_signature_protection(
         &self,
@@ -20345,9 +21114,9 @@ where
     }
 
     /// Get status checks protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-status-checks-protection)
     pub async fn repos_get_status_checks_protection(
         &self,
@@ -20395,9 +21164,9 @@ where
     }
 
     /// Remove status check protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#remove-status-check-protection)
     pub async fn repos_remove_status_check_protection(
         &self,
@@ -20445,11 +21214,11 @@ where
     }
 
     /// Update status check protection
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Updating required status checks requires admin or owner permissions to the repository and branch protection to be enabled.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-status-check-protection)
     ///
     /// # Content
@@ -20508,9 +21277,9 @@ where
     }
 
     /// Get all status check contexts
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-all-status-check-contexts)
     pub async fn repos_get_all_status_check_contexts(
         &self,
@@ -20558,9 +21327,9 @@ where
     }
 
     /// Set status check contexts
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#set-status-check-contexts)
     ///
     /// # Content
@@ -20619,9 +21388,9 @@ where
     }
 
     /// Add status check contexts
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#add-status-check-contexts)
     ///
     /// # Content
@@ -20680,9 +21449,9 @@ where
     }
 
     /// Remove status check contexts
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#remove-status-check-contexts)
     ///
     /// # Content
@@ -20741,13 +21510,13 @@ where
     }
 
     /// Get access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Lists who has access to this protected branch.
-    /// 
+    ///
     /// **Note**: Users, apps, and teams `restrictions` are only available for organization-owned repositories.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-access-restrictions)
     pub async fn repos_get_access_restrictions(
         &self,
@@ -20795,11 +21564,11 @@ where
     }
 
     /// Delete access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Disables the ability to restrict who can push to this branch.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-access-restrictions)
     pub async fn repos_delete_access_restrictions(
         &self,
@@ -20847,11 +21616,11 @@ where
     }
 
     /// Get apps with access to the protected branch
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Lists the GitHub Apps that have push access to this branch. Only installed GitHub Apps with `write` access to the `contents` permission can be added as authorized actors on a protected branch.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-apps-with-access-to-the-protected-branch)
     pub async fn repos_get_apps_with_access_to_protected_branch(
         &self,
@@ -20899,15 +21668,15 @@ where
     }
 
     /// Set app access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Replaces the list of apps that have push access to this branch. This removes all apps that previously had push access and grants push access to the new list of apps. Only installed GitHub Apps with `write` access to the `contents` permission can be added as authorized actors on a protected branch.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                                                |
     /// | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
     /// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#set-app-access-restrictions)
     ///
     /// # Content
@@ -20966,15 +21735,15 @@ where
     }
 
     /// Add app access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Grants the specified apps push access for this branch. Only installed GitHub Apps with `write` access to the `contents` permission can be added as authorized actors on a protected branch.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                                                |
     /// | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
     /// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#add-app-access-restrictions)
     ///
     /// # Content
@@ -21033,15 +21802,15 @@ where
     }
 
     /// Remove app access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Removes the ability of an app to push to this branch. Only installed GitHub Apps with `write` access to the `contents` permission can be added as authorized actors on a protected branch.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                                                |
     /// | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
     /// | `array` | The GitHub Apps that have push access to this branch. Use the app's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#remove-app-access-restrictions)
     ///
     /// # Content
@@ -21100,11 +21869,11 @@ where
     }
 
     /// Get teams with access to the protected branch
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Lists the teams who have push access to this branch. The list includes child teams.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-teams-with-access-to-the-protected-branch)
     pub async fn repos_get_teams_with_access_to_protected_branch(
         &self,
@@ -21152,15 +21921,15 @@ where
     }
 
     /// Set team access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                                |
     /// | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
     /// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#set-team-access-restrictions)
     ///
     /// # Content
@@ -21219,15 +21988,15 @@ where
     }
 
     /// Add team access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Grants the specified teams push access for this branch. You can also give push access to child teams.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                                |
     /// | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
     /// | `array` | The teams that can have push access. Use the team's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#add-team-access-restrictions)
     ///
     /// # Content
@@ -21286,15 +22055,15 @@ where
     }
 
     /// Remove team access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Removes the ability of a team to push to this branch. You can also remove push access for child teams.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                                         |
     /// | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
     /// | `array` | Teams that should no longer have push access. Use the team's `slug`. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#remove-team-access-restrictions)
     ///
     /// # Content
@@ -21353,11 +22122,11 @@ where
     }
 
     /// Get users with access to the protected branch
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Lists the people who have push access to this branch.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-users-with-access-to-the-protected-branch)
     pub async fn repos_get_users_with_access_to_protected_branch(
         &self,
@@ -21405,15 +22174,15 @@ where
     }
 
     /// Set user access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Replaces the list of people that have push access to this branch. This removes all people that previously had push access and grants push access to the new list of people.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                   |
     /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
     /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#set-user-access-restrictions)
     ///
     /// # Content
@@ -21472,15 +22241,15 @@ where
     }
 
     /// Add user access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Grants the specified people push access for this branch.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                   |
     /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
     /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#add-user-access-restrictions)
     ///
     /// # Content
@@ -21539,15 +22308,15 @@ where
     }
 
     /// Remove user access restrictions
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Removes the ability of a user to push to this branch.
-    /// 
+    ///
     /// | Type    | Description                                                                                                                                   |
     /// | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
     /// | `array` | Usernames of the people who should no longer have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#remove-user-access-restrictions)
     ///
     /// # Content
@@ -21606,23 +22375,23 @@ where
     }
 
     /// Rename a branch
-    /// 
+    ///
     /// Renames a branch in a repository.
-    /// 
+    ///
     /// **Note:** Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/github/administering-a-repository/renaming-a-branch)".
-    /// 
+    ///
     /// The permissions required to use this endpoint depends on whether you are renaming the default branch.
-    /// 
+    ///
     /// To rename a non-default branch:
-    /// 
+    ///
     /// * Users must have push access.
     /// * GitHub Apps must have the `contents:write` repository permission.
-    /// 
+    ///
     /// To rename the default branch:
-    /// 
+    ///
     /// * Users must have admin or owner permissions.
     /// * GitHub Apps must have the `administration:write` repository permission.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#rename-a-branch)
     ///
     /// # Content
@@ -21681,13 +22450,13 @@ where
     }
 
     /// Create a check run
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    /// 
+    ///
     /// Creates a new check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to create check runs.
-    /// 
+    ///
     /// In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these check runs exceed 1000, GitHub will start to automatically delete older check runs.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#create-a-check-run)
     ///
     /// # Content
@@ -21744,11 +22513,11 @@ where
     }
 
     /// Get a check run
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    /// 
+    ///
     /// Gets a single check run using its `id`. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#get-a-check-run)
     pub async fn checks_get(
         &self,
@@ -21796,11 +22565,11 @@ where
     }
 
     /// Update a check run
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    /// 
+    ///
     /// Updates a check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to edit check runs.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#update-a-check-run)
     ///
     /// # Content
@@ -21859,9 +22628,9 @@ where
     }
 
     /// List check run annotations
-    /// 
+    ///
     /// Lists annotations for a check run using the annotation `id`. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get annotations for a check run. OAuth Apps and authenticated users must have the `repo` scope to get annotations for a check run in a private repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#list-check-run-annotations)
     pub async fn checks_list_annotations(
         &self,
@@ -21913,11 +22682,11 @@ where
     }
 
     /// Rerequest a check run
-    /// 
+    ///
     /// Triggers GitHub to rerequest an existing check run, without pushing new code to a repository. This endpoint will trigger the [`check_run` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) event with the action `rerequested`. When a check run is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
-    /// 
+    ///
     /// To rerequest a check run, your GitHub App must have the `checks:read` permission on a private repository or pull access to a public repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#rerequest-a-check-run)
     pub async fn checks_rerequest_run(
         &self,
@@ -21965,11 +22734,11 @@ where
     }
 
     /// Create a check suite
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-    /// 
+    ///
     /// By default, check suites are automatically created when you create a [check run](https://docs.github.com/rest/reference/checks#check-runs). You only need to use this endpoint for manually creating check suites when you've disabled automatic creation using "[Update repository preferences for check suites](https://docs.github.com/rest/reference/checks#update-repository-preferences-for-check-suites)". Your GitHub App must have the `checks:write` permission to create check suites.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#create-a-check-suite)
     ///
     /// # Content
@@ -22026,9 +22795,9 @@ where
     }
 
     /// Update repository preferences for check suites
-    /// 
+    ///
     /// Changes the default automatic flow when creating check suites. By default, a check suite is automatically created each time code is pushed to a repository. When you disable the automatic creation of check suites, you can manually [Create a check suite](https://docs.github.com/rest/reference/checks#create-a-check-suite). You must have admin permissions in the repository to set preferences for check suites.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#update-repository-preferences-for-check-suites)
     ///
     /// # Content
@@ -22085,11 +22854,11 @@ where
     }
 
     /// Get a check suite
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-    /// 
+    ///
     /// Gets a single check suite using its `id`. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check suites. OAuth Apps and authenticated users must have the `repo` scope to get check suites in a private repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#get-a-check-suite)
     pub async fn checks_get_suite(
         &self,
@@ -22137,11 +22906,11 @@ where
     }
 
     /// List check runs in a check suite
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    /// 
+    ///
     /// Lists check runs for a check suite using its `id`. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#list-check-runs-in-a-check-suite)
     #[allow(clippy::too_many_arguments)]
     pub async fn checks_list_for_suite(
@@ -22200,11 +22969,11 @@ where
     }
 
     /// Rerequest a check suite
-    /// 
+    ///
     /// Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository. This endpoint will trigger the [`check_suite` webhook](https://docs.github.com/webhooks/event-payloads/#check_suite) event with the action `rerequested`. When a check suite is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
-    /// 
+    ///
     /// To rerequest a check suite, your GitHub App must have the `checks:read` permission on a private repository or pull access to a public repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#rerequest-a-check-suite)
     pub async fn checks_rerequest_suite(
         &self,
@@ -22252,18 +23021,18 @@ where
     }
 
     /// List code scanning alerts for a repository
-    /// 
+    ///
     /// Lists all open code scanning alerts for the default branch (usually `main`
     /// or `master`). You must use an access token with the `security_events` scope to use
     /// this endpoint with private repos, the `public_repo` scope also grants permission to read
     /// security events on public repos only. GitHub Apps must have the `security_events` read
     /// permission to use this endpoint.
-    /// 
+    ///
     /// The response includes a `most_recent_instance` object.
     /// This provides details of the most recent instance of this alert
     /// for the default branch or for the specified Git reference
     /// (if you used `ref` in the request).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#list-code-scanning-alerts-for-a-repository)
     #[allow(clippy::too_many_arguments)]
     pub async fn code_scanning_list_alerts_for_repo(
@@ -22326,12 +23095,12 @@ where
     }
 
     /// Get a code scanning alert
-    /// 
+    ///
     /// Gets a single code scanning alert. You must use an access token with the `security_events` scope to use this endpoint with private repos, the `public_repo` scope also grants permission to read security events on public repos only. GitHub Apps must have the `security_events` read permission to use this endpoint.
-    /// 
+    ///
     /// **Deprecation notice**:
     /// The instances field is deprecated and will, in future, not be included in the response for this endpoint. The example response reflects this change. The same information can now be retrieved via a GET request to the URL specified by `instances_url`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#get-a-code-scanning-alert)
     pub async fn code_scanning_get_alert(
         &self,
@@ -22379,9 +23148,9 @@ where
     }
 
     /// Update a code scanning alert
-    /// 
+    ///
     /// Updates the status of a single code scanning alert. You must use an access token with the `security_events` scope to use this endpoint with private repositories. You can also use tokens with the `public_repo` scope for public repositories only. GitHub Apps must have the `security_events` write permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#update-a-code-scanning-alert)
     ///
     /// # Content
@@ -22440,12 +23209,12 @@ where
     }
 
     /// List instances of a code scanning alert
-    /// 
+    ///
     /// Lists all instances of the specified code scanning alert.
     /// You must use an access token with the `security_events` scope to use this endpoint with private repos,
     /// the `public_repo` scope also grants permission to read security events on public repos only.
     /// GitHub Apps must have the `security_events` read permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#list-instances-of-a-code-scanning-alert)
     pub async fn code_scanning_list_alert_instances(
         &self,
@@ -22499,25 +23268,25 @@ where
     }
 
     /// List code scanning analyses for a repository
-    /// 
+    ///
     /// Lists the details of all code scanning analyses for a repository,
     /// starting with the most recent.
     /// The response is paginated and you can use the `page` and `per_page` parameters
     /// to list the analyses you're interested in.
     /// By default 30 analyses are listed per page.
-    /// 
+    ///
     /// The `rules_count` field in the response give the number of rules
     /// that were run in the analysis.
     /// For very old analyses this data is not available,
     /// and `0` is returned in this field.
-    /// 
+    ///
     /// You must use an access token with the `security_events` scope to use this endpoint with private repos,
     /// the `public_repo` scope also grants permission to read security events on public repos only.
     /// GitHub Apps must have the `security_events` read permission to use this endpoint.
-    /// 
+    ///
     /// **Deprecation notice**:
     /// The `tool_name` field is deprecated and will, in future, not be included in the response for this endpoint. The example response reflects this change. The tool name can now be found inside the `tool` field.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#list-code-scanning-analyses-for-a-repository)
     #[allow(clippy::too_many_arguments)]
     pub async fn code_scanning_list_recent_analyses(
@@ -22576,27 +23345,27 @@ where
     }
 
     /// Get a code scanning analysis for a repository
-    /// 
+    ///
     /// Gets a specified code scanning analysis for a repository.
     /// You must use an access token with the `security_events` scope to use this endpoint with private repos,
     /// the `public_repo` scope also grants permission to read security events on public repos only.
     /// GitHub Apps must have the `security_events` read permission to use this endpoint.
-    /// 
+    ///
     /// The default JSON response contains fields that describe the analysis.
     /// This includes the Git reference and commit SHA to which the analysis relates,
     /// the datetime of the analysis, the name of the code scanning tool,
     /// and the number of alerts.
-    /// 
+    ///
     /// The `rules_count` field in the default response give the number of rules
     /// that were run in the analysis.
     /// For very old analyses this data is not available,
     /// and `0` is returned in this field.
-    /// 
+    ///
     /// If you use the Accept header `application/sarif+json`,
     /// the response contains the analysis data that was uploaded.
     /// This is formatted as
     /// [SARIF version 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/sarif-v2.1.0-cs01.html).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#get-a-code-scanning-analysis-for-a-repository)
     pub async fn code_scanning_get_analysis(
         &self,
@@ -22644,40 +23413,40 @@ where
     }
 
     /// Delete a code scanning analysis from a repository
-    /// 
+    ///
     /// Deletes a specified code scanning analysis from a repository. For
     /// private repositories, you must use an access token with the `repo` scope. For public repositories,
     /// you must use an access token with `public_repo` scope.
     /// GitHub Apps must have the `security_events` write permission to use this endpoint.
-    /// 
+    ///
     /// You can delete one analysis at a time.
     /// To delete a series of analyses, start with the most recent analysis and work backwards.
     /// Conceptually, the process is similar to the undo function in a text editor.
-    /// 
+    ///
     /// When you list the analyses for a repository,
     /// one or more will be identified as deletable in the response:
-    /// 
+    ///
     /// ```text
     /// "deletable": true
     /// ```
-    /// 
+    ///
     /// An analysis is deletable when it's the most recent in a set of analyses.
     /// Typically, a repository will have multiple sets of analyses
     /// for each enabled code scanning tool,
     /// where a set is determined by a unique combination of analysis values:
-    /// 
+    ///
     /// * `ref`
     /// * `tool`
     /// * `analysis_key`
     /// * `environment`
-    /// 
+    ///
     /// If you attempt to delete an analysis that is not the most recent in a set,
     /// you'll get a 400 response with the message:
-    /// 
+    ///
     /// ```text
     /// Analysis specified is not deletable.
     /// ```
-    /// 
+    ///
     /// The response from a successful `DELETE` operation provides you with
     /// two alternative URLs for deleting the next analysis in the set:
     /// `next_analysis_url` and `confirm_delete_url`.
@@ -22687,7 +23456,7 @@ where
     /// Use the `confirm_delete_url` URL if you are content to remove all analyses for a tool.
     /// When you delete the last analysis in a set, the value of `next_analysis_url` and `confirm_delete_url`
     /// in the 200 response is `null`.
-    /// 
+    ///
     /// As an example of the deletion process,
     /// let's imagine that you added a workflow that configured a particular code scanning tool
     /// to analyze the code in a repository. This tool has added 15 analyses:
@@ -22701,17 +23470,17 @@ where
     /// delete this analysis and then continue deleting the next analysis in the set until they're all deleted.
     /// Then repeat the process for the second set.
     /// The procedure therefore consists of a nested loop:
-    /// 
+    ///
     /// **Outer loop**:
     /// * List the analyses for the repository, filtered by tool.
     /// * Parse this list to find a deletable analysis. If found:
-    /// 
+    ///
     ///   **Inner loop**:
     ///   * Delete the identified analysis.
     ///   * Parse the response for the value of `confirm_delete_url` and, if found, use this in the next iteration.
-    /// 
+    ///
     /// The above process assumes that you want to remove all trace of the tool's analyses from the GitHub user interface, for the specified repository, and it therefore uses the `confirm_delete_url` value. Alternatively, you could use the `next_analysis_url` value, which would leave the last analysis in each set undeleted to avoid removing a tool's analysis entirely.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#delete-a-code-scanning-analysis-from-a-repository)
     pub async fn code_scanning_delete_analysis(
         &self,
@@ -22761,25 +23530,25 @@ where
     }
 
     /// Upload an analysis as SARIF data
-    /// 
+    ///
     /// Uploads SARIF data containing the results of a code scanning analysis to make the results available in a repository. You must use an access token with the `security_events` scope to use this endpoint for private repositories. You can also use tokens with the `public_repo` scope for public repositories only. GitHub Apps must have the `security_events` write permission to use this endpoint.
-    /// 
+    ///
     /// There are two places where you can upload code scanning results.
     ///  - If you upload to a pull request, for example `--ref refs/pull/42/merge` or `--ref refs/pull/42/head`, then the results appear as alerts in a pull request check. For more information, see "[Triaging code scanning alerts in pull requests](/code-security/secure-coding/triaging-code-scanning-alerts-in-pull-requests)."
     ///  - If you upload to a branch, for example `--ref refs/heads/my-branch`, then the results appear in the **Security** tab for your repository. For more information, see "[Managing code scanning alerts for your repository](/code-security/secure-coding/managing-code-scanning-alerts-for-your-repository#viewing-the-alerts-for-a-repository)."
-    /// 
+    ///
     /// You must compress the SARIF-formatted analysis data that you want to upload, using `gzip`, and then encode it as a Base64 format string. For example:
-    /// 
+    ///
     /// ```text
     /// gzip -c analysis-data.sarif | base64 -w0
     /// ```
-    /// 
+    ///
     /// SARIF upload supports a maximum of 5000 results per analysis run. Any results over this limit are ignored and any SARIF uploads with more than 25,000 results are rejected. Typically, but not necessarily, a SARIF file contains a single run of a single tool. If a code scanning tool generates too many results, you should update the analysis configuration to run only the most important rules or queries.
-    /// 
+    ///
     /// The `202 Accepted`, response includes an `id` value.
     /// You can use this ID to check the status of the upload by using this for the `/sarifs/{sarif_id}` endpoint.
     /// For more information, see "[Get information about a SARIF upload](/rest/reference/code-scanning#get-information-about-a-sarif-upload)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#upload-a-sarif-file)
     ///
     /// # Content
@@ -22836,9 +23605,9 @@ where
     }
 
     /// Get information about a SARIF upload
-    /// 
+    ///
     /// Gets information about a SARIF upload, including the status and the URL of the analysis that was uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code scanning analysis for a repository](/rest/reference/code-scanning#get-a-code-scanning-analysis-for-a-repository)." You must use an access token with the `security_events` scope to use this endpoint with private repos, the `public_repo` scope also grants permission to read security events on public repos only. GitHub Apps must have the `security_events` read permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/code-scanning#list-recent-code-scanning-analyses-for-a-repository)
     pub async fn code_scanning_get_sarif(
         &self,
@@ -22885,12 +23654,68 @@ where
         Ok(theResponse)
     }
 
+    /// List CODEOWNERS errors
+    ///
+    /// List any syntax errors that are detected in the CODEOWNERS
+    /// file.
+    ///
+    /// For more information about the correct CODEOWNERS syntax,
+    /// see "[About code owners](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/repos#list-codeowners-errors)
+    pub async fn repos_codeowners_errors(
+        &self,
+        owner: &str,
+        repo: &str,
+        r#ref: ::std::option::Option<&str>,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::repos_codeowners_errors::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                r#ref,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::repos_codeowners_errors::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List codespaces in a repository for the authenticated user
-    /// 
+    ///
     /// Lists the codespaces associated to a specified repository and the authenticated user.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have read access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#list-codespaces-in-a-repository-for-the-authenticated-user)
     pub async fn codespaces_list_in_repository_for_authenticated_user(
         &self,
@@ -22940,16 +23765,18 @@ where
     }
 
     /// Create a codespace in a repository
-    /// 
+    ///
     /// Creates a codespace owned by the authenticated user in the specified repository.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#create-a-codespace-in-a-repository)
     ///
     /// # Content
     ///
-    /// - [`&request::codespaces_create_with_repo_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json)
+    /// - [`&::std::option::Option<request::codespaces_create_with_repo_for_authenticated_user::body::Json>`](crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json)
     pub async fn codespaces_create_with_repo_for_authenticated_user<Content>(
         &self,
         owner: &str,
@@ -23001,19 +23828,19 @@ where
     }
 
     /// List available machine types for a repository
-    /// 
+    ///
     /// List the machine types available for a given repository based on its configuration.
-    /// 
-    /// Location is required.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces_metadata` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#list-available-machine-types-for-a-repository)
     pub async fn codespaces_repo_machines_for_authenticated_user(
         &self,
         owner: &str,
         repo: &str,
-        location: &str,
+        location: ::std::option::Option<&str>,
     ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
         let mut theScheme = AuthScheme::from(&self.config.authentication);
 
@@ -23054,14 +23881,352 @@ where
         Ok(theResponse)
     }
 
+    /// List repository secrets
+    ///
+    /// Lists all secrets available in a repository without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `codespaces_secrets` repository permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/codespaces#list-repository-secrets)
+    pub async fn codespaces_list_repo_secrets(
+        &self,
+        owner: &str,
+        repo: &str,
+        per_page: ::std::option::Option<i64>,
+        page: ::std::option::Option<i64>,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::codespaces_list_repo_secrets::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                per_page,
+                page,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::codespaces_list_repo_secrets::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Get a repository public key
+    ///
+    /// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `codespaces_secrets` repository permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/codespaces#get-a-repository-public-key)
+    pub async fn codespaces_get_repo_public_key(
+        &self,
+        owner: &str,
+        repo: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::codespaces_get_repo_public_key::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::codespaces_get_repo_public_key::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Get a repository secret
+    ///
+    /// Gets a single repository secret without revealing its encrypted value. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `codespaces_secrets` repository permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/codespaces#get-a-repository-secret)
+    pub async fn codespaces_get_repo_secret(
+        &self,
+        owner: &str,
+        repo: &str,
+        secret_name: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::codespaces_get_repo_secret::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                secret_name,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::codespaces_get_repo_secret::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Create or update a repository secret
+    ///
+    /// Creates or updates a repository secret with an encrypted value. Encrypt your secret using
+    /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access
+    /// token with the `repo` scope to use this endpoint. GitHub Apps must have the `codespaces_secrets` repository
+    /// permission to use this endpoint.
+    ///
+    /// #### Example of encrypting a secret using Node.js
+    ///
+    /// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
+    ///
+    /// ```text
+    /// const sodium = require('tweetsodium');
+    ///
+    /// const key = "base64-encoded-public-key";
+    /// const value = "plain-text-secret";
+    ///
+    /// // Convert the message and key to Uint8Array's (Buffer implements that interface)
+    /// const messageBytes = Buffer.from(value);
+    /// const keyBytes = Buffer.from(key, 'base64');
+    ///
+    /// // Encrypt using LibSodium.
+    /// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
+    ///
+    /// // Base64 the encrypted secret
+    /// const encrypted = Buffer.from(encryptedBytes).toString('base64');
+    ///
+    /// console.log(encrypted);
+    /// ```
+    ///
+    ///
+    /// #### Example of encrypting a secret using Python
+    ///
+    /// Encrypt your secret using [pynacl](https://pynacl.readthedocs.io/en/latest/public/#nacl-public-sealedbox) with Python 3.
+    ///
+    /// ```text
+    /// from base64 import b64encode
+    /// from nacl import encoding, public
+    ///
+    /// def encrypt(public_key: str, secret_value: str) -> str:
+    ///   """Encrypt a Unicode string using the public key."""
+    ///   public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+    ///   sealed_box = public.SealedBox(public_key)
+    ///   encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
+    ///   return b64encode(encrypted).decode("utf-8")
+    /// ```
+    ///
+    /// #### Example of encrypting a secret using C#
+    ///
+    /// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
+    ///
+    /// ```text
+    /// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
+    /// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
+    ///
+    /// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
+    ///
+    /// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
+    /// ```
+    ///
+    /// #### Example of encrypting a secret using Ruby
+    ///
+    /// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
+    ///
+    /// ```ruby
+    /// require "rbnacl"
+    /// require "base64"
+    ///
+    /// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
+    /// public_key = RbNaCl::PublicKey.new(key)
+    ///
+    /// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
+    /// encrypted_secret = box.encrypt("my_secret")
+    ///
+    /// # Print the base64 encoded secret
+    /// puts Base64.strict_encode64(encrypted_secret)
+    /// ```
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/codespaces#create-or-update-a-repository-secret)
+    ///
+    /// # Content
+    ///
+    /// - [`&request::codespaces_create_or_update_repo_secret::body::Json`](crate::v1_1_4::request::codespaces_create_or_update_repo_secret::body::Json)
+    pub async fn codespaces_create_or_update_repo_secret<Content>(
+        &self,
+        owner: &str,
+        repo: &str,
+        secret_name: &str,
+        theContent: Content,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError>
+    where
+        Content: Copy + TryInto<crate::v1_1_4::request::codespaces_create_or_update_repo_secret::Content<::reqwest::Body>>,
+        crate::v1_1_4::ApiError: From<<Content as TryInto<crate::v1_1_4::request::codespaces_create_or_update_repo_secret::Content<::reqwest::Body>>>::Error>
+    {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::codespaces_create_or_update_repo_secret::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                secret_name,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest = crate::v1_1_4::request::codespaces_create_or_update_repo_secret::reqwest_request(
+                theBuilder,
+                theContent.try_into()?,
+            )?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Delete a repository secret
+    ///
+    /// Deletes a secret in a repository using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `codespaces_secrets` repository permission to use this endpoint.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/codespaces#delete-a-repository-secret)
+    pub async fn codespaces_delete_repo_secret(
+        &self,
+        owner: &str,
+        repo: &str,
+        secret_name: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::codespaces_delete_repo_secret::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                secret_name,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::codespaces_delete_repo_secret::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List repository collaborators
-    /// 
+    ///
     /// For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-    /// 
+    /// Organization members with write, maintain, or admin privileges on the organization-owned repository can use this endpoint.
+    ///
     /// Team members will include the members of child teams.
-    /// 
-    /// You must have push access to the repository in order to list collaborators.
-    /// 
+    ///
+    /// You must authenticate using an access token with the `read:org` and `repo` scopes with push access to use this
+    /// endpoint. GitHub Apps must have the `members` organization permission and `metadata` repository permission to use this
+    /// endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-collaborators)
     pub async fn repos_list_collaborators(
         &self,
@@ -23113,11 +24278,15 @@ where
     }
 
     /// Check if a user is a repository collaborator
-    /// 
+    ///
     /// For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-    /// 
+    ///
     /// Team members will include the members of child teams.
-    /// 
+    ///
+    /// You must authenticate using an access token with the `read:org` and `repo` scopes with push access to use this
+    /// endpoint. GitHub Apps must have the `members` organization permission and `metadata` repository permission to use this
+    /// endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#check-if-a-user-is-a-repository-collaborator)
     pub async fn repos_check_collaborator(
         &self,
@@ -23165,23 +24334,29 @@ where
     }
 
     /// Add a repository collaborator
-    /// 
-    /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
-    /// For more information on permission levels, see "[Repository permission levels for an organization](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the permission being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
-    /// 
+    ///
+    /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
+    ///
+    /// Adding an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/enterprise-cloud@latest/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
+    ///
+    /// For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the permission being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
+    ///
     /// ```text
     /// Cannot assign {member} permission of {role name}
     /// ```
-    /// 
+    ///
     /// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [repository invitations API endpoints](https://docs.github.com/rest/reference/repos#invitations).
-    /// 
+    ///
+    /// **Updating an existing collaborator's permission level**
+    ///
+    /// The endpoint can also be used to change the permissions of an existing collaborator without first removing and re-adding the collaborator. To change the permissions, use the same endpoint and pass a different `permission` parameter. The response will be a `204`, with no other indication that the permission level changed.
+    ///
     /// **Rate limits**
-    /// 
+    ///
     /// You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no limit if you are inviting organization members to an organization repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#add-a-repository-collaborator)
     ///
     /// # Content
@@ -23240,7 +24415,7 @@ where
     }
 
     /// Remove a repository collaborator
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#remove-a-repository-collaborator)
     pub async fn repos_remove_collaborator(
         &self,
@@ -23288,9 +24463,9 @@ where
     }
 
     /// Get repository permissions for a user
-    /// 
+    ///
     /// Checks the repository permission of a collaborator. The possible repository permissions are `admin`, `write`, `read`, and `none`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-repository-permissions-for-a-user)
     pub async fn repos_get_collaborator_permission_level(
         &self,
@@ -23338,11 +24513,11 @@ where
     }
 
     /// List commit comments for a repository
-    /// 
+    ///
     /// Commit Comments use [these custom media types](https://docs.github.com/rest/reference/repos#custom-media-types). You can read more about the use of media types in the API [here](https://docs.github.com/rest/overview/media-types/).
-    /// 
+    ///
     /// Comments are ordered by ascending ID.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-commit-comments-for-a-repository)
     pub async fn repos_list_commit_comments_for_repo(
         &self,
@@ -23392,7 +24567,7 @@ where
     }
 
     /// Get a commit comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-commit-comment)
     pub async fn repos_get_commit_comment(
         &self,
@@ -23440,7 +24615,7 @@ where
     }
 
     /// Delete a commit comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-commit-comment)
     pub async fn repos_delete_commit_comment(
         &self,
@@ -23488,7 +24663,7 @@ where
     }
 
     /// Update a commit comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-a-commit-comment)
     ///
     /// # Content
@@ -23547,9 +24722,9 @@ where
     }
 
     /// List reactions for a commit comment
-    /// 
+    ///
     /// List the reactions to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#list-reactions-for-a-commit-comment)
     pub async fn reactions_list_for_commit_comment(
         &self,
@@ -23603,9 +24778,9 @@ where
     }
 
     /// Create reaction for a commit comment
-    /// 
+    ///
     /// Create a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments). A response with an HTTP `200` status means that you already added the reaction type to this commit comment.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#create-reaction-for-a-commit-comment)
     ///
     /// # Content
@@ -23664,11 +24839,11 @@ where
     }
 
     /// Delete a commit comment reaction
-    /// 
+    ///
     /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
-    /// 
+    ///
     /// Delete a reaction to a [commit comment](https://docs.github.com/rest/reference/repos#comments).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#delete-a-commit-comment-reaction)
     pub async fn reactions_delete_for_commit_comment(
         &self,
@@ -23718,20 +24893,20 @@ where
     }
 
     /// List commits
-    /// 
+    ///
     /// **Signature verification object**
-    /// 
+    ///
     /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-    /// 
+    ///
     /// | Name | Type | Description |
     /// | ---- | ---- | ----------- |
     /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
     /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
     /// | `signature` | `string` | The signature that was extracted from the commit. |
     /// | `payload` | `string` | The value that was signed. |
-    /// 
+    ///
     /// These are the possible values for `reason` in the `verification` object:
-    /// 
+    ///
     /// | Value | Description |
     /// | ----- | ----------- |
     /// | `expired_key` | The key that made the signature is expired. |
@@ -23747,7 +24922,7 @@ where
     /// | `malformed_signature` | There was an error parsing the signature. |
     /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
     /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-commits)
     #[allow(clippy::too_many_arguments)]
     pub async fn repos_list_commits(
@@ -23808,11 +24983,11 @@ where
     }
 
     /// List branches for HEAD commit
-    /// 
-    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-branches-for-head-commit)
     pub async fn repos_list_branches_for_head_commit(
         &self,
@@ -23860,9 +25035,9 @@ where
     }
 
     /// List commit comments
-    /// 
+    ///
     /// Use the `:commit_sha` to specify the commit that will have its comments listed.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-commit-comments)
     pub async fn repos_list_comments_for_commit(
         &self,
@@ -23914,11 +25089,11 @@ where
     }
 
     /// Create a commit comment
-    /// 
+    ///
     /// Create a comment for a commit using its `:commit_sha`.
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-commit-comment)
     ///
     /// # Content
@@ -23977,9 +25152,9 @@ where
     }
 
     /// List pull requests associated with a commit
-    /// 
-    /// Lists the merged pull request that introduced the commit to the repository. If the commit is not present in the default branch, additionally returns open pull requests associated with the commit. The results may include open and closed pull requests. Additional preview headers may be required to see certain details for associated pull requests, such as whether a pull request is in a draft state. For more information about previews that might affect this endpoint, see the [List pull requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
-    /// 
+    ///
+    /// Lists the merged pull request that introduced the commit to the repository. If the commit is not present in the default branch, additionally returns open pull requests associated with the commit. The results may include open and closed pull requests.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-pull-requests-associated-with-a-commit)
     pub async fn repos_list_pull_requests_associated_with_commit(
         &self,
@@ -24031,28 +25206,28 @@ where
     }
 
     /// Get a commit
-    /// 
+    ///
     /// Returns the contents of a single commit reference. You must have `read` access for the repository to use this endpoint.
-    /// 
+    ///
     /// **Note:** If there are more than 300 files in the commit diff, the response will include pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit information, and the only changes are to the file listing.
-    /// 
+    ///
     /// You can pass the appropriate [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to  fetch `diff` and `patch` formats. Diffs with binary data will have no `patch` property.
-    /// 
+    ///
     /// To return only the SHA-1 hash of the commit reference, you can provide the `sha` custom [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) in the `Accept` header. You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.
-    /// 
+    ///
     /// **Signature verification object**
-    /// 
+    ///
     /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-    /// 
+    ///
     /// | Name | Type | Description |
     /// | ---- | ---- | ----------- |
     /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
     /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
     /// | `signature` | `string` | The signature that was extracted from the commit. |
     /// | `payload` | `string` | The value that was signed. |
-    /// 
+    ///
     /// These are the possible values for `reason` in the `verification` object:
-    /// 
+    ///
     /// | Value | Description |
     /// | ----- | ----------- |
     /// | `expired_key` | The key that made the signature is expired. |
@@ -24068,7 +25243,7 @@ where
     /// | `malformed_signature` | There was an error parsing the signature. |
     /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
     /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-commit)
     pub async fn repos_get_commit(
         &self,
@@ -24120,11 +25295,11 @@ where
     }
 
     /// List check runs for a Git reference
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-    /// 
+    ///
     /// Lists check runs for a commit ref. The `ref` can be a SHA, branch name, or a tag name. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to get check runs. OAuth Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#list-check-runs-for-a-git-reference)
     #[allow(clippy::too_many_arguments)]
     pub async fn checks_list_for_ref(
@@ -24185,11 +25360,11 @@ where
     }
 
     /// List check suites for a Git reference
-    /// 
+    ///
     /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-    /// 
+    ///
     /// Lists check suites for a commit `ref`. The `ref` can be a SHA, branch name, or a tag name. GitHub Apps must have the `checks:read` permission on a private repository or pull access to a public repository to list check suites. OAuth Apps and authenticated users must have the `repo` scope to get check suites in a private repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/checks#list-check-suites-for-a-git-reference)
     #[allow(clippy::too_many_arguments)]
     pub async fn checks_list_suites_for_ref(
@@ -24246,16 +25421,16 @@ where
     }
 
     /// Get the combined status for a specific reference
-    /// 
+    ///
     /// Users with pull access in a repository can access a combined view of commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name.
-    /// 
-    /// 
+    ///
+    ///
     /// Additionally, a combined `state` is returned. The `state` is one of:
-    /// 
+    ///
     /// *   **failure** if any of the contexts report as `error` or `failure`
     /// *   **pending** if there are no statuses or a context is `pending`
     /// *   **success** if the latest status for all contexts is `success`
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-the-combined-status-for-a-specific-reference)
     pub async fn repos_get_combined_status_for_ref(
         &self,
@@ -24307,11 +25482,11 @@ where
     }
 
     /// List commit statuses for a reference
-    /// 
+    ///
     /// Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.
-    /// 
+    ///
     /// This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-commit-statuses-for-a-reference)
     pub async fn repos_list_commit_statuses_for_ref(
         &self,
@@ -24363,20 +25538,20 @@ where
     }
 
     /// Get community profile metrics
-    /// 
+    ///
     /// This endpoint will return all community profile metrics, including an
     /// overall health score, repository description, the presence of documentation, detected
     /// code of conduct, detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE,
     /// README, and CONTRIBUTING files.
-    /// 
+    ///
     /// The `health_percentage` score is defined as a percentage of how many of
     /// these four documents are present: README, CONTRIBUTING, LICENSE, and
     /// CODE_OF_CONDUCT. For example, if all four documents are present, then
     /// the `health_percentage` is `100`. If only one is present, then the
     /// `health_percentage` is `25`.
-    /// 
+    ///
     /// `content_reports_enabled` is only returned for organization-owned repositories.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-community-profile-metrics)
     pub async fn repos_get_community_profile_metrics(
         &self,
@@ -24422,32 +25597,32 @@ where
     }
 
     /// Compare two commits
-    /// 
+    ///
     /// The `basehead` param is comprised of two parts: `base` and `head`. Both must be branch names in `repo`. To compare branches across other repositories in the same network as `repo`, use the format `<USERNAME>:branch`.
-    /// 
+    ///
     /// The response from the API is equivalent to running the `git log base..head` command; however, commits are returned in chronological order. Pass the appropriate [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.
-    /// 
+    ///
     /// The response also includes details on the files that were changed between the two commits. This includes the status of the change (for example, if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.
-    /// 
+    ///
     /// **Working with large comparisons**
-    /// 
+    ///
     /// To process a response with a large number of commits, you can use (`per_page` or `page`) to paginate the results. When using paging, the list of changed files is only returned with page 1, but includes all changed files for the entire comparison. For more information on working with pagination, see "[Traversing with pagination](/rest/guides/traversing-with-pagination)."
-    /// 
+    ///
     /// When calling this API without any paging parameters (`per_page` or `page`), the returned list is limited to 250 commits and the last commit in the list is the most recent of the entire comparison. When a paging parameter is specified, the first commit in the returned list of each page is the earliest.
-    /// 
+    ///
     /// **Signature verification object**
-    /// 
+    ///
     /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-    /// 
+    ///
     /// | Name | Type | Description |
     /// | ---- | ---- | ----------- |
     /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
     /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
     /// | `signature` | `string` | The signature that was extracted from the commit. |
     /// | `payload` | `string` | The value that was signed. |
-    /// 
+    ///
     /// These are the possible values for `reason` in the `verification` object:
-    /// 
+    ///
     /// | Value | Description |
     /// | ----- | ----------- |
     /// | `expired_key` | The key that made the signature is expired. |
@@ -24463,7 +25638,7 @@ where
     /// | `malformed_signature` | There was an error parsing the signature. |
     /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
     /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#compare-two-commits)
     pub async fn repos_compare_commits(
         &self,
@@ -24515,40 +25690,40 @@ where
     }
 
     /// Get repository content
-    /// 
+    ///
     /// Gets the contents of a file or directory in a repository. Specify the file path or directory in `:path`. If you omit
-    /// `:path`, you will receive the contents of the repository's root directory. See the description below regarding what the API response includes for directories. 
-    /// 
+    /// `:path`, you will receive the contents of the repository's root directory. See the description below regarding what the API response includes for directories.
+    ///
     /// Files and symlinks support [a custom media type](https://docs.github.com/rest/reference/repos#custom-media-types) for
     /// retrieving the raw content or rendered HTML (when supported). All content types support [a custom media
     /// type](https://docs.github.com/rest/reference/repos#custom-media-types) to ensure the content is returned in a consistent
     /// object format.
-    /// 
+    ///
     /// **Note**:
     /// *   To get a repository's contents recursively, you can [recursively get the tree](https://docs.github.com/rest/reference/git#trees).
     /// *   This API has an upper limit of 1,000 files for a directory. If you need to retrieve more files, use the [Git Trees
     /// API](https://docs.github.com/rest/reference/git#get-a-tree).
     /// *   This API supports files up to 1 megabyte in size.
-    /// 
+    ///
     /// #### If the content is a directory
     /// The response will be an array of objects, one object for each item in the directory.
     /// When listing the contents of a directory, submodules have their "type" specified as "file". Logically, the value
     /// _should_ be "submodule". This behavior exists in API v3 [for backwards compatibility purposes](https://git.io/v1YCW).
     /// In the next major version of the API, the type will be returned as "submodule".
-    /// 
-    /// #### If the content is a symlink 
+    ///
+    /// #### If the content is a symlink
     /// If the requested `:path` points to a symlink, and the symlink's target is a normal file in the repository, then the
-    /// API responds with the content of the file (in the format shown in the example. Otherwise, the API responds with an object 
+    /// API responds with the content of the file (in the format shown in the example. Otherwise, the API responds with an object
     /// describing the symlink itself.
-    /// 
+    ///
     /// #### If the content is a submodule
     /// The `submodule_git_url` identifies the location of the submodule repository, and the `sha` identifies a specific
     /// commit within the submodule repository. Git uses the given URL when cloning the submodule repository, and checks out
     /// the submodule at that specific commit.
-    /// 
+    ///
     /// If the submodule repository is not hosted on github.com, the Git URLs (`git_url` and `_links["git"]`) and the
     /// github.com URLs (`html_url` and `_links["html"]`) will have null values.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-repository-content)
     pub async fn repos_get_content(
         &self,
@@ -24598,9 +25773,9 @@ where
     }
 
     /// Create or update file contents
-    /// 
+    ///
     /// Creates a new file or replaces an existing file in a repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-or-update-file-contents)
     ///
     /// # Content
@@ -24659,15 +25834,15 @@ where
     }
 
     /// Delete a file
-    /// 
+    ///
     /// Deletes a file in a repository.
-    /// 
+    ///
     /// You can provide an additional `committer` parameter, which is an object containing information about the committer. Or, you can provide an `author` parameter, which is an object containing information about the author.
-    /// 
+    ///
     /// The `author` section is optional and is filled in with the `committer` information if omitted. If the `committer` information is omitted, the authenticated user's information is used.
-    /// 
+    ///
     /// You must provide values for both `name` and `email`, whether you choose to use `author` or `committer`. Otherwise, you'll receive a `422` status code.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-file)
     ///
     /// # Content
@@ -24726,11 +25901,11 @@ where
     }
 
     /// List repository contributors
-    /// 
+    ///
     /// Lists contributors to the specified repository and sorts them by the number of commits per contributor in descending order. This endpoint may return information that is a few hours old because the GitHub REST API v3 caches contributor data to improve performance.
-    /// 
+    ///
     /// GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-contributors)
     pub async fn repos_list_contributors(
         &self,
@@ -24782,9 +25957,9 @@ where
     }
 
     /// List repository secrets
-    /// 
+    ///
     /// Lists all secrets available in a repository without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#list-repository-secrets)
     pub async fn dependabot_list_repo_secrets(
         &self,
@@ -24834,9 +26009,9 @@ where
     }
 
     /// Get a repository public key
-    /// 
+    ///
     /// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `dependabot_secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#get-a-repository-public-key)
     pub async fn dependabot_get_repo_public_key(
         &self,
@@ -24882,9 +26057,9 @@ where
     }
 
     /// Get a repository secret
-    /// 
+    ///
     /// Gets a single repository secret without revealing its encrypted value. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#get-a-repository-secret)
     pub async fn dependabot_get_repo_secret(
         &self,
@@ -24932,44 +26107,44 @@ where
     }
 
     /// Create or update a repository secret
-    /// 
+    ///
     /// Creates or updates a repository secret with an encrypted value. Encrypt your secret using
     /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access
     /// token with the `repo` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` repository
     /// permission to use this endpoint.
-    /// 
+    ///
     /// #### Example encrypting a secret using Node.js
-    /// 
+    ///
     /// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-    /// 
+    ///
     /// ```text
     /// const sodium = require('tweetsodium');
-    /// 
+    ///
     /// const key = "base64-encoded-public-key";
     /// const value = "plain-text-secret";
-    /// 
+    ///
     /// // Convert the message and key to Uint8Array's (Buffer implements that interface)
     /// const messageBytes = Buffer.from(value);
     /// const keyBytes = Buffer.from(key, 'base64');
-    /// 
+    ///
     /// // Encrypt using LibSodium.
     /// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-    /// 
+    ///
     /// // Base64 the encrypted secret
     /// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-    /// 
+    ///
     /// console.log(encrypted);
     /// ```
-    /// 
-    /// 
+    ///
+    ///
     /// #### Example encrypting a secret using Python
-    /// 
+    ///
     /// Encrypt your secret using [pynacl](https://pynacl.readthedocs.io/en/latest/public/#nacl-public-sealedbox) with Python 3.
-    /// 
+    ///
     /// ```text
     /// from base64 import b64encode
     /// from nacl import encoding, public
-    /// 
+    ///
     /// def encrypt(public_key: str, secret_value: str) -> str:
     ///   """Encrypt a Unicode string using the public key."""
     ///   public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
@@ -24977,38 +26152,38 @@ where
     ///   encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
     ///   return b64encode(encrypted).decode("utf-8")
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using C#
-    /// 
+    ///
     /// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-    /// 
+    ///
     /// ```text
     /// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
     /// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-    /// 
+    ///
     /// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-    /// 
+    ///
     /// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using Ruby
-    /// 
+    ///
     /// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-    /// 
+    ///
     /// ```ruby
     /// require "rbnacl"
     /// require "base64"
-    /// 
+    ///
     /// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
     /// public_key = RbNaCl::PublicKey.new(key)
-    /// 
+    ///
     /// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
     /// encrypted_secret = box.encrypt("my_secret")
-    /// 
+    ///
     /// # Print the base64 encoded secret
     /// puts Base64.strict_encode64(encrypted_secret)
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#create-or-update-a-repository-secret)
     ///
     /// # Content
@@ -25067,9 +26242,9 @@ where
     }
 
     /// Delete a repository secret
-    /// 
+    ///
     /// Deletes a secret in a repository using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/dependabot#delete-a-repository-secret)
     pub async fn dependabot_delete_repo_secret(
         &self,
@@ -25116,10 +26291,62 @@ where
         Ok(theResponse)
     }
 
+    /// Get a diff of the dependencies between commits
+    ///
+    /// Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/dependency-graph#get-a-diff-of-the-dependencies-between-commits)
+    pub async fn dependency_graph_diff_range(
+        &self,
+        owner: &str,
+        repo: &str,
+        basehead: &str,
+        name: ::std::option::Option<&str>,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::dependency_graph_diff_range::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                basehead,
+                name,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::dependency_graph_diff_range::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List deployments
-    /// 
+    ///
     /// Simple filtering of deployments is available via query parameters:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-deployments)
     #[allow(clippy::too_many_arguments)]
     pub async fn repos_list_deployments(
@@ -25178,53 +26405,53 @@ where
     }
 
     /// Create a deployment
-    /// 
+    ///
     /// Deployments offer a few configurable parameters with certain defaults.
-    /// 
+    ///
     /// The `ref` parameter can be any named branch, tag, or SHA. At GitHub we often deploy branches and verify them
     /// before we merge a pull request.
-    /// 
+    ///
     /// The `environment` parameter allows deployments to be issued to different runtime environments. Teams often have
     /// multiple environments for verifying their applications, such as `production`, `staging`, and `qa`. This parameter
     /// makes it easier to track which environments have requested deployments. The default environment is `production`.
-    /// 
+    ///
     /// The `auto_merge` parameter is used to ensure that the requested ref is not behind the repository's default branch. If
     /// the ref _is_ behind the default branch for the repository, we will attempt to merge it for you. If the merge succeeds,
     /// the API will return a successful merge commit. If merge conflicts prevent the merge from succeeding, the API will
     /// return a failure response.
-    /// 
-    /// By default, [commit statuses](https://docs.github.com/rest/reference/repos#statuses) for every submitted context must be in a `success`
+    ///
+    /// By default, [commit statuses](https://docs.github.com/rest/reference/commits#commit-statuses) for every submitted context must be in a `success`
     /// state. The `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or to
     /// specify contexts that have not yet been submitted. You are not required to use commit statuses to deploy. If you do
     /// not require any contexts or create any commit statuses, the deployment will always succeed.
-    /// 
+    ///
     /// The `payload` parameter is available for any extra information that a deployment system might need. It is a JSON text
     /// field that will be passed on when a deployment event is dispatched.
-    /// 
+    ///
     /// The `task` parameter is used by the deployment system to allow different execution paths. In the web world this might
     /// be `deploy:migrations` to run schema changes on the system. In the compiled world this could be a flag to compile an
     /// application with debugging enabled.
-    /// 
+    ///
     /// Users with `repo` or `repo_deployment` scopes can create a deployment for a given ref.
-    /// 
+    ///
     /// #### Merged branch response
     /// You will see this response when GitHub automatically merges the base branch into the topic branch instead of creating
     /// a deployment. This auto-merge happens when:
     /// *   Auto-merge option is enabled in the repository
     /// *   Topic branch does not include the latest changes on the base branch, which is `master` in the response example
     /// *   There are no merge conflicts
-    /// 
+    ///
     /// If there are no new commits in the base branch, a new request to create a deployment should give a successful
     /// response.
-    /// 
+    ///
     /// #### Merge conflict response
     /// This error happens when the `auto_merge` option is enabled and when the default branch (in this case `master`), can't
     /// be merged into the branch that's being deployed (in this case `topic-branch`), due to merge conflicts.
-    /// 
+    ///
     /// #### Failed commit status checks
     /// This error happens when the `required_contexts` parameter indicates that one or more contexts need to have a `success`
     /// status for the commit to be deployed, but one or more of the required contexts do not have a state of `success`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-deployment)
     ///
     /// # Content
@@ -25281,7 +26508,7 @@ where
     }
 
     /// Get a deployment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-deployment)
     pub async fn repos_get_deployment(
         &self,
@@ -25329,16 +26556,16 @@ where
     }
 
     /// Delete a deployment
-    /// 
+    ///
     /// If the repository only has one deployment, you can delete the deployment regardless of its status. If the repository has more than one deployment, you can only delete inactive deployments. This ensures that repositories with multiple deployments will always have an active deployment. Anyone with `repo` or `repo_deployment` scopes can delete a deployment.
-    /// 
+    ///
     /// To set a deployment as inactive, you must:
-    /// 
+    ///
     /// *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
     /// *   Mark the active deployment as inactive by adding any non-successful deployment status.
-    /// 
+    ///
     /// For more information, see "[Create a deployment](https://docs.github.com/rest/reference/repos/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/rest/reference/repos#create-a-deployment-status)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-deployment)
     pub async fn repos_delete_deployment(
         &self,
@@ -25386,9 +26613,9 @@ where
     }
 
     /// List deployment statuses
-    /// 
+    ///
     /// Users with pull access can view deployment statuses for a deployment:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-deployment-statuses)
     pub async fn repos_list_deployment_statuses(
         &self,
@@ -25440,11 +26667,11 @@ where
     }
 
     /// Create a deployment status
-    /// 
+    ///
     /// Users with `push` access can create deployment statuses for a given deployment.
-    /// 
+    ///
     /// GitHub Apps require `read & write` access to "Deployments" and `read-only` access to "Repo contents" (for private repos). OAuth Apps require the `repo_deployment` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-deployment-status)
     ///
     /// # Content
@@ -25503,9 +26730,9 @@ where
     }
 
     /// Get a deployment status
-    /// 
+    ///
     /// Users with pull access can view a deployment status for a deployment:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-deployment-status)
     pub async fn repos_get_deployment_status(
         &self,
@@ -25555,18 +26782,18 @@ where
     }
 
     /// Create a repository dispatch event
-    /// 
+    ///
     /// You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
-    /// 
+    ///
     /// The `client_payload` parameter is available for any extra information that your workflow might need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched. For example, the `client_payload` can include a message that a user would like to send using a GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
-    /// 
+    ///
     /// This endpoint requires write access to the repository by providing either:
-    /// 
-    ///   - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access token for the command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line)" in the GitHub Help documentation.
+    ///
+    ///   - Personal access tokens with `repo` scope. For more information, see "[Creating a personal access token for the command line](https://docs.github.com/articles/creating-a-personal-access-token-for-the-command-line)" in the GitHub Help documentation.
     ///   - GitHub Apps with both `metadata:read` and `contents:read&write` permissions.
-    /// 
+    ///
     /// This input example shows how you can use the `client_payload` as a test to debug your workflow.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-repository-dispatch-event)
     ///
     /// # Content
@@ -25623,16 +26850,18 @@ where
     }
 
     /// Get all environments
-    /// 
+    ///
     /// Get all environments for a repository.
-    /// 
+    ///
     /// Anyone with read access to the repository can use this endpoint. If the repository is private, you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-all-environments)
     pub async fn repos_get_all_environments(
         &self,
         owner: &str,
         repo: &str,
+        per_page: ::std::option::Option<i64>,
+        page: ::std::option::Option<i64>,
     ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
         let mut theScheme = AuthScheme::from(&self.config.authentication);
 
@@ -25651,6 +26880,8 @@ where
                 self.config.base_url.as_ref(),
                 owner,
                 repo,
+                per_page,
+                page,
                 self.config.user_agent.as_ref(),
                 self.config.accept.as_deref(),
             )?
@@ -25673,9 +26904,9 @@ where
     }
 
     /// Get an environment
-    /// 
+    ///
     /// Anyone with read access to the repository can use this endpoint. If the repository is private, you must use an access token with the `repo` scope. GitHub Apps must have the `actions:read` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-an-environment)
     pub async fn repos_get_environment(
         &self,
@@ -25723,15 +26954,15 @@ where
     }
 
     /// Create or update an environment
-    /// 
+    ///
     /// Create or update an environment with protection rules, such as required reviewers. For more information about environment protection rules, see "[Environments](/actions/reference/environments#environment-protection-rules)."
-    /// 
+    ///
     /// **Note:** Although you can use this operation to specify that only branches that match specified name patterns can deploy to this environment, you must use the UI to set the name patterns. For more information, see "[Environments](/actions/reference/environments#deployment-branches)."
-    /// 
+    ///
     /// **Note:** To create or update secrets for an environment, see "[Secrets](/rest/reference/actions#secrets)."
-    /// 
+    ///
     /// You must authenticate using an access token with the repo scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-or-update-an-environment)
     ///
     /// # Content
@@ -25790,9 +27021,9 @@ where
     }
 
     /// Delete an environment
-    /// 
+    ///
     /// You must authenticate using an access token with the repo scope to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-an-environment)
     pub async fn repos_delete_an_environment(
         &self,
@@ -25840,7 +27071,7 @@ where
     }
 
     /// List repository events
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-repository-events)
     pub async fn activity_list_repo_events(
         &self,
@@ -25890,7 +27121,7 @@ where
     }
 
     /// List forks
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-forks)
     pub async fn repos_list_forks(
         &self,
@@ -25942,11 +27173,11 @@ where
     }
 
     /// Create a fork
-    /// 
+    ///
     /// Create a fork for the authenticated user.
-    /// 
+    ///
     /// **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time before you can access the git objects. If this takes longer than 5 minutes, be sure to contact [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-fork)
     ///
     /// # Content
@@ -26003,7 +27234,7 @@ where
     }
 
     /// Create a blob
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#create-a-blob)
     ///
     /// # Content
@@ -26060,11 +27291,11 @@ where
     }
 
     /// Get a blob
-    /// 
+    ///
     /// The `content` in the response will always be Base64 encoded.
-    /// 
+    ///
     /// _Note_: This API supports blobs up to 100 megabytes in size.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#get-a-blob)
     pub async fn git_get_blob(
         &self,
@@ -26112,22 +27343,22 @@ where
     }
 
     /// Create a commit
-    /// 
+    ///
     /// Creates a new Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
-    /// 
+    ///
     /// **Signature verification object**
-    /// 
+    ///
     /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-    /// 
+    ///
     /// | Name | Type | Description |
     /// | ---- | ---- | ----------- |
     /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
-    /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+    /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |
     /// | `signature` | `string` | The signature that was extracted from the commit. |
     /// | `payload` | `string` | The value that was signed. |
-    /// 
+    ///
     /// These are the possible values for `reason` in the `verification` object:
-    /// 
+    ///
     /// | Value | Description |
     /// | ----- | ----------- |
     /// | `expired_key` | The key that made the signature is expired. |
@@ -26143,7 +27374,7 @@ where
     /// | `malformed_signature` | There was an error parsing the signature. |
     /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
     /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#create-a-commit)
     ///
     /// # Content
@@ -26200,22 +27431,22 @@ where
     }
 
     /// Get a commit
-    /// 
+    ///
     /// Gets a Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).
-    /// 
+    ///
     /// **Signature verification object**
-    /// 
+    ///
     /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-    /// 
+    ///
     /// | Name | Type | Description |
     /// | ---- | ---- | ----------- |
     /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
-    /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+    /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in the table below. |
     /// | `signature` | `string` | The signature that was extracted from the commit. |
     /// | `payload` | `string` | The value that was signed. |
-    /// 
+    ///
     /// These are the possible values for `reason` in the `verification` object:
-    /// 
+    ///
     /// | Value | Description |
     /// | ----- | ----------- |
     /// | `expired_key` | The key that made the signature is expired. |
@@ -26231,7 +27462,7 @@ where
     /// | `malformed_signature` | There was an error parsing the signature. |
     /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
     /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#get-a-commit)
     pub async fn git_get_commit(
         &self,
@@ -26279,15 +27510,15 @@ where
     }
 
     /// List matching references
-    /// 
+    ///
     /// Returns an array of references from your Git database that match the supplied name. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't exist in the repository, but existing refs start with `:ref`, they will be returned as an array.
-    /// 
+    ///
     /// When you use this endpoint without providing a `:ref`, it will return an array of all the references from your Git database, including notes and stashes if they exist on the server. Anything in the namespace is returned, not just `heads` and `tags`.
-    /// 
+    ///
     /// **Note:** You need to explicitly [request a pull request](https://docs.github.com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
-    /// 
+    ///
     /// If you request matching references for a branch named `feature` but the branch `feature` doesn't exist, the response can still include other matching head refs that start with the word `feature`, such as `featureA` and `featureB`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#list-matching-references)
     pub async fn git_list_matching_refs(
         &self,
@@ -26339,11 +27570,11 @@ where
     }
 
     /// Get a reference
-    /// 
+    ///
     /// Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned.
-    /// 
+    ///
     /// **Note:** You need to explicitly [request a pull request](https://docs.github.com/rest/reference/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#get-a-reference)
     pub async fn git_get_ref(
         &self,
@@ -26391,9 +27622,9 @@ where
     }
 
     /// Create a reference
-    /// 
+    ///
     /// Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#create-a-reference)
     ///
     /// # Content
@@ -26450,7 +27681,7 @@ where
     }
 
     /// Delete a reference
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#delete-a-reference)
     pub async fn git_delete_ref(
         &self,
@@ -26498,7 +27729,7 @@ where
     }
 
     /// Update a reference
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#update-a-reference)
     ///
     /// # Content
@@ -26557,22 +27788,22 @@ where
     }
 
     /// Create a tag object
-    /// 
+    ///
     /// Note that creating a tag object does not create the reference that makes a tag in Git. If you want to create an annotated tag in Git, you have to do this call to create the tag object, and then [create](https://docs.github.com/rest/reference/git#create-a-reference) the `refs/tags/[tag]` reference. If you want to create a lightweight tag, you only have to [create](https://docs.github.com/rest/reference/git#create-a-reference) the tag reference - this call would be unnecessary.
-    /// 
+    ///
     /// **Signature verification object**
-    /// 
+    ///
     /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-    /// 
+    ///
     /// | Name | Type | Description |
     /// | ---- | ---- | ----------- |
     /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
     /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
     /// | `signature` | `string` | The signature that was extracted from the commit. |
     /// | `payload` | `string` | The value that was signed. |
-    /// 
+    ///
     /// These are the possible values for `reason` in the `verification` object:
-    /// 
+    ///
     /// | Value | Description |
     /// | ----- | ----------- |
     /// | `expired_key` | The key that made the signature is expired. |
@@ -26588,7 +27819,7 @@ where
     /// | `malformed_signature` | There was an error parsing the signature. |
     /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
     /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#create-a-tag-object)
     ///
     /// # Content
@@ -26645,20 +27876,20 @@ where
     }
 
     /// Get a tag
-    /// 
+    ///
     /// **Signature verification object**
-    /// 
+    ///
     /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-    /// 
+    ///
     /// | Name | Type | Description |
     /// | ---- | ---- | ----------- |
     /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
     /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
     /// | `signature` | `string` | The signature that was extracted from the commit. |
     /// | `payload` | `string` | The value that was signed. |
-    /// 
+    ///
     /// These are the possible values for `reason` in the `verification` object:
-    /// 
+    ///
     /// | Value | Description |
     /// | ----- | ----------- |
     /// | `expired_key` | The key that made the signature is expired. |
@@ -26674,7 +27905,7 @@ where
     /// | `malformed_signature` | There was an error parsing the signature. |
     /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
     /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#get-a-tag)
     pub async fn git_get_tag(
         &self,
@@ -26722,11 +27953,11 @@ where
     }
 
     /// Create a tree
-    /// 
+    ///
     /// The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
-    /// 
+    ///
     /// If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/rest/reference/git#create-a-commit)" and "[Update a reference](https://docs.github.com/rest/reference/git#update-a-reference)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#create-a-tree)
     ///
     /// # Content
@@ -26783,11 +28014,11 @@ where
     }
 
     /// Get a tree
-    /// 
+    ///
     /// Returns a single tree using the SHA1 value for that tree.
-    /// 
+    ///
     /// If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/git#get-a-tree)
     pub async fn git_get_tree(
         &self,
@@ -26837,7 +28068,7 @@ where
     }
 
     /// List repository webhooks
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-webhooks)
     pub async fn repos_list_webhooks(
         &self,
@@ -26887,10 +28118,10 @@ where
     }
 
     /// Create a repository webhook
-    /// 
+    ///
     /// Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
     /// share the same `config` as long as those webhooks do not have any `events` that overlap.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-repository-webhook)
     ///
     /// # Content
@@ -26947,9 +28178,9 @@ where
     }
 
     /// Get a repository webhook
-    /// 
+    ///
     /// Returns a webhook configured in a repository. To get only the webhook `config` properties, see "[Get a webhook configuration for a repository](/rest/reference/repos#get-a-webhook-configuration-for-a-repository)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-repository-webhook)
     pub async fn repos_get_webhook(
         &self,
@@ -26997,7 +28228,7 @@ where
     }
 
     /// Delete a repository webhook
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-repository-webhook)
     pub async fn repos_delete_webhook(
         &self,
@@ -27045,9 +28276,9 @@ where
     }
 
     /// Update a repository webhook
-    /// 
+    ///
     /// Updates a webhook configured in a repository. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for a repository](/rest/reference/repos#update-a-webhook-configuration-for-a-repository)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-a-repository-webhook)
     ///
     /// # Content
@@ -27106,11 +28337,11 @@ where
     }
 
     /// Get a webhook configuration for a repository
-    /// 
+    ///
     /// Returns the webhook configuration for a repository. To get more information about the webhook, including the `active` state and `events`, use "[Get a repository webhook](/rest/reference/orgs#get-a-repository-webhook)."
-    /// 
+    ///
     /// Access tokens must have the `read:repo_hook` or `repo` scope, and GitHub Apps must have the `repository_hooks:read` permission.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-webhook-configuration-for-a-repository)
     pub async fn repos_get_webhook_config_for_repo(
         &self,
@@ -27158,11 +28389,11 @@ where
     }
 
     /// Update a webhook configuration for a repository
-    /// 
+    ///
     /// Updates the webhook configuration for a repository. To update more information about the webhook, including the `active` state and `events`, use "[Update a repository webhook](/rest/reference/orgs#update-a-repository-webhook)."
-    /// 
+    ///
     /// Access tokens must have the `write:repo_hook` or `repo` scope, and GitHub Apps must have the `repository_hooks:write` permission.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-a-webhook-configuration-for-a-repository)
     ///
     /// # Content
@@ -27221,9 +28452,9 @@ where
     }
 
     /// List deliveries for a repository webhook
-    /// 
+    ///
     /// Returns a list of webhook deliveries for a webhook configured in a repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-deliveries-for-a-repository-webhook)
     pub async fn repos_list_webhook_deliveries(
         &self,
@@ -27275,9 +28506,9 @@ where
     }
 
     /// Get a delivery for a repository webhook
-    /// 
+    ///
     /// Returns a delivery for a webhook configured in a repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-delivery-for-a-repository-webhook)
     pub async fn repos_get_webhook_delivery(
         &self,
@@ -27327,9 +28558,9 @@ where
     }
 
     /// Redeliver a delivery for a repository webhook
-    /// 
+    ///
     /// Redeliver a webhook delivery for a webhook configured in a repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#redeliver-a-delivery-for-a-repository-webhook)
     pub async fn repos_redeliver_webhook_delivery(
         &self,
@@ -27379,9 +28610,9 @@ where
     }
 
     /// Ping a repository webhook
-    /// 
+    ///
     /// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the hook.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#ping-a-repository-webhook)
     pub async fn repos_ping_webhook(
         &self,
@@ -27429,11 +28660,11 @@ where
     }
 
     /// Test the push repository webhook
-    /// 
+    ///
     /// This will trigger the hook with the latest push to the current repository if the hook is subscribed to `push` events. If the hook is not subscribed to `push` events, the server will respond with 204 but no test POST will be generated.
-    /// 
+    ///
     /// **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#test-the-push-repository-webhook)
     pub async fn repos_test_push_webhook(
         &self,
@@ -27481,42 +28712,42 @@ where
     }
 
     /// Get an import status
-    /// 
+    ///
     /// View the progress of an import.
-    /// 
+    ///
     /// **Import status**
-    /// 
+    ///
     /// This section includes details about the possible values of the `status` field of the Import Progress response.
-    /// 
+    ///
     /// An import that does not have errors will progress through these steps:
-    /// 
+    ///
     /// *   `detecting` - the "detection" step of the import is in progress because the request did not include a `vcs` parameter. The import is identifying the type of source control present at the URL.
     /// *   `importing` - the "raw" step of the import is in progress. This is where commit data is fetched from the original repository. The import progress response will include `commit_count` (the total number of raw commits that will be imported) and `percent` (0 - 100, the current progress through the import).
     /// *   `mapping` - the "rewrite" step of the import is in progress. This is where SVN branches are converted to Git branches, and where author updates are applied. The import progress response does not include progress information.
     /// *   `pushing` - the "push" step of the import is in progress. This is where the importer updates the repository on GitHub. The import progress response will include `push_percent`, which is the percent value reported by `git push` when it is "Writing objects".
     /// *   `complete` - the import is complete, and the repository is ready on GitHub.
-    /// 
+    ///
     /// If there are problems, you will see one of these in the `status` field:
-    /// 
+    ///
     /// *   `auth_failed` - the import requires authentication in order to connect to the original repository. To update authentication for the import, please see the [Update an import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
     /// *   `error` - the import encountered an error. The import progress response will include the `failed_step` and an error message. Contact [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api) for more information.
     /// *   `detection_needs_auth` - the importer requires authentication for the originating repository to continue detection. To update authentication for the import, please see the [Update an import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
     /// *   `detection_found_nothing` - the importer didn't recognize any source control at the URL. To resolve, [Cancel the import](https://docs.github.com/rest/reference/migrations#cancel-an-import) and [retry](https://docs.github.com/rest/reference/migrations#start-an-import) with the correct URL.
     /// *   `detection_found_multiple` - the importer found several projects or repositories at the provided URL. When this is the case, the Import Progress response will also include a `project_choices` field with the possible project choices as values. To update project choice, please see the [Update an import](https://docs.github.com/rest/reference/migrations#update-an-import) section.
-    /// 
+    ///
     /// **The project_choices field**
-    /// 
+    ///
     /// When multiple projects are found at the provided URL, the response hash will include a `project_choices` field, the value of which is an array of hashes each representing a project choice. The exact key/value pairs of the project hashes will differ depending on the version control type.
-    /// 
+    ///
     /// **Git LFS related fields**
-    /// 
+    ///
     /// This section includes details about Git LFS related fields that may be present in the Import Progress response.
-    /// 
+    ///
     /// *   `use_lfs` - describes whether the import has been opted in or out of using Git LFS. The value can be `opt_in`, `opt_out`, or `undecided` if no action has been taken.
     /// *   `has_large_files` - the boolean value describing whether files larger than 100MB were found during the `importing` step.
     /// *   `large_files_size` - the total size in gigabytes of files larger than 100MB found in the originating repository.
     /// *   `large_files_count` - the total number of files larger than 100MB found in the originating repository. To see a list of these files, make a "Get Large Files" request.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#get-an-import-status)
     pub async fn migrations_get_import_status(
         &self,
@@ -27562,9 +28793,9 @@ where
     }
 
     /// Start an import
-    /// 
+    ///
     /// Start a source import to a GitHub repository using GitHub Importer.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#start-an-import)
     ///
     /// # Content
@@ -27621,9 +28852,9 @@ where
     }
 
     /// Cancel an import
-    /// 
+    ///
     /// Stop an import for a repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#cancel-an-import)
     pub async fn migrations_cancel_import(
         &self,
@@ -27669,10 +28900,14 @@ where
     }
 
     /// Update an import
-    /// 
+    ///
     /// An import can be updated with credentials or a project choice by passing in the appropriate parameters in this API
     /// request. If no parameters are provided, the import will be restarted.
-    /// 
+    ///
+    /// Some servers (e.g. TFS servers) can have several projects at a single URL. In those cases the import progress will
+    /// have the status `detection_found_multiple` and the Import Progress response will include a `project_choices` array.
+    /// You can select the project to import by providing one of the objects in the `project_choices` array in the update request.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#update-an-import)
     ///
     /// # Content
@@ -27729,11 +28964,11 @@ where
     }
 
     /// Get commit authors
-    /// 
+    ///
     /// Each type of source control system represents authors in a different way. For example, a Git commit author has a display name and an email address, but a Subversion commit author just has a username. The GitHub Importer will make the author information valid, but the author might not be correct. For example, it will change the bare Subversion username `hubot` into something like `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
-    /// 
+    ///
     /// This endpoint and the [Map a commit author](https://docs.github.com/rest/reference/migrations#map-a-commit-author) endpoint allow you to provide correct Git author information.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#get-commit-authors)
     pub async fn migrations_get_commit_authors(
         &self,
@@ -27781,9 +29016,9 @@ where
     }
 
     /// Map a commit author
-    /// 
+    ///
     /// Update an author's identity for the import. Your application can continue updating authors any time before you push new commits to the repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#map-a-commit-author)
     ///
     /// # Content
@@ -27842,9 +29077,9 @@ where
     }
 
     /// Get large files
-    /// 
+    ///
     /// List files larger than 100MB found during the import
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#get-large-files)
     pub async fn migrations_get_large_files(
         &self,
@@ -27890,9 +29125,9 @@ where
     }
 
     /// Update Git LFS preference
-    /// 
-    /// You can import repositories from Subversion, Mercurial, and TFS that include files larger than 100MB. This ability is powered by [Git LFS](https://git-lfs.github.com). You can learn more about our LFS feature and working with large files [on our help site](https://help.github.com/articles/versioning-large-files/).
-    /// 
+    ///
+    /// You can import repositories from Subversion, Mercurial, and TFS that include files larger than 100MB. This ability is powered by [Git LFS](https://git-lfs.github.com). You can learn more about our LFS feature and working with large files [on our help site](https://docs.github.com/articles/versioning-large-files/).
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#update-git-lfs-preference)
     ///
     /// # Content
@@ -27949,11 +29184,11 @@ where
     }
 
     /// Get a repository installation for the authenticated app
-    /// 
+    ///
     /// Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-a-repository-installation-for-the-authenticated-app)
     pub async fn apps_get_repo_installation(
         &self,
@@ -27999,9 +29234,9 @@ where
     }
 
     /// Get interaction restrictions for a repository
-    /// 
+    ///
     /// Shows which type of GitHub user can interact with this repository and when the restriction expires. If there are no restrictions, you will see an empty response.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#get-interaction-restrictions-for-a-repository)
     pub async fn interactions_get_restrictions_for_repo(
         &self,
@@ -28047,9 +29282,9 @@ where
     }
 
     /// Set interaction restrictions for a repository
-    /// 
+    ///
     /// Temporarily restricts interactions to a certain type of GitHub user within the given repository. You must have owner or admin access to set these restrictions. If an interaction limit is set for the user or organization that owns this repository, you will receive a `409 Conflict` response and will not be able to use this endpoint to change the interaction limit for a single repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#set-interaction-restrictions-for-a-repository)
     ///
     /// # Content
@@ -28106,9 +29341,9 @@ where
     }
 
     /// Remove interaction restrictions for a repository
-    /// 
+    ///
     /// Removes all interaction restrictions from the given repository. You must have owner or admin access to remove restrictions. If the interaction limit is set for the user or organization that owns this repository, you will receive a `409 Conflict` response and will not be able to use this endpoint to change the interaction limit for a single repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#remove-interaction-restrictions-for-a-repository)
     pub async fn interactions_remove_restrictions_for_repo(
         &self,
@@ -28154,9 +29389,9 @@ where
     }
 
     /// List repository invitations
-    /// 
+    ///
     /// When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-invitations)
     pub async fn repos_list_invitations(
         &self,
@@ -28206,7 +29441,7 @@ where
     }
 
     /// Delete a repository invitation
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-repository-invitation)
     pub async fn repos_delete_invitation(
         &self,
@@ -28254,7 +29489,7 @@ where
     }
 
     /// Update a repository invitation
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-a-repository-invitation)
     ///
     /// # Content
@@ -28313,14 +29548,14 @@ where
     }
 
     /// List repository issues
-    /// 
+    ///
     /// List issues in a repository.
-    /// 
+    ///
     /// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request. For this
     /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
     /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     /// request id, use the "[List pull requests](https://docs.github.com/rest/reference/pulls#list-pull-requests)" endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-repository-issues)
     #[allow(clippy::too_many_arguments)]
     pub async fn issues_list_for_repo(
@@ -28389,11 +29624,11 @@ where
     }
 
     /// Create an issue
-    /// 
-    /// Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://help.github.com/articles/disabling-issues/), the API returns a `410 Gone` status.
-    /// 
+    ///
+    /// Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/articles/disabling-issues/), the API returns a `410 Gone` status.
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#create-an-issue)
     ///
     /// # Content
@@ -28450,9 +29685,9 @@ where
     }
 
     /// List issue comments for a repository
-    /// 
+    ///
     /// By default, Issue Comments are ordered by ascending ID.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-issue-comments-for-a-repository)
     pub async fn issues_list_comments_for_repo(
         &self,
@@ -28508,7 +29743,7 @@ where
     }
 
     /// Get an issue comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#get-an-issue-comment)
     pub async fn issues_get_comment(
         &self,
@@ -28556,7 +29791,7 @@ where
     }
 
     /// Delete an issue comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#delete-an-issue-comment)
     pub async fn issues_delete_comment(
         &self,
@@ -28604,7 +29839,7 @@ where
     }
 
     /// Update an issue comment
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#update-an-issue-comment)
     ///
     /// # Content
@@ -28663,9 +29898,9 @@ where
     }
 
     /// List reactions for an issue comment
-    /// 
+    ///
     /// List the reactions to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#list-reactions-for-an-issue-comment)
     pub async fn reactions_list_for_issue_comment(
         &self,
@@ -28719,9 +29954,9 @@ where
     }
 
     /// Create reaction for an issue comment
-    /// 
+    ///
     /// Create a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments). A response with an HTTP `200` status means that you already added the reaction type to this issue comment.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#create-reaction-for-an-issue-comment)
     ///
     /// # Content
@@ -28780,11 +30015,11 @@ where
     }
 
     /// Delete an issue comment reaction
-    /// 
+    ///
     /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
-    /// 
+    ///
     /// Delete a reaction to an [issue comment](https://docs.github.com/rest/reference/issues#comments).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#delete-an-issue-comment-reaction)
     pub async fn reactions_delete_for_issue_comment(
         &self,
@@ -28834,7 +30069,7 @@ where
     }
 
     /// List issue events for a repository
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-issue-events-for-a-repository)
     pub async fn issues_list_events_for_repo(
         &self,
@@ -28884,7 +30119,7 @@ where
     }
 
     /// Get an issue event
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#get-an-issue-event)
     pub async fn issues_get_event(
         &self,
@@ -28932,19 +30167,19 @@ where
     }
 
     /// Get an issue
-    /// 
+    ///
     /// The API returns a [`301 Moved Permanently` status](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-redirects-redirects) if the issue was
-    /// [transferred](https://help.github.com/articles/transferring-an-issue-to-another-repository/) to another repository. If
+    /// [transferred](https://docs.github.com/articles/transferring-an-issue-to-another-repository/) to another repository. If
     /// the issue was transferred to or deleted from a repository where the authenticated user lacks read access, the API
     /// returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read
     /// access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe
     /// to the [`issues`](https://docs.github.com/webhooks/event-payloads/#issues) webhook.
-    /// 
+    ///
     /// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request. For this
     /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
     /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     /// request id, use the "[List pull requests](https://docs.github.com/rest/reference/pulls#list-pull-requests)" endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#get-an-issue)
     pub async fn issues_get(
         &self,
@@ -28992,9 +30227,9 @@ where
     }
 
     /// Update an issue
-    /// 
+    ///
     /// Issue owners and users with push access can edit an issue.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues/#update-an-issue)
     ///
     /// # Content
@@ -29053,9 +30288,9 @@ where
     }
 
     /// Add assignees to an issue
-    /// 
+    ///
     /// Adds up to 10 assignees to an issue. Users already assigned to an issue are not replaced.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#add-assignees-to-an-issue)
     ///
     /// # Content
@@ -29114,9 +30349,9 @@ where
     }
 
     /// Remove assignees from an issue
-    /// 
+    ///
     /// Removes one or more assignees from an issue.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#remove-assignees-from-an-issue)
     ///
     /// # Content
@@ -29175,9 +30410,9 @@ where
     }
 
     /// List issue comments
-    /// 
+    ///
     /// Issue Comments are ordered by ascending ID.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-issue-comments)
     pub async fn issues_list_comments(
         &self,
@@ -29231,9 +30466,9 @@ where
     }
 
     /// Create an issue comment
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#create-an-issue-comment)
     ///
     /// # Content
@@ -29292,7 +30527,7 @@ where
     }
 
     /// List issue events
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-issue-events)
     pub async fn issues_list_events(
         &self,
@@ -29344,7 +30579,7 @@ where
     }
 
     /// List labels for an issue
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-labels-for-an-issue)
     pub async fn issues_list_labels_on_issue(
         &self,
@@ -29396,9 +30631,9 @@ where
     }
 
     /// Set labels for an issue
-    /// 
+    ///
     /// Removes any previous labels and sets the new labels for an issue.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#set-labels-for-an-issue)
     ///
     /// # Content
@@ -29457,7 +30692,7 @@ where
     }
 
     /// Add labels to an issue
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#add-labels-to-an-issue)
     ///
     /// # Content
@@ -29516,7 +30751,7 @@ where
     }
 
     /// Remove all labels from an issue
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#remove-all-labels-from-an-issue)
     pub async fn issues_remove_all_labels(
         &self,
@@ -29564,9 +30799,9 @@ where
     }
 
     /// Remove a label from an issue
-    /// 
+    ///
     /// Removes the specified label from the issue, and returns the remaining labels on the issue. This endpoint returns a `404 Not Found` status if the label does not exist.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#remove-a-label-from-an-issue)
     pub async fn issues_remove_label(
         &self,
@@ -29616,11 +30851,11 @@ where
     }
 
     /// Lock an issue
-    /// 
+    ///
     /// Users with push access can lock an issue or pull request's conversation.
-    /// 
+    ///
     /// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#lock-an-issue)
     ///
     /// # Content
@@ -29679,9 +30914,9 @@ where
     }
 
     /// Unlock an issue
-    /// 
+    ///
     /// Users with push access can unlock an issue's conversation.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#unlock-an-issue)
     pub async fn issues_unlock(
         &self,
@@ -29729,9 +30964,9 @@ where
     }
 
     /// List reactions for an issue
-    /// 
+    ///
     /// List the reactions to an [issue](https://docs.github.com/rest/reference/issues).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#list-reactions-for-an-issue)
     pub async fn reactions_list_for_issue(
         &self,
@@ -29785,9 +31020,9 @@ where
     }
 
     /// Create reaction for an issue
-    /// 
+    ///
     /// Create a reaction to an [issue](https://docs.github.com/rest/reference/issues/). A response with an HTTP `200` status means that you already added the reaction type to this issue.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#create-reaction-for-an-issue)
     ///
     /// # Content
@@ -29846,11 +31081,11 @@ where
     }
 
     /// Delete an issue reaction
-    /// 
+    ///
     /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/issues/:issue_number/reactions/:reaction_id`.
-    /// 
+    ///
     /// Delete a reaction to an [issue](https://docs.github.com/rest/reference/issues/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#delete-an-issue-reaction)
     pub async fn reactions_delete_for_issue(
         &self,
@@ -29900,7 +31135,7 @@ where
     }
 
     /// List timeline events for an issue
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-timeline-events-for-an-issue)
     pub async fn issues_list_events_for_timeline(
         &self,
@@ -29952,7 +31187,7 @@ where
     }
 
     /// List deploy keys
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-deploy-keys)
     pub async fn repos_list_deploy_keys(
         &self,
@@ -30002,9 +31237,9 @@ where
     }
 
     /// Create a deploy key
-    /// 
+    ///
     /// You can create a read-only deploy key.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-deploy-key)
     ///
     /// # Content
@@ -30061,7 +31296,7 @@ where
     }
 
     /// Get a deploy key
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-deploy-key)
     pub async fn repos_get_deploy_key(
         &self,
@@ -30109,9 +31344,9 @@ where
     }
 
     /// Delete a deploy key
-    /// 
+    ///
     /// Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-deploy-key)
     pub async fn repos_delete_deploy_key(
         &self,
@@ -30159,7 +31394,7 @@ where
     }
 
     /// List labels for a repository
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-labels-for-a-repository)
     pub async fn issues_list_labels_for_repo(
         &self,
@@ -30209,7 +31444,7 @@ where
     }
 
     /// Create a label
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#create-a-label)
     ///
     /// # Content
@@ -30266,7 +31501,7 @@ where
     }
 
     /// Get a label
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#get-a-label)
     pub async fn issues_get_label(
         &self,
@@ -30314,7 +31549,7 @@ where
     }
 
     /// Delete a label
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#delete-a-label)
     pub async fn issues_delete_label(
         &self,
@@ -30362,7 +31597,7 @@ where
     }
 
     /// Update a label
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#update-a-label)
     ///
     /// # Content
@@ -30421,9 +31656,9 @@ where
     }
 
     /// List repository languages
-    /// 
+    ///
     /// Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-languages)
     pub async fn repos_list_languages(
         &self,
@@ -30469,7 +31704,7 @@ where
     }
 
     /// Enable Git LFS for a repository
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#enable-git-lfs-for-a-repository)
     pub async fn repos_enable_lfs_for_repo(
         &self,
@@ -30515,7 +31750,7 @@ where
     }
 
     /// Disable Git LFS for a repository
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#disable-git-lfs-for-a-repository)
     pub async fn repos_disable_lfs_for_repo(
         &self,
@@ -30561,11 +31796,11 @@ where
     }
 
     /// Get the license for a repository
-    /// 
+    ///
     /// This method returns the contents of the repository's license file, if one is detected.
-    /// 
+    ///
     /// Similar to [Get repository content](https://docs.github.com/rest/reference/repos#get-repository-content), this method also supports [custom media types](https://docs.github.com/rest/overview/media-types) for retrieving the raw license content or rendered license HTML.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/licenses/#get-the-license-for-a-repository)
     pub async fn licenses_get_for_repo(
         &self,
@@ -30611,9 +31846,9 @@ where
     }
 
     /// Sync a fork branch with the upstream repository
-    /// 
+    ///
     /// Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#sync-a-fork-branch-with-the-upstream-repository)
     ///
     /// # Content
@@ -30670,7 +31905,7 @@ where
     }
 
     /// Merge a branch
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#merge-a-branch)
     ///
     /// # Content
@@ -30727,7 +31962,7 @@ where
     }
 
     /// List milestones
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-milestones)
     pub async fn issues_list_milestones(
         &self,
@@ -30783,7 +32018,7 @@ where
     }
 
     /// Create a milestone
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#create-a-milestone)
     ///
     /// # Content
@@ -30840,7 +32075,7 @@ where
     }
 
     /// Get a milestone
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#get-a-milestone)
     pub async fn issues_get_milestone(
         &self,
@@ -30888,7 +32123,7 @@ where
     }
 
     /// Delete a milestone
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#delete-a-milestone)
     pub async fn issues_delete_milestone(
         &self,
@@ -30936,7 +32171,7 @@ where
     }
 
     /// Update a milestone
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#update-a-milestone)
     ///
     /// # Content
@@ -30995,7 +32230,7 @@ where
     }
 
     /// List labels for issues in a milestone
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-labels-for-issues-in-a-milestone)
     pub async fn issues_list_labels_for_milestone(
         &self,
@@ -31047,9 +32282,9 @@ where
     }
 
     /// List repository notifications for the authenticated user
-    /// 
+    ///
     /// List all notifications for the current user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-repository-notifications-for-the-authenticated-user)
     #[allow(clippy::too_many_arguments)]
     pub async fn activity_list_repo_notifications_for_authenticated_user(
@@ -31108,9 +32343,9 @@ where
     }
 
     /// Mark repository notifications as read
-    /// 
+    ///
     /// Marks all notifications in a repository as "read" removes them from the [default view on GitHub](https://github.com/notifications). If the number of notifications is too large to complete in one request, you will receive a `202 Accepted` status and GitHub will run an asynchronous process to mark notifications as "read." To check whether any "unread" notifications remain, you can use the [List repository notifications for the authenticated user](https://docs.github.com/rest/reference/activity#list-repository-notifications-for-the-authenticated-user) endpoint and pass the query parameter `all=false`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#mark-repository-notifications-as-read)
     ///
     /// # Content
@@ -31167,7 +32402,7 @@ where
     }
 
     /// Get a GitHub Pages site
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-github-pages-site)
     pub async fn repos_get_pages(
         &self,
@@ -31213,9 +32448,9 @@ where
     }
 
     /// Update information about a GitHub Pages site
-    /// 
+    ///
     /// Updates information for a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-information-about-a-github-pages-site)
     ///
     /// # Content
@@ -31272,9 +32507,9 @@ where
     }
 
     /// Create a GitHub Pages site
-    /// 
+    ///
     /// Configures a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-github-pages-site)
     ///
     /// # Content
@@ -31331,7 +32566,7 @@ where
     }
 
     /// Delete a GitHub Pages site
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-github-pages-site)
     pub async fn repos_delete_pages_site(
         &self,
@@ -31377,7 +32612,7 @@ where
     }
 
     /// List GitHub Pages builds
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-github-pages-builds)
     pub async fn repos_list_pages_builds(
         &self,
@@ -31427,11 +32662,11 @@ where
     }
 
     /// Request a GitHub Pages build
-    /// 
+    ///
     /// You can request that your site be built from the latest revision on the default branch. This has the same effect as pushing a commit to your default branch, but does not require an additional commit. Manually triggering page builds can be helpful when diagnosing build warnings and failures.
-    /// 
+    ///
     /// Build requests are limited to one concurrent build per repository and one concurrent build per requester. If you request a build while another is still in progress, the second request will be queued until the first completes.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#request-a-github-pages-build)
     pub async fn repos_request_pages_build(
         &self,
@@ -31477,7 +32712,7 @@ where
     }
 
     /// Get latest Pages build
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-latest-pages-build)
     pub async fn repos_get_latest_pages_build(
         &self,
@@ -31523,7 +32758,7 @@ where
     }
 
     /// Get GitHub Pages build
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-github-pages-build)
     pub async fn repos_get_pages_build(
         &self,
@@ -31571,13 +32806,13 @@ where
     }
 
     /// Get a DNS health check for GitHub Pages
-    /// 
+    ///
     /// Gets a health check of the DNS settings for the `CNAME` record configured for a repository's GitHub Pages.
-    /// 
+    ///
     /// The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous background task to get the results for the domain. After the background task completes, subsequent requests to this endpoint return a `200 OK` status with the health check results in the response.
-    /// 
+    ///
     /// Users must have admin or owner permissions. GitHub Apps must have the `pages:write` and `administration:write` permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-dns-health-check-for-github-pages)
     pub async fn repos_get_pages_health_check(
         &self,
@@ -31623,9 +32858,9 @@ where
     }
 
     /// List repository projects
-    /// 
+    ///
     /// Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in the repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#list-repository-projects)
     pub async fn projects_list_for_repo(
         &self,
@@ -31677,9 +32912,9 @@ where
     }
 
     /// Create a repository project
-    /// 
+    ///
     /// Creates a repository project board. Returns a `404 Not Found` status if projects are disabled in the repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#create-a-repository-project)
     ///
     /// # Content
@@ -31736,9 +32971,9 @@ where
     }
 
     /// List pull requests
-    /// 
-    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-pull-requests)
     #[allow(clippy::too_many_arguments)]
     pub async fn pulls_list(
@@ -31799,15 +33034,15 @@ where
     }
 
     /// Create a pull request
-    /// 
-    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
-    /// 
+    ///
     /// You can create a new pull request.
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#create-a-pull-request)
     ///
     /// # Content
@@ -31864,9 +33099,9 @@ where
     }
 
     /// List review comments in a repository
-    /// 
+    ///
     /// Lists review comments for all pull requests in a repository. By default, review comments are in ascending order by ID.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-review-comments-in-a-repository)
     pub async fn pulls_list_review_comments_for_repo(
         &self,
@@ -31922,9 +33157,9 @@ where
     }
 
     /// Get a review comment for a pull request
-    /// 
+    ///
     /// Provides details for a review comment.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#get-a-review-comment-for-a-pull-request)
     pub async fn pulls_get_review_comment(
         &self,
@@ -31972,9 +33207,9 @@ where
     }
 
     /// Delete a review comment for a pull request
-    /// 
+    ///
     /// Deletes a review comment.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#delete-a-review-comment-for-a-pull-request)
     pub async fn pulls_delete_review_comment(
         &self,
@@ -32022,9 +33257,9 @@ where
     }
 
     /// Update a review comment for a pull request
-    /// 
+    ///
     /// Enables you to edit a review comment.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#update-a-review-comment-for-a-pull-request)
     ///
     /// # Content
@@ -32083,9 +33318,9 @@ where
     }
 
     /// List reactions for a pull request review comment
-    /// 
+    ///
     /// List the reactions to a [pull request review comment](https://docs.github.com/rest/reference/pulls#review-comments).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#list-reactions-for-a-pull-request-review-comment)
     pub async fn reactions_list_for_pull_request_review_comment(
         &self,
@@ -32139,9 +33374,9 @@ where
     }
 
     /// Create reaction for a pull request review comment
-    /// 
+    ///
     /// Create a reaction to a [pull request review comment](https://docs.github.com/rest/reference/pulls#comments). A response with an HTTP `200` status means that you already added the reaction type to this pull request review comment.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#create-reaction-for-a-pull-request-review-comment)
     ///
     /// # Content
@@ -32200,11 +33435,11 @@ where
     }
 
     /// Delete a pull request comment reaction
-    /// 
+    ///
     /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
-    /// 
+    ///
     /// Delete a reaction to a [pull request review comment](https://docs.github.com/rest/reference/pulls#review-comments).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions#delete-a-pull-request-comment-reaction)
     pub async fn reactions_delete_for_pull_request_comment(
         &self,
@@ -32254,23 +33489,23 @@ where
     }
 
     /// Get a pull request
-    /// 
-    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Lists details of a pull request by providing its number.
-    /// 
+    ///
     /// When you get, [create](https://docs.github.com/rest/reference/pulls/#create-a-pull-request), or [edit](https://docs.github.com/rest/reference/pulls#update-a-pull-request) a pull request, GitHub creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
-    /// 
+    ///
     /// The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`, then GitHub has started a background job to compute the mergeability. After giving the job time to complete, resubmit the request. When the job finishes, you will see a non-`null` value for the `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be the SHA of the _test_ merge commit.
-    /// 
+    ///
     /// The value of the `merge_commit_sha` attribute changes depending on the state of the pull request. Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how you merged the pull request:
-    /// 
-    /// *   If merged as a [merge commit](https://help.github.com/articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
-    /// *   If merged via a [squash](https://help.github.com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
-    /// *   If [rebased](https://help.github.com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
-    /// 
+    ///
+    /// *   If merged as a [merge commit](https://docs.github.com/articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
+    /// *   If merged via a [squash](https://docs.github.com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
+    /// *   If [rebased](https://docs.github.com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
+    ///
     /// Pass the appropriate [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#get-a-pull-request)
     pub async fn pulls_get(
         &self,
@@ -32318,11 +33553,11 @@ where
     }
 
     /// Update a pull request
-    /// 
-    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls/#update-a-pull-request)
     ///
     /// # Content
@@ -32381,16 +33616,18 @@ where
     }
 
     /// Create a codespace from a pull request
-    /// 
+    ///
     /// Creates a codespace owned by the authenticated user for the specified pull request.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#create-a-codespace-from-a-pull-request)
     ///
     /// # Content
     ///
-    /// - [`&request::codespaces_create_with_pr_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_create_with_pr_for_authenticated_user::body::Json)
+    /// - [`&::std::option::Option<request::codespaces_create_with_pr_for_authenticated_user::body::Json>`](crate::v1_1_4::request::codespaces_create_with_pr_for_authenticated_user::body::Json)
     pub async fn codespaces_create_with_pr_for_authenticated_user<Content>(
         &self,
         owner: &str,
@@ -32444,9 +33681,9 @@ where
     }
 
     /// List review comments on a pull request
-    /// 
+    ///
     /// Lists all review comments for a pull request. By default, review comments are in ascending order by ID.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-review-comments-on-a-pull-request)
     #[allow(clippy::too_many_arguments)]
     pub async fn pulls_list_review_comments(
@@ -32505,15 +33742,15 @@ where
     }
 
     /// Create a review comment for a pull request
-    /// 
+    ///
     /// Creates a review comment in the pull request diff. To add a regular comment to a pull request timeline, see "[Create an issue comment](https://docs.github.com/rest/reference/issues#create-an-issue-comment)." We recommend creating a review comment using `line`, `side`, and optionally `start_line` and `start_side` if your comment applies to more than one line in the pull request diff.
-    /// 
-    /// You can still create a review comment using the `position` parameter. When you use `position`, the `line`, `side`, `start_line`, and `start_side` parameters are not required.
-    /// 
+    ///
+    /// The `position` parameter is deprecated. If you use `position`, the `line`, `side`, `start_line`, and `start_side` parameters are not required.
+    ///
     /// **Note:** The position value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#create-a-review-comment-for-a-pull-request)
     ///
     /// # Content
@@ -32572,11 +33809,11 @@ where
     }
 
     /// Create a reply for a review comment
-    /// 
+    ///
     /// Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of the review comment you are replying to. This must be the ID of a _top-level review comment_, not a reply to that comment. Replies to replies are not supported.
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#create-a-reply-for-a-review-comment)
     ///
     /// # Content
@@ -32637,9 +33874,9 @@ where
     }
 
     /// List commits on a pull request
-    /// 
+    ///
     /// Lists a maximum of 250 commits for a pull request. To receive a complete commit list for pull requests with more than 250 commits, use the [List commits](https://docs.github.com/rest/reference/repos#list-commits) endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-commits-on-a-pull-request)
     pub async fn pulls_list_commits(
         &self,
@@ -32691,9 +33928,9 @@ where
     }
 
     /// List pull requests files
-    /// 
+    ///
     /// **Note:** Responses include a maximum of 3000 files. The paginated response returns 30 files per page by default.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-pull-requests-files)
     pub async fn pulls_list_files(
         &self,
@@ -32745,7 +33982,7 @@ where
     }
 
     /// Check if a pull request has been merged
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#check-if-a-pull-request-has-been-merged)
     pub async fn pulls_check_if_merged(
         &self,
@@ -32793,9 +34030,9 @@ where
     }
 
     /// Merge a pull request
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#merge-a-pull-request)
     ///
     /// # Content
@@ -32854,7 +34091,7 @@ where
     }
 
     /// List requested reviewers for a pull request
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-requested-reviewers-for-a-pull-request)
     pub async fn pulls_list_requested_reviewers(
         &self,
@@ -32906,9 +34143,9 @@ where
     }
 
     /// Request reviewers for a pull request
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#request-reviewers-for-a-pull-request)
     ///
     /// # Content
@@ -32967,7 +34204,7 @@ where
     }
 
     /// Remove requested reviewers from a pull request
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#remove-requested-reviewers-from-a-pull-request)
     ///
     /// # Content
@@ -33026,9 +34263,9 @@ where
     }
 
     /// List reviews for a pull request
-    /// 
+    ///
     /// The list of reviews returns in chronological order.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-reviews-for-a-pull-request)
     pub async fn pulls_list_reviews(
         &self,
@@ -33080,15 +34317,15 @@ where
     }
 
     /// Create a review for a pull request
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// Pull request reviews created in the `PENDING` state do not include the `submitted_at` property in the response.
-    /// 
+    ///
     /// **Note:** To comment on a specific line in a file, you need to first determine the _position_ of that line in the diff. The GitHub REST API v3 offers the `application/vnd.github.v3.diff` [media type](https://docs.github.com/rest/overview/media-types#commits-commit-comparison-and-pull-requests). To see a pull request diff, add this media type to the `Accept` header of a call to the [single pull request](https://docs.github.com/rest/reference/pulls#get-a-pull-request) endpoint.
-    /// 
+    ///
     /// The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#create-a-review-for-a-pull-request)
     ///
     /// # Content
@@ -33147,7 +34384,7 @@ where
     }
 
     /// Get a review for a pull request
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#get-a-review-for-a-pull-request)
     pub async fn pulls_get_review(
         &self,
@@ -33197,9 +34434,9 @@ where
     }
 
     /// Update a review for a pull request
-    /// 
+    ///
     /// Update the review summary comment with new text.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#update-a-review-for-a-pull-request)
     ///
     /// # Content
@@ -33260,7 +34497,7 @@ where
     }
 
     /// Delete a pending review for a pull request
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#delete-a-pending-review-for-a-pull-request)
     pub async fn pulls_delete_pending_review(
         &self,
@@ -33310,9 +34547,9 @@ where
     }
 
     /// List comments for a pull request review
-    /// 
+    ///
     /// List comments for a specific pull request review.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#list-comments-for-a-pull-request-review)
     pub async fn pulls_list_comments_for_review(
         &self,
@@ -33366,9 +34603,9 @@ where
     }
 
     /// Dismiss a review for a pull request
-    /// 
+    ///
     /// **Note:** To dismiss a pull request review on a [protected branch](https://docs.github.com/rest/reference/repos#branches), you must be a repository administrator or be included in the list of people or teams who can dismiss pull request reviews.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#dismiss-a-review-for-a-pull-request)
     ///
     /// # Content
@@ -33429,7 +34666,7 @@ where
     }
 
     /// Submit a review for a pull request
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#submit-a-review-for-a-pull-request)
     ///
     /// # Content
@@ -33490,9 +34727,9 @@ where
     }
 
     /// Update a pull request branch
-    /// 
+    ///
     /// Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/pulls#update-a-pull-request-branch)
     ///
     /// # Content
@@ -33551,11 +34788,11 @@ where
     }
 
     /// Get a repository README
-    /// 
+    ///
     /// Gets the preferred README for a repository.
-    /// 
+    ///
     /// READMEs support [custom media types](https://docs.github.com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-repository-readme)
     pub async fn repos_get_readme(
         &self,
@@ -33603,11 +34840,11 @@ where
     }
 
     /// Get a repository README for a directory
-    /// 
+    ///
     /// Gets the README from a repository directory.
-    /// 
+    ///
     /// READMEs support [custom media types](https://docs.github.com/rest/reference/repos#custom-media-types) for retrieving the raw content or rendered HTML.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-repository-directory-readme)
     pub async fn repos_get_readme_in_directory(
         &self,
@@ -33657,11 +34894,11 @@ where
     }
 
     /// List releases
-    /// 
+    ///
     /// This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/rest/reference/repos#list-repository-tags).
-    /// 
+    ///
     /// Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-releases)
     pub async fn repos_list_releases(
         &self,
@@ -33711,11 +34948,11 @@ where
     }
 
     /// Create a release
-    /// 
+    ///
     /// Users with push access to the repository can create a release.
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-release)
     ///
     /// # Content
@@ -33772,9 +35009,9 @@ where
     }
 
     /// Get a release asset
-    /// 
+    ///
     /// To download the asset's binary content, set the `Accept` header of the request to [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will either redirect the client to the location, or stream it directly if possible. API clients should handle both a `200` or `302` response.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-release-asset)
     pub async fn repos_get_release_asset(
         &self,
@@ -33822,7 +35059,7 @@ where
     }
 
     /// Delete a release asset
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-release-asset)
     pub async fn repos_delete_release_asset(
         &self,
@@ -33870,9 +35107,9 @@ where
     }
 
     /// Update a release asset
-    /// 
+    ///
     /// Users with push access to the repository can edit a release asset.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-a-release-asset)
     ///
     /// # Content
@@ -33931,9 +35168,9 @@ where
     }
 
     /// Generate release notes content for a release
-    /// 
+    ///
     /// Generate a name and body describing a [release](https://docs.github.com/rest/reference/repos#releases). The body content will be markdown formatted and contain information like the changes since last release and users who contributed. The generated release notes are not saved anywhere. They are intended to be generated and used when creating a new release.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#generate-release-notes)
     ///
     /// # Content
@@ -33990,11 +35227,11 @@ where
     }
 
     /// Get the latest release
-    /// 
+    ///
     /// View the latest published full release for the repository.
-    /// 
+    ///
     /// The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-the-latest-release)
     pub async fn repos_get_latest_release(
         &self,
@@ -34040,9 +35277,9 @@ where
     }
 
     /// Get a release by tag name
-    /// 
+    ///
     /// Get a published release with the specified tag.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-release-by-tag-name)
     pub async fn repos_get_release_by_tag(
         &self,
@@ -34090,9 +35327,9 @@ where
     }
 
     /// Get a release
-    /// 
+    ///
     /// **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a [hypermedia resource](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-a-release)
     pub async fn repos_get_release(
         &self,
@@ -34140,9 +35377,9 @@ where
     }
 
     /// Delete a release
-    /// 
+    ///
     /// Users with push access to the repository can delete a release.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-release)
     pub async fn repos_delete_release(
         &self,
@@ -34190,9 +35427,9 @@ where
     }
 
     /// Update a release
-    /// 
+    ///
     /// Users with push access to the repository can edit a release.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#update-a-release)
     ///
     /// # Content
@@ -34251,7 +35488,7 @@ where
     }
 
     /// List release assets
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-release-assets)
     pub async fn repos_list_release_assets(
         &self,
@@ -34303,26 +35540,26 @@ where
     }
 
     /// Upload a release asset
-    /// 
+    ///
     /// This endpoint makes use of [a Hypermedia relation](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in
     /// the response of the [Create a release endpoint](https://docs.github.com/rest/reference/repos#create-a-release) to upload a release asset.
-    /// 
+    ///
     /// You need to use an HTTP client which supports [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) to make calls to this endpoint.
-    /// 
-    /// Most libraries will set the required `Content-Length` header automatically. Use the required `Content-Type` header to provide the media type of the asset. For a list of media types, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example: 
-    /// 
+    ///
+    /// Most libraries will set the required `Content-Length` header automatically. Use the required `Content-Type` header to provide the media type of the asset. For a list of media types, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example:
+    ///
     /// `application/zip`
-    /// 
+    ///
     /// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw binary content of the asset as the request body. Everything else about the endpoint is the same as the rest of the API. For example,
     /// you'll still need to pass your authentication to be able to upload an asset.
-    /// 
+    ///
     /// When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an empty asset with a state of `starter`. It can be safely deleted.
-    /// 
+    ///
     /// **Notes:**
     /// *   GitHub renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The "[List assets for a release](https://docs.github.com/rest/reference/repos#list-assets-for-a-release)"
     /// endpoint lists the renamed filenames. For more information and help, contact [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
     /// *   If you upload an asset with the same filename as another uploaded asset, you'll receive an error and must delete the old file before you can re-upload the new asset.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#upload-a-release-asset)
     pub async fn repos_upload_release_asset<Content>(
         &self,
@@ -34380,10 +35617,66 @@ where
         Ok(theResponse)
     }
 
+    /// List reactions for a release
+    ///
+    /// List the reactions to a [release](https://docs.github.com/rest/reference/repos#releases).
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/reactions/#list-reactions-for-a-release)
+    pub async fn reactions_list_for_release(
+        &self,
+        owner: &str,
+        repo: &str,
+        release_id: i64,
+        content: ::std::option::Option<&str>,
+        per_page: ::std::option::Option<i64>,
+        page: ::std::option::Option<i64>,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::reactions_list_for_release::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                release_id,
+                content,
+                per_page,
+                page,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::reactions_list_for_release::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// Create reaction for a release
-    /// 
+    ///
     /// Create a reaction to a [release](https://docs.github.com/rest/reference/repos#releases). A response with a `Status: 200 OK` means that you already added the reaction type to this release.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions/#create-reaction-for-a-release)
     ///
     /// # Content
@@ -34441,12 +35734,68 @@ where
         Ok(theResponse)
     }
 
+    /// Delete a release reaction
+    ///
+    /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/releases/:release_id/reactions/:reaction_id`.
+    ///
+    /// Delete a reaction to a [release](https://docs.github.com/rest/reference/repos#releases).
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/reactions/#delete-a-release-reaction)
+    pub async fn reactions_delete_for_release(
+        &self,
+        owner: &str,
+        repo: &str,
+        release_id: i64,
+        reaction_id: i64,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::reactions_delete_for_release::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                release_id,
+                reaction_id,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::reactions_delete_for_release::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List secret scanning alerts for a repository
-    /// 
-    /// Lists secret scanning alerts for a private repository, from newest to oldest. To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
-    /// 
+    ///
+    /// Lists secret scanning alerts for an eligible repository, from newest to oldest.
+    /// To use this endpoint, you must be an administrator for the repository or for the organization that owns the repository, and you must use a personal access token with the `repo` scope or `security_events` scope.
+    /// For public repositories, you may instead use the `public_repo` scope.
+    ///
     /// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/secret-scanning#list-secret-scanning-alerts-for-a-repository)
     #[allow(clippy::too_many_arguments)]
     pub async fn secret_scanning_list_alerts_for_repo(
@@ -34503,11 +35852,13 @@ where
     }
 
     /// Get a secret scanning alert
-    /// 
-    /// Gets a single secret scanning alert detected in a private repository. To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
-    /// 
+    ///
+    /// Gets a single secret scanning alert detected in an eligible repository.
+    /// To use this endpoint, you must be an administrator for the repository or for the organization that owns the repository, and you must use a personal access token with the `repo` scope or `security_events` scope.
+    /// For public repositories, you may instead use the `public_repo` scope.
+    ///
     /// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/secret-scanning#get-a-secret-scanning-alert)
     pub async fn secret_scanning_get_alert(
         &self,
@@ -34555,11 +35906,13 @@ where
     }
 
     /// Update a secret scanning alert
-    /// 
-    /// Updates the status of a secret scanning alert in a private repository. To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
-    /// 
+    ///
+    /// Updates the status of a secret scanning alert in an eligible repository.
+    /// To use this endpoint, you must be an administrator for the repository or for the organization that owns the repository, and you must use a personal access token with the `repo` scope or `security_events` scope.
+    /// For public repositories, you may instead use the `public_repo` scope.
+    ///
     /// GitHub Apps must have the `secret_scanning_alerts` write permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/secret-scanning#update-a-secret-scanning-alert)
     ///
     /// # Content
@@ -34618,11 +35971,13 @@ where
     }
 
     /// List locations for a secret scanning alert
-    /// 
-    /// Lists all locations for a given secret scanning alert for a private repository. To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
-    /// 
+    ///
+    /// Lists all locations for a given secret scanning alert for an eligible repository.
+    /// To use this endpoint, you must be an administrator for the repository or for the organization that owns the repository, and you must use a personal access token with the `repo` scope or `security_events` scope.
+    /// For public repositories, you may instead use the `public_repo` scope.
+    ///
     /// GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/secret-scanning#list-locations-for-a-secret-scanning-alert)
     pub async fn secret_scanning_list_locations_for_alert(
         &self,
@@ -34674,11 +36029,11 @@ where
     }
 
     /// List stargazers
-    /// 
+    ///
     /// Lists the people that have starred the repository.
-    /// 
+    ///
     /// You can also find out _when_ stars were created by passing the following custom [media type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-stargazers)
     pub async fn activity_list_stargazers_for_repo(
         &self,
@@ -34728,9 +36083,9 @@ where
     }
 
     /// Get the weekly commit activity
-    /// 
+    ///
     /// Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-the-weekly-commit-activity)
     pub async fn repos_get_code_frequency_stats(
         &self,
@@ -34776,9 +36131,9 @@ where
     }
 
     /// Get the last year of commit activity
-    /// 
+    ///
     /// Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-the-last-year-of-commit-activity)
     pub async fn repos_get_commit_activity_stats(
         &self,
@@ -34824,14 +36179,14 @@ where
     }
 
     /// Get all contributor commit activity
-    /// 
+    ///
     /// Returns the `total` number of commits authored by the contributor. In addition, the response includes a Weekly Hash (`weeks` array) with the following information:
-    /// 
+    ///
     /// *   `w` - Start of the week, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).
     /// *   `a` - Number of additions
     /// *   `d` - Number of deletions
     /// *   `c` - Number of commits
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-all-contributor-commit-activity)
     pub async fn repos_get_contributors_stats(
         &self,
@@ -34877,11 +36232,11 @@ where
     }
 
     /// Get the weekly commit count
-    /// 
+    ///
     /// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit counts for non-owners, you can subtract `owner` from `all`.
-    /// 
+    ///
     /// The array order is oldest week (index 0) to most recent week.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-the-weekly-commit-count)
     pub async fn repos_get_participation_stats(
         &self,
@@ -34927,15 +36282,15 @@ where
     }
 
     /// Get the hourly commit count for each day
-    /// 
+    ///
     /// Each array contains the day number, hour number, and number of commits:
-    /// 
+    ///
     /// *   `0-6`: Sunday - Saturday
     /// *   `0-23`: Hour of day
     /// *   Number of commits
-    /// 
+    ///
     /// For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-the-hourly-commit-count-for-each-day)
     pub async fn repos_get_punch_card_stats(
         &self,
@@ -34981,11 +36336,11 @@ where
     }
 
     /// Create a commit status
-    /// 
+    ///
     /// Users with push access in a repository can create commit statuses for a given SHA.
-    /// 
+    ///
     /// Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-commit-status)
     ///
     /// # Content
@@ -35044,9 +36399,9 @@ where
     }
 
     /// List watchers
-    /// 
+    ///
     /// Lists the people watching the specified repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-watchers)
     pub async fn activity_list_watchers_for_repo(
         &self,
@@ -35096,7 +36451,7 @@ where
     }
 
     /// Get a repository subscription
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#get-a-repository-subscription)
     pub async fn activity_get_repo_subscription(
         &self,
@@ -35142,9 +36497,9 @@ where
     }
 
     /// Set a repository subscription
-    /// 
+    ///
     /// If you would like to watch a repository, set `subscribed` to `true`. If you would like to ignore notifications made within a repository, set `ignored` to `true`. If you would like to stop watching a repository, [delete the repository's subscription](https://docs.github.com/rest/reference/activity#delete-a-repository-subscription) completely.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#set-a-repository-subscription)
     ///
     /// # Content
@@ -35201,9 +36556,9 @@ where
     }
 
     /// Delete a repository subscription
-    /// 
+    ///
     /// This endpoint should only be used to stop watching a repository. To control whether or not you wish to receive notifications from a repository, [set the repository's subscription manually](https://docs.github.com/rest/reference/activity#set-a-repository-subscription).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#delete-a-repository-subscription)
     pub async fn activity_delete_repo_subscription(
         &self,
@@ -35249,7 +36604,7 @@ where
     }
 
     /// List repository tags
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-tags)
     pub async fn repos_list_tags(
         &self,
@@ -35298,13 +36653,174 @@ where
         Ok(theResponse)
     }
 
+    /// List tag protection states for a repository
+    ///
+    /// This returns the tag protection states of a repository.
+    ///
+    /// This information is only available to repository administrators.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/repos#list-tag-protection-state-of-a-repository)
+    pub async fn repos_list_tag_protection(
+        &self,
+        owner: &str,
+        repo: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::repos_list_tag_protection::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::repos_list_tag_protection::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Create a tag protection state for a repository
+    ///
+    /// This creates a tag protection state for a repository.
+    /// This endpoint is only available to repository administrators.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/repos#create-tag-protection-state-for-a-repository)
+    ///
+    /// # Content
+    ///
+    /// - [`&request::repos_create_tag_protection::body::Json`](crate::v1_1_4::request::repos_create_tag_protection::body::Json)
+    pub async fn repos_create_tag_protection<Content>(
+        &self,
+        owner: &str,
+        repo: &str,
+        theContent: Content,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError>
+    where
+        Content: Copy + TryInto<crate::v1_1_4::request::repos_create_tag_protection::Content<::reqwest::Body>>,
+        crate::v1_1_4::ApiError: From<<Content as TryInto<crate::v1_1_4::request::repos_create_tag_protection::Content<::reqwest::Body>>>::Error>
+    {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::repos_create_tag_protection::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest = crate::v1_1_4::request::repos_create_tag_protection::reqwest_request(
+                theBuilder,
+                theContent.try_into()?,
+            )?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Delete a tag protection state for a repository
+    ///
+    /// This deletes a tag protection state for a repository.
+    /// This endpoint is only available to repository administrators.
+    ///
+    /// [API method documentation](https://docs.github.com/rest/reference/repos#delete-tag-protection-state-for-a-repository)
+    pub async fn repos_delete_tag_protection(
+        &self,
+        owner: &str,
+        repo: &str,
+        tag_protection_id: i64,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::repos_delete_tag_protection::reqwest_builder(
+                self.config.base_url.as_ref(),
+                owner,
+                repo,
+                tag_protection_id,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::repos_delete_tag_protection::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// Download a repository archive (tar)
-    /// 
+    ///
     /// Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the repository’s default branch (usually
     /// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use
     /// the `Location` header to make a second `GET` request.
     /// **Note**: For private repositories, these links are temporary and expire after five minutes.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#download-a-repository-archive)
     pub async fn repos_download_tarball_archive(
         &self,
@@ -35352,7 +36868,7 @@ where
     }
 
     /// List repository teams
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-teams)
     pub async fn repos_list_teams(
         &self,
@@ -35402,7 +36918,7 @@ where
     }
 
     /// Get all repository topics
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-all-repository-topics)
     pub async fn repos_get_all_topics(
         &self,
@@ -35452,7 +36968,7 @@ where
     }
 
     /// Replace all repository topics
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#replace-all-repository-topics)
     ///
     /// # Content
@@ -35509,9 +37025,9 @@ where
     }
 
     /// Get repository clones
-    /// 
+    ///
     /// Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-repository-clones)
     pub async fn repos_get_clones(
         &self,
@@ -35559,9 +37075,9 @@ where
     }
 
     /// Get top referral paths
-    /// 
+    ///
     /// Get the top 10 popular contents over the last 14 days.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-top-referral-paths)
     pub async fn repos_get_top_paths(
         &self,
@@ -35607,9 +37123,9 @@ where
     }
 
     /// Get top referral sources
-    /// 
+    ///
     /// Get the top 10 referrers over the last 14 days.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-top-referral-sources)
     pub async fn repos_get_top_referrers(
         &self,
@@ -35655,9 +37171,9 @@ where
     }
 
     /// Get page views
-    /// 
+    ///
     /// Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#get-page-views)
     pub async fn repos_get_views(
         &self,
@@ -35705,9 +37221,9 @@ where
     }
 
     /// Transfer a repository
-    /// 
-    /// A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://help.github.com/articles/about-repository-transfers/).
-    /// 
+    ///
+    /// A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://docs.github.com/articles/about-repository-transfers/).
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#transfer-a-repository)
     ///
     /// # Content
@@ -35764,9 +37280,9 @@ where
     }
 
     /// Check if vulnerability alerts are enabled for a repository
-    /// 
-    /// Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
-    /// 
+    ///
+    /// Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository)
     pub async fn repos_check_vulnerability_alerts(
         &self,
@@ -35812,9 +37328,9 @@ where
     }
 
     /// Enable vulnerability alerts
-    /// 
-    /// Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
-    /// 
+    ///
+    /// Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#enable-vulnerability-alerts)
     pub async fn repos_enable_vulnerability_alerts(
         &self,
@@ -35860,9 +37376,9 @@ where
     }
 
     /// Disable vulnerability alerts
-    /// 
-    /// Disables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://help.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
-    /// 
+    ///
+    /// Disables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/en/articles/about-security-alerts-for-vulnerable-dependencies)".
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#disable-vulnerability-alerts)
     pub async fn repos_disable_vulnerability_alerts(
         &self,
@@ -35908,12 +37424,12 @@ where
     }
 
     /// Download a repository archive (zip)
-    /// 
+    ///
     /// Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually
     /// `master`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use
     /// the `Location` header to make a second `GET` request.
     /// **Note**: For private repositories, these links are temporary and expire after five minutes.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#download-a-repository-archive)
     pub async fn repos_download_zipball_archive(
         &self,
@@ -35961,16 +37477,16 @@ where
     }
 
     /// Create a repository using a template
-    /// 
+    ///
     /// Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. The authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/rest/reference/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
-    /// 
+    ///
     /// **OAuth scope requirements**
-    /// 
+    ///
     /// When using [OAuth](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-    /// 
+    ///
     /// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use `repo` scope to create an internal repository.
     /// *   `repo` scope to create a private repository
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-repository-using-a-template)
     ///
     /// # Content
@@ -36027,13 +37543,13 @@ where
     }
 
     /// List public repositories
-    /// 
+    ///
     /// Lists all public repositories in the order that they were created.
-    /// 
+    ///
     /// Note:
     /// - For GitHub Enterprise Server, this endpoint will only list repositories available to all users on the enterprise.
     /// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the URL for the next page of repositories.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-public-repositories)
     pub async fn repos_list_public(
         &self,
@@ -36077,9 +37593,9 @@ where
     }
 
     /// List environment secrets
-    /// 
+    ///
     /// Lists all secrets available in an environment without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#list-environment-secrets)
     pub async fn actions_list_environment_secrets(
         &self,
@@ -36129,9 +37645,9 @@ where
     }
 
     /// Get an environment public key
-    /// 
+    ///
     /// Get the public key for an environment, which you need to encrypt environment secrets. You need to encrypt a secret before you can create or update secrets. Anyone with read access to the repository can use this endpoint. If the repository is private you must use an access token with the `repo` scope. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-an-environment-public-key)
     pub async fn actions_get_environment_public_key(
         &self,
@@ -36177,9 +37693,9 @@ where
     }
 
     /// Get an environment secret
-    /// 
+    ///
     /// Gets a single environment secret without revealing its encrypted value. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#get-an-environment-secret)
     pub async fn actions_get_environment_secret(
         &self,
@@ -36227,44 +37743,44 @@ where
     }
 
     /// Create or update an environment secret
-    /// 
+    ///
     /// Creates or updates an environment secret with an encrypted value. Encrypt your secret using
     /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access
     /// token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use
     /// this endpoint.
-    /// 
+    ///
     /// #### Example encrypting a secret using Node.js
-    /// 
+    ///
     /// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-    /// 
+    ///
     /// ```text
     /// const sodium = require('tweetsodium');
-    /// 
+    ///
     /// const key = "base64-encoded-public-key";
     /// const value = "plain-text-secret";
-    /// 
+    ///
     /// // Convert the message and key to Uint8Array's (Buffer implements that interface)
     /// const messageBytes = Buffer.from(value);
     /// const keyBytes = Buffer.from(key, 'base64');
-    /// 
+    ///
     /// // Encrypt using LibSodium.
     /// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-    /// 
+    ///
     /// // Base64 the encrypted secret
     /// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-    /// 
+    ///
     /// console.log(encrypted);
     /// ```
-    /// 
-    /// 
+    ///
+    ///
     /// #### Example encrypting a secret using Python
-    /// 
+    ///
     /// Encrypt your secret using [pynacl](https://pynacl.readthedocs.io/en/latest/public/#nacl-public-sealedbox) with Python 3.
-    /// 
+    ///
     /// ```text
     /// from base64 import b64encode
     /// from nacl import encoding, public
-    /// 
+    ///
     /// def encrypt(public_key: str, secret_value: str) -> str:
     ///   """Encrypt a Unicode string using the public key."""
     ///   public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
@@ -36272,38 +37788,38 @@ where
     ///   encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
     ///   return b64encode(encrypted).decode("utf-8")
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using C#
-    /// 
+    ///
     /// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-    /// 
+    ///
     /// ```text
     /// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
     /// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-    /// 
+    ///
     /// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-    /// 
+    ///
     /// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using Ruby
-    /// 
+    ///
     /// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-    /// 
+    ///
     /// ```ruby
     /// require "rbnacl"
     /// require "base64"
-    /// 
+    ///
     /// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
     /// public_key = RbNaCl::PublicKey.new(key)
-    /// 
+    ///
     /// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
     /// encrypted_secret = box.encrypt("my_secret")
-    /// 
+    ///
     /// # Print the base64 encoded secret
     /// puts Base64.strict_encode64(encrypted_secret)
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#create-or-update-an-environment-secret)
     ///
     /// # Content
@@ -36362,9 +37878,9 @@ where
     }
 
     /// Delete an environment secret
-    /// 
+    ///
     /// Deletes a secret in an environment using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/actions#delete-an-environment-secret)
     pub async fn actions_delete_environment_secret(
         &self,
@@ -36412,9 +37928,9 @@ where
     }
 
     /// List provisioned SCIM groups for an enterprise
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-provisioned-scim-groups-for-an-enterprise)
     pub async fn enterprise_admin_list_provisioned_groups_enterprise(
         &self,
@@ -36466,11 +37982,11 @@ where
     }
 
     /// Provision a SCIM enterprise group and invite users
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// Provision an enterprise group, and invite users to the group. This sends invitation emails to the email address of the invited users to join the GitHub organization that the SCIM group corresponds to.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#provision-a-scim-enterprise-group-and-invite-users)
     ///
     /// # Content
@@ -36525,9 +38041,9 @@ where
     }
 
     /// Get SCIM provisioning information for an enterprise group
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-scim-provisioning-information-for-an-enterprise-group)
     pub async fn enterprise_admin_get_provisioning_information_for_enterprise_group(
         &self,
@@ -36575,11 +38091,11 @@ where
     }
 
     /// Set SCIM information for a provisioned enterprise group
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// Replaces an existing provisioned group’s information. You must provide all the information required for the group as if you were provisioning it for the first time. Any existing group information that you don't provide will be removed, including group membership. If you want to only update a specific attribute, use the [Update an attribute for a SCIM enterprise group](#update-an-attribute-for-a-scim-enterprise-group) endpoint instead.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-scim-information-for-a-provisioned-enterprise-group)
     ///
     /// # Content
@@ -36636,9 +38152,9 @@ where
     }
 
     /// Delete a SCIM group from an enterprise
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#delete-a-scim-group-from-an-enterprise)
     pub async fn enterprise_admin_delete_scim_group_from_enterprise(
         &self,
@@ -36684,11 +38200,11 @@ where
     }
 
     /// Update an attribute for a SCIM enterprise group
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// Allows you to change a provisioned group’s individual attributes. To change a group’s values, you must provide a specific Operations JSON format that contains at least one of the add, remove, or replace operations. For examples and more information on the SCIM operations format, see the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#update-an-attribute-for-a-scim-enterprise-group)
     ///
     /// # Content
@@ -36745,26 +38261,26 @@ where
     }
 
     /// List SCIM provisioned identities for an enterprise
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// Retrieves a paginated list of all provisioned enterprise members, including pending invitations.
-    /// 
+    ///
     /// When a user with a SAML-provisioned external identity leaves (or is removed from) an enterprise, the account's metadata is immediately removed. However, the returned list of user accounts might not always match the organization or enterprise member list you see on GitHub. This can happen in certain cases where an external identity associated with an organization will not match an organization member:
     ///   - When a user with a SCIM-provisioned external identity is removed from an enterprise, the account's metadata is preserved to allow the user to re-join the organization in the future.
     ///   - When inviting a user to join an organization, you can expect to see their external identity in the results before they accept the invitation, or if the invitation is cancelled (or never accepted).
     ///   - When a user is invited over SCIM, an external identity is created that matches with the invitee's email address. However, this identity is only linked to a user account when the user accepts the invitation by going through SAML SSO.
-    /// 
+    ///
     /// The returned list of external identities can include an entry for a `null` user. These are unlinked SAML identities that are created when a user goes through the following Single Sign-On (SSO) process but does not sign in to their GitHub account after completing SSO:
-    /// 
+    ///
     /// 1. The user is granted access by the IdP and is not a member of the GitHub enterprise.
-    /// 
+    ///
     /// 1. The user attempts to access the GitHub enterprise and initiates the SAML SSO process, and is not currently signed in to their GitHub account.
-    /// 
+    ///
     /// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is created and the user is prompted to sign in to their GitHub account:
     ///    - If the user signs in, their GitHub account is linked to this entry.
     ///    - If the user does not sign in (or does not create a new account when prompted), they are not added to the GitHub enterprise, and the external identity `null` entry remains in place.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#list-scim-provisioned-identities-for-an-enterprise)
     pub async fn enterprise_admin_list_provisioned_identities_enterprise(
         &self,
@@ -36814,13 +38330,13 @@ where
     }
 
     /// Provision and invite a SCIM enterprise user
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// Provision enterprise membership for a user, and send organization invitation emails to the email address.
-    /// 
+    ///
     /// You can optionally include the groups a user will be invited to join. If you do not provide a list of `groups`, the user is provisioned for the enterprise, but no organization invitation emails will be sent.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#provision-and-invite-a-scim-enterprise-user)
     ///
     /// # Content
@@ -36875,9 +38391,9 @@ where
     }
 
     /// Get SCIM provisioning information for an enterprise user
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#get-scim-provisioning-information-for-an-enterprise-user)
     pub async fn enterprise_admin_get_provisioning_information_for_enterprise_user(
         &self,
@@ -36923,15 +38439,15 @@ where
     }
 
     /// Set SCIM information for a provisioned enterprise user
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// Replaces an existing provisioned user's information. You must provide all the information required for the user as if you were provisioning them for the first time. Any existing user information that you don't provide will be removed. If you want to only update a specific attribute, use the [Update an attribute for a SCIM user](#update-an-attribute-for-an-enterprise-scim-user) endpoint instead.
-    /// 
+    ///
     /// You must at least provide the required values for the user: `userName`, `name`, and `emails`.
-    /// 
+    ///
     /// **Warning:** Setting `active: false` removes the user from the enterprise, deletes the external identity, and deletes the associated `{scim_user_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-scim-information-for-a-provisioned-enterprise-user)
     ///
     /// # Content
@@ -36988,9 +38504,9 @@ where
     }
 
     /// Delete a SCIM user from an enterprise
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#delete-a-scim-user-from-an-enterprise)
     pub async fn enterprise_admin_delete_user_from_enterprise(
         &self,
@@ -37036,15 +38552,15 @@ where
     }
 
     /// Update an attribute for a SCIM enterprise user
-    /// 
+    ///
     /// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.
-    /// 
+    ///
     /// Allows you to change a provisioned user's individual attributes. To change a user's values, you must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or `replace` operations. For examples and more information on the SCIM operations format, see the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
-    /// 
+    ///
     /// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
-    /// 
+    ///
     /// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example below), it removes the user from the enterprise, deletes the external identity, and deletes the associated `:scim_user_id`.
-    /// 
+    ///
     /// ```text
     /// {
     ///   "Operations":[{
@@ -37055,7 +38571,7 @@ where
     ///   }]
     /// }
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#update-an-attribute-for-a-scim-enterprise-user)
     ///
     /// # Content
@@ -37112,24 +38628,24 @@ where
     }
 
     /// List SCIM provisioned identities
-    /// 
+    ///
     /// Retrieves a paginated list of all provisioned organization members, including pending invitations. If you provide the `filter` parameter, the resources for all matching provisions members are returned.
-    /// 
+    ///
     /// When a user with a SAML-provisioned external identity leaves (or is removed from) an organization, the account's metadata is immediately removed. However, the returned list of user accounts might not always match the organization or enterprise member list you see on GitHub. This can happen in certain cases where an external identity associated with an organization will not match an organization member:
     ///   - When a user with a SCIM-provisioned external identity is removed from an organization, the account's metadata is preserved to allow the user to re-join the organization in the future.
     ///   - When inviting a user to join an organization, you can expect to see their external identity in the results before they accept the invitation, or if the invitation is cancelled (or never accepted).
     ///   - When a user is invited over SCIM, an external identity is created that matches with the invitee's email address. However, this identity is only linked to a user account when the user accepts the invitation by going through SAML SSO.
-    /// 
+    ///
     /// The returned list of external identities can include an entry for a `null` user. These are unlinked SAML identities that are created when a user goes through the following Single Sign-On (SSO) process but does not sign in to their GitHub account after completing SSO:
-    /// 
+    ///
     /// 1. The user is granted access by the IdP and is not a member of the GitHub organization.
-    /// 
+    ///
     /// 1. The user attempts to access the GitHub organization and initiates the SAML SSO process, and is not currently signed in to their GitHub account.
-    /// 
+    ///
     /// 1. After successfully authenticating with the SAML SSO IdP, the `null` external identity entry is created and the user is prompted to sign in to their GitHub account:
     ///    - If the user signs in, their GitHub account is linked to this entry.
     ///    - If the user does not sign in (or does not create a new account when prompted), they are not added to the GitHub organization, and the external identity `null` entry remains in place.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/scim#list-scim-provisioned-identities)
     pub async fn scim_list_provisioned_identities(
         &self,
@@ -37179,9 +38695,9 @@ where
     }
 
     /// Provision and invite a SCIM user
-    /// 
+    ///
     /// Provision organization membership for a user, and send an activation email to the email address.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/scim#provision-and-invite-a-scim-user)
     ///
     /// # Content
@@ -37236,7 +38752,7 @@ where
     }
 
     /// Get SCIM provisioning information for a user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/scim#get-scim-provisioning-information-for-a-user)
     pub async fn scim_get_provisioning_information_for_user(
         &self,
@@ -37282,13 +38798,13 @@ where
     }
 
     /// Update a provisioned organization membership
-    /// 
+    ///
     /// Replaces an existing provisioned user's information. You must provide all the information required for the user as if you were provisioning them for the first time. Any existing user information that you don't provide will be removed. If you want to only update a specific attribute, use the [Update an attribute for a SCIM user](https://docs.github.com/rest/reference/scim#update-an-attribute-for-a-scim-user) endpoint instead.
-    /// 
+    ///
     /// You must at least provide the required values for the user: `userName`, `name`, and `emails`.
-    /// 
+    ///
     /// **Warning:** Setting `active: false` removes the user from the organization, deletes the external identity, and deletes the associated `{scim_user_id}`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/scim#set-scim-information-for-a-provisioned-user)
     ///
     /// # Content
@@ -37345,7 +38861,7 @@ where
     }
 
     /// Delete a SCIM user from an organization
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/scim#delete-a-scim-user-from-an-organization)
     pub async fn scim_delete_user_from_org(
         &self,
@@ -37391,13 +38907,13 @@ where
     }
 
     /// Update an attribute for a SCIM user
-    /// 
+    ///
     /// Allows you to change a provisioned user's individual attributes. To change a user's values, you must provide a specific `Operations` JSON format that contains at least one of the `add`, `remove`, or `replace` operations. For examples and more information on the SCIM operations format, see the [SCIM specification](https://tools.ietf.org/html/rfc7644#section-3.5.2).
-    /// 
+    ///
     /// **Note:** Complicated SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will not work.
-    /// 
+    ///
     /// **Warning:** If you set `active:false` using the `replace` operation (as shown in the JSON example below), it removes the user from the organization, deletes the external identity, and deletes the associated `:scim_user_id`.
-    /// 
+    ///
     /// ```text
     /// {
     ///   "Operations":[{
@@ -37408,7 +38924,7 @@ where
     ///   }]
     /// }
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/scim#update-an-attribute-for-a-scim-user)
     ///
     /// # Content
@@ -37465,26 +38981,26 @@ where
     }
 
     /// Search code
-    /// 
+    ///
     /// Searches for query terms inside of a file. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-    /// 
+    ///
     /// When searching for code, you can get text match metadata for the file **content** and file **path** fields when you pass the `text-match` media type. For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-    /// 
+    ///
     /// For example, if you want to find the definition of the `addClass` function inside [jQuery](https://github.com/jquery/jquery) repository, your query would look something like this:
-    /// 
+    ///
     /// `q=addClass+in:file+language:js+repo:jquery/jquery`
-    /// 
+    ///
     /// This query searches for the keyword `addClass` within a file's contents. The query limits the search to files where the language is JavaScript in the `jquery/jquery` repository.
-    /// 
+    ///
     /// #### Considerations for code search
-    /// 
+    ///
     /// Due to the complexity of searching code, there are a few restrictions on how searches are performed:
-    /// 
+    ///
     /// *   Only the _default branch_ is considered. In most cases, this will be the `master` branch.
     /// *   Only files smaller than 384 KB are searchable.
     /// *   You must always include at least one search term when searching source code. For example, searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code) is not valid, while [`amazing
     /// language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/search#search-code)
     pub async fn search_code(
         &self,
@@ -37536,16 +39052,16 @@ where
     }
 
     /// Search commits
-    /// 
+    ///
     /// Find commits via various criteria on the default branch (usually `master`). This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-    /// 
+    ///
     /// When searching for commits, you can get text match metadata for the **message** field when you provide the `text-match` media type. For more details about how to receive highlighted search results, see [Text match
     /// metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-    /// 
+    ///
     /// For example, if you want to find commits related to CSS in the [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look something like this:
-    /// 
+    ///
     /// `q=repo:octocat/Spoon-Knife+css`
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/search#search-commits)
     pub async fn search_commits(
         &self,
@@ -37597,20 +39113,20 @@ where
     }
 
     /// Search issues and pull requests
-    /// 
+    ///
     /// Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-    /// 
+    ///
     /// When searching for issues, you can get text match metadata for the issue **title**, issue **body**, and issue **comment body** fields when you pass the `text-match` media type. For more details about how to receive highlighted
     /// search results, see [Text match metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-    /// 
+    ///
     /// For example, if you want to find the oldest unresolved Python bugs on Windows. Your query might look something like this.
-    /// 
+    ///
     /// `q=windows+label:bug+language:python+state:open&sort=created&order=asc`
-    /// 
+    ///
     /// This query searches for the keyword `windows`, within any open issue that is labeled as `bug`. The search runs across repositories whose primary language is Python. The results are sorted by creation date in ascending order, which means the oldest issues appear first in the search results.
-    /// 
+    ///
     /// **Note:** For [user-to-server](https://docs.github.com/developers/apps/identifying-and-authorizing-users-for-github-apps#user-to-server-requests) GitHub App requests, you can't retrieve a combination of issues and pull requests in a single query. Requests that don't include the `is:issue` or `is:pull-request` qualifier will receive an HTTP `422 Unprocessable Entity` response. To get results for both issues and pull requests, you must send separate queries for issues and pull requests. For more information about the `is` qualifier, see "[Searching only issues or pull requests](https://docs.github.com/github/searching-for-information-on-github/searching-issues-and-pull-requests#search-only-issues-or-pull-requests)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/search#search-issues-and-pull-requests)
     pub async fn search_issues_and_pull_requests(
         &self,
@@ -37662,17 +39178,17 @@ where
     }
 
     /// Search labels
-    /// 
+    ///
     /// Find labels in a repository with names or descriptions that match search keywords. Returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-    /// 
+    ///
     /// When searching for labels, you can get text match metadata for the label **name** and **description** fields when you pass the `text-match` media type. For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-    /// 
+    ///
     /// For example, if you want to find labels in the `linguist` repository that match `bug`, `defect`, or `enhancement`. Your query might look like this:
-    /// 
+    ///
     /// `q=bug+defect+enhancement&repository_id=64778136`
-    /// 
+    ///
     /// The labels that best match the query appear first in the search results.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/search#search-labels)
     pub async fn search_labels(
         &self,
@@ -37726,17 +39242,17 @@ where
     }
 
     /// Search repositories
-    /// 
+    ///
     /// Find repositories via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-    /// 
+    ///
     /// When searching for repositories, you can get text match metadata for the **name** and **description** fields when you pass the `text-match` media type. For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-    /// 
+    ///
     /// For example, if you want to search for popular Tetris repositories written in assembly code, your query might look like this:
-    /// 
+    ///
     /// `q=tetris+language:assembly&sort=stars&order=desc`
-    /// 
+    ///
     /// This query searches for repositories with the word `tetris` in the name, the description, or the README. The results are limited to repositories where the primary language is assembly. The results are sorted by stars in descending order, so that the most popular repositories appear first in the search results.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/search#search-repositories)
     pub async fn search_repos(
         &self,
@@ -37788,17 +39304,17 @@ where
     }
 
     /// Search topics
-    /// 
-    /// Find topics via various criteria. Results are sorted by best match. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination). See "[Searching topics](https://help.github.com/articles/searching-topics/)" for a detailed list of qualifiers.
-    /// 
+    ///
+    /// Find topics via various criteria. Results are sorted by best match. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination). See "[Searching topics](https://docs.github.com/articles/searching-topics/)" for a detailed list of qualifiers.
+    ///
     /// When searching for topics, you can get text match metadata for the topic's **short\_description**, **description**, **name**, or **display\_name** field when you pass the `text-match` media type. For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-    /// 
+    ///
     /// For example, if you want to search for topics related to Ruby that are featured on <https://github.com/topics> your query might look like this:
-    /// 
+    ///
     /// `q=ruby+is:featured`
-    /// 
+    ///
     /// This query searches for topics with the keyword `ruby` and limits the results to find only topics that are featured. The topics that are the best match for the query appear first in the search results.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/search#search-topics)
     pub async fn search_topics(
         &self,
@@ -37846,17 +39362,17 @@ where
     }
 
     /// Search users
-    /// 
+    ///
     /// Find users via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).
-    /// 
+    ///
     /// When searching for users, you can get text match metadata for the issue **login**, **email**, and **name** fields when you pass the `text-match` media type. For more details about highlighting search results, see [Text match metadata](https://docs.github.com/rest/reference/search#text-match-metadata). For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/reference/search#text-match-metadata).
-    /// 
+    ///
     /// For example, if you're looking for a list of popular users, you might try this query:
-    /// 
+    ///
     /// `q=tom+repos:%3E42+followers:%3E1000`
-    /// 
+    ///
     /// This query searches for users with the name `tom`. The results are restricted to users with more than 42 repositories and over 1,000 followers.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/search#search-users)
     pub async fn search_users(
         &self,
@@ -37908,9 +39424,9 @@ where
     }
 
     /// Get a team (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://docs.github.com/rest/reference/teams#get-a-team-by-name) endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#get-a-team-legacy)
     pub async fn teams_get_legacy(
         &self,
@@ -37954,13 +39470,13 @@ where
     }
 
     /// Delete a team (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a team](https://docs.github.com/rest/reference/teams#delete-a-team) endpoint.
-    /// 
+    ///
     /// To delete a team, the authenticated user must be an organization owner or team maintainer.
-    /// 
+    ///
     /// If you are an organization owner, deleting a parent team will delete all of its child teams as well.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#delete-a-team-legacy)
     pub async fn teams_delete_legacy(
         &self,
@@ -38004,13 +39520,13 @@ where
     }
 
     /// Update a team (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a team](https://docs.github.com/rest/reference/teams#update-a-team) endpoint.
-    /// 
+    ///
     /// To edit a team, the authenticated user must either be an organization owner or a team maintainer.
-    /// 
+    ///
     /// **Note:** With nested teams, the `privacy` for parent teams cannot be `secret`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#update-a-team-legacy)
     ///
     /// # Content
@@ -38065,11 +39581,11 @@ where
     }
 
     /// List discussions (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List discussions`](https://docs.github.com/rest/reference/teams#list-discussions) endpoint.
-    /// 
+    ///
     /// List all discussions on a team's page. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-discussions-legacy)
     pub async fn teams_list_discussions_legacy(
         &self,
@@ -38119,13 +39635,13 @@ where
     }
 
     /// Create a discussion (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create a discussion`](https://docs.github.com/rest/reference/teams#create-a-discussion) endpoint.
-    /// 
+    ///
     /// Creates a new discussion post on a team's page. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#create-a-discussion-legacy)
     ///
     /// # Content
@@ -38180,11 +39696,11 @@ where
     }
 
     /// Get a discussion (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion](https://docs.github.com/rest/reference/teams#get-a-discussion) endpoint.
-    /// 
+    ///
     /// Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-a-discussion-legacy)
     pub async fn teams_get_discussion_legacy(
         &self,
@@ -38230,11 +39746,11 @@ where
     }
 
     /// Delete a discussion (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Delete a discussion`](https://docs.github.com/rest/reference/teams#delete-a-discussion) endpoint.
-    /// 
+    ///
     /// Delete a discussion from a team's page. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#delete-a-discussion-legacy)
     pub async fn teams_delete_discussion_legacy(
         &self,
@@ -38280,11 +39796,11 @@ where
     }
 
     /// Update a discussion (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion](https://docs.github.com/rest/reference/teams#update-a-discussion) endpoint.
-    /// 
+    ///
     /// Edits the title and body text of a discussion post. Only the parameters you provide are updated. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#update-a-discussion-legacy)
     ///
     /// # Content
@@ -38341,11 +39857,11 @@ where
     }
 
     /// List discussion comments (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [List discussion comments](https://docs.github.com/rest/reference/teams#list-discussion-comments) endpoint.
-    /// 
+    ///
     /// List all comments on a team discussion. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-discussion-comments-legacy)
     pub async fn teams_list_discussion_comments_legacy(
         &self,
@@ -38397,13 +39913,13 @@ where
     }
 
     /// Create a discussion comment (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Create a discussion comment](https://docs.github.com/rest/reference/teams#create-a-discussion-comment) endpoint.
-    /// 
+    ///
     /// Creates a new comment on a team discussion. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// This endpoint triggers [notifications](https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. See "[Secondary rate limits](https://docs.github.com/rest/overview/resources-in-the-rest-api#secondary-rate-limits)" and "[Dealing with secondary rate limits](https://docs.github.com/rest/guides/best-practices-for-integrators#dealing-with-secondary-rate-limits)" for details.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#create-a-discussion-comment-legacy)
     ///
     /// # Content
@@ -38460,11 +39976,11 @@ where
     }
 
     /// Get a discussion comment (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get a discussion comment](https://docs.github.com/rest/reference/teams#get-a-discussion-comment) endpoint.
-    /// 
+    ///
     /// Get a specific comment on a team discussion. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-a-discussion-comment-legacy)
     pub async fn teams_get_discussion_comment_legacy(
         &self,
@@ -38512,11 +40028,11 @@ where
     }
 
     /// Delete a discussion comment (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Delete a discussion comment](https://docs.github.com/rest/reference/teams#delete-a-discussion-comment) endpoint.
-    /// 
+    ///
     /// Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#delete-a-discussion-comment-legacy)
     pub async fn teams_delete_discussion_comment_legacy(
         &self,
@@ -38564,11 +40080,11 @@ where
     }
 
     /// Update a discussion comment (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Update a discussion comment](https://docs.github.com/rest/reference/teams#update-a-discussion-comment) endpoint.
-    /// 
+    ///
     /// Edits the body text of a discussion comment. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#update-a-discussion-comment-legacy)
     ///
     /// # Content
@@ -38627,11 +40143,11 @@ where
     }
 
     /// List reactions for a team discussion comment (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion comment`](https://docs.github.com/rest/reference/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
-    /// 
+    ///
     /// List the reactions to a [team discussion comment](https://docs.github.com/rest/reference/teams#discussion-comments). OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions/#list-reactions-for-a-team-discussion-comment-legacy)
     pub async fn reactions_list_for_team_discussion_comment_legacy(
         &self,
@@ -38685,11 +40201,11 @@ where
     }
 
     /// Create reaction for a team discussion comment (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Create reaction for a team discussion comment](https://docs.github.com/rest/reference/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
-    /// 
+    ///
     /// Create a reaction to a [team discussion comment](https://docs.github.com/rest/reference/teams#discussion-comments). OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions/#create-reaction-for-a-team-discussion-comment-legacy)
     ///
     /// # Content
@@ -38748,11 +40264,11 @@ where
     }
 
     /// List reactions for a team discussion (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion`](https://docs.github.com/rest/reference/reactions#list-reactions-for-a-team-discussion) endpoint.
-    /// 
+    ///
     /// List the reactions to a [team discussion](https://docs.github.com/rest/reference/teams#discussions). OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions/#list-reactions-for-a-team-discussion-legacy)
     pub async fn reactions_list_for_team_discussion_legacy(
         &self,
@@ -38804,11 +40320,11 @@ where
     }
 
     /// Create reaction for a team discussion (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create reaction for a team discussion`](https://docs.github.com/rest/reference/reactions#create-reaction-for-a-team-discussion) endpoint.
-    /// 
+    ///
     /// Create a reaction to a [team discussion](https://docs.github.com/rest/reference/teams#discussions). OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/). A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/reactions/#create-reaction-for-a-team-discussion-legacy)
     ///
     /// # Content
@@ -38865,11 +40381,11 @@ where
     }
 
     /// List pending team invitations (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List pending team invitations`](https://docs.github.com/rest/reference/teams#list-pending-team-invitations) endpoint.
-    /// 
+    ///
     /// The return hash contains a `role` field which refers to the Organization Invitation role and will be one of the following values: `direct_member`, `admin`, `billing_manager`, `hiring_manager`, or `reinstate`. If the invitee is not a GitHub member, the `login` field in the return hash will be `null`.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-pending-team-invitations-legacy)
     pub async fn teams_list_pending_invitations_legacy(
         &self,
@@ -38917,11 +40433,11 @@ where
     }
 
     /// List team members (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team members`](https://docs.github.com/rest/reference/teams#list-team-members) endpoint.
-    /// 
+    ///
     /// Team members will include the members of child teams.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-team-members-legacy)
     pub async fn teams_list_members_legacy(
         &self,
@@ -38971,13 +40487,13 @@ where
     }
 
     /// Get team member (Legacy)
-    /// 
+    ///
     /// The "Get team member" endpoint (described below) is deprecated.
-    /// 
+    ///
     /// We recommend using the [Get team membership for a user](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user) endpoint instead. It allows you to get both active and pending memberships.
-    /// 
+    ///
     /// To list members in a team, the team must be visible to the authenticated user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-team-member-legacy)
     pub async fn teams_get_member_legacy(
         &self,
@@ -39023,19 +40539,19 @@ where
     }
 
     /// Add team member (Legacy)
-    /// 
+    ///
     /// The "Add team member" endpoint (described below) is deprecated.
-    /// 
+    ///
     /// We recommend using the [Add or update team membership for a user](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user) endpoint instead. It allows you to invite new organization members to your teams.
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// To add someone to a team, the authenticated user must be an organization owner or a team maintainer in the team they're changing. The person being added to the team must be a member of the team's organization.
-    /// 
-    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-    /// 
+    ///
+    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://docs.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+    ///
     /// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#add-team-member-legacy)
     pub async fn teams_add_member_legacy(
         &self,
@@ -39081,17 +40597,17 @@ where
     }
 
     /// Remove team member (Legacy)
-    /// 
+    ///
     /// The "Remove team member" endpoint (described below) is deprecated.
-    /// 
+    ///
     /// We recommend using the [Remove team membership for a user](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user) endpoint instead. It allows you to remove both active and pending memberships.
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// To remove a team member, the authenticated user must have 'admin' permissions to the team or be an owner of the org that the team is associated with. Removing a team member does not delete the user, it just removes them from the team.
-    /// 
-    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-    /// 
+    ///
+    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://docs.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#remove-team-member-legacy)
     pub async fn teams_remove_member_legacy(
         &self,
@@ -39137,18 +40653,18 @@ where
     }
 
     /// Get team membership for a user (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Get team membership for a user](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user) endpoint.
-    /// 
+    ///
     /// Team members will include the members of child teams.
-    /// 
+    ///
     /// To get a user's membership with a team, the team must be visible to the authenticated user.
-    /// 
+    ///
     /// **Note:**
     /// The response contains the `state` of the membership and the member's `role`.
-    /// 
+    ///
     /// The `role` for organization owners is set to `maintainer`. For more information about `maintainer` roles, see [Create a team](https://docs.github.com/rest/reference/teams#create-a-team).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#get-team-membership-for-a-user-legacy)
     pub async fn teams_get_membership_for_user_legacy(
         &self,
@@ -39194,19 +40710,19 @@ where
     }
 
     /// Add or update team membership for a user (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Add or update team membership for a user](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user) endpoint.
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// If the user is already a member of the team's organization, this endpoint will add the user to the team. To add a membership between an organization member and a team, the authenticated user must be an organization owner or a team maintainer.
-    /// 
-    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-    /// 
+    ///
+    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://docs.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+    ///
     /// If the user is unaffiliated with the team's organization, this endpoint will send an invitation to the user via email. This newly-created membership will be in the "pending" state until the user accepts the invitation, at which point the membership will transition to the "active" state and the user will be added as a member of the team. To add a membership between an unaffiliated user and a team, the authenticated user must be an organization owner.
-    /// 
+    ///
     /// If the user is already a member of the team, this endpoint will update the role of the team member's role. To update the membership of a team member, the authenticated user must be an organization owner or a team maintainer.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#add-or-update-team-membership-for-a-user-legacy)
     ///
     /// # Content
@@ -39263,15 +40779,15 @@ where
     }
 
     /// Remove team membership for a user (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove team membership for a user](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user) endpoint.
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// To remove a membership between a user and a team, the authenticated user must have 'admin' permissions to the team or be an owner of the organization that the team is associated with. Removing team membership does not delete the user, it just removes their membership from the team.
-    /// 
-    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://help.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
-    /// 
+    ///
+    /// **Note:** When you have team synchronization set up for a team with your organization's identity provider (IdP), you will see an error if you attempt to use the API for making changes to the team's membership. If you have access to manage group membership in your IdP, you can manage GitHub team membership through your identity provider, which automatically adds and removes team members in an organization. For more information, see "[Synchronizing teams between your identity provider and GitHub](https://docs.github.com/articles/synchronizing-teams-between-your-identity-provider-and-github/)."
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user-legacy)
     pub async fn teams_remove_membership_for_user_legacy(
         &self,
@@ -39317,11 +40833,11 @@ where
     }
 
     /// List team projects (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team projects`](https://docs.github.com/rest/reference/teams#list-team-projects) endpoint.
-    /// 
+    ///
     /// Lists the organization projects for a team.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#list-team-projects-legacy)
     pub async fn teams_list_projects_legacy(
         &self,
@@ -39369,11 +40885,11 @@ where
     }
 
     /// Check team permissions for a project (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a project](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project) endpoint.
-    /// 
+    ///
     /// Checks whether a team has `read`, `write`, or `admin` permissions for an organization project. The response includes projects inherited from a parent team.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#check-team-permissions-for-a-project-legacy)
     pub async fn teams_check_permissions_for_project_legacy(
         &self,
@@ -39419,11 +40935,11 @@ where
     }
 
     /// Add or update team project permissions (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Add or update team project permissions](https://docs.github.com/rest/reference/teams#add-or-update-team-project-permissions) endpoint.
-    /// 
+    ///
     /// Adds an organization project to a team. To add a project to a team or update the team's permission on a project, the authenticated user must have `admin` permissions for the project. The project and team must be part of the same organization.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#add-or-update-team-project-permissions-legacy)
     ///
     /// # Content
@@ -39480,11 +40996,11 @@ where
     }
 
     /// Remove a project from a team (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove a project from a team](https://docs.github.com/rest/reference/teams#remove-a-project-from-a-team) endpoint.
-    /// 
+    ///
     /// Removes an organization project from a team. An organization owner or a team maintainer can remove any project from the team. To remove a project from a team as an organization member, the authenticated user must have `read` access to both the team and project, or `admin` access to the team or project. **Note:** This endpoint removes the project from the team, but does not delete it.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#remove-a-project-from-a-team-legacy)
     pub async fn teams_remove_project_legacy(
         &self,
@@ -39530,9 +41046,9 @@ where
     }
 
     /// List team repositories (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [List team repositories](https://docs.github.com/rest/reference/teams#list-team-repositories) endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#list-team-repositories-legacy)
     pub async fn teams_list_repos_legacy(
         &self,
@@ -39580,13 +41096,13 @@ where
     }
 
     /// Check team permissions for a repository (Legacy)
-    /// 
+    ///
     /// **Note**: Repositories inherited through a parent team will also be checked.
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a repository](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-repository) endpoint.
-    /// 
+    ///
     /// You can also get information about the specified repository, including what permissions the team grants on it, by passing the following custom [media type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#check-team-permissions-for-a-repository-legacy)
     pub async fn teams_check_permissions_for_repo_legacy(
         &self,
@@ -39634,13 +41150,13 @@ where
     }
 
     /// Add or update team repository permissions (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Add or update team repository permissions](https://docs.github.com/rest/reference/teams#add-or-update-team-repository-permissions)" endpoint.
-    /// 
+    ///
     /// To add a repository to a team or update the team's permission on a repository, the authenticated user must have admin access to the repository, and must be able to see the team. The repository must be owned by the organization, or a direct fork of a repository owned by the organization. You will get a `422 Unprocessable Entity` status if you attempt to add a repository to a team that is not owned by the organization.
-    /// 
+    ///
     /// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#add-or-update-team-repository-permissions-legacy)
     ///
     /// # Content
@@ -39699,11 +41215,11 @@ where
     }
 
     /// Remove a repository from a team (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove a repository from a team](https://docs.github.com/rest/reference/teams#remove-a-repository-from-a-team) endpoint.
-    /// 
+    ///
     /// If the authenticated user is an organization owner or a team maintainer, they can remove any repositories from the team. To remove a repository from a team as an organization member, the authenticated user must have admin access to the repository and must be able to see the team. NOTE: This does not delete the repository, it just removes it from the team.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#remove-a-repository-from-a-team-legacy)
     pub async fn teams_remove_repo_legacy(
         &self,
@@ -39751,13 +41267,13 @@ where
     }
 
     /// List IdP groups for a team (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List IdP groups for a team`](https://docs.github.com/rest/reference/teams#list-idp-groups-for-a-team) endpoint.
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// List IdP groups connected to a team on GitHub.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-idp-groups-for-a-team-legacy)
     pub async fn teams_list_idp_groups_for_legacy(
         &self,
@@ -39801,13 +41317,13 @@ where
     }
 
     /// Create or update IdP group connections (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create or update IdP group connections`](https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections) endpoint.
-    /// 
-    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-    /// 
+    ///
+    /// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+    ///
     /// Creates, updates, or removes a connection between a team and an IdP group. When adding groups to a team, you must include all new and existing groups to avoid replacing existing groups with the new ones. Specifying an empty `groups` array will remove all connections for a team.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#create-or-update-idp-group-connections-legacy)
     ///
     /// # Content
@@ -39862,9 +41378,9 @@ where
     }
 
     /// List child teams (Legacy)
-    /// 
+    ///
     /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List child teams`](https://docs.github.com/rest/reference/teams#list-child-teams) endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams/#list-child-teams-legacy)
     pub async fn teams_list_child_legacy(
         &self,
@@ -39912,11 +41428,11 @@ where
     }
 
     /// Get the authenticated user
-    /// 
+    ///
     /// If the authenticated user is authenticated through basic authentication or OAuth with the `user` scope, then the response lists public and private profile information.
-    /// 
+    ///
     /// If the authenticated user is authenticated through OAuth without the `user` scope, then the response lists only public profile information.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#get-the-authenticated-user)
     pub async fn users_get_authenticated(
         &self,
@@ -39958,9 +41474,9 @@ where
     }
 
     /// Update the authenticated user
-    /// 
+    ///
     /// **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users/#update-the-authenticated-user)
     ///
     /// # Content
@@ -40013,9 +41529,9 @@ where
     }
 
     /// List users blocked by the authenticated user
-    /// 
+    ///
     /// List the users you've blocked on your personal account.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-users-blocked-by-the-authenticated-user)
     pub async fn users_list_blocked_by_authenticated_user(
         &self,
@@ -40057,7 +41573,7 @@ where
     }
 
     /// Check if a user is blocked by the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#check-if-a-user-is-blocked-by-the-authenticated-user)
     pub async fn users_check_blocked(
         &self,
@@ -40101,7 +41617,7 @@ where
     }
 
     /// Block a user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#block-a-user)
     pub async fn users_block(
         &self,
@@ -40145,7 +41661,7 @@ where
     }
 
     /// Unblock a user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#unblock-a-user)
     pub async fn users_unblock(
         &self,
@@ -40189,11 +41705,13 @@ where
     }
 
     /// List codespaces for the authenticated user
-    /// 
+    ///
     /// Lists the authenticated user's codespaces.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have read access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#list-codespaces-for-the-authenticated-user)
     pub async fn codespaces_list_for_authenticated_user(
         &self,
@@ -40241,13 +41759,15 @@ where
     }
 
     /// Create a codespace for the authenticated user
-    /// 
+    ///
     /// Creates a new codespace, owned by the authenticated user.
-    /// 
+    ///
     /// This endpoint requires either a `repository_id` OR a `pull_request` but not both.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#create-a-codespace-for-the-authenticated-user)
     ///
     /// # Content
@@ -40300,11 +41820,14 @@ where
     }
 
     /// List secrets for the authenticated user
-    /// 
+    ///
     /// Lists all secrets available for a user's Codespaces without revealing their
     /// encrypted values.
-    /// You must authenticate using an access token with the `user` or `read:user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
-    /// 
+    ///
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    ///
+    /// GitHub Apps must have read access to the `codespaces_user_secrets` user permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#list-secrets-for-the-authenticated-user)
     pub async fn codespaces_list_secrets_for_authenticated_user(
         &self,
@@ -40350,9 +41873,13 @@ where
     }
 
     /// Get public key for the authenticated user
-    /// 
-    /// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets. Anyone with one of the 'read:user' or 'user' scopes in their personal access token. User must have Codespaces access to use this endpoint.
-    /// 
+    ///
+    /// Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets.
+    ///
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    ///
+    /// GitHub Apps must have read access to the `codespaces_user_secrets` user permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#get-public-key-for-the-authenticated-user)
     pub async fn codespaces_get_public_key_for_authenticated_user(
         &self,
@@ -40394,10 +41921,13 @@ where
     }
 
     /// Get a secret for the authenticated user
-    /// 
+    ///
     /// Gets a secret available to a user's codespaces without revealing its encrypted value.
-    /// You must authenticate using an access token with the `user` or `read:user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
-    /// 
+    ///
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    ///
+    /// GitHub Apps must have read access to the `codespaces_user_secrets` user permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#get-a-secret-for-the-authenticated-user)
     pub async fn codespaces_get_secret_for_authenticated_user(
         &self,
@@ -40441,42 +41971,46 @@ where
     }
 
     /// Create or update a secret for the authenticated user
-    /// 
+    ///
     /// Creates or updates a secret for a user's codespace with an encrypted value. Encrypt your secret using
-    /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access token with the `user` scope to use this endpoint. User must also have Codespaces access to use this endpoint.
-    /// 
+    /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages).
+    ///
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must also have Codespaces access to use this endpoint.
+    ///
+    /// GitHub Apps must have read access to the `codespaces_user_secrets` user permission and `codespaces_secrets` repository permission on all referenced repositories to use this endpoint.
+    ///
     /// #### Example encrypting a secret using Node.js
-    /// 
+    ///
     /// Encrypt your secret using the [tweetsodium](https://github.com/github/tweetsodium) library.
-    /// 
+    ///
     /// ```text
     /// const sodium = require('tweetsodium');
-    /// 
+    ///
     /// const key = "base64-encoded-public-key";
     /// const value = "plain-text-secret";
-    /// 
+    ///
     /// // Convert the message and key to Uint8Array's (Buffer implements that interface)
     /// const messageBytes = Buffer.from(value);
     /// const keyBytes = Buffer.from(key, 'base64');
-    /// 
+    ///
     /// // Encrypt using LibSodium.
     /// const encryptedBytes = sodium.seal(messageBytes, keyBytes);
-    /// 
+    ///
     /// // Base64 the encrypted secret
     /// const encrypted = Buffer.from(encryptedBytes).toString('base64');
-    /// 
+    ///
     /// console.log(encrypted);
     /// ```
-    /// 
-    /// 
+    ///
+    ///
     /// #### Example encrypting a secret using Python
-    /// 
+    ///
     /// Encrypt your secret using [pynacl](https://pynacl.readthedocs.io/en/latest/public/#nacl-public-sealedbox) with Python 3.
-    /// 
+    ///
     /// ```text
     /// from base64 import b64encode
     /// from nacl import encoding, public
-    /// 
+    ///
     /// def encrypt(public_key: str, secret_value: str) -> str:
     ///   """Encrypt a Unicode string using the public key."""
     ///   public_key = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
@@ -40484,38 +42018,38 @@ where
     ///   encrypted = sealed_box.encrypt(secret_value.encode("utf-8"))
     ///   return b64encode(encrypted).decode("utf-8")
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using C#
-    /// 
+    ///
     /// Encrypt your secret using the [Sodium.Core](https://www.nuget.org/packages/Sodium.Core/) package.
-    /// 
+    ///
     /// ```text
     /// var secretValue = System.Text.Encoding.UTF8.GetBytes("mySecret");
     /// var publicKey = Convert.FromBase64String("2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvvcCU=");
-    /// 
+    ///
     /// var sealedPublicKeyBox = Sodium.SealedPublicKeyBox.Create(secretValue, publicKey);
-    /// 
+    ///
     /// Console.WriteLine(Convert.ToBase64String(sealedPublicKeyBox));
     /// ```
-    /// 
+    ///
     /// #### Example encrypting a secret using Ruby
-    /// 
+    ///
     /// Encrypt your secret using the [rbnacl](https://github.com/RubyCrypto/rbnacl) gem.
-    /// 
+    ///
     /// ```ruby
     /// require "rbnacl"
     /// require "base64"
-    /// 
+    ///
     /// key = Base64.decode64("+ZYvJDZMHUfBkJdyq5Zm9SKqeuBQ4sj+6sfjlH4CgG0=")
     /// public_key = RbNaCl::PublicKey.new(key)
-    /// 
+    ///
     /// box = RbNaCl::Boxes::Sealed.from_public_key(public_key)
     /// encrypted_secret = box.encrypt("my_secret")
-    /// 
+    ///
     /// # Print the base64 encoded secret
     /// puts Base64.strict_encode64(encrypted_secret)
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#create-or-update-a-secret-for-the-authenticated-user)
     ///
     /// # Content
@@ -40570,9 +42104,13 @@ where
     }
 
     /// Delete a secret for the authenticated user
-    /// 
-    /// Deletes a secret from a user's codespaces using the secret name. Deleting the secret will remove access from all codespaces that were allowed to access the secret. You must authenticate using an access token with the `user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
-    /// 
+    ///
+    /// Deletes a secret from a user's codespaces using the secret name. Deleting the secret will remove access from all codespaces that were allowed to access the secret.
+    ///
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    ///
+    /// GitHub Apps must have write access to the `codespaces_user_secrets` user permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#delete-a-secret-for-the-authenticated-user)
     pub async fn codespaces_delete_secret_for_authenticated_user(
         &self,
@@ -40616,10 +42154,13 @@ where
     }
 
     /// List selected repositories for a user secret
-    /// 
+    ///
     /// List the repositories that have been granted the ability to use a user's codespace secret.
-    /// You must authenticate using an access token with the `user` or `read:user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
-    /// 
+    ///
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    ///
+    /// GitHub Apps must have read access to the `codespaces_user_secrets` user permission and write access to the `codespaces_secrets` repository permission on all referenced repositories to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#list-selected-repositories-for-a-user-secret)
     pub async fn codespaces_list_repositories_for_secret_for_authenticated_user(
         &self,
@@ -40663,10 +42204,13 @@ where
     }
 
     /// Set selected repositories for a user secret
-    /// 
+    ///
     /// Select the repositories that will use a user's codespace secret.
-    /// You must authenticate using an access token with the `user` or `read:user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
-    /// 
+    ///
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    ///
+    /// GitHub Apps must have write access to the `codespaces_user_secrets` user permission and write access to the `codespaces_secrets` repository permission on all referenced repositories to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#set-selected-repositories-for-a-user-secret)
     ///
     /// # Content
@@ -40721,10 +42265,11 @@ where
     }
 
     /// Add a selected repository to a user secret
-    /// 
+    ///
     /// Adds a repository to the selected repositories for a user's codespace secret.
-    /// You must authenticate using an access token with the `user` or `read:user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
-    /// 
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    /// GitHub Apps must have write access to the `codespaces_user_secrets` user permission and write access to the `codespaces_secrets` repository permission on the referenced repository to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#add-a-selected-repository-to-a-user-secret)
     pub async fn codespaces_add_repository_for_secret_for_authenticated_user(
         &self,
@@ -40770,10 +42315,11 @@ where
     }
 
     /// Remove a selected repository from a user secret
-    /// 
+    ///
     /// Removes a repository from the selected repositories for a user's codespace secret.
-    /// You must authenticate using an access token with the `user` or `read:user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
-    /// 
+    /// You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+    /// GitHub Apps must have write access to the `codespaces_user_secrets` user permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#remove-a-selected-repository-from-a-user-secret)
     pub async fn codespaces_remove_repository_for_secret_for_authenticated_user(
         &self,
@@ -40819,11 +42365,13 @@ where
     }
 
     /// Get a codespace for the authenticated user
-    /// 
+    ///
     /// Gets information about a user's codespace.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have read access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#get-a-codespace-for-the-authenticated-user)
     pub async fn codespaces_get_for_authenticated_user(
         &self,
@@ -40867,11 +42415,13 @@ where
     }
 
     /// Delete a codespace for the authenticated user
-    /// 
+    ///
     /// Deletes a user's codespace.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#delete-a-codespace-for-the-authenticated-user)
     pub async fn codespaces_delete_for_authenticated_user(
         &self,
@@ -40915,13 +42465,15 @@ where
     }
 
     /// Update a codespace for the authenticated user
-    /// 
-    /// Updates a codespace owned by the authenticated user. Currently only the codespace's machine type can be modified using this endpoint.
-    /// 
-    /// Once you specify a new machine type it will be applied the next time your codespace is started.
-    /// 
+    ///
+    /// Updates a codespace owned by the authenticated user. Currently only the codespace's machine type and recent folders can be modified using this endpoint.
+    ///
+    /// If you specify a new machine type it will be applied the next time your codespace is started.
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#update-a-codespace-for-the-authenticated-user)
     ///
     /// # Content
@@ -40975,12 +42527,112 @@ where
         Ok(theResponse)
     }
 
+    /// Export a codespace for the authenticated user
+    ///
+    /// Triggers an export of the specified codespace and returns a URL and ID where the status of the export can be monitored.
+    ///
+    /// You must authenticate using a personal access token with the `codespace` scope to use this endpoint.
+    ///
+    /// GitHub Apps must have write access to the `codespaces_lifecycle_admin` repository permission to use this endpoint.
+    pub async fn codespaces_export_for_authenticated_user(
+        &self,
+        codespace_name: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::codespaces_export_for_authenticated_user::reqwest_builder(
+                self.config.base_url.as_ref(),
+                codespace_name,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::codespaces_export_for_authenticated_user::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
+    /// Get details about a codespace export
+    ///
+    /// Gets information about an export of a codespace.
+    ///
+    /// You must authenticate using a personal access token with the `codespace` scope to use this endpoint.
+    ///
+    /// GitHub Apps must have read access to the `codespaces_lifecycle_admin` repository permission to use this endpoint.
+    pub async fn codespaces_get_export_details_for_authenticated_user(
+        &self,
+        codespace_name: &str,
+        export_id: &str,
+    ) -> Result<::reqwest::Response, crate::v1_1_4::ApiError> {
+        let mut theScheme = AuthScheme::from(&self.config.authentication);
+
+        let theResponse = loop {
+            while let Some(auth_step) = theScheme.step()? {
+                match auth_step {
+                    ::authentic::AuthenticationStep::Request(auth_request) => {
+                        theScheme.respond(self.client.execute(auth_request).await);
+                    }
+                    ::authentic::AuthenticationStep::WaitFor(duration) => {
+                        (self.sleep)(duration).await;
+                    }
+                }
+            }
+            let theBuilder = crate::v1_1_4::request::codespaces_get_export_details_for_authenticated_user::reqwest_builder(
+                self.config.base_url.as_ref(),
+                codespace_name,
+                export_id,
+                self.config.user_agent.as_ref(),
+                self.config.accept.as_deref(),
+            )?
+            .with_authentication(&theScheme)?;
+
+            let theRequest =
+                crate::v1_1_4::request::codespaces_get_export_details_for_authenticated_user::reqwest_request(theBuilder)?;
+
+            ::log::debug!("HTTP request: {:?}", &theRequest);
+
+            let theResponse = self.client.execute(theRequest).await?;
+
+            ::log::debug!("HTTP response: {:?}", &theResponse);
+
+            if theScheme.has_completed(&theResponse)? {
+                break theResponse;
+            }
+        };
+        Ok(theResponse)
+    }
+
     /// List machine types for a codespace
-    /// 
+    ///
     /// List the machine types a codespace can transition to use.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have read access to the `codespaces_metadata` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#list-machine-types-for-a-codespace)
     pub async fn codespaces_codespace_machines_for_authenticated_user(
         &self,
@@ -41024,11 +42676,13 @@ where
     }
 
     /// Start a codespace for the authenticated user
-    /// 
+    ///
     /// Starts a user's codespace.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces_lifecycle_admin` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#start-a-codespace-for-the-authenticated-user)
     pub async fn codespaces_start_for_authenticated_user(
         &self,
@@ -41072,11 +42726,13 @@ where
     }
 
     /// Stop a codespace for the authenticated user
-    /// 
+    ///
     /// Stops a user's codespace.
-    /// 
+    ///
     /// You must authenticate using an access token with the `codespace` scope to use this endpoint.
-    /// 
+    ///
+    /// GitHub Apps must have write access to the `codespaces_lifecycle_admin` repository permission to use this endpoint.
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/codespaces#stop-a-codespace-for-the-authenticated-user)
     pub async fn codespaces_stop_for_authenticated_user(
         &self,
@@ -41120,9 +42776,9 @@ where
     }
 
     /// Set primary email visibility for the authenticated user
-    /// 
+    ///
     /// Sets the visibility for your primary email addresses.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#set-primary-email-visibility-for-the-authenticated-user)
     ///
     /// # Content
@@ -41175,9 +42831,9 @@ where
     }
 
     /// List email addresses for the authenticated user
-    /// 
+    ///
     /// Lists all of your email addresses, and specifies which one is visible to the public. This endpoint is accessible with the `user:email` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-email-addresses-for-the-authenticated-user)
     pub async fn users_list_emails_for_authenticated_user(
         &self,
@@ -41223,9 +42879,9 @@ where
     }
 
     /// Add an email address for the authenticated user
-    /// 
+    ///
     /// This endpoint is accessible with the `user` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#add-an-email-address-for-the-authenticated-user)
     ///
     /// # Content
@@ -41278,9 +42934,9 @@ where
     }
 
     /// Delete an email address for the authenticated user
-    /// 
+    ///
     /// This endpoint is accessible with the `user` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#delete-an-email-address-for-the-authenticated-user)
     ///
     /// # Content
@@ -41333,9 +42989,9 @@ where
     }
 
     /// List followers of the authenticated user
-    /// 
+    ///
     /// Lists the people following the authenticated user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-followers-of-the-authenticated-user)
     pub async fn users_list_followers_for_authenticated_user(
         &self,
@@ -41381,9 +43037,9 @@ where
     }
 
     /// List the people the authenticated user follows
-    /// 
+    ///
     /// Lists the people who the authenticated user follows.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-the-people-the-authenticated-user-follows)
     pub async fn users_list_followed_by_authenticated_user(
         &self,
@@ -41429,7 +43085,7 @@ where
     }
 
     /// Check if a person is followed by the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#check-if-a-person-is-followed-by-the-authenticated-user)
     pub async fn users_check_person_is_followed_by_authenticated(
         &self,
@@ -41473,11 +43129,11 @@ where
     }
 
     /// Follow a user
-    /// 
+    ///
     /// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// Following a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#follow-a-user)
     pub async fn users_follow(
         &self,
@@ -41521,9 +43177,9 @@ where
     }
 
     /// Unfollow a user
-    /// 
+    ///
     /// Unfollowing a user requires the user to be logged in and authenticated with basic auth or OAuth with the `user:follow` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#unfollow-a-user)
     pub async fn users_unfollow(
         &self,
@@ -41567,9 +43223,9 @@ where
     }
 
     /// List GPG keys for the authenticated user
-    /// 
+    ///
     /// Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:gpg_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-gpg-keys-for-the-authenticated-user)
     pub async fn users_list_gpg_keys_for_authenticated_user(
         &self,
@@ -41615,9 +43271,9 @@ where
     }
 
     /// Create a GPG key for the authenticated user
-    /// 
+    ///
     /// Adds a GPG key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:gpg_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#create-a-gpg-key-for-the-authenticated-user)
     ///
     /// # Content
@@ -41670,9 +43326,9 @@ where
     }
 
     /// Get a GPG key for the authenticated user
-    /// 
+    ///
     /// View extended details for a single GPG key. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:gpg_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#get-a-gpg-key-for-the-authenticated-user)
     pub async fn users_get_gpg_key_for_authenticated_user(
         &self,
@@ -41716,9 +43372,9 @@ where
     }
 
     /// Delete a GPG key for the authenticated user
-    /// 
+    ///
     /// Removes a GPG key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:gpg_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#delete-a-gpg-key-for-the-authenticated-user)
     pub async fn users_delete_gpg_key_for_authenticated_user(
         &self,
@@ -41762,15 +43418,15 @@ where
     }
 
     /// List app installations accessible to the user access token
-    /// 
+    ///
     /// Lists installations of your GitHub App that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
-    /// 
+    ///
     /// You must use a [user-to-server OAuth access token](https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint.
-    /// 
+    ///
     /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
-    /// 
+    ///
     /// You can find the permissions for the installation under the `permissions` key.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-app-installations-accessible-to-the-user-access-token)
     pub async fn apps_list_installations_for_authenticated_user(
         &self,
@@ -41816,15 +43472,15 @@ where
     }
 
     /// List repositories accessible to the user access token
-    /// 
+    ///
     /// List repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access for an installation.
-    /// 
+    ///
     /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
-    /// 
+    ///
     /// You must use a [user-to-server OAuth access token](https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint.
-    /// 
+    ///
     /// The access the user has to each repository is included in the hash under the `permissions` key.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-repositories-accessible-to-the-user-access-token)
     pub async fn apps_list_installation_repos_for_authenticated_user(
         &self,
@@ -41872,11 +43528,11 @@ where
     }
 
     /// Add a repository to an app installation
-    /// 
+    ///
     /// Add a single repository to an installation. The authenticated user must have admin access to the repository.
-    /// 
+    ///
     /// You must use a personal access token (which you can create via the [command line](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#add-a-repository-to-an-app-installation)
     pub async fn apps_add_repo_to_installation_for_authenticated_user(
         &self,
@@ -41922,11 +43578,11 @@ where
     }
 
     /// Remove a repository from an app installation
-    /// 
+    ///
     /// Remove a single repository from an installation. The authenticated user must have admin access to the repository.
-    /// 
+    ///
     /// You must use a personal access token (which you can create via the [command line](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token) or [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication)) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#remove-a-repository-from-an-app-installation)
     pub async fn apps_remove_repo_from_installation_for_authenticated_user(
         &self,
@@ -41972,9 +43628,9 @@ where
     }
 
     /// Get interaction restrictions for your public repositories
-    /// 
+    ///
     /// Shows which type of GitHub user can interact with your public repositories and when the restriction expires.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#get-interaction-restrictions-for-your-public-repositories)
     pub async fn interactions_get_restrictions_for_authenticated_user(
         &self,
@@ -42016,9 +43672,9 @@ where
     }
 
     /// Set interaction restrictions for your public repositories
-    /// 
+    ///
     /// Temporarily restricts which type of GitHub user can interact with your public repositories. Setting the interaction limit at the user level will overwrite any interaction limits that are set for individual repositories owned by the user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#set-interaction-restrictions-for-your-public-repositories)
     ///
     /// # Content
@@ -42071,9 +43727,9 @@ where
     }
 
     /// Remove interaction restrictions from your public repositories
-    /// 
+    ///
     /// Removes any interaction restrictions from your public repositories.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/interactions#remove-interaction-restrictions-from-your-public-repositories)
     pub async fn interactions_remove_restrictions_for_authenticated_user(
         &self,
@@ -42115,14 +43771,14 @@ where
     }
 
     /// List user account issues assigned to the authenticated user
-    /// 
+    ///
     /// List issues across owned and member repositories assigned to the authenticated user.
-    /// 
+    ///
     /// **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request. For this
     /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
     /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
     /// request id, use the "[List pull requests](https://docs.github.com/rest/reference/pulls#list-pull-requests)" endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/issues#list-user-account-issues-assigned-to-the-authenticated-user)
     pub async fn issues_list_for_authenticated_user(
         &self,
@@ -42177,9 +43833,9 @@ where
     }
 
     /// List public SSH keys for the authenticated user
-    /// 
+    ///
     /// Lists the public SSH keys for the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-public-ssh-keys-for-the-authenticated-user)
     pub async fn users_list_public_ssh_keys_for_authenticated_user(
         &self,
@@ -42225,9 +43881,9 @@ where
     }
 
     /// Create a public SSH key for the authenticated user
-    /// 
+    ///
     /// Adds a public SSH key to the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth, or OAuth with at least `write:public_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#create-a-public-ssh-key-for-the-authenticated-user)
     ///
     /// # Content
@@ -42280,9 +43936,9 @@ where
     }
 
     /// Get a public SSH key for the authenticated user
-    /// 
+    ///
     /// View extended details for a single public SSH key. Requires that you are authenticated via Basic Auth or via OAuth with at least `read:public_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#get-a-public-ssh-key-for-the-authenticated-user)
     pub async fn users_get_public_ssh_key_for_authenticated_user(
         &self,
@@ -42326,9 +43982,9 @@ where
     }
 
     /// Delete a public SSH key for the authenticated user
-    /// 
+    ///
     /// Removes a public SSH key from the authenticated user's GitHub account. Requires that you are authenticated via Basic Auth or via OAuth with at least `admin:public_key` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#delete-a-public-ssh-key-for-the-authenticated-user)
     pub async fn users_delete_public_ssh_key_for_authenticated_user(
         &self,
@@ -42372,9 +44028,9 @@ where
     }
 
     /// List subscriptions for the authenticated user
-    /// 
+    ///
     /// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth access token](https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-subscriptions-for-the-authenticated-user)
     pub async fn apps_list_subscriptions_for_authenticated_user(
         &self,
@@ -42420,9 +44076,9 @@ where
     }
 
     /// List subscriptions for the authenticated user (stubbed)
-    /// 
+    ///
     /// Lists the active subscriptions for the authenticated user. You must use a [user-to-server OAuth access token](https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site), created for a user who has authorized your GitHub App, to access this endpoint. . OAuth Apps must authenticate using an [OAuth token](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#list-subscriptions-for-the-authenticated-user-stubbed)
     pub async fn apps_list_subscriptions_for_authenticated_user_stubbed(
         &self,
@@ -42468,7 +44124,7 @@ where
     }
 
     /// List organization memberships for the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-organization-memberships-for-the-authenticated-user)
     pub async fn orgs_list_memberships_for_authenticated_user(
         &self,
@@ -42516,7 +44172,7 @@ where
     }
 
     /// Get an organization membership for the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#get-an-organization-membership-for-the-authenticated-user)
     pub async fn orgs_get_membership_for_authenticated_user(
         &self,
@@ -42560,7 +44216,7 @@ where
     }
 
     /// Update an organization membership for the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#update-an-organization-membership-for-the-authenticated-user)
     ///
     /// # Content
@@ -42615,9 +44271,9 @@ where
     }
 
     /// List user migrations
-    /// 
+    ///
     /// Lists all migrations a user has started.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#list-user-migrations)
     pub async fn migrations_list_for_authenticated_user(
         &self,
@@ -42663,9 +44319,9 @@ where
     }
 
     /// Start a user migration
-    /// 
+    ///
     /// Initiates the generation of a user migration archive.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#start-a-user-migration)
     ///
     /// # Content
@@ -42718,16 +44374,16 @@ where
     }
 
     /// Get a user migration status
-    /// 
+    ///
     /// Fetches a single user migration. The response includes the `state` of the migration, which can be one of the following values:
-    /// 
+    ///
     /// *   `pending` - the migration hasn't started yet.
     /// *   `exporting` - the migration is in progress.
     /// *   `exported` - the migration finished successfully.
     /// *   `failed` - the migration failed.
-    /// 
+    ///
     /// Once the migration has been `exported` you can [download the migration archive](https://docs.github.com/rest/reference/migrations#download-a-user-migration-archive).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#get-a-user-migration-status)
     pub async fn migrations_get_status_for_authenticated_user(
         &self,
@@ -42773,9 +44429,9 @@ where
     }
 
     /// Download a user migration archive
-    /// 
+    ///
     /// Fetches the URL to download the migration archive as a `tar.gz` file. Depending on the resources your repository uses, the migration archive can contain JSON files with data for these objects:
-    /// 
+    ///
     /// *   attachments
     /// *   bases
     /// *   commit\_comments
@@ -42793,9 +44449,9 @@ where
     /// *   review\_comments
     /// *   schema
     /// *   users
-    /// 
+    ///
     /// The archive will also contain an `attachments` directory that includes all attachment files uploaded to GitHub.com and a `repositories` directory that contains the repository's Git data.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#download-a-user-migration-archive)
     pub async fn migrations_get_archive_for_authenticated_user(
         &self,
@@ -42839,9 +44495,9 @@ where
     }
 
     /// Delete a user migration archive
-    /// 
+    ///
     /// Deletes a previous migration archive. Downloadable migration archives are automatically deleted after seven days. Migration metadata, which is returned in the [List user migrations](https://docs.github.com/rest/reference/migrations#list-user-migrations) and [Get a user migration status](https://docs.github.com/rest/reference/migrations#get-a-user-migration-status) endpoints, will continue to be available even after an archive is deleted.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#delete-a-user-migration-archive)
     pub async fn migrations_delete_archive_for_authenticated_user(
         &self,
@@ -42885,9 +44541,9 @@ where
     }
 
     /// Unlock a user repository
-    /// 
+    ///
     /// Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/rest/reference/migrations#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/rest/reference/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#unlock-a-user-repository)
     pub async fn migrations_unlock_repo_for_authenticated_user(
         &self,
@@ -42933,9 +44589,9 @@ where
     }
 
     /// List repositories for a user migration
-    /// 
+    ///
     /// Lists all the repositories for this user migration.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/migrations#list-repositories-for-a-user-migration)
     pub async fn migrations_list_repos_for_authenticated_user(
         &self,
@@ -42983,13 +44639,13 @@ where
     }
 
     /// List organizations for the authenticated user
-    /// 
+    ///
     /// List organizations for the authenticated user.
-    /// 
+    ///
     /// **OAuth scope requirements**
-    /// 
+    ///
     /// This only lists organizations that your authorization allows you to operate on in some way (e.g., you can list teams with `read:org` scope, you can publicize your organization membership with `user` scope, etc.). Therefore, this API requires at least `user` or `read:org` scope. OAuth requests with insufficient scope receive a `403 Forbidden` response.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-organizations-for-the-authenticated-user)
     pub async fn orgs_list_for_authenticated_user(
         &self,
@@ -43035,12 +44691,12 @@ where
     }
 
     /// List packages for the authenticated user's namespace
-    /// 
+    ///
     /// Lists packages owned by the authenticated user within the user's namespace.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#list-packages-for-the-authenticated-user)
     pub async fn packages_list_packages_for_authenticated_user(
         &self,
@@ -43086,12 +44742,12 @@ where
     }
 
     /// Get a package for the authenticated user
-    /// 
+    ///
     /// Gets a specific package for a package owned by the authenticated user.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-a-package-for-the-authenticated-user)
     pub async fn packages_get_package_for_authenticated_user(
         &self,
@@ -43137,12 +44793,12 @@ where
     }
 
     /// Delete a package for the authenticated user
-    /// 
+    ///
     /// Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` and `packages:delete` scopes.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#delete-a-package-for-the-authenticated-user)
     pub async fn packages_delete_package_for_authenticated_user(
         &self,
@@ -43188,15 +44844,15 @@ where
     }
 
     /// Restore a package for the authenticated user
-    /// 
+    ///
     /// Restores a package owned by the authenticated user.
-    /// 
+    ///
     /// You can restore a deleted package under the following conditions:
     ///   - The package was deleted within the last 30 days.
     ///   - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` and `packages:write` scopes. If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#restore-a-package-for-the-authenticated-user)
     pub async fn packages_restore_package_for_authenticated_user(
         &self,
@@ -43244,12 +44900,12 @@ where
     }
 
     /// Get all package versions for a package owned by the authenticated user
-    /// 
+    ///
     /// Returns all package versions for a package owned by the authenticated user.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-all-package-versions-for-a-package-owned-by-the-authenticated-user)
     pub async fn packages_get_all_package_versions_for_package_owned_by_authenticated_user(
         &self,
@@ -43301,12 +44957,12 @@ where
     }
 
     /// Get a package version for the authenticated user
-    /// 
+    ///
     /// Gets a specific package version for a package owned by the authenticated user.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-a-package-version-for-the-authenticated-user)
     pub async fn packages_get_package_version_for_authenticated_user(
         &self,
@@ -43354,12 +45010,12 @@ where
     }
 
     /// Delete a package version for the authenticated user
-    /// 
+    ///
     /// Deletes a specific package version for a package owned by the authenticated user.  If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
-    /// 
+    ///
     /// To use this endpoint, you must have admin permissions in the organization and authenticate using an access token with the `packages:read` and `packages:delete` scopes.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#delete-a-package-version-for-the-authenticated-user)
     pub async fn packages_delete_package_version_for_authenticated_user(
         &self,
@@ -43407,15 +45063,15 @@ where
     }
 
     /// Restore a package version for the authenticated user
-    /// 
+    ///
     /// Restores a package version owned by the authenticated user.
-    /// 
+    ///
     /// You can restore a deleted package version under the following conditions:
     ///   - The package was deleted within the last 30 days.
     ///   - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` and `packages:write` scopes. If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#restore-a-package-version-for-the-authenticated-user)
     pub async fn packages_restore_package_version_for_authenticated_user(
         &self,
@@ -43463,7 +45119,7 @@ where
     }
 
     /// Create a user project
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#create-a-user-project)
     ///
     /// # Content
@@ -43516,9 +45172,9 @@ where
     }
 
     /// List public email addresses for the authenticated user
-    /// 
+    ///
     /// Lists your publicly visible email address, which you can set with the [Set primary email visibility for the authenticated user](https://docs.github.com/rest/reference/users#set-primary-email-visibility-for-the-authenticated-user) endpoint. This endpoint is accessible with the `user:email` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-public-email-addresses-for-the-authenticated-user)
     pub async fn users_list_public_emails_for_authenticated_user(
         &self,
@@ -43564,11 +45220,11 @@ where
     }
 
     /// List repositories for the authenticated user
-    /// 
+    ///
     /// Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
-    /// 
+    ///
     /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repositories-for-the-authenticated-user)
     #[allow(clippy::too_many_arguments)]
     pub async fn repos_list_for_authenticated_user(
@@ -43629,16 +45285,16 @@ where
     }
 
     /// Create a repository for the authenticated user
-    /// 
+    ///
     /// Creates a new repository for the authenticated user.
-    /// 
+    ///
     /// **OAuth scope requirements**
-    /// 
+    ///
     /// When using [OAuth](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/), authorizations must include:
-    /// 
+    ///
     /// *   `public_repo` scope or `repo` scope to create a public repository. Note: For GitHub AE, use `repo` scope to create an internal repository.
     /// *   `repo` scope to create a private repository.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#create-a-repository-for-the-authenticated-user)
     ///
     /// # Content
@@ -43691,9 +45347,9 @@ where
     }
 
     /// List repository invitations for the authenticated user
-    /// 
+    ///
     /// When authenticating as a user, this endpoint will list all currently open repository invitations for that user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-invitations-for-the-authenticated-user)
     pub async fn repos_list_invitations_for_authenticated_user(
         &self,
@@ -43739,7 +45395,7 @@ where
     }
 
     /// Decline a repository invitation
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#decline-a-repository-invitation)
     pub async fn repos_decline_invitation_for_authenticated_user(
         &self,
@@ -43783,7 +45439,7 @@ where
     }
 
     /// Accept a repository invitation
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#accept-a-repository-invitation)
     pub async fn repos_accept_invitation_for_authenticated_user(
         &self,
@@ -43827,11 +45483,11 @@ where
     }
 
     /// List repositories starred by the authenticated user
-    /// 
+    ///
     /// Lists repositories the authenticated user has starred.
-    /// 
+    ///
     /// You can also find out _when_ stars were created by passing the following custom [media type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-repositories-starred-by-the-authenticated-user)
     pub async fn activity_list_repos_starred_by_authenticated_user(
         &self,
@@ -43881,7 +45537,7 @@ where
     }
 
     /// Check if a repository is starred by the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#check-if-a-repository-is-starred-by-the-authenticated-user)
     pub async fn activity_check_repo_is_starred_by_authenticated_user(
         &self,
@@ -43927,9 +45583,9 @@ where
     }
 
     /// Star a repository for the authenticated user
-    /// 
+    ///
     /// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#star-a-repository-for-the-authenticated-user)
     pub async fn activity_star_repo_for_authenticated_user(
         &self,
@@ -43975,7 +45631,7 @@ where
     }
 
     /// Unstar a repository for the authenticated user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#unstar-a-repository-for-the-authenticated-user)
     pub async fn activity_unstar_repo_for_authenticated_user(
         &self,
@@ -44021,9 +45677,9 @@ where
     }
 
     /// List repositories watched by the authenticated user
-    /// 
+    ///
     /// Lists repositories the authenticated user is watching.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-repositories-watched-by-the-authenticated-user)
     pub async fn activity_list_watched_repos_for_authenticated_user(
         &self,
@@ -44069,9 +45725,9 @@ where
     }
 
     /// List teams for the authenticated user
-    /// 
+    ///
     /// List all of the teams across all of the organizations to which the authenticated user belongs. This method requires `user`, `repo`, or `read:org` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) when authenticating via [OAuth](https://docs.github.com/apps/building-oauth-apps/).
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/teams#list-teams-for-the-authenticated-user)
     pub async fn teams_list_for_authenticated_user(
         &self,
@@ -44117,11 +45773,11 @@ where
     }
 
     /// List users
-    /// 
+    ///
     /// Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
-    /// 
+    ///
     /// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/overview/resources-in-the-rest-api#link-header) to get the URL for the next page of users.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-users)
     pub async fn users_list(
         &self,
@@ -44167,15 +45823,15 @@ where
     }
 
     /// Get a user
-    /// 
+    ///
     /// Provides publicly available information about someone with a GitHub account.
-    /// 
+    ///
     /// GitHub Apps with the `Plan` user permission can use this endpoint to retrieve information about a user's GitHub plan. The GitHub App must be authenticated as a user. See "[Identifying and authorizing users for GitHub Apps](https://docs.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)" for details about authentication. For an example response, see 'Response with GitHub plan information' below"
-    /// 
+    ///
     /// The `email` key in the following response is the publicly visible email address from your GitHub [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be “public” which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub. For more information, see [Authentication](https://docs.github.com/rest/overview/resources-in-the-rest-api#authentication).
-    /// 
+    ///
     /// The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see "[Emails API](https://docs.github.com/rest/reference/users#emails)".
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#get-a-user)
     pub async fn users_get_by_username(
         &self,
@@ -44219,9 +45875,9 @@ where
     }
 
     /// List events for the authenticated user
-    /// 
+    ///
     /// If you are authenticated as the given user, you will see your private events. Otherwise, you'll only see public events.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-events-for-the-authenticated-user)
     pub async fn activity_list_events_for_authenticated_user(
         &self,
@@ -44269,9 +45925,9 @@ where
     }
 
     /// List organization events for the authenticated user
-    /// 
+    ///
     /// This is the user's organization dashboard. You must be authenticated as the user to view this.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-organization-events-for-the-authenticated-user)
     pub async fn activity_list_org_events_for_authenticated_user(
         &self,
@@ -44321,7 +45977,7 @@ where
     }
 
     /// List public events for a user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-public-events-for-a-user)
     pub async fn activity_list_public_events_for_user(
         &self,
@@ -44369,9 +46025,9 @@ where
     }
 
     /// List followers of a user
-    /// 
+    ///
     /// Lists the people following the specified user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-followers-of-a-user)
     pub async fn users_list_followers_for_user(
         &self,
@@ -44419,9 +46075,9 @@ where
     }
 
     /// List the people a user follows
-    /// 
+    ///
     /// Lists the people who the specified user follows.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-the-people-a-user-follows)
     pub async fn users_list_following_for_user(
         &self,
@@ -44469,7 +46125,7 @@ where
     }
 
     /// Check if a user follows another user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#check-if-a-user-follows-another-user)
     pub async fn users_check_following_for_user(
         &self,
@@ -44515,9 +46171,9 @@ where
     }
 
     /// List gists for a user
-    /// 
+    ///
     /// Lists public gists for the specified user:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/gists#list-gists-for-a-user)
     pub async fn gists_list_for_user(
         &self,
@@ -44567,9 +46223,9 @@ where
     }
 
     /// List GPG keys for a user
-    /// 
+    ///
     /// Lists the GPG keys for a user. This information is accessible by anyone.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-gpg-keys-for-a-user)
     pub async fn users_list_gpg_keys_for_user(
         &self,
@@ -44617,16 +46273,16 @@ where
     }
 
     /// Get contextual information for a user
-    /// 
+    ///
     /// Provides hovercard information when authenticated through basic auth or OAuth with the `repo` scope. You can find out more about someone in relation to their pull requests, issues, repositories, and organizations.
-    /// 
+    ///
     /// The `subject_type` and `subject_id` parameters provide context for the person's hovercard, which returns more information than without the parameters. For example, if you wanted to find out more about `octocat` who owns the `Spoon-Knife` repository via cURL, it would look like this:
-    /// 
+    ///
     /// ```shell
     ///  curl -u username:token
     ///   https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192
     /// ```
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#get-contextual-information-for-a-user)
     pub async fn users_get_context_for_user(
         &self,
@@ -44674,11 +46330,11 @@ where
     }
 
     /// Get a user installation for the authenticated app
-    /// 
+    ///
     /// Enables an authenticated GitHub App to find the user’s installation information.
-    /// 
+    ///
     /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/apps#get-a-user-installation-for-the-authenticated-app)
     pub async fn apps_get_user_installation(
         &self,
@@ -44722,9 +46378,9 @@ where
     }
 
     /// List public keys for a user
-    /// 
+    ///
     /// Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/users#list-public-keys-for-a-user)
     pub async fn users_list_public_keys_for_user(
         &self,
@@ -44772,11 +46428,11 @@ where
     }
 
     /// List organizations for a user
-    /// 
-    /// List [public organization memberships](https://help.github.com/articles/publicizing-or-concealing-organization-membership) for the specified user.
-    /// 
+    ///
+    /// List [public organization memberships](https://docs.github.com/articles/publicizing-or-concealing-organization-membership) for the specified user.
+    ///
     /// This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the [List organizations for the authenticated user](https://docs.github.com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/orgs#list-organizations-for-a-user)
     pub async fn orgs_list_for_user(
         &self,
@@ -44824,12 +46480,12 @@ where
     }
 
     /// List packages for a user
-    /// 
+    ///
     /// Lists all packages in a user's namespace for which the requesting user has access.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#list-packages-for-user)
     pub async fn packages_list_packages_for_user(
         &self,
@@ -44877,12 +46533,12 @@ where
     }
 
     /// Get a package for a user
-    /// 
+    ///
     /// Gets a specific package metadata for a public package owned by a user.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-a-package-for-a-user)
     pub async fn packages_get_package_for_user(
         &self,
@@ -44930,13 +46586,13 @@ where
     }
 
     /// Delete a package for a user
-    /// 
+    ///
     /// Deletes an entire package for a user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` and `packages:delete` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container you want to delete.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#delete-a-package-for-a-user)
     pub async fn packages_delete_package_for_user(
         &self,
@@ -44984,17 +46640,17 @@ where
     }
 
     /// Restore a package for a user
-    /// 
+    ///
     /// Restores an entire package for a user.
-    /// 
+    ///
     /// You can restore a deleted package under the following conditions:
     ///   - The package was deleted within the last 30 days.
     ///   - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` and `packages:write` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container that you want to restore.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#restore-a-package-for-a-user)
     pub async fn packages_restore_package_for_user(
         &self,
@@ -45044,12 +46700,12 @@ where
     }
 
     /// Get all package versions for a package owned by a user
-    /// 
+    ///
     /// Returns all package versions for a public package owned by a specified user.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-all-package-versions-for-a-package-owned-by-a-user)
     pub async fn packages_get_all_package_versions_for_package_owned_by_user(
         &self,
@@ -45097,12 +46753,12 @@ where
     }
 
     /// Get a package version for a user
-    /// 
+    ///
     /// Gets a specific package version for a public package owned by a specified user.
-    /// 
+    ///
     /// At this time, to use this endpoint, you must authenticate using an access token with the `packages:read` scope.
     /// If `package_type` is not `container`, your token must also include the `repo` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#get-a-package-version-for-a-user)
     pub async fn packages_get_package_version_for_user(
         &self,
@@ -45152,13 +46808,13 @@ where
     }
 
     /// Delete package version for a user
-    /// 
+    ///
     /// Deletes a specific package version for a user. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` and `packages:delete` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container you want to delete.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#delete-a-package-version-for-a-user)
     pub async fn packages_delete_package_version_for_user(
         &self,
@@ -45208,17 +46864,17 @@ where
     }
 
     /// Restore package version for a user
-    /// 
+    ///
     /// Restores a specific package version for a user.
-    /// 
+    ///
     /// You can restore a deleted package under the following conditions:
     ///   - The package was deleted within the last 30 days.
     ///   - The same package namespace and version is still available and not reused for a new package. If the same package namespace is not available, you will not be able to restore your package. In this scenario, to restore the deleted package, you must delete the new package that uses the deleted package's namespace first.
-    /// 
+    ///
     /// To use this endpoint, you must authenticate using an access token with the `packages:read` and `packages:write` scopes. In addition:
     /// - If `package_type` is not `container`, your token must also include the `repo` scope.
     /// - If `package_type` is `container`, you must also have admin permissions to the container that you want to restore.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/packages#restore-a-package-version-for-a-user)
     pub async fn packages_restore_package_version_for_user(
         &self,
@@ -45268,7 +46924,7 @@ where
     }
 
     /// List user projects
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/projects#list-user-projects)
     pub async fn projects_list_for_user(
         &self,
@@ -45318,9 +46974,9 @@ where
     }
 
     /// List events received by the authenticated user
-    /// 
+    ///
     /// These are events that you've received by watching repos and following users. If you are authenticated as the given user, you will see private events. Otherwise, you'll only see public events.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-events-received-by-the-authenticated-user)
     pub async fn activity_list_received_events_for_user(
         &self,
@@ -45368,7 +47024,7 @@ where
     }
 
     /// List public events received by a user
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-public-events-received-by-a-user)
     pub async fn activity_list_received_public_events_for_user(
         &self,
@@ -45416,9 +47072,9 @@ where
     }
 
     /// List repositories for a user
-    /// 
+    ///
     /// Lists public repositories for the specified user. Note: For GitHub AE, this endpoint will list internal repositories for the specified user.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/repos#list-repositories-for-a-user)
     pub async fn repos_list_for_user(
         &self,
@@ -45472,13 +47128,13 @@ where
     }
 
     /// Get GitHub Actions billing for a user
-    /// 
+    ///
     /// Gets the summary of the free and paid GitHub Actions minutes used.
-    /// 
-    /// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
-    /// 
+    ///
+    /// Paid minutes only apply to workflows in private repositories that use GitHub-hosted runners. Minutes used is listed for each GitHub-hosted runner operating system. Any job re-runs are also included in the usage. The usage returned includes any minute multipliers for macOS and Windows runners, and is rounded up to the nearest whole minute. For more information, see "[Managing billing for GitHub Actions](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-actions)".
+    ///
     /// Access tokens must have the `user` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-github-actions-billing-for-a-user)
     pub async fn billing_get_github_actions_billing_user(
         &self,
@@ -45522,13 +47178,13 @@ where
     }
 
     /// Get GitHub Packages billing for a user
-    /// 
+    ///
     /// Gets the free and paid storage used for GitHub Packages in gigabytes.
-    /// 
-    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    /// 
+    ///
+    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+    ///
     /// Access tokens must have the `user` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-github-packages-billing-for-a-user)
     pub async fn billing_get_github_packages_billing_user(
         &self,
@@ -45572,13 +47228,13 @@ where
     }
 
     /// Get shared storage billing for a user
-    /// 
-    /// Gets the estimated paid and estimated total storage used for GitHub Actions and Github Packages.
-    /// 
-    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://help.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-    /// 
+    ///
+    /// Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+    ///
+    /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+    ///
     /// Access tokens must have the `user` scope.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/billing#get-shared-storage-billing-for-a-user)
     pub async fn billing_get_shared_storage_billing_user(
         &self,
@@ -45622,11 +47278,11 @@ where
     }
 
     /// List repositories starred by a user
-    /// 
+    ///
     /// Lists repositories a user has starred.
-    /// 
+    ///
     /// You can also find out _when_ stars were created by passing the following custom [media type](https://docs.github.com/rest/overview/media-types/) via the `Accept` header:
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-repositories-starred-by-a-user)
     pub async fn activity_list_repos_starred_by_user(
         &self,
@@ -45678,9 +47334,9 @@ where
     }
 
     /// List repositories watched by a user
-    /// 
+    ///
     /// Lists repositories a user is watching.
-    /// 
+    ///
     /// [API method documentation](https://docs.github.com/rest/reference/activity#list-repositories-watched-by-a-user)
     pub async fn activity_list_repos_watched_by_user(
         &self,
@@ -45728,7 +47384,7 @@ where
     }
 
     /// Get the Zen of GitHub
-    /// 
+    ///
     /// Get a random sentence from the Zen of GitHub
     pub async fn meta_get_zen(
         &self,

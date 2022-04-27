@@ -3,9 +3,9 @@
 //! 
 //! List the machine types available for a given repository based on its configuration.
 //! 
-//! Location is required.
-//! 
 //! You must authenticate using an access token with the `codespace` scope to use this endpoint.
+//! 
+//! GitHub Apps must have write access to the `codespaces_metadata` repository permission to use this endpoint.
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/codespaces#list-available-machine-types-for-a-repository)
 
@@ -14,22 +14,24 @@ fn url_string(
     base_url: &str,
     p_owner: &str,
     p_repo: &str,
-    q_location: &str,
+    q_location: ::std::option::Option<&str>,
 ) -> Result<String, crate::v1_1_4::ApiError> {
     let trimmed = if base_url.is_empty() {
         "https://api.github.com"
     } else {
         base_url.trim_end_matches('/')
     };
-    let mut url = String::with_capacity(trimmed.len() + 57);
+    let mut url = String::with_capacity(trimmed.len() + 46);
     url.push_str(trimmed);
     url.push_str("/repos/");
     ::querylizer::Simple::extend(&mut url, &p_owner, false, &::querylizer::encode_path)?;
     url.push('/');
     ::querylizer::Simple::extend(&mut url, &p_repo, false, &::querylizer::encode_path)?;
     url.push_str("/codespaces/machines");
-    url.push('?');
-    ::querylizer::Form::extend(&mut url, "location", &q_location, false, &::querylizer::encode_query)?;
+    if let Some(value) = &q_location {
+        url.push('?');
+        ::querylizer::Form::extend(&mut url, "location", value, false, &::querylizer::encode_query)?;
+    }
     Ok(url)
 }
 
@@ -38,7 +40,7 @@ pub fn http_builder(
     base_url: &str,
     p_owner: &str,
     p_repo: &str,
-    q_location: &str,
+    q_location: ::std::option::Option<&str>,
     h_user_agent: &str,
     h_accept: ::std::option::Option<&str>,
 ) -> Result<::http::request::Builder, crate::v1_1_4::ApiError> {
@@ -75,7 +77,7 @@ pub fn reqwest_builder(
     base_url: &str,
     p_owner: &str,
     p_repo: &str,
-    q_location: &str,
+    q_location: ::std::option::Option<&str>,
     h_user_agent: &str,
     h_accept: ::std::option::Option<&str>,
 ) -> Result<::reqwest::Request, crate::v1_1_4::ApiError> {
@@ -115,7 +117,7 @@ pub fn reqwest_blocking_builder(
     base_url: &str,
     p_owner: &str,
     p_repo: &str,
-    q_location: &str,
+    q_location: ::std::option::Option<&str>,
     h_user_agent: &str,
     h_accept: ::std::option::Option<&str>,
 ) -> Result<::reqwest::blocking::Request, crate::v1_1_4::ApiError> {

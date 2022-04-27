@@ -1,7 +1,7 @@
 
 //! Update branch protection
 //! 
-//! Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+//! Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 //! 
 //! Protecting a branch requires admin or owner permissions to the repository.
 //! 
@@ -264,17 +264,21 @@ pub mod body {
 
         pub restrictions: ::std::option::Option<crate::v1_1_4::request::repos_update_branch_protection::body::json::Restrictions<'a>>,
 
-        /// Enforces a linear commit Git history, which prevents anyone from pushing merge commits to a branch. Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git history. Your repository must allow squash merging or rebase merging before you can enable a linear commit history. Default: `false`. For more information, see "[Requiring a linear commit history](https://help.github.com/github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help documentation.
+        /// Enforces a linear commit Git history, which prevents anyone from pushing merge commits to a branch. Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git history. Your repository must allow squash merging or rebase merging before you can enable a linear commit history. Default: `false`. For more information, see "[Requiring a linear commit history](https://docs.github.com/github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help documentation.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub required_linear_history: ::std::option::Option<bool>,
 
-        /// Permits force pushes to the protected branch by anyone with write access to the repository. Set to `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://help.github.com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation."
+        /// Permits force pushes to the protected branch by anyone with write access to the repository. Set to `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation."
         #[serde(skip_serializing_if = "Option::is_none", default, deserialize_with = "crate::v1_1_4::support::deserialize_some")]
         pub allow_force_pushes: ::std::option::Option<::std::option::Option<bool>>,
 
-        /// Allows deletion of the protected branch by anyone with write access to the repository. Set to `false` to prevent deletion of the protected branch. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://help.github.com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation.
+        /// Allows deletion of the protected branch by anyone with write access to the repository. Set to `false` to prevent deletion of the protected branch. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/en/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub allow_deletions: ::std::option::Option<bool>,
+
+        /// Blocks creation of new branches which match the branch protection pattern. Set to `true` to prohibit new branch creation. Default: `false`.
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub block_creations: ::std::option::Option<bool>,
 
         /// Requires all conversations on code to be resolved before a pull request can be merged into a branch that matches this rule. Set to `false` to disable. Default: `false`.
         #[serde(skip_serializing_if = "Option::is_none", default)]
@@ -315,7 +319,7 @@ pub mod body {
             #[serde(skip_serializing_if = "Option::is_none", default)]
             pub dismiss_stale_reviews: ::std::option::Option<bool>,
 
-            /// Blocks merging pull requests until [code owners](https://help.github.com/articles/about-code-owners/) review them.
+            /// Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) review them.
             #[serde(skip_serializing_if = "Option::is_none", default)]
             pub require_code_owner_reviews: ::std::option::Option<bool>,
 
@@ -323,8 +327,8 @@ pub mod body {
             #[serde(skip_serializing_if = "Option::is_none", default)]
             pub required_approving_review_count: ::std::option::Option<i64>,
 
-            #[serde(skip_serializing_if = "Option::is_none", default, deserialize_with = "crate::v1_1_4::support::deserialize_some")]
-            pub bypass_pull_request_allowances: ::std::option::Option<::std::option::Option<crate::v1_1_4::request::repos_update_branch_protection::body::json::required_pull_request_reviews::BypassPullRequestAllowances<'a>>>,
+            #[serde(skip_serializing_if = "Option::is_none", default)]
+            pub bypass_pull_request_allowances: ::std::option::Option<crate::v1_1_4::request::repos_update_branch_protection::body::json::required_pull_request_reviews::BypassPullRequestAllowances<'a>>,
 
             #[serde(flatten)]
             pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
@@ -383,7 +387,7 @@ pub mod body {
                 pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
             }
 
-            /// Allow specific users or teams to bypass pull request requirements. Set to `null` to disable.
+            /// Allow specific users or teams to bypass pull request requirements.
             #[allow(non_snake_case)]
             #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
             pub struct BypassPullRequestAllowances<'a> {

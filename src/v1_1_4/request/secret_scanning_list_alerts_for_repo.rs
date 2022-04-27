@@ -1,7 +1,9 @@
 
 //! List secret scanning alerts for a repository
 //! 
-//! Lists secret scanning alerts for a private repository, from newest to oldest. To use this endpoint, you must be an administrator for the repository or organization, and you must use an access token with the `repo` scope or `security_events` scope.
+//! Lists secret scanning alerts for an eligible repository, from newest to oldest.
+//! To use this endpoint, you must be an administrator for the repository or for the organization that owns the repository, and you must use a personal access token with the `repo` scope or `security_events` scope.
+//! For public repositories, you may instead use the `public_repo` scope.
 //! 
 //! GitHub Apps must have the `secret_scanning_alerts` read permission to use this endpoint.
 //! 

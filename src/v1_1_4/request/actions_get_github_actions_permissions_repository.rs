@@ -1,10 +1,9 @@
 
 //! Get GitHub Actions permissions for a repository
 //! 
-//! Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions allowed to run in the repository.
+//! Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions and reusable workflows allowed to run in the repository.
 //! 
-//! You must authenticate using an access token with the `repo` scope to use this
-//! endpoint. GitHub Apps must have the `administration` repository permission to use this API.
+//! You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `administration` repository permission to use this API.
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/actions#get-github-actions-permissions-for-a-repository)
 

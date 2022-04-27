@@ -2,7 +2,11 @@
 //! Create or update a secret for the authenticated user
 //! 
 //! Creates or updates a secret for a user's codespace with an encrypted value. Encrypt your secret using
-//! [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). You must authenticate using an access token with the `user` scope to use this endpoint. User must also have Codespaces access to use this endpoint.
+//! [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages).
+//! 
+//! You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must also have Codespaces access to use this endpoint.
+//! 
+//! GitHub Apps must have read access to the `codespaces_user_secrets` user permission and `codespaces_secrets` repository permission on all referenced repositories to use this endpoint.
 //! 
 //! #### Example encrypting a secret using Node.js
 //! 
@@ -303,7 +307,8 @@ pub mod body {
     #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
     pub struct Json<'a> {
         /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/reference/codespaces#get-the-public-key-for-the-authenticated-user) endpoint.
-        pub encrypted_value: ::std::borrow::Cow<'a, str>,
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub encrypted_value: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
         /// ID of the key you used to encrypt the secret.
         pub key_id: ::std::borrow::Cow<'a, str>,

@@ -1,11 +1,11 @@
 
-//! Set allowed actions for an enterprise
+//! Set allowed actions and reusable workflows for an enterprise
 //! 
-//! Sets the actions that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
+//! Sets the actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
 //! 
 //! You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-allowed-actions-for-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#set-allowed-actions-for-an-enterprise)
 
 pub struct Content<Body>
 {

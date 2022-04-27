@@ -1,11 +1,13 @@
 
 //! Update a codespace for the authenticated user
 //! 
-//! Updates a codespace owned by the authenticated user. Currently only the codespace's machine type can be modified using this endpoint.
+//! Updates a codespace owned by the authenticated user. Currently only the codespace's machine type and recent folders can be modified using this endpoint.
 //! 
-//! Once you specify a new machine type it will be applied the next time your codespace is started.
+//! If you specify a new machine type it will be applied the next time your codespace is started.
 //! 
 //! You must authenticate using an access token with the `codespace` scope to use this endpoint.
+//! 
+//! GitHub Apps must have write access to the `codespaces` repository permission to use this endpoint.
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/codespaces#update-a-codespace-for-the-authenticated-user)
 
@@ -237,6 +239,14 @@ pub mod body {
         /// A valid machine to transition this codespace to.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub machine: ::std::option::Option<::std::borrow::Cow<'a, str>>,
+
+        /// Display name for this codespace
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub display_name: ::std::option::Option<::std::borrow::Cow<'a, str>>,
+
+        /// Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub recent_folders: ::std::option::Option<::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>>,
 
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>

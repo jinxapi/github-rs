@@ -253,7 +253,7 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub private: ::std::option::Option<bool>,
 
-        /// Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. Note: For GitHub Enterprise Server and GitHub AE, this endpoint will only list repositories available to all users on the enterprise. For more information, see "[Creating an internal repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.
+        /// Can be `public` or `private`. If your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `visibility` can also be `internal`. Note: For GitHub Enterprise Server and GitHub AE, this endpoint will only list repositories available to all users on the enterprise. For more information, see "[Creating an internal repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-repository-visibility#about-internal-repositories)" in the GitHub Help documentation.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub visibility: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
@@ -285,7 +285,7 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub gitignore_template: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
-        /// Choose an [open source license template](https://choosealicense.com/) that best suits your needs, and then use the [license keyword](https://help.github.com/articles/licensing-a-repository/#searching-github-by-license-type) as the `license_template` string. For example, "mit" or "mpl-2.0".
+        /// Choose an [open source license template](https://choosealicense.com/) that best suits your needs, and then use the [license keyword](https://docs.github.com/articles/licensing-a-repository/#searching-github-by-license-type) as the `license_template` string. For example, "mit" or "mpl-2.0".
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub license_template: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 

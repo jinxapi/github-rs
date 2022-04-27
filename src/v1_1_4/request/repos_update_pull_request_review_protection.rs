@@ -1,7 +1,7 @@
 
 //! Update pull request review protection
 //! 
-//! Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://help.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+//! Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
 //! 
 //! Updating pull request review enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
 //! 
@@ -260,7 +260,7 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub dismiss_stale_reviews: ::std::option::Option<bool>,
 
-        /// Blocks merging pull requests until [code owners](https://help.github.com/articles/about-code-owners/) have reviewed.
+        /// Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) have reviewed.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub require_code_owner_reviews: ::std::option::Option<bool>,
 
@@ -268,8 +268,8 @@ pub mod body {
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub required_approving_review_count: ::std::option::Option<i64>,
 
-        #[serde(skip_serializing_if = "Option::is_none", default, deserialize_with = "crate::v1_1_4::support::deserialize_some")]
-        pub bypass_pull_request_allowances: ::std::option::Option<::std::option::Option<crate::v1_1_4::request::repos_update_pull_request_review_protection::body::json::BypassPullRequestAllowances<'a>>>,
+        #[serde(skip_serializing_if = "Option::is_none", default)]
+        pub bypass_pull_request_allowances: ::std::option::Option<crate::v1_1_4::request::repos_update_pull_request_review_protection::body::json::BypassPullRequestAllowances<'a>>,
 
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
@@ -293,7 +293,7 @@ pub mod body {
             pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
         }
 
-        /// Allow specific users or teams to bypass pull request requirements. Set to `null` to disable.
+        /// Allow specific users or teams to bypass pull request requirements.
         #[allow(non_snake_case)]
         #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
         pub struct BypassPullRequestAllowances<'a> {

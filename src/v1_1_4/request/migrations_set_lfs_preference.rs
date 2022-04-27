@@ -1,7 +1,7 @@
 
 //! Update Git LFS preference
 //! 
-//! You can import repositories from Subversion, Mercurial, and TFS that include files larger than 100MB. This ability is powered by [Git LFS](https://git-lfs.github.com). You can learn more about our LFS feature and working with large files [on our help site](https://help.github.com/articles/versioning-large-files/).
+//! You can import repositories from Subversion, Mercurial, and TFS that include files larger than 100MB. This ability is powered by [Git LFS](https://git-lfs.github.com). You can learn more about our LFS feature and working with large files [on our help site](https://docs.github.com/articles/versioning-large-files/).
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/migrations#update-git-lfs-preference)
 

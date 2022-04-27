@@ -5,7 +5,7 @@
 //! 
 //! You must authenticate using an access token with the `manage_runners:enterprise` scope to use this endpoint.
 //! 
-//! [API method documentation](https://docs.github.com/rest/reference/enterprise-admin#set-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
+//! [API method documentation](https://docs.github.com/rest/reference/actions#set-organization-access-to-a-self-hosted-runner-group-in-an-enterprise)
 
 pub struct Content<Body>
 {

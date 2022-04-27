@@ -3,7 +3,10 @@
 //! 
 //! Lists all secrets available for a user's Codespaces without revealing their
 //! encrypted values.
-//! You must authenticate using an access token with the `user` or `read:user` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+//! 
+//! You must authenticate using an access token with the `codespace` or `codespace:secrets` scope to use this endpoint. User must have Codespaces access to use this endpoint.
+//! 
+//! GitHub Apps must have read access to the `codespaces_user_secrets` user permission to use this endpoint.
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/codespaces#list-secrets-for-the-authenticated-user)
 

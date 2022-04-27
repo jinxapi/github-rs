@@ -1,5 +1,13 @@
 #![allow(non_snake_case)]
 
+#[path="actions_set_default_workflow_permissions.rs"]
+mod actions_set_default_workflow_permissions_Module;
+pub use actions_set_default_workflow_permissions_Module::*;
+
+#[path="actions_workflow_access_to_repository.rs"]
+mod actions_workflow_access_to_repository_Module;
+pub use actions_workflow_access_to_repository_Module::*;
+
 #[path="app_permissions.rs"]
 mod app_permissions_Module;
 pub use app_permissions_Module::*;

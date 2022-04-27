@@ -252,7 +252,7 @@ pub mod body {
         pub homepage: ::std::option::Option<::std::borrow::Cow<'a, str>>,
 
         /// Either `true` to make the repository private or `false` to make it public. Default: `false`.  
-        /// **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://help.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private. **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://help.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.
+        /// **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://docs.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private. **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://docs.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.
         #[serde(skip_serializing_if = "Option::is_none", default)]
         pub private: ::std::option::Option<bool>,
 
@@ -327,6 +327,9 @@ pub mod body {
             #[serde(skip_serializing_if = "Option::is_none", default)]
             pub secret_scanning: ::std::option::Option<crate::v1_1_4::request::repos_update::body::json::security_and_analysis::SecretScanning<'a>>,
 
+            #[serde(skip_serializing_if = "Option::is_none", default)]
+            pub secret_scanning_push_protection: ::std::option::Option<crate::v1_1_4::request::repos_update::body::json::security_and_analysis::SecretScanningPushProtection<'a>>,
+
             #[serde(flatten)]
             pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
         }
@@ -349,6 +352,18 @@ pub mod body {
             #[allow(non_snake_case)]
             #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
             pub struct SecretScanning<'a> {
+                /// Can be `enabled` or `disabled`.
+                #[serde(skip_serializing_if = "Option::is_none", default)]
+                pub status: ::std::option::Option<::std::borrow::Cow<'a, str>>,
+
+                #[serde(flatten)]
+                pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+            }
+
+            /// Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."
+            #[allow(non_snake_case)]
+            #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
+            pub struct SecretScanningPushProtection<'a> {
                 /// Can be `enabled` or `disabled`.
                 #[serde(skip_serializing_if = "Option::is_none", default)]
                 pub status: ::std::option::Option<::std::borrow::Cow<'a, str>>,
