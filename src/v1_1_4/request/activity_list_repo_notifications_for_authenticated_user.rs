@@ -30,29 +30,29 @@ fn url_string(
     url.push('/');
     ::querylizer::Simple::extend(&mut url, &p_repo, false, &::querylizer::encode_path)?;
     url.push_str("/notifications");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_all {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "all", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_participating {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "participating", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_since {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "since", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_before {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "before", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_per_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "per_page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "page", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)

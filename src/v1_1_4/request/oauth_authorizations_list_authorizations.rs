@@ -20,17 +20,17 @@ fn url_string(
     let mut url = String::with_capacity(trimmed.len() + 31);
     url.push_str(trimmed);
     url.push_str("/authorizations");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_per_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "per_page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_client_id {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "client_id", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)

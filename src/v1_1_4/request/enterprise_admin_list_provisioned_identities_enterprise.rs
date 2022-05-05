@@ -40,17 +40,17 @@ fn url_string(
     url.push_str("/scim/v2/enterprises/");
     ::querylizer::Simple::extend(&mut url, &p_enterprise, false, &::querylizer::encode_path)?;
     url.push_str("/Users");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_start_index {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "startIndex", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_count {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "count", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_filter {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "filter", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)

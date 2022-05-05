@@ -32,17 +32,17 @@ fn url_string(
     url.push_str("/code-scanning/alerts/");
     ::querylizer::Simple::extend(&mut url, &p_alert_number, false, &::querylizer::encode_path)?;
     url.push_str("/instances");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_per_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "per_page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_ref {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "ref", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)

@@ -46,29 +46,29 @@ fn url_string(
     url.push('/');
     ::querylizer::Simple::extend(&mut url, &p_repo, false, &::querylizer::encode_path)?;
     url.push_str("/code-scanning/analyses");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_tool_name {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "tool_name", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_tool_guid {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "tool_guid", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_per_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "per_page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_ref {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "ref", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_sarif_id {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "sarif_id", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)

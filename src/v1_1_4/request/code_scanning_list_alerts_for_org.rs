@@ -34,41 +34,41 @@ fn url_string(
     url.push_str("/orgs/");
     ::querylizer::Simple::extend(&mut url, &p_org, false, &::querylizer::encode_path)?;
     url.push_str("/code-scanning/alerts");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_tool_name {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "tool_name", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_tool_guid {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "tool_guid", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_before {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "before", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_after {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "after", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_per_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "per_page", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_direction {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "direction", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_state {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "state", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_sort {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "sort", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)

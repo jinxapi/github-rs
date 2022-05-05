@@ -9,6 +9,8 @@ use serde_json::Value;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
+    env_logger::init();
+
     let https = HttpsConnector::new();
     let hyper_client = hyper::Client::builder().build::<_, ::hyper::Body>(https);
 

@@ -29,13 +29,13 @@ fn url_string(
     url.push_str("/users/");
     ::querylizer::Simple::extend(&mut url, &p_username, false, &::querylizer::encode_path)?;
     url.push_str("/hovercard");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_subject_type {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "subject_type", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_subject_id {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "subject_id", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)

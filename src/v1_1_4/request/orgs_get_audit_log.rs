@@ -33,29 +33,29 @@ fn url_string(
     url.push_str("/orgs/");
     ::querylizer::Simple::extend(&mut url, &p_org, false, &::querylizer::encode_path)?;
     url.push_str("/audit-log");
-    let mut prefix = ::std::iter::once('?').fuse();
+    let mut prefix = '?';
     if let Some(value) = &q_phrase {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "phrase", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_include {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "include", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_after {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "after", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_before {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "before", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_order {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "order", value, false, &::querylizer::encode_query)?;
     }
     if let Some(value) = &q_per_page {
-        url.push(prefix.next().unwrap_or('&'));
+        url.push(::std::mem::replace(&mut prefix, '&'));
         ::querylizer::Form::extend(&mut url, "per_page", value, false, &::querylizer::encode_query)?;
     }
     Ok(url)
