@@ -1,4 +1,3 @@
-
 //! Add status check contexts
 //! 
 //! Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -208,38 +207,41 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&::serde_json::value::Value> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
+/// Types for body parameter in [`super::repos_add_status_check_contexts`]
+pub mod body {
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&::serde_json::value::Value> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&::serde_json::value::Value> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&::serde_json::value::Value> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&::serde_json::value::Value> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&::serde_json::value::Value> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
 }

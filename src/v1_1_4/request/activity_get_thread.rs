@@ -1,4 +1,3 @@
-
 //! Get a thread
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/activity#get-a-thread)

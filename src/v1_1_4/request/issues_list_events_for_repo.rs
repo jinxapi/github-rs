@@ -1,4 +1,3 @@
-
 //! List issue events for a repository
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#list-issue-events-for-a-repository)

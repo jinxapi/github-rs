@@ -1,4 +1,3 @@
-
 //! List deliveries for a repository webhook
 //! 
 //! Returns a list of webhook deliveries for a webhook configured in a repository.

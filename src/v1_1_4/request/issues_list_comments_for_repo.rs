@@ -1,4 +1,3 @@
-
 //! List issue comments for a repository
 //! 
 //! By default, Issue Comments are ordered by ascending ID.

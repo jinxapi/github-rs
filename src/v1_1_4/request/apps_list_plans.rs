@@ -1,4 +1,3 @@
-
 //! List plans
 //! 
 //! Lists all plans that are part of your GitHub Marketplace listing.

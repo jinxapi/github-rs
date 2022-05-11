@@ -1,4 +1,3 @@
-
 //! Remove all labels from an issue
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#remove-all-labels-from-an-issue)

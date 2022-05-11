@@ -1,4 +1,3 @@
-
 //! List notifications for the authenticated user
 //! 
 //! List all notifications for the current user, sorted by most recently updated.

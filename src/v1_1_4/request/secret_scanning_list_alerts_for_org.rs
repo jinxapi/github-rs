@@ -1,4 +1,3 @@
-
 //! List secret scanning alerts for an organization
 //! 
 //! Lists secret scanning alerts for eligible repositories in an organization, from newest to oldest.

@@ -1,4 +1,3 @@
-
 //! Get GitHub meta information
 //! 
 //! Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/articles/about-github-s-ip-addresses/)."

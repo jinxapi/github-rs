@@ -1,4 +1,3 @@
-
 //! List secret scanning alerts for a repository
 //! 
 //! Lists secret scanning alerts for an eligible repository, from newest to oldest.

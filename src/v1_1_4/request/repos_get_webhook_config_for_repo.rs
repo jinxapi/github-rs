@@ -1,4 +1,3 @@
-
 //! Get a webhook configuration for a repository
 //! 
 //! Returns the webhook configuration for a repository. To get more information about the webhook, including the `active` state and `events`, use "[Get a repository webhook](/rest/reference/orgs#get-a-repository-webhook)."

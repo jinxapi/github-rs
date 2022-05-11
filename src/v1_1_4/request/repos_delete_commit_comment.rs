@@ -1,4 +1,3 @@
-
 //! Delete a commit comment
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-commit-comment)

@@ -1,4 +1,3 @@
-
 //! List repositories starred by a user
 //! 
 //! Lists repositories a user has starred.

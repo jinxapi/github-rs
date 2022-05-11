@@ -1,4 +1,3 @@
-
 //! List reactions for a pull request review comment
 //! 
 //! List the reactions to a [pull request review comment](https://docs.github.com/rest/reference/pulls#review-comments).

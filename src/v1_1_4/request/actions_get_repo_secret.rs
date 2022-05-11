@@ -1,4 +1,3 @@
-
 //! Get a repository secret
 //! 
 //! Gets a single repository secret without revealing its encrypted value. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.

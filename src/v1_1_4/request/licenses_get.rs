@@ -1,4 +1,3 @@
-
 //! Get a license
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/licenses#get-a-license)

@@ -1,4 +1,3 @@
-
 //! List repository events
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/activity#list-repository-events)

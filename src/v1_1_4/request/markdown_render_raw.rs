@@ -1,4 +1,3 @@
-
 //! Render a Markdown document in raw mode
 //! 
 //! You must send Markdown as plain text (using a `Content-Type` header of `text/plain` or `text/x-markdown`) to this endpoint, rather than using JSON format. In raw mode, [GitHub Flavored Markdown](https://github.github.com/gfm/) is not supported and Markdown will be rendered in plain format like a README.md file. Markdown content must be 400 KB or less.
@@ -186,38 +185,41 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&::std::borrow::Cow<'static, str>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
+/// Types for body parameter in [`super::markdown_render_raw`]
+pub mod body {
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&::std::borrow::Cow<'static, str>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::std::borrow::Cow<'static, str>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(value.as_bytes().to_owned().into())
-            .with_content_type(&b"text/plain"[..])
-        )
+        fn try_from(value: &::std::borrow::Cow<'static, str>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(value.as_bytes().to_owned().into())
+                .with_content_type(&b"text/plain"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&::std::borrow::Cow<'static, str>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&::std::borrow::Cow<'static, str>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::std::borrow::Cow<'static, str>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(value.as_bytes().to_owned().into())
-            .with_content_type(&b"text/plain"[..])
-        )
+        fn try_from(value: &::std::borrow::Cow<'static, str>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(value.as_bytes().to_owned().into())
+                .with_content_type(&b"text/plain"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&::std::borrow::Cow<'static, str>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&::std::borrow::Cow<'static, str>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::std::borrow::Cow<'static, str>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(value.as_bytes().to_owned().into())
-            .with_content_type(&b"text/plain"[..])
-        )
+        fn try_from(value: &::std::borrow::Cow<'static, str>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(value.as_bytes().to_owned().into())
+                .with_content_type(&b"text/plain"[..])
+            )
+        }
     }
 }

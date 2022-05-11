@@ -1,4 +1,3 @@
-
 //! Delete an environment
 //! 
 //! You must authenticate using an access token with the repo scope to use this endpoint.

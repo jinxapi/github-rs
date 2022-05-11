@@ -1,4 +1,3 @@
-
 //! Get an organization membership for the authenticated user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#get-an-organization-membership-for-the-authenticated-user)

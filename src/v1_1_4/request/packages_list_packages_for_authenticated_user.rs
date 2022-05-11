@@ -1,4 +1,3 @@
-
 //! List packages for the authenticated user's namespace
 //! 
 //! Lists packages owned by the authenticated user within the user's namespace.

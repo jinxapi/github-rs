@@ -1,4 +1,3 @@
-
 //! Compare two commits
 //! 
 //! The `basehead` param is comprised of two parts: `base` and `head`. Both must be branch names in `repo`. To compare branches across other repositories in the same network as `repo`, use the format `<USERNAME>:branch`.

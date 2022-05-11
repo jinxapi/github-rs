@@ -1,4 +1,3 @@
-
 //! Cancel an import
 //! 
 //! Stop an import for a repository.

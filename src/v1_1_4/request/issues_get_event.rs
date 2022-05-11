@@ -1,4 +1,3 @@
-
 //! Get an issue event
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#get-an-issue-event)

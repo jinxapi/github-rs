@@ -1,4 +1,3 @@
-
 //! List user account issues assigned to the authenticated user
 //! 
 //! List issues across owned and member repositories assigned to the authenticated user.

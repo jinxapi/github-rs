@@ -1,4 +1,3 @@
-
 //! Remove a repository from a team (Legacy)
 //! 
 //! **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove a repository from a team](https://docs.github.com/rest/reference/teams#remove-a-repository-from-a-team) endpoint.

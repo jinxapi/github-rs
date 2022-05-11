@@ -1,4 +1,3 @@
-
 //! Get an issue
 //! 
 //! The API returns a [`301 Moved Permanently` status](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-redirects-redirects) if the issue was

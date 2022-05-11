@@ -1,4 +1,3 @@
-
 //! List child teams
 //! 
 //! Lists the child teams of the team specified by `{team_slug}`.

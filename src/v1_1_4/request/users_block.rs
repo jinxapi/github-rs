@@ -1,4 +1,3 @@
-
 //! Block a user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/users#block-a-user)

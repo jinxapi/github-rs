@@ -1,4 +1,3 @@
-
 //! Remove a custom label from a self-hosted runner for a repository
 //! 
 //! Remove a custom label from a self-hosted runner configured

@@ -1,4 +1,3 @@
-
 //! Get a webhook delivery for an organization webhook
 //! 
 //! Returns a delivery for a webhook configured in an organization.

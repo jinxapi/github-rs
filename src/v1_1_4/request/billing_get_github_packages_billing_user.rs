@@ -1,4 +1,3 @@
-
 //! Get GitHub Packages billing for a user
 //! 
 //! Gets the free and paid storage used for GitHub Packages in gigabytes.

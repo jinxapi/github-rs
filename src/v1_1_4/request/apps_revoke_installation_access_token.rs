@@ -1,4 +1,3 @@
-
 //! Revoke an installation access token
 //! 
 //! Revokes the installation token you're using to authenticate as an installation and access this endpoint.

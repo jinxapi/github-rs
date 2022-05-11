@@ -1,4 +1,3 @@
-
 //! List gists for a user
 //! 
 //! Lists public gists for the specified user:

@@ -1,4 +1,3 @@
-
 //! List app installations accessible to the user access token
 //! 
 //! Lists installations of your GitHub App that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.

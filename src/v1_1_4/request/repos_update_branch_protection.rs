@@ -1,4 +1,3 @@
-
 //! Update branch protection
 //! 
 //! Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -214,42 +213,6 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&crate::v1_1_4::request::repos_update_branch_protection::body::Json<'a>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::repos_update_branch_protection::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&crate::v1_1_4::request::repos_update_branch_protection::body::Json<'a>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::repos_update_branch_protection::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&crate::v1_1_4::request::repos_update_branch_protection::body::Json<'a>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::repos_update_branch_protection::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
 /// Types for body parameter in [`super::repos_update_branch_protection`]
 pub mod body {
     #[allow(non_snake_case)]
@@ -308,6 +271,23 @@ pub mod body {
             pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
         }
 
+        /// Types for fields in [`RequiredStatusChecks`]
+        pub mod required_status_checks {
+            #[allow(non_snake_case)]
+            #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
+            pub struct Checks<'a> {
+                /// The name of the required check
+                pub context: ::std::borrow::Cow<'a, str>,
+
+                /// The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.
+                #[serde(skip_serializing_if = "Option::is_none", default)]
+                pub app_id: ::std::option::Option<i64>,
+
+                #[serde(flatten)]
+                pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+            }
+        }
+
         /// Require at least one approving review on a pull request, before merging. Set to `null` to disable.
         #[allow(non_snake_case)]
         #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
@@ -332,41 +312,6 @@ pub mod body {
 
             #[serde(flatten)]
             pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
-        }
-
-        /// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable.
-        #[allow(non_snake_case)]
-        #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
-        pub struct Restrictions<'a> {
-            /// The list of user `login`s with push access
-            pub users: ::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>,
-
-            /// The list of team `slug`s with push access
-            pub teams: ::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>,
-
-            /// The list of app `slug`s with push access
-            #[serde(skip_serializing_if = "Option::is_none", default)]
-            pub apps: ::std::option::Option<::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>>,
-
-            #[serde(flatten)]
-            pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
-        }
-
-        /// Types for fields in [`RequiredStatusChecks`]
-        pub mod required_status_checks {
-            #[allow(non_snake_case)]
-            #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
-            pub struct Checks<'a> {
-                /// The name of the required check
-                pub context: ::std::borrow::Cow<'a, str>,
-
-                /// The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.
-                #[serde(skip_serializing_if = "Option::is_none", default)]
-                pub app_id: ::std::option::Option<i64>,
-
-                #[serde(flatten)]
-                pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
-            }
         }
 
         /// Types for fields in [`RequiredPullRequestReviews`]
@@ -402,6 +347,60 @@ pub mod body {
                 #[serde(flatten)]
                 pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
             }
+        }
+
+        /// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable.
+        #[allow(non_snake_case)]
+        #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
+        pub struct Restrictions<'a> {
+            /// The list of user `login`s with push access
+            pub users: ::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>,
+
+            /// The list of team `slug`s with push access
+            pub teams: ::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>,
+
+            /// The list of app `slug`s with push access
+            #[serde(skip_serializing_if = "Option::is_none", default)]
+            pub apps: ::std::option::Option<::std::borrow::Cow<'a, [::std::borrow::Cow<'a, str>]>>,
+
+            #[serde(flatten)]
+            pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+        }
+    }
+
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
         }
     }
 }

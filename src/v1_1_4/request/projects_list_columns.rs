@@ -1,4 +1,3 @@
-
 //! List project columns
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/projects#list-project-columns)

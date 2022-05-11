@@ -1,4 +1,3 @@
-
 //! Get the Zen of GitHub
 //! 
 //! Get a random sentence from the Zen of GitHub

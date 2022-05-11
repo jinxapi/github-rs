@@ -1,4 +1,3 @@
-
 //! List repository secrets
 //! 
 //! Lists all secrets available in a repository without revealing their encrypted values. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.

@@ -1,4 +1,3 @@
-
 //! Set default workflow permissions for a repository
 //! 
 //! Sets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository, and sets if GitHub Actions
@@ -203,38 +202,41 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
+/// Types for body parameter in [`super::actions_set_github_actions_default_workflow_permissions_repository`]
+pub mod body {
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
 }

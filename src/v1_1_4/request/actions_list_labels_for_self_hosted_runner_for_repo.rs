@@ -1,4 +1,3 @@
-
 //! List labels for a self-hosted runner for a repository
 //! 
 //! Lists all labels for a self-hosted runner configured in a repository.

@@ -1,4 +1,3 @@
-
 //! List IdP groups for a team
 //! 
 //! Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.

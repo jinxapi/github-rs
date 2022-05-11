@@ -1,4 +1,3 @@
-
 //! Delete an environment secret
 //! 
 //! Deletes a secret in an environment using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `secrets` repository permission to use this endpoint.

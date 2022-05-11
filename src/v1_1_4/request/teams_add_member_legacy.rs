@@ -1,4 +1,3 @@
-
 //! Add team member (Legacy)
 //! 
 //! The "Add team member" endpoint (described below) is deprecated.

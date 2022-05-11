@@ -1,4 +1,3 @@
-
 //! Cancel a workflow run
 //! 
 //! Cancels a workflow run using its `id`. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.

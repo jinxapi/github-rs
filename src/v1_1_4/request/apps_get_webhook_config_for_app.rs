@@ -1,4 +1,3 @@
-
 //! Get a webhook configuration for an app
 //! 
 //! Returns the webhook configuration for a GitHub App. For more information about configuring a webhook for your app, see "[Creating a GitHub App](/developers/apps/creating-a-github-app)."

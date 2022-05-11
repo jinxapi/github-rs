@@ -1,4 +1,3 @@
-
 //! Get repository permissions for a user
 //! 
 //! Checks the repository permission of a collaborator. The possible repository permissions are `admin`, `write`, `read`, and `none`.

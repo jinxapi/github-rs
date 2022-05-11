@@ -1,4 +1,3 @@
-
 //! List users
 //! 
 //! Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.

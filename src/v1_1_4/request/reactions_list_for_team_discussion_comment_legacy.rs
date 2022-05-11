@@ -1,4 +1,3 @@
-
 //! List reactions for a team discussion comment (Legacy)
 //! 
 //! **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion comment`](https://docs.github.com/rest/reference/reactions#list-reactions-for-a-team-discussion-comment) endpoint.

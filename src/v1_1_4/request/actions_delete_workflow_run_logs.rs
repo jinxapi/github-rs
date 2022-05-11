@@ -1,4 +1,3 @@
-
 //! Delete workflow run logs
 //! 
 //! Deletes all logs for a workflow run. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `actions:write` permission to use this endpoint.

@@ -1,4 +1,3 @@
-
 //! List project cards
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/projects#list-project-cards)

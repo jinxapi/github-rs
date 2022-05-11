@@ -1,4 +1,3 @@
-
 //! Get a workflow run attempt
 //! 
 //! Gets a specific workflow run attempt. Anyone with read access to the repository

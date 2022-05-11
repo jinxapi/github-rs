@@ -1,4 +1,3 @@
-
 //! Create a check run
 //! 
 //! **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
@@ -203,42 +202,6 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&crate::v1_1_4::request::checks_create::body::Json<'a>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::checks_create::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&crate::v1_1_4::request::checks_create::body::Json<'a>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::checks_create::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&crate::v1_1_4::request::checks_create::body::Json<'a>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::checks_create::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
 /// Types for body parameter in [`super::checks_create`]
 pub mod body {
     #[allow(non_snake_case)]
@@ -314,22 +277,6 @@ pub mod body {
             pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
         }
 
-        #[allow(non_snake_case)]
-        #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
-        pub struct Actions<'a> {
-            /// The text to be displayed on a button in the web UI. The maximum size is 20 characters.
-            pub label: ::std::borrow::Cow<'a, str>,
-
-            /// A short explanation of what this action would do. The maximum size is 40 characters.
-            pub description: ::std::borrow::Cow<'a, str>,
-
-            /// A reference for the action on the integrator's system. The maximum size is 20 characters.
-            pub identifier: ::std::borrow::Cow<'a, str>,
-
-            #[serde(flatten)]
-            pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
-        }
-
         /// Types for fields in [`Output`]
         pub mod output {
             #[allow(non_snake_case)]
@@ -386,6 +333,58 @@ pub mod body {
                 #[serde(flatten)]
                 pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
             }
+        }
+
+        #[allow(non_snake_case)]
+        #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
+        pub struct Actions<'a> {
+            /// The text to be displayed on a button in the web UI. The maximum size is 20 characters.
+            pub label: ::std::borrow::Cow<'a, str>,
+
+            /// A short explanation of what this action would do. The maximum size is 40 characters.
+            pub description: ::std::borrow::Cow<'a, str>,
+
+            /// A reference for the action on the integrator's system. The maximum size is 20 characters.
+            pub identifier: ::std::borrow::Cow<'a, str>,
+
+            #[serde(flatten)]
+            pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+        }
+    }
+
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
         }
     }
 }

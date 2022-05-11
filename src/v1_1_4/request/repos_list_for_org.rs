@@ -1,4 +1,3 @@
-
 //! List organization repositories
 //! 
 //! Lists repositories for the specified organization.

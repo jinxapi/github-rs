@@ -1,4 +1,3 @@
-
 //! Delete a tag protection state for a repository
 //! 
 //! This deletes a tag protection state for a repository.

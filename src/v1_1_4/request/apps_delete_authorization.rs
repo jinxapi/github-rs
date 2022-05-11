@@ -1,4 +1,3 @@
-
 //! Delete an app authorization
 //! 
 //! OAuth application owners can revoke a grant for their OAuth application and a specific user. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
@@ -191,42 +190,6 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&crate::v1_1_4::request::apps_delete_authorization::body::Json<'a>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::apps_delete_authorization::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&crate::v1_1_4::request::apps_delete_authorization::body::Json<'a>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::apps_delete_authorization::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&crate::v1_1_4::request::apps_delete_authorization::body::Json<'a>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::apps_delete_authorization::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
 /// Types for body parameter in [`super::apps_delete_authorization`]
 pub mod body {
     #[allow(non_snake_case)]
@@ -237,5 +200,41 @@ pub mod body {
 
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+    }
+
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
 }

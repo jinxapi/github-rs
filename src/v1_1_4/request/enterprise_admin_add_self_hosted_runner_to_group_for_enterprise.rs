@@ -1,4 +1,3 @@
-
 //! Add a self-hosted runner to a group for an enterprise
 //! 
 //! Adds a self-hosted runner to a runner group configured in an enterprise.

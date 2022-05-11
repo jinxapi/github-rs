@@ -1,4 +1,3 @@
-
 //! List timeline events for an issue
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#list-timeline-events-for-an-issue)

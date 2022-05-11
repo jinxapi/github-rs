@@ -1,4 +1,3 @@
-
 //! Add or update team membership for a user
 //! 
 //! Team synchronization is available for organizations using GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
@@ -217,42 +216,6 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json<'a>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json<'a>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json<'a>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
 /// Types for body parameter in [`super::teams_add_or_update_membership_for_user_in_org`]
 pub mod body {
     #[allow(non_snake_case)]
@@ -266,5 +229,41 @@ pub mod body {
 
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+    }
+
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&Json<'a>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &Json<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
 }

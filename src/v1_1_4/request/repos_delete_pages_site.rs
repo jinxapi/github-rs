@@ -1,4 +1,3 @@
-
 //! Delete a GitHub Pages site
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-github-pages-site)

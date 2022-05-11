@@ -1,4 +1,3 @@
-
 //! List outside collaborators for an organization
 //! 
 //! List all users who are outside collaborators of an organization.

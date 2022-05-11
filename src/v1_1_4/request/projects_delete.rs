@@ -1,4 +1,3 @@
-
 //! Delete a project
 //! 
 //! Deletes a project board. Returns a `404 Not Found` status if projects are disabled.

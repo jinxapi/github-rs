@@ -1,4 +1,3 @@
-
 //! Check team permissions for a repository (Legacy)
 //! 
 //! **Note**: Repositories inherited through a parent team will also be checked.

@@ -1,4 +1,3 @@
-
 //! Get the hourly commit count for each day
 //! 
 //! Each array contains the day number, hour number, and number of commits:

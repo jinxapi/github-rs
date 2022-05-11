@@ -1,4 +1,3 @@
-
 //! Check team permissions for a project (Legacy)
 //! 
 //! **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Check team permissions for a project](https://docs.github.com/rest/reference/teams#check-team-permissions-for-a-project) endpoint.

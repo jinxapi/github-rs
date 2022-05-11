@@ -1,4 +1,3 @@
-
 //! Delete a workflow run
 //! 
 //! Delete a specific workflow run. Anyone with write access to the repository can use this endpoint. If the repository is

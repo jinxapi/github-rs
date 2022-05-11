@@ -1,4 +1,3 @@
-
 //! Delete a team
 //! 
 //! To delete a team, the authenticated user must be an organization owner or team maintainer.

@@ -1,4 +1,3 @@
-
 //! Approve a workflow run for a fork pull request
 //! 
 //! Approves a workflow run for a pull request from a public fork of a first time contributor. For more information, see ["Approving workflow runs from public forks](https://docs.github.com/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks)."

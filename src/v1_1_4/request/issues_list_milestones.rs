@@ -1,4 +1,3 @@
-
 //! List milestones
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#list-milestones)

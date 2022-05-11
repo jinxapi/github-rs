@@ -1,4 +1,3 @@
-
 //! Get rate limit status for the authenticated user
 //! 
 //! **Note:** Accessing this endpoint does not count against your REST API rate limit.

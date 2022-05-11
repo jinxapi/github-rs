@@ -1,4 +1,3 @@
-
 //! Remove team membership for a user (Legacy)
 //! 
 //! **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [Remove team membership for a user](https://docs.github.com/rest/reference/teams#remove-team-membership-for-a-user) endpoint.

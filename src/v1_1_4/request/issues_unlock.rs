@@ -1,4 +1,3 @@
-
 //! Unlock an issue
 //! 
 //! Users with push access can unlock an issue's conversation.

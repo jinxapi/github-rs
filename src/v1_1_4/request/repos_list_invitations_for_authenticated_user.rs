@@ -1,4 +1,3 @@
-
 //! List repository invitations for the authenticated user
 //! 
 //! When authenticating as a user, this endpoint will list all currently open repository invitations for that user.

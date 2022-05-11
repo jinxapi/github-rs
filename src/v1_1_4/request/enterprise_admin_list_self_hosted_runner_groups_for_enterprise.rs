@@ -1,4 +1,3 @@
-
 //! List self-hosted runner groups for an enterprise
 //! 
 //! Lists all self-hosted runner groups for an enterprise.

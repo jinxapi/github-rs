@@ -1,4 +1,3 @@
-
 //! Get Octocat
 //! 
 //! Get the octocat as ASCII art

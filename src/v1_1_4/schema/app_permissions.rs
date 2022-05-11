@@ -1,4 +1,3 @@
-
 /// App Permissions
 /// 
 /// The permissions granted to the user-to-server access token.

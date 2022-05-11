@@ -1,4 +1,3 @@
-
 //! Get all gitignore templates
 //! 
 //! List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/reference/repos#create-a-repository-for-the-authenticated-user).

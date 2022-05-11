@@ -1,4 +1,3 @@
-
 //! Get allowed actions and reusable workflows for an enterprise
 //! 
 //! Gets the selected actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."

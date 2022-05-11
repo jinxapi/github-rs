@@ -1,4 +1,3 @@
-
 //! Delete team discussion comment reaction
 //! 
 //! **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.

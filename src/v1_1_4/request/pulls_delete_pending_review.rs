@@ -1,4 +1,3 @@
-
 //! Delete a pending review for a pull request
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/pulls#delete-a-pending-review-for-a-pull-request)

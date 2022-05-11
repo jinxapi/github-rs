@@ -1,4 +1,3 @@
-
 //! Add an email address for the authenticated user
 //! 
 //! This endpoint is accessible with the `user` scope.
@@ -186,38 +185,41 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&::serde_json::value::Value> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
+/// Types for body parameter in [`super::users_add_email_for_authenticated_user`]
+pub mod body {
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&::serde_json::value::Value> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&::serde_json::value::Value> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&::serde_json::value::Value> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&::serde_json::value::Value> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&::serde_json::value::Value> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &::serde_json::value::Value) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
 }

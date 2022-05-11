@@ -1,4 +1,3 @@
-
 //! List requested reviewers for a pull request
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/pulls#list-requested-reviewers-for-a-pull-request)

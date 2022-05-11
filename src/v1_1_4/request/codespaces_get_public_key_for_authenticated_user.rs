@@ -1,4 +1,3 @@
-
 //! Get public key for the authenticated user
 //! 
 //! Gets your public key, which you need to encrypt secrets. You need to encrypt a secret before you can create or update secrets.

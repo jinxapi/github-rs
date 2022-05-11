@@ -1,4 +1,3 @@
-
 //! Get the weekly commit count
 //! 
 //! Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit counts for non-owners, you can subtract `owner` from `all`.

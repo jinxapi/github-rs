@@ -1,4 +1,3 @@
-
 //! Create or update an environment
 //! 
 //! Create or update an environment with protection rules, such as required reviewers. For more information about environment protection rules, see "[Environments](/actions/reference/environments#environment-protection-rules)."
@@ -213,42 +212,6 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
 /// Types for body parameter in [`super::repos_create_or_update_environment`]
 pub mod body {
     #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
@@ -298,6 +261,42 @@ pub mod body {
 
             #[serde(flatten)]
             pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+        }
+    }
+
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json<'a>>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
         }
     }
 }

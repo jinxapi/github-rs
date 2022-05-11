@@ -1,4 +1,3 @@
-
 //! List secret scanning alerts for an enterprise
 //! 
 //! Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.

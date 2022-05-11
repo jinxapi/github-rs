@@ -1,4 +1,3 @@
-
 //! Get shared storage billing for a user
 //! 
 //! Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.

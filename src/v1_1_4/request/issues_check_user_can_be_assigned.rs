@@ -1,4 +1,3 @@
-
 //! Check if a user can be assigned
 //! 
 //! Checks if a user has permission to be assigned to an issue in this repository.

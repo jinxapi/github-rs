@@ -1,4 +1,3 @@
-
 //! List commit comments for a repository
 //! 
 //! Commit Comments use [these custom media types](https://docs.github.com/rest/reference/repos#custom-media-types). You can read more about the use of media types in the API [here](https://docs.github.com/rest/overview/media-types/).

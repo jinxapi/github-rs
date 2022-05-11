@@ -1,4 +1,3 @@
-
 //! Get a tree
 //! 
 //! Returns a single tree using the SHA1 value for that tree.

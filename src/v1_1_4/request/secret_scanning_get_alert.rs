@@ -1,4 +1,3 @@
-
 //! Get a secret scanning alert
 //! 
 //! Gets a single secret scanning alert detected in an eligible repository.

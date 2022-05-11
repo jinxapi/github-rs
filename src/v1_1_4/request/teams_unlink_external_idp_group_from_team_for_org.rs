@@ -1,4 +1,3 @@
-
 //! Remove the connection between an external group and a team
 //! 
 //! Deletes a connection between a team and an external group.

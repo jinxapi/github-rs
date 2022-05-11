@@ -1,4 +1,3 @@
-
 //! Get a label
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#get-a-label)

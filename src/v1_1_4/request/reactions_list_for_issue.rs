@@ -1,4 +1,3 @@
-
 //! List reactions for an issue
 //! 
 //! List the reactions to an [issue](https://docs.github.com/rest/reference/issues).

@@ -1,4 +1,3 @@
-
 //! List repositories for the authenticated user
 //! 
 //! Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.

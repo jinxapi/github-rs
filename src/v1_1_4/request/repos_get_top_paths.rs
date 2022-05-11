@@ -1,4 +1,3 @@
-
 //! Get top referral paths
 //! 
 //! Get the top 10 popular contents over the last 14 days.

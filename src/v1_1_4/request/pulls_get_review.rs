@@ -1,4 +1,3 @@
-
 //! Get a review for a pull request
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/pulls#get-a-review-for-a-pull-request)

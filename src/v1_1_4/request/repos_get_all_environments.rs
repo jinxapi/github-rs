@@ -1,4 +1,3 @@
-
 //! Get all environments
 //! 
 //! Get all environments for a repository.

@@ -1,4 +1,3 @@
-
 //! Get GitHub Actions permissions for an organization
 //! 
 //! Gets the GitHub Actions permissions policy for repositories and allowed actions and reusable workflows in an organization.

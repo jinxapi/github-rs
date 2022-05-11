@@ -1,4 +1,3 @@
-
 //! Get GitHub Actions billing for an enterprise
 //! 
 //! Gets the summary of the free and paid GitHub Actions minutes used.

@@ -1,4 +1,3 @@
-
 //! Get a deploy key
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#get-a-deploy-key)

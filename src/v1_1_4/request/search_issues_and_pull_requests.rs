@@ -1,4 +1,3 @@
-
 //! Search issues and pull requests
 //! 
 //! Find issues by state and keyword. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).

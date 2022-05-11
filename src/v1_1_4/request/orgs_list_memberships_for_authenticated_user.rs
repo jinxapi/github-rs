@@ -1,4 +1,3 @@
-
 //! List organization memberships for the authenticated user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#list-organization-memberships-for-the-authenticated-user)

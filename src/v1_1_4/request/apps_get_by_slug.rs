@@ -1,4 +1,3 @@
-
 //! Get an app
 //! 
 //! **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).

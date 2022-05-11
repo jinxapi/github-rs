@@ -1,4 +1,3 @@
-
 //! List machine types for a codespace
 //! 
 //! List the machine types a codespace can transition to use.

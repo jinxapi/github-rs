@@ -1,4 +1,3 @@
-
 //! Check if a repository is starred by the authenticated user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/activity#check-if-a-repository-is-starred-by-the-authenticated-user)

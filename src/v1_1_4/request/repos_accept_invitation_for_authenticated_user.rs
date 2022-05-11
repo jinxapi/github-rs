@@ -1,4 +1,3 @@
-
 //! Accept a repository invitation
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#accept-a-repository-invitation)

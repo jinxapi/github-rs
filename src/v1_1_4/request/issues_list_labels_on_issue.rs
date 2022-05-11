@@ -1,4 +1,3 @@
-
 //! List labels for an issue
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#list-labels-for-an-issue)

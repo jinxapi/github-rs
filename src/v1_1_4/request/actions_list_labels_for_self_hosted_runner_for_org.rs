@@ -1,4 +1,3 @@
-
 //! List labels for a self-hosted runner for an organization
 //! 
 //! Lists all labels for a self-hosted runner configured in an organization.

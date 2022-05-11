@@ -1,4 +1,3 @@
-
 //! Get a release by tag name
 //! 
 //! Get a published release with the specified tag.

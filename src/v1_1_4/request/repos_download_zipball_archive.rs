@@ -1,4 +1,3 @@
-
 //! Download a repository archive (zip)
 //! 
 //! Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually

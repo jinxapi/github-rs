@@ -1,4 +1,3 @@
-
 //! List reactions for a release
 //! 
 //! List the reactions to a [release](https://docs.github.com/rest/reference/repos#releases).

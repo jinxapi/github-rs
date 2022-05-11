@@ -1,4 +1,3 @@
-
 //! Get a code scanning analysis for a repository
 //! 
 //! Gets a specified code scanning analysis for a repository.

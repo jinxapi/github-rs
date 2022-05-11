@@ -1,4 +1,3 @@
-
 //! List public gists
 //! 
 //! List public gists sorted by most recently updated to least recently updated.

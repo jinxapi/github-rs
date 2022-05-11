@@ -1,4 +1,3 @@
-
 //! Get contextual information for a user
 //! 
 //! Provides hovercard information when authenticated through basic auth or OAuth with the `repo` scope. You can find out more about someone in relation to their pull requests, issues, repositories, and organizations.

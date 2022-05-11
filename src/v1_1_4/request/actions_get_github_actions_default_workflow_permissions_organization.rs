@@ -1,4 +1,3 @@
-
 //! Get default workflow permissions for an organization
 //! 
 //! Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in an organization,

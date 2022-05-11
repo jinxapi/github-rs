@@ -1,4 +1,3 @@
-
 //! List stargazers
 //! 
 //! Lists the people that have starred the repository.

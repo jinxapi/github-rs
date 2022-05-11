@@ -1,4 +1,3 @@
-
 //! Get a code of conduct
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/codes-of-conduct#get-a-code-of-conduct)

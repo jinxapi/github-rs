@@ -1,4 +1,3 @@
-
 //! Upload a release asset
 //! 
 //! This endpoint makes use of [a Hypermedia relation](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in
@@ -246,4 +245,8 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     fn from(body: ::reqwest::blocking::Body) -> Self {
         Self::new(body)
     }
+}
+
+/// Types for body parameter in [`super::repos_upload_release_asset`]
+pub mod body {
 }

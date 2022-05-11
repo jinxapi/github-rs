@@ -1,4 +1,3 @@
-
 //! List commit comments
 //! 
 //! Use the `:commit_sha` to specify the commit that will have its comments listed.

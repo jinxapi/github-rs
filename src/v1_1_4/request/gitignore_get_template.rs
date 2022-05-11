@@ -1,4 +1,3 @@
-
 //! Get a gitignore template
 //! 
 //! The API also allows fetching the source of a single template.

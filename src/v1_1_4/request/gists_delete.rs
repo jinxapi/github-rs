@@ -1,4 +1,3 @@
-
 //! Delete a gist
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/gists#delete-a-gist)

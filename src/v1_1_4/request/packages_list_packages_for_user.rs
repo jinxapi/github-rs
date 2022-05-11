@@ -1,4 +1,3 @@
-
 //! List packages for a user
 //! 
 //! Lists all packages in a user's namespace for which the requesting user has access.

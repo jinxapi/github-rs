@@ -1,4 +1,3 @@
-
 //! Get a package for the authenticated user
 //! 
 //! Gets a specific package for a package owned by the authenticated user.

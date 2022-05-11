@@ -1,4 +1,3 @@
-
 //! Get a user
 //! 
 //! Provides publicly available information about someone with a GitHub account.

@@ -1,4 +1,3 @@
-
 //! List repository contributors
 //! 
 //! Lists contributors to the specified repository and sorts them by the number of commits per contributor in descending order. This endpoint may return information that is a few hours old because the GitHub REST API v3 caches contributor data to improve performance.

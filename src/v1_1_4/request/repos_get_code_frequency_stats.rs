@@ -1,4 +1,3 @@
-
 //! Get the weekly commit activity
 //! 
 //! Returns a weekly aggregate of the number of additions and deletions pushed to a repository.

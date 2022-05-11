@@ -1,4 +1,3 @@
-
 //! List public events for a user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/activity#list-public-events-for-a-user)

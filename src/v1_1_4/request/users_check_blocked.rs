@@ -1,4 +1,3 @@
-
 //! Check if a user is blocked by the authenticated user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/users#check-if-a-user-is-blocked-by-the-authenticated-user)

@@ -1,4 +1,3 @@
-
 //! Fork a gist
 //! 
 //! **Note**: This was previously `/gists/:gist_id/fork`.

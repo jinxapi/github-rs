@@ -1,4 +1,3 @@
-
 //! Add a repository to an app installation
 //! 
 //! Add a single repository to an installation. The authenticated user must have admin access to the repository.

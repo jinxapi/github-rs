@@ -1,4 +1,3 @@
-
 //! Enable a workflow
 //! 
 //! Enables a workflow and sets the `state` of the workflow to `active`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.

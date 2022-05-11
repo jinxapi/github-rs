@@ -1,4 +1,3 @@
-
 //! Get latest Pages build
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#get-latest-pages-build)

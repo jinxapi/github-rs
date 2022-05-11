@@ -1,4 +1,3 @@
-
 //! Check public organization membership for a user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#check-public-organization-membership-for-a-user)

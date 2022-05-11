@@ -281,7 +281,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::apps_update_webhook_config_for_app::body::Json`](crate::v1_1_4::request::apps_update_webhook_config_for_app::body::Json)
+    /// - [`&v1_1_4::request::apps_update_webhook_config_for_app::body::Json`](crate::v1_1_4::request::apps_update_webhook_config_for_app::body::Json)
     pub fn apps_update_webhook_config_for_app<Content>(
         &self,
         theContent: Content,
@@ -599,7 +599,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::apps_create_installation_access_token::body::Json`](crate::v1_1_4::request::apps_create_installation_access_token::body::Json)
+    /// - [`&v1_1_4::request::apps_create_installation_access_token::body::Json`](crate::v1_1_4::request::apps_create_installation_access_token::body::Json)
     pub fn apps_create_installation_access_token<Content>(
         &self,
         installation_id: i64,
@@ -869,7 +869,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::apps_delete_authorization::body::Json`](crate::v1_1_4::request::apps_delete_authorization::body::Json)
+    /// - [`&v1_1_4::request::apps_delete_authorization::body::Json`](crate::v1_1_4::request::apps_delete_authorization::body::Json)
     pub fn apps_delete_authorization<Content>(
         &self,
         client_id: &str,
@@ -921,7 +921,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::apps_check_token::body::Json`](crate::v1_1_4::request::apps_check_token::body::Json)
+    /// - [`&v1_1_4::request::apps_check_token::body::Json`](crate::v1_1_4::request::apps_check_token::body::Json)
     pub fn apps_check_token<Content>(
         &self,
         client_id: &str,
@@ -973,7 +973,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::apps_delete_token::body::Json`](crate::v1_1_4::request::apps_delete_token::body::Json)
+    /// - [`&v1_1_4::request::apps_delete_token::body::Json`](crate::v1_1_4::request::apps_delete_token::body::Json)
     pub fn apps_delete_token<Content>(
         &self,
         client_id: &str,
@@ -1025,7 +1025,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::apps_reset_token::body::Json`](crate::v1_1_4::request::apps_reset_token::body::Json)
+    /// - [`&v1_1_4::request::apps_reset_token::body::Json`](crate::v1_1_4::request::apps_reset_token::body::Json)
     pub fn apps_reset_token<Content>(
         &self,
         client_id: &str,
@@ -1077,7 +1077,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::apps_scope_token::body::Json`](crate::v1_1_4::request::apps_scope_token::body::Json)
+    /// - [`&v1_1_4::request::apps_scope_token::body::Json`](crate::v1_1_4::request::apps_scope_token::body::Json)
     pub fn apps_scope_token<Content>(
         &self,
         client_id: &str,
@@ -1227,7 +1227,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::oauth_authorizations_create_authorization::body::Json`](crate::v1_1_4::request::oauth_authorizations_create_authorization::body::Json)
+    /// - [`&v1_1_4::request::oauth_authorizations_create_authorization::body::Json`](crate::v1_1_4::request::oauth_authorizations_create_authorization::body::Json)
     pub fn oauth_authorizations_create_authorization<Content>(
         &self,
         theContent: Content,
@@ -1285,7 +1285,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::oauth_authorizations_get_or_create_authorization_for_app::body::Json`](crate::v1_1_4::request::oauth_authorizations_get_or_create_authorization_for_app::body::Json)
+    /// - [`&v1_1_4::request::oauth_authorizations_get_or_create_authorization_for_app::body::Json`](crate::v1_1_4::request::oauth_authorizations_get_or_create_authorization_for_app::body::Json)
     pub fn oauth_authorizations_get_or_create_authorization_for_app<Content>(
         &self,
         client_id: &str,
@@ -1343,7 +1343,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::oauth_authorizations_get_or_create_authorization_for_app_and_fingerprint::body::Json`](crate::v1_1_4::request::oauth_authorizations_get_or_create_authorization_for_app_and_fingerprint::body::Json)
+    /// - [`&v1_1_4::request::oauth_authorizations_get_or_create_authorization_for_app_and_fingerprint::body::Json`](crate::v1_1_4::request::oauth_authorizations_get_or_create_authorization_for_app_and_fingerprint::body::Json)
     pub fn oauth_authorizations_get_or_create_authorization_for_app_and_fingerprint<Content>(
         &self,
         client_id: &str,
@@ -1483,7 +1483,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::oauth_authorizations_update_authorization::body::Json`](crate::v1_1_4::request::oauth_authorizations_update_authorization::body::Json)
+    /// - [`&v1_1_4::request::oauth_authorizations_update_authorization::body::Json`](crate::v1_1_4::request::oauth_authorizations_update_authorization::body::Json)
     pub fn oauth_authorizations_update_authorization<Content>(
         &self,
         authorization_id: i64,
@@ -1738,7 +1738,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_set_github_actions_permissions_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_github_actions_permissions_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_set_github_actions_permissions_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_github_actions_permissions_enterprise::body::Json)
     pub fn enterprise_admin_set_github_actions_permissions_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -1839,7 +1839,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_set_selected_organizations_enabled_github_actions_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_selected_organizations_enabled_github_actions_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_set_selected_organizations_enabled_github_actions_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_selected_organizations_enabled_github_actions_enterprise::body::Json)
     pub fn enterprise_admin_set_selected_organizations_enabled_github_actions_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -2026,7 +2026,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::SelectedActions`](crate::v1_1_4::schema::SelectedActions)
+    /// - [`&v1_1_4::schema::SelectedActions`](crate::v1_1_4::schema::SelectedActions)
     pub fn enterprise_admin_set_allowed_actions_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -2129,7 +2129,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
+    /// - [`&v1_1_4::schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
     pub fn actions_set_github_actions_default_workflow_permissions_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -2232,7 +2232,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_create_self_hosted_runner_group_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_create_self_hosted_runner_group_for_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_create_self_hosted_runner_group_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_create_self_hosted_runner_group_for_enterprise::body::Json)
     pub fn enterprise_admin_create_self_hosted_runner_group_for_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -2376,7 +2376,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_update_self_hosted_runner_group_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_update_self_hosted_runner_group_for_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_update_self_hosted_runner_group_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_update_self_hosted_runner_group_for_enterprise::body::Json)
     pub fn enterprise_admin_update_self_hosted_runner_group_for_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -2481,7 +2481,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_set_org_access_to_self_hosted_runner_group_in_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_org_access_to_self_hosted_runner_group_in_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_set_org_access_to_self_hosted_runner_group_in_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_org_access_to_self_hosted_runner_group_in_enterprise::body::Json)
     pub fn enterprise_admin_set_org_access_to_self_hosted_runner_group_in_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -2680,7 +2680,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_set_self_hosted_runners_in_group_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_self_hosted_runners_in_group_for_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_set_self_hosted_runners_in_group_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_self_hosted_runners_in_group_for_enterprise::body::Json)
     pub fn enterprise_admin_set_self_hosted_runners_in_group_for_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -3160,7 +3160,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_set_custom_labels_for_self_hosted_runner_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_custom_labels_for_self_hosted_runner_for_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_set_custom_labels_for_self_hosted_runner_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_set_custom_labels_for_self_hosted_runner_for_enterprise::body::Json)
     pub fn enterprise_admin_set_custom_labels_for_self_hosted_runner_for_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -3216,7 +3216,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_add_custom_labels_to_self_hosted_runner_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_add_custom_labels_to_self_hosted_runner_for_enterprise::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_add_custom_labels_to_self_hosted_runner_for_enterprise::body::Json`](crate::v1_1_4::request::enterprise_admin_add_custom_labels_to_self_hosted_runner_for_enterprise::body::Json)
     pub fn enterprise_admin_add_custom_labels_to_self_hosted_runner_for_enterprise<Content>(
         &self,
         enterprise: &str,
@@ -3798,7 +3798,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::gists_create::body::Json`](crate::v1_1_4::request::gists_create::body::Json)
+    /// - [`&v1_1_4::request::gists_create::body::Json`](crate::v1_1_4::request::gists_create::body::Json)
     pub fn gists_create<Content>(
         &self,
         theContent: Content,
@@ -4018,7 +4018,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::gists_update::body::Json>`](crate::v1_1_4::request::gists_update::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::gists_update::body::Json>`](crate::v1_1_4::request::gists_update::body::Json)
     pub fn gists_update<Content>(
         &self,
         gist_id: &str,
@@ -4111,7 +4111,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::gists_create_comment::body::Json`](crate::v1_1_4::request::gists_create_comment::body::Json)
+    /// - [`&v1_1_4::request::gists_create_comment::body::Json`](crate::v1_1_4::request::gists_create_comment::body::Json)
     pub fn gists_create_comment<Content>(
         &self,
         gist_id: &str,
@@ -4243,7 +4243,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::gists_update_comment::body::Json`](crate::v1_1_4::request::gists_update_comment::body::Json)
+    /// - [`&v1_1_4::request::gists_update_comment::body::Json`](crate::v1_1_4::request::gists_update_comment::body::Json)
     pub fn gists_update_comment<Content>(
         &self,
         gist_id: &str,
@@ -4902,7 +4902,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::markdown_render::body::Json`](crate::v1_1_4::request::markdown_render::body::Json)
+    /// - [`&v1_1_4::request::markdown_render::body::Json`](crate::v1_1_4::request::markdown_render::body::Json)
     pub fn markdown_render<Content>(
         &self,
         theContent: Content,
@@ -5417,7 +5417,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::activity_mark_notifications_as_read::body::Json`](crate::v1_1_4::request::activity_mark_notifications_as_read::body::Json)
+    /// - [`&v1_1_4::request::activity_mark_notifications_as_read::body::Json`](crate::v1_1_4::request::activity_mark_notifications_as_read::body::Json)
     pub fn activity_mark_notifications_as_read<Content>(
         &self,
         theContent: Content,
@@ -5592,7 +5592,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::activity_set_thread_subscription::body::Json`](crate::v1_1_4::request::activity_set_thread_subscription::body::Json)
+    /// - [`&v1_1_4::request::activity_set_thread_subscription::body::Json`](crate::v1_1_4::request::activity_set_thread_subscription::body::Json)
     pub fn activity_set_thread_subscription<Content>(
         &self,
         thread_id: i64,
@@ -5860,7 +5860,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::orgs_update::body::Json`](crate::v1_1_4::request::orgs_update::body::Json)
+    /// - [`&v1_1_4::request::orgs_update::body::Json`](crate::v1_1_4::request::orgs_update::body::Json)
     pub fn orgs_update<Content>(
         &self,
         org: &str,
@@ -6049,7 +6049,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_github_actions_permissions_organization::body::Json`](crate::v1_1_4::request::actions_set_github_actions_permissions_organization::body::Json)
+    /// - [`&v1_1_4::request::actions_set_github_actions_permissions_organization::body::Json`](crate::v1_1_4::request::actions_set_github_actions_permissions_organization::body::Json)
     pub fn actions_set_github_actions_permissions_organization<Content>(
         &self,
         org: &str,
@@ -6150,7 +6150,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_selected_repositories_enabled_github_actions_organization::body::Json`](crate::v1_1_4::request::actions_set_selected_repositories_enabled_github_actions_organization::body::Json)
+    /// - [`&v1_1_4::request::actions_set_selected_repositories_enabled_github_actions_organization::body::Json`](crate::v1_1_4::request::actions_set_selected_repositories_enabled_github_actions_organization::body::Json)
     pub fn actions_set_selected_repositories_enabled_github_actions_organization<Content>(
         &self,
         org: &str,
@@ -6341,7 +6341,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::SelectedActions`](crate::v1_1_4::schema::SelectedActions)
+    /// - [`&v1_1_4::schema::SelectedActions`](crate::v1_1_4::schema::SelectedActions)
     pub fn actions_set_allowed_actions_organization<Content>(
         &self,
         org: &str,
@@ -6442,7 +6442,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
+    /// - [`&v1_1_4::schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
     pub fn actions_set_github_actions_default_workflow_permissions_organization<Content>(
         &self,
         org: &str,
@@ -6549,7 +6549,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_create_self_hosted_runner_group_for_org::body::Json`](crate::v1_1_4::request::actions_create_self_hosted_runner_group_for_org::body::Json)
+    /// - [`&v1_1_4::request::actions_create_self_hosted_runner_group_for_org::body::Json`](crate::v1_1_4::request::actions_create_self_hosted_runner_group_for_org::body::Json)
     pub fn actions_create_self_hosted_runner_group_for_org<Content>(
         &self,
         org: &str,
@@ -6699,7 +6699,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_update_self_hosted_runner_group_for_org::body::Json`](crate::v1_1_4::request::actions_update_self_hosted_runner_group_for_org::body::Json)
+    /// - [`&v1_1_4::request::actions_update_self_hosted_runner_group_for_org::body::Json`](crate::v1_1_4::request::actions_update_self_hosted_runner_group_for_org::body::Json)
     pub fn actions_update_self_hosted_runner_group_for_org<Content>(
         &self,
         org: &str,
@@ -6808,7 +6808,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_repo_access_to_self_hosted_runner_group_in_org::body::Json`](crate::v1_1_4::request::actions_set_repo_access_to_self_hosted_runner_group_in_org::body::Json)
+    /// - [`&v1_1_4::request::actions_set_repo_access_to_self_hosted_runner_group_in_org::body::Json`](crate::v1_1_4::request::actions_set_repo_access_to_self_hosted_runner_group_in_org::body::Json)
     pub fn actions_set_repo_access_to_self_hosted_runner_group_in_org<Content>(
         &self,
         org: &str,
@@ -7018,7 +7018,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_self_hosted_runners_in_group_for_org::body::Json`](crate::v1_1_4::request::actions_set_self_hosted_runners_in_group_for_org::body::Json)
+    /// - [`&v1_1_4::request::actions_set_self_hosted_runners_in_group_for_org::body::Json`](crate::v1_1_4::request::actions_set_self_hosted_runners_in_group_for_org::body::Json)
     pub fn actions_set_self_hosted_runners_in_group_for_org<Content>(
         &self,
         org: &str,
@@ -7504,7 +7504,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_custom_labels_for_self_hosted_runner_for_org::body::Json`](crate::v1_1_4::request::actions_set_custom_labels_for_self_hosted_runner_for_org::body::Json)
+    /// - [`&v1_1_4::request::actions_set_custom_labels_for_self_hosted_runner_for_org::body::Json`](crate::v1_1_4::request::actions_set_custom_labels_for_self_hosted_runner_for_org::body::Json)
     pub fn actions_set_custom_labels_for_self_hosted_runner_for_org<Content>(
         &self,
         org: &str,
@@ -7560,7 +7560,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_add_custom_labels_to_self_hosted_runner_for_org::body::Json`](crate::v1_1_4::request::actions_add_custom_labels_to_self_hosted_runner_for_org::body::Json)
+    /// - [`&v1_1_4::request::actions_add_custom_labels_to_self_hosted_runner_for_org::body::Json`](crate::v1_1_4::request::actions_add_custom_labels_to_self_hosted_runner_for_org::body::Json)
     pub fn actions_add_custom_labels_to_self_hosted_runner_for_org<Content>(
         &self,
         org: &str,
@@ -7914,7 +7914,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_create_or_update_org_secret::body::Json`](crate::v1_1_4::request::actions_create_or_update_org_secret::body::Json)
+    /// - [`&v1_1_4::request::actions_create_or_update_org_secret::body::Json`](crate::v1_1_4::request::actions_create_or_update_org_secret::body::Json)
     pub fn actions_create_or_update_org_secret<Content>(
         &self,
         org: &str,
@@ -8058,7 +8058,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_selected_repos_for_org_secret::body::Json`](crate::v1_1_4::request::actions_set_selected_repos_for_org_secret::body::Json)
+    /// - [`&v1_1_4::request::actions_set_selected_repos_for_org_secret::body::Json`](crate::v1_1_4::request::actions_set_selected_repos_for_org_secret::body::Json)
     pub fn actions_set_selected_repos_for_org_secret<Content>(
         &self,
         org: &str,
@@ -8787,7 +8787,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::dependabot_create_or_update_org_secret::body::Json`](crate::v1_1_4::request::dependabot_create_or_update_org_secret::body::Json)
+    /// - [`&v1_1_4::request::dependabot_create_or_update_org_secret::body::Json`](crate::v1_1_4::request::dependabot_create_or_update_org_secret::body::Json)
     pub fn dependabot_create_or_update_org_secret<Content>(
         &self,
         org: &str,
@@ -8931,7 +8931,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::dependabot_set_selected_repos_for_org_secret::body::Json`](crate::v1_1_4::request::dependabot_set_selected_repos_for_org_secret::body::Json)
+    /// - [`&v1_1_4::request::dependabot_set_selected_repos_for_org_secret::body::Json`](crate::v1_1_4::request::dependabot_set_selected_repos_for_org_secret::body::Json)
     pub fn dependabot_set_selected_repos_for_org_secret<Content>(
         &self,
         org: &str,
@@ -9300,7 +9300,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::orgs_create_webhook::body::Json`](crate::v1_1_4::request::orgs_create_webhook::body::Json)
+    /// - [`&v1_1_4::request::orgs_create_webhook::body::Json`](crate::v1_1_4::request::orgs_create_webhook::body::Json)
     pub fn orgs_create_webhook<Content>(
         &self,
         org: &str,
@@ -9436,7 +9436,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::orgs_update_webhook::body::Json`](crate::v1_1_4::request::orgs_update_webhook::body::Json)
+    /// - [`&v1_1_4::request::orgs_update_webhook::body::Json`](crate::v1_1_4::request::orgs_update_webhook::body::Json)
     pub fn orgs_update_webhook<Content>(
         &self,
         org: &str,
@@ -9537,7 +9537,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::orgs_update_webhook_config_for_org::body::Json`](crate::v1_1_4::request::orgs_update_webhook_config_for_org::body::Json)
+    /// - [`&v1_1_4::request::orgs_update_webhook_config_for_org::body::Json`](crate::v1_1_4::request::orgs_update_webhook_config_for_org::body::Json)
     pub fn orgs_update_webhook_config_for_org<Content>(
         &self,
         org: &str,
@@ -9900,7 +9900,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::InteractionLimit`](crate::v1_1_4::schema::InteractionLimit)
+    /// - [`&v1_1_4::schema::InteractionLimit`](crate::v1_1_4::schema::InteractionLimit)
     pub fn interactions_set_restrictions_for_org<Content>(
         &self,
         org: &str,
@@ -10040,7 +10040,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::orgs_create_invitation::body::Json`](crate::v1_1_4::request::orgs_create_invitation::body::Json)
+    /// - [`&v1_1_4::request::orgs_create_invitation::body::Json`](crate::v1_1_4::request::orgs_create_invitation::body::Json)
     pub fn orgs_create_invitation<Content>(
         &self,
         org: &str,
@@ -10433,7 +10433,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::orgs_set_membership_for_user::body::Json`](crate::v1_1_4::request::orgs_set_membership_for_user::body::Json)
+    /// - [`&v1_1_4::request::orgs_set_membership_for_user::body::Json`](crate::v1_1_4::request::orgs_set_membership_for_user::body::Json)
     pub fn orgs_set_membership_for_user<Content>(
         &self,
         org: &str,
@@ -10579,7 +10579,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::migrations_start_for_org::body::Json`](crate::v1_1_4::request::migrations_start_for_org::body::Json)
+    /// - [`&v1_1_4::request::migrations_start_for_org::body::Json`](crate::v1_1_4::request::migrations_start_for_org::body::Json)
     pub fn migrations_start_for_org<Content>(
         &self,
         org: &str,
@@ -11451,7 +11451,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_create_for_org::body::Json`](crate::v1_1_4::request::projects_create_for_org::body::Json)
+    /// - [`&v1_1_4::request::projects_create_for_org::body::Json`](crate::v1_1_4::request::projects_create_for_org::body::Json)
     pub fn projects_create_for_org<Content>(
         &self,
         org: &str,
@@ -11733,7 +11733,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_in_org::body::Json`](crate::v1_1_4::request::repos_create_in_org::body::Json)
+    /// - [`&v1_1_4::request::repos_create_in_org::body::Json`](crate::v1_1_4::request::repos_create_in_org::body::Json)
     pub fn repos_create_in_org<Content>(
         &self,
         org: &str,
@@ -12115,7 +12115,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_create::body::Json`](crate::v1_1_4::request::teams_create::body::Json)
+    /// - [`&v1_1_4::request::teams_create::body::Json`](crate::v1_1_4::request::teams_create::body::Json)
     pub fn teams_create<Content>(
         &self,
         org: &str,
@@ -12261,7 +12261,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_update_in_org::body::Json`](crate::v1_1_4::request::teams_update_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_update_in_org::body::Json`](crate::v1_1_4::request::teams_update_in_org::body::Json)
     pub fn teams_update_in_org<Content>(
         &self,
         org: &str,
@@ -12372,7 +12372,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_create_discussion_in_org::body::Json`](crate::v1_1_4::request::teams_create_discussion_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_create_discussion_in_org::body::Json`](crate::v1_1_4::request::teams_create_discussion_in_org::body::Json)
     pub fn teams_create_discussion_in_org<Content>(
         &self,
         org: &str,
@@ -12522,7 +12522,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_update_discussion_in_org::body::Json`](crate::v1_1_4::request::teams_update_discussion_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_update_discussion_in_org::body::Json`](crate::v1_1_4::request::teams_update_discussion_in_org::body::Json)
     pub fn teams_update_discussion_in_org<Content>(
         &self,
         org: &str,
@@ -12635,7 +12635,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_create_discussion_comment_in_org::body::Json`](crate::v1_1_4::request::teams_create_discussion_comment_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_create_discussion_comment_in_org::body::Json`](crate::v1_1_4::request::teams_create_discussion_comment_in_org::body::Json)
     pub fn teams_create_discussion_comment_in_org<Content>(
         &self,
         org: &str,
@@ -12791,7 +12791,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_update_discussion_comment_in_org::body::Json`](crate::v1_1_4::request::teams_update_discussion_comment_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_update_discussion_comment_in_org::body::Json`](crate::v1_1_4::request::teams_update_discussion_comment_in_org::body::Json)
     pub fn teams_update_discussion_comment_in_org<Content>(
         &self,
         org: &str,
@@ -12907,7 +12907,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_team_discussion_comment_in_org::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_comment_in_org::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_team_discussion_comment_in_org::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_comment_in_org::body::Json)
     pub fn reactions_create_for_team_discussion_comment_in_org<Content>(
         &self,
         org: &str,
@@ -13071,7 +13071,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_team_discussion_in_org::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_in_org::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_team_discussion_in_org::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_in_org::body::Json)
     pub fn reactions_create_for_team_discussion_in_org<Content>(
         &self,
         org: &str,
@@ -13268,7 +13268,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_link_external_idp_group_to_team_for_org::body::Json`](crate::v1_1_4::request::teams_link_external_idp_group_to_team_for_org::body::Json)
+    /// - [`&v1_1_4::request::teams_link_external_idp_group_to_team_for_org::body::Json`](crate::v1_1_4::request::teams_link_external_idp_group_to_team_for_org::body::Json)
     pub fn teams_link_external_idp_group_to_team_for_org<Content>(
         &self,
         org: &str,
@@ -13486,7 +13486,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_add_or_update_membership_for_user_in_org::body::Json`](crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json`](crate::v1_1_4::request::teams_add_or_update_membership_for_user_in_org::body::Json)
     pub fn teams_add_or_update_membership_for_user_in_org<Content>(
         &self,
         org: &str,
@@ -13691,7 +13691,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::teams_add_or_update_project_permissions_in_org::body::Json>`](crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json>`](crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json)
     pub fn teams_add_or_update_project_permissions_in_org<Content>(
         &self,
         org: &str,
@@ -13900,7 +13900,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_add_or_update_repo_permissions_in_org::body::Json`](crate::v1_1_4::request::teams_add_or_update_repo_permissions_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_add_or_update_repo_permissions_in_org::body::Json`](crate::v1_1_4::request::teams_add_or_update_repo_permissions_in_org::body::Json)
     pub fn teams_add_or_update_repo_permissions_in_org<Content>(
         &self,
         org: &str,
@@ -14058,7 +14058,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_create_or_update_idp_group_connections_in_org::body::Json`](crate::v1_1_4::request::teams_create_or_update_idp_group_connections_in_org::body::Json)
+    /// - [`&v1_1_4::request::teams_create_or_update_idp_group_connections_in_org::body::Json`](crate::v1_1_4::request::teams_create_or_update_idp_group_connections_in_org::body::Json)
     pub fn teams_create_or_update_idp_group_connections_in_org<Content>(
         &self,
         org: &str,
@@ -14237,7 +14237,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_update_card::body::Json`](crate::v1_1_4::request::projects_update_card::body::Json)
+    /// - [`&v1_1_4::request::projects_update_card::body::Json`](crate::v1_1_4::request::projects_update_card::body::Json)
     pub fn projects_update_card<Content>(
         &self,
         card_id: i64,
@@ -14287,7 +14287,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_move_card::body::Json`](crate::v1_1_4::request::projects_move_card::body::Json)
+    /// - [`&v1_1_4::request::projects_move_card::body::Json`](crate::v1_1_4::request::projects_move_card::body::Json)
     pub fn projects_move_card<Content>(
         &self,
         card_id: i64,
@@ -14415,7 +14415,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_update_column::body::Json`](crate::v1_1_4::request::projects_update_column::body::Json)
+    /// - [`&v1_1_4::request::projects_update_column::body::Json`](crate::v1_1_4::request::projects_update_column::body::Json)
     pub fn projects_update_column<Content>(
         &self,
         column_id: i64,
@@ -14560,7 +14560,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_move_column::body::Json`](crate::v1_1_4::request::projects_move_column::body::Json)
+    /// - [`&v1_1_4::request::projects_move_column::body::Json`](crate::v1_1_4::request::projects_move_column::body::Json)
     pub fn projects_move_column<Content>(
         &self,
         column_id: i64,
@@ -14694,7 +14694,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_update::body::Json`](crate::v1_1_4::request::projects_update::body::Json)
+    /// - [`&v1_1_4::request::projects_update::body::Json`](crate::v1_1_4::request::projects_update::body::Json)
     pub fn projects_update<Content>(
         &self,
         project_id: i64,
@@ -14793,7 +14793,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::projects_add_collaborator::body::Json>`](crate::v1_1_4::request::projects_add_collaborator::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::projects_add_collaborator::body::Json>`](crate::v1_1_4::request::projects_add_collaborator::body::Json)
     pub fn projects_add_collaborator<Content>(
         &self,
         project_id: i64,
@@ -14974,7 +14974,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_create_column::body::Json`](crate::v1_1_4::request::projects_create_column::body::Json)
+    /// - [`&v1_1_4::request::projects_create_column::body::Json`](crate::v1_1_4::request::projects_create_column::body::Json)
     pub fn projects_create_column<Content>(
         &self,
         project_id: i64,
@@ -15156,7 +15156,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update::body::Json`](crate::v1_1_4::request::repos_update::body::Json)
+    /// - [`&v1_1_4::request::repos_update::body::Json`](crate::v1_1_4::request::repos_update::body::Json)
     pub fn repos_update<Content>(
         &self,
         owner: &str,
@@ -15629,7 +15629,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_github_actions_permissions_repository::body::Json`](crate::v1_1_4::request::actions_set_github_actions_permissions_repository::body::Json)
+    /// - [`&v1_1_4::request::actions_set_github_actions_permissions_repository::body::Json`](crate::v1_1_4::request::actions_set_github_actions_permissions_repository::body::Json)
     pub fn actions_set_github_actions_permissions_repository<Content>(
         &self,
         owner: &str,
@@ -15734,7 +15734,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::ActionsWorkflowAccessToRepository`](crate::v1_1_4::schema::ActionsWorkflowAccessToRepository)
+    /// - [`&v1_1_4::schema::ActionsWorkflowAccessToRepository`](crate::v1_1_4::schema::ActionsWorkflowAccessToRepository)
     pub fn actions_set_workflow_access_to_repository<Content>(
         &self,
         owner: &str,
@@ -15839,7 +15839,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::SelectedActions`](crate::v1_1_4::schema::SelectedActions)
+    /// - [`&v1_1_4::schema::SelectedActions`](crate::v1_1_4::schema::SelectedActions)
     pub fn actions_set_allowed_actions_repository<Content>(
         &self,
         owner: &str,
@@ -15944,7 +15944,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
+    /// - [`&v1_1_4::schema::ActionsSetDefaultWorkflowPermissions`](crate::v1_1_4::schema::ActionsSetDefaultWorkflowPermissions)
     pub fn actions_set_github_actions_default_workflow_permissions_repository<Content>(
         &self,
         owner: &str,
@@ -16342,7 +16342,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_set_custom_labels_for_self_hosted_runner_for_repo::body::Json`](crate::v1_1_4::request::actions_set_custom_labels_for_self_hosted_runner_for_repo::body::Json)
+    /// - [`&v1_1_4::request::actions_set_custom_labels_for_self_hosted_runner_for_repo::body::Json`](crate::v1_1_4::request::actions_set_custom_labels_for_self_hosted_runner_for_repo::body::Json)
     pub fn actions_set_custom_labels_for_self_hosted_runner_for_repo<Content>(
         &self,
         owner: &str,
@@ -16401,7 +16401,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_add_custom_labels_to_self_hosted_runner_for_repo::body::Json`](crate::v1_1_4::request::actions_add_custom_labels_to_self_hosted_runner_for_repo::body::Json)
+    /// - [`&v1_1_4::request::actions_add_custom_labels_to_self_hosted_runner_for_repo::body::Json`](crate::v1_1_4::request::actions_add_custom_labels_to_self_hosted_runner_for_repo::body::Json)
     pub fn actions_add_custom_labels_to_self_hosted_runner_for_repo<Content>(
         &self,
         owner: &str,
@@ -17250,7 +17250,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_review_pending_deployments_for_run::body::Json`](crate::v1_1_4::request::actions_review_pending_deployments_for_run::body::Json)
+    /// - [`&v1_1_4::request::actions_review_pending_deployments_for_run::body::Json`](crate::v1_1_4::request::actions_review_pending_deployments_for_run::body::Json)
     pub fn actions_review_pending_deployments_for_run<Content>(
         &self,
         owner: &str,
@@ -17652,7 +17652,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_create_or_update_repo_secret::body::Json`](crate::v1_1_4::request::actions_create_or_update_repo_secret::body::Json)
+    /// - [`&v1_1_4::request::actions_create_or_update_repo_secret::body::Json`](crate::v1_1_4::request::actions_create_or_update_repo_secret::body::Json)
     pub fn actions_create_or_update_repo_secret<Content>(
         &self,
         owner: &str,
@@ -17896,7 +17896,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_create_workflow_dispatch::body::Json`](crate::v1_1_4::request::actions_create_workflow_dispatch::body::Json)
+    /// - [`&v1_1_4::request::actions_create_workflow_dispatch::body::Json`](crate::v1_1_4::request::actions_create_workflow_dispatch::body::Json)
     pub fn actions_create_workflow_dispatch<Content>(
         &self,
         owner: &str,
@@ -18255,7 +18255,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_autolink::body::Json`](crate::v1_1_4::request::repos_create_autolink::body::Json)
+    /// - [`&v1_1_4::request::repos_create_autolink::body::Json`](crate::v1_1_4::request::repos_create_autolink::body::Json)
     pub fn repos_create_autolink<Content>(
         &self,
         owner: &str,
@@ -18630,7 +18630,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_branch_protection::body::Json`](crate::v1_1_4::request::repos_update_branch_protection::body::Json)
+    /// - [`&v1_1_4::request::repos_update_branch_protection::body::Json`](crate::v1_1_4::request::repos_update_branch_protection::body::Json)
     pub fn repos_update_branch_protection<Content>(
         &self,
         owner: &str,
@@ -18964,7 +18964,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_pull_request_review_protection::body::Json`](crate::v1_1_4::request::repos_update_pull_request_review_protection::body::Json)
+    /// - [`&v1_1_4::request::repos_update_pull_request_review_protection::body::Json`](crate::v1_1_4::request::repos_update_pull_request_review_protection::body::Json)
     pub fn repos_update_pull_request_review_protection<Content>(
         &self,
         owner: &str,
@@ -19255,7 +19255,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_status_check_protection::body::Json`](crate::v1_1_4::request::repos_update_status_check_protection::body::Json)
+    /// - [`&v1_1_4::request::repos_update_status_check_protection::body::Json`](crate::v1_1_4::request::repos_update_status_check_protection::body::Json)
     pub fn repos_update_status_check_protection<Content>(
         &self,
         owner: &str,
@@ -20333,7 +20333,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_rename_branch::body::Json`](crate::v1_1_4::request::repos_rename_branch::body::Json)
+    /// - [`&v1_1_4::request::repos_rename_branch::body::Json`](crate::v1_1_4::request::repos_rename_branch::body::Json)
     pub fn repos_rename_branch<Content>(
         &self,
         owner: &str,
@@ -20393,7 +20393,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::checks_create::body::Json`](crate::v1_1_4::request::checks_create::body::Json)
+    /// - [`&v1_1_4::request::checks_create::body::Json`](crate::v1_1_4::request::checks_create::body::Json)
     pub fn checks_create<Content>(
         &self,
         owner: &str,
@@ -20496,7 +20496,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::checks_update::body::Json`](crate::v1_1_4::request::checks_update::body::Json)
+    /// - [`&v1_1_4::request::checks_update::body::Json`](crate::v1_1_4::request::checks_update::body::Json)
     pub fn checks_update<Content>(
         &self,
         owner: &str,
@@ -20650,7 +20650,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::checks_create_suite::body::Json`](crate::v1_1_4::request::checks_create_suite::body::Json)
+    /// - [`&v1_1_4::request::checks_create_suite::body::Json`](crate::v1_1_4::request::checks_create_suite::body::Json)
     pub fn checks_create_suite<Content>(
         &self,
         owner: &str,
@@ -20704,7 +20704,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::checks_set_suites_preferences::body::Json`](crate::v1_1_4::request::checks_set_suites_preferences::body::Json)
+    /// - [`&v1_1_4::request::checks_set_suites_preferences::body::Json`](crate::v1_1_4::request::checks_set_suites_preferences::body::Json)
     pub fn checks_set_suites_preferences<Content>(
         &self,
         owner: &str,
@@ -21027,7 +21027,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::code_scanning_update_alert::body::Json`](crate::v1_1_4::request::code_scanning_update_alert::body::Json)
+    /// - [`&v1_1_4::request::code_scanning_update_alert::body::Json`](crate::v1_1_4::request::code_scanning_update_alert::body::Json)
     pub fn code_scanning_update_alert<Content>(
         &self,
         owner: &str,
@@ -21400,7 +21400,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::code_scanning_upload_sarif::body::Json`](crate::v1_1_4::request::code_scanning_upload_sarif::body::Json)
+    /// - [`&v1_1_4::request::code_scanning_upload_sarif::body::Json`](crate::v1_1_4::request::code_scanning_upload_sarif::body::Json)
     pub fn code_scanning_upload_sarif<Content>(
         &self,
         owner: &str,
@@ -21603,7 +21603,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::codespaces_create_with_repo_for_authenticated_user::body::Json>`](crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json>`](crate::v1_1_4::request::codespaces_create_with_repo_for_authenticated_user::body::Json)
     pub fn codespaces_create_with_repo_for_authenticated_user<Content>(
         &self,
         owner: &str,
@@ -21915,7 +21915,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::codespaces_create_or_update_repo_secret::body::Json`](crate::v1_1_4::request::codespaces_create_or_update_repo_secret::body::Json)
+    /// - [`&v1_1_4::request::codespaces_create_or_update_repo_secret::body::Json`](crate::v1_1_4::request::codespaces_create_or_update_repo_secret::body::Json)
     pub fn codespaces_create_or_update_repo_secret<Content>(
         &self,
         owner: &str,
@@ -22143,7 +22143,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_add_collaborator::body::Json`](crate::v1_1_4::request::repos_add_collaborator::body::Json)
+    /// - [`&v1_1_4::request::repos_add_collaborator::body::Json`](crate::v1_1_4::request::repos_add_collaborator::body::Json)
     pub fn repos_add_collaborator<Content>(
         &self,
         owner: &str,
@@ -22420,7 +22420,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_commit_comment::body::Json`](crate::v1_1_4::request::repos_update_commit_comment::body::Json)
+    /// - [`&v1_1_4::request::repos_update_commit_comment::body::Json`](crate::v1_1_4::request::repos_update_commit_comment::body::Json)
     pub fn repos_update_commit_comment<Content>(
         &self,
         owner: &str,
@@ -22527,7 +22527,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_commit_comment::body::Json`](crate::v1_1_4::request::reactions_create_for_commit_comment::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_commit_comment::body::Json`](crate::v1_1_4::request::reactions_create_for_commit_comment::body::Json)
     pub fn reactions_create_for_commit_comment<Content>(
         &self,
         owner: &str,
@@ -22815,7 +22815,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_commit_comment::body::Json`](crate::v1_1_4::request::repos_create_commit_comment::body::Json)
+    /// - [`&v1_1_4::request::repos_create_commit_comment::body::Json`](crate::v1_1_4::request::repos_create_commit_comment::body::Json)
     pub fn repos_create_commit_comment<Content>(
         &self,
         owner: &str,
@@ -23447,7 +23447,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_or_update_file_contents::body::Json`](crate::v1_1_4::request::repos_create_or_update_file_contents::body::Json)
+    /// - [`&v1_1_4::request::repos_create_or_update_file_contents::body::Json`](crate::v1_1_4::request::repos_create_or_update_file_contents::body::Json)
     pub fn repos_create_or_update_file_contents<Content>(
         &self,
         owner: &str,
@@ -23509,7 +23509,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_delete_file::body::Json`](crate::v1_1_4::request::repos_delete_file::body::Json)
+    /// - [`&v1_1_4::request::repos_delete_file::body::Json`](crate::v1_1_4::request::repos_delete_file::body::Json)
     pub fn repos_delete_file<Content>(
         &self,
         owner: &str,
@@ -23825,7 +23825,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::dependabot_create_or_update_repo_secret::body::Json`](crate::v1_1_4::request::dependabot_create_or_update_repo_secret::body::Json)
+    /// - [`&v1_1_4::request::dependabot_create_or_update_repo_secret::body::Json`](crate::v1_1_4::request::dependabot_create_or_update_repo_secret::body::Json)
     pub fn dependabot_create_or_update_repo_secret<Content>(
         &self,
         owner: &str,
@@ -24073,7 +24073,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_deployment::body::Json`](crate::v1_1_4::request::repos_create_deployment::body::Json)
+    /// - [`&v1_1_4::request::repos_create_deployment::body::Json`](crate::v1_1_4::request::repos_create_deployment::body::Json)
     pub fn repos_create_deployment<Content>(
         &self,
         owner: &str,
@@ -24273,7 +24273,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_deployment_status::body::Json`](crate::v1_1_4::request::repos_create_deployment_status::body::Json)
+    /// - [`&v1_1_4::request::repos_create_deployment_status::body::Json`](crate::v1_1_4::request::repos_create_deployment_status::body::Json)
     pub fn repos_create_deployment_status<Content>(
         &self,
         owner: &str,
@@ -24385,7 +24385,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_dispatch_event::body::Json`](crate::v1_1_4::request::repos_create_dispatch_event::body::Json)
+    /// - [`&v1_1_4::request::repos_create_dispatch_event::body::Json`](crate::v1_1_4::request::repos_create_dispatch_event::body::Json)
     pub fn repos_create_dispatch_event<Content>(
         &self,
         owner: &str,
@@ -24539,7 +24539,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::repos_create_or_update_environment::body::Json>`](crate::v1_1_4::request::repos_create_or_update_environment::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::repos_create_or_update_environment::body::Json>`](crate::v1_1_4::request::repos_create_or_update_environment::body::Json)
     pub fn repos_create_or_update_environment<Content>(
         &self,
         owner: &str,
@@ -24734,7 +24734,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::repos_create_fork::body::Json>`](crate::v1_1_4::request::repos_create_fork::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::repos_create_fork::body::Json>`](crate::v1_1_4::request::repos_create_fork::body::Json)
     pub fn repos_create_fork<Content>(
         &self,
         owner: &str,
@@ -24786,7 +24786,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::git_create_blob::body::Json`](crate::v1_1_4::request::git_create_blob::body::Json)
+    /// - [`&v1_1_4::request::git_create_blob::body::Json`](crate::v1_1_4::request::git_create_blob::body::Json)
     pub fn git_create_blob<Content>(
         &self,
         owner: &str,
@@ -24916,7 +24916,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::git_create_commit::body::Json`](crate::v1_1_4::request::git_create_commit::body::Json)
+    /// - [`&v1_1_4::request::git_create_commit::body::Json`](crate::v1_1_4::request::git_create_commit::body::Json)
     pub fn git_create_commit<Content>(
         &self,
         owner: &str,
@@ -25146,7 +25146,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::git_create_ref::body::Json`](crate::v1_1_4::request::git_create_ref::body::Json)
+    /// - [`&v1_1_4::request::git_create_ref::body::Json`](crate::v1_1_4::request::git_create_ref::body::Json)
     pub fn git_create_ref<Content>(
         &self,
         owner: &str,
@@ -25241,7 +25241,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::git_update_ref::body::Json`](crate::v1_1_4::request::git_update_ref::body::Json)
+    /// - [`&v1_1_4::request::git_update_ref::body::Json`](crate::v1_1_4::request::git_update_ref::body::Json)
     pub fn git_update_ref<Content>(
         &self,
         owner: &str,
@@ -25326,7 +25326,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::git_create_tag::body::Json`](crate::v1_1_4::request::git_create_tag::body::Json)
+    /// - [`&v1_1_4::request::git_create_tag::body::Json`](crate::v1_1_4::request::git_create_tag::body::Json)
     pub fn git_create_tag<Content>(
         &self,
         owner: &str,
@@ -25454,7 +25454,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::git_create_tree::body::Json`](crate::v1_1_4::request::git_create_tree::body::Json)
+    /// - [`&v1_1_4::request::git_create_tree::body::Json`](crate::v1_1_4::request::git_create_tree::body::Json)
     pub fn git_create_tree<Content>(
         &self,
         owner: &str,
@@ -25603,7 +25603,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::repos_create_webhook::body::Json>`](crate::v1_1_4::request::repos_create_webhook::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::repos_create_webhook::body::Json>`](crate::v1_1_4::request::repos_create_webhook::body::Json)
     pub fn repos_create_webhook<Content>(
         &self,
         owner: &str,
@@ -25745,7 +25745,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_webhook::body::Json`](crate::v1_1_4::request::repos_update_webhook::body::Json)
+    /// - [`&v1_1_4::request::repos_update_webhook::body::Json`](crate::v1_1_4::request::repos_update_webhook::body::Json)
     pub fn repos_update_webhook<Content>(
         &self,
         owner: &str,
@@ -25850,7 +25850,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_webhook_config_for_repo::body::Json`](crate::v1_1_4::request::repos_update_webhook_config_for_repo::body::Json)
+    /// - [`&v1_1_4::request::repos_update_webhook_config_for_repo::body::Json`](crate::v1_1_4::request::repos_update_webhook_config_for_repo::body::Json)
     pub fn repos_update_webhook_config_for_repo<Content>(
         &self,
         owner: &str,
@@ -26217,7 +26217,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::migrations_start_import::body::Json`](crate::v1_1_4::request::migrations_start_import::body::Json)
+    /// - [`&v1_1_4::request::migrations_start_import::body::Json`](crate::v1_1_4::request::migrations_start_import::body::Json)
     pub fn migrations_start_import<Content>(
         &self,
         owner: &str,
@@ -26319,7 +26319,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::migrations_update_import::body::Json>`](crate::v1_1_4::request::migrations_update_import::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::migrations_update_import::body::Json>`](crate::v1_1_4::request::migrations_update_import::body::Json)
     pub fn migrations_update_import<Content>(
         &self,
         owner: &str,
@@ -26420,7 +26420,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::migrations_map_commit_author::body::Json`](crate::v1_1_4::request::migrations_map_commit_author::body::Json)
+    /// - [`&v1_1_4::request::migrations_map_commit_author::body::Json`](crate::v1_1_4::request::migrations_map_commit_author::body::Json)
     pub fn migrations_map_commit_author<Content>(
         &self,
         owner: &str,
@@ -26519,7 +26519,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::migrations_set_lfs_preference::body::Json`](crate::v1_1_4::request::migrations_set_lfs_preference::body::Json)
+    /// - [`&v1_1_4::request::migrations_set_lfs_preference::body::Json`](crate::v1_1_4::request::migrations_set_lfs_preference::body::Json)
     pub fn migrations_set_lfs_preference<Content>(
         &self,
         owner: &str,
@@ -26661,7 +26661,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::InteractionLimit`](crate::v1_1_4::schema::InteractionLimit)
+    /// - [`&v1_1_4::schema::InteractionLimit`](crate::v1_1_4::schema::InteractionLimit)
     pub fn interactions_set_restrictions_for_repo<Content>(
         &self,
         owner: &str,
@@ -26846,7 +26846,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_invitation::body::Json`](crate::v1_1_4::request::repos_update_invitation::body::Json)
+    /// - [`&v1_1_4::request::repos_update_invitation::body::Json`](crate::v1_1_4::request::repos_update_invitation::body::Json)
     pub fn repos_update_invitation<Content>(
         &self,
         owner: &str,
@@ -26975,7 +26975,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_create::body::Json`](crate::v1_1_4::request::issues_create::body::Json)
+    /// - [`&v1_1_4::request::issues_create::body::Json`](crate::v1_1_4::request::issues_create::body::Json)
     pub fn issues_create<Content>(
         &self,
         owner: &str,
@@ -27166,7 +27166,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_update_comment::body::Json`](crate::v1_1_4::request::issues_update_comment::body::Json)
+    /// - [`&v1_1_4::request::issues_update_comment::body::Json`](crate::v1_1_4::request::issues_update_comment::body::Json)
     pub fn issues_update_comment<Content>(
         &self,
         owner: &str,
@@ -27273,7 +27273,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_issue_comment::body::Json`](crate::v1_1_4::request::reactions_create_for_issue_comment::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_issue_comment::body::Json`](crate::v1_1_4::request::reactions_create_for_issue_comment::body::Json)
     pub fn reactions_create_for_issue_comment<Content>(
         &self,
         owner: &str,
@@ -27521,7 +27521,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_update::body::Json`](crate::v1_1_4::request::issues_update::body::Json)
+    /// - [`&v1_1_4::request::issues_update::body::Json`](crate::v1_1_4::request::issues_update::body::Json)
     pub fn issues_update<Content>(
         &self,
         owner: &str,
@@ -27577,7 +27577,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_add_assignees::body::Json`](crate::v1_1_4::request::issues_add_assignees::body::Json)
+    /// - [`&v1_1_4::request::issues_add_assignees::body::Json`](crate::v1_1_4::request::issues_add_assignees::body::Json)
     pub fn issues_add_assignees<Content>(
         &self,
         owner: &str,
@@ -27633,7 +27633,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_remove_assignees::body::Json`](crate::v1_1_4::request::issues_remove_assignees::body::Json)
+    /// - [`&v1_1_4::request::issues_remove_assignees::body::Json`](crate::v1_1_4::request::issues_remove_assignees::body::Json)
     pub fn issues_remove_assignees<Content>(
         &self,
         owner: &str,
@@ -27740,7 +27740,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_create_comment::body::Json`](crate::v1_1_4::request::issues_create_comment::body::Json)
+    /// - [`&v1_1_4::request::issues_create_comment::body::Json`](crate::v1_1_4::request::issues_create_comment::body::Json)
     pub fn issues_create_comment<Content>(
         &self,
         owner: &str,
@@ -28092,7 +28092,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::issues_lock::body::Json>`](crate::v1_1_4::request::issues_lock::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::issues_lock::body::Json>`](crate::v1_1_4::request::issues_lock::body::Json)
     pub fn issues_lock<Content>(
         &self,
         owner: &str,
@@ -28244,7 +28244,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_issue::body::Json`](crate::v1_1_4::request::reactions_create_for_issue::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_issue::body::Json`](crate::v1_1_4::request::reactions_create_for_issue::body::Json)
     pub fn reactions_create_for_issue<Content>(
         &self,
         owner: &str,
@@ -28441,7 +28441,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_deploy_key::body::Json`](crate::v1_1_4::request::repos_create_deploy_key::body::Json)
+    /// - [`&v1_1_4::request::repos_create_deploy_key::body::Json`](crate::v1_1_4::request::repos_create_deploy_key::body::Json)
     pub fn repos_create_deploy_key<Content>(
         &self,
         owner: &str,
@@ -28626,7 +28626,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_create_label::body::Json`](crate::v1_1_4::request::issues_create_label::body::Json)
+    /// - [`&v1_1_4::request::issues_create_label::body::Json`](crate::v1_1_4::request::issues_create_label::body::Json)
     pub fn issues_create_label<Content>(
         &self,
         owner: &str,
@@ -28764,7 +28764,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_update_label::body::Json`](crate::v1_1_4::request::issues_update_label::body::Json)
+    /// - [`&v1_1_4::request::issues_update_label::body::Json`](crate::v1_1_4::request::issues_update_label::body::Json)
     pub fn issues_update_label<Content>(
         &self,
         owner: &str,
@@ -28990,7 +28990,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_merge_upstream::body::Json`](crate::v1_1_4::request::repos_merge_upstream::body::Json)
+    /// - [`&v1_1_4::request::repos_merge_upstream::body::Json`](crate::v1_1_4::request::repos_merge_upstream::body::Json)
     pub fn repos_merge_upstream<Content>(
         &self,
         owner: &str,
@@ -29042,7 +29042,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_merge::body::Json`](crate::v1_1_4::request::repos_merge::body::Json)
+    /// - [`&v1_1_4::request::repos_merge::body::Json`](crate::v1_1_4::request::repos_merge::body::Json)
     pub fn repos_merge<Content>(
         &self,
         owner: &str,
@@ -29145,7 +29145,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_create_milestone::body::Json`](crate::v1_1_4::request::issues_create_milestone::body::Json)
+    /// - [`&v1_1_4::request::issues_create_milestone::body::Json`](crate::v1_1_4::request::issues_create_milestone::body::Json)
     pub fn issues_create_milestone<Content>(
         &self,
         owner: &str,
@@ -29283,7 +29283,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::issues_update_milestone::body::Json`](crate::v1_1_4::request::issues_update_milestone::body::Json)
+    /// - [`&v1_1_4::request::issues_update_milestone::body::Json`](crate::v1_1_4::request::issues_update_milestone::body::Json)
     pub fn issues_update_milestone<Content>(
         &self,
         owner: &str,
@@ -29442,7 +29442,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::activity_mark_repo_notifications_as_read::body::Json`](crate::v1_1_4::request::activity_mark_repo_notifications_as_read::body::Json)
+    /// - [`&v1_1_4::request::activity_mark_repo_notifications_as_read::body::Json`](crate::v1_1_4::request::activity_mark_repo_notifications_as_read::body::Json)
     pub fn activity_mark_repo_notifications_as_read<Content>(
         &self,
         owner: &str,
@@ -29537,7 +29537,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_information_about_pages_site::body::Json`](crate::v1_1_4::request::repos_update_information_about_pages_site::body::Json)
+    /// - [`&v1_1_4::request::repos_update_information_about_pages_site::body::Json`](crate::v1_1_4::request::repos_update_information_about_pages_site::body::Json)
     pub fn repos_update_information_about_pages_site<Content>(
         &self,
         owner: &str,
@@ -29591,7 +29591,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::repos_create_pages_site::body::Json>`](crate::v1_1_4::request::repos_create_pages_site::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::repos_create_pages_site::body::Json>`](crate::v1_1_4::request::repos_create_pages_site::body::Json)
     pub fn repos_create_pages_site<Content>(
         &self,
         owner: &str,
@@ -29956,7 +29956,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_create_for_repo::body::Json`](crate::v1_1_4::request::projects_create_for_repo::body::Json)
+    /// - [`&v1_1_4::request::projects_create_for_repo::body::Json`](crate::v1_1_4::request::projects_create_for_repo::body::Json)
     pub fn projects_create_for_repo<Content>(
         &self,
         owner: &str,
@@ -30074,7 +30074,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_create::body::Json`](crate::v1_1_4::request::pulls_create::body::Json)
+    /// - [`&v1_1_4::request::pulls_create::body::Json`](crate::v1_1_4::request::pulls_create::body::Json)
     pub fn pulls_create<Content>(
         &self,
         owner: &str,
@@ -30271,7 +30271,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_update_review_comment::body::Json`](crate::v1_1_4::request::pulls_update_review_comment::body::Json)
+    /// - [`&v1_1_4::request::pulls_update_review_comment::body::Json`](crate::v1_1_4::request::pulls_update_review_comment::body::Json)
     pub fn pulls_update_review_comment<Content>(
         &self,
         owner: &str,
@@ -30378,7 +30378,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_pull_request_review_comment::body::Json`](crate::v1_1_4::request::reactions_create_for_pull_request_review_comment::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_pull_request_review_comment::body::Json`](crate::v1_1_4::request::reactions_create_for_pull_request_review_comment::body::Json)
     pub fn reactions_create_for_pull_request_review_comment<Content>(
         &self,
         owner: &str,
@@ -30544,7 +30544,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_update::body::Json`](crate::v1_1_4::request::pulls_update::body::Json)
+    /// - [`&v1_1_4::request::pulls_update::body::Json`](crate::v1_1_4::request::pulls_update::body::Json)
     pub fn pulls_update<Content>(
         &self,
         owner: &str,
@@ -30604,7 +30604,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::codespaces_create_with_pr_for_authenticated_user::body::Json>`](crate::v1_1_4::request::codespaces_create_with_pr_for_authenticated_user::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::codespaces_create_with_pr_for_authenticated_user::body::Json>`](crate::v1_1_4::request::codespaces_create_with_pr_for_authenticated_user::body::Json)
     pub fn codespaces_create_with_pr_for_authenticated_user<Content>(
         &self,
         owner: &str,
@@ -30722,7 +30722,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_create_review_comment::body::Json`](crate::v1_1_4::request::pulls_create_review_comment::body::Json)
+    /// - [`&v1_1_4::request::pulls_create_review_comment::body::Json`](crate::v1_1_4::request::pulls_create_review_comment::body::Json)
     pub fn pulls_create_review_comment<Content>(
         &self,
         owner: &str,
@@ -30780,7 +30780,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_create_reply_for_review_comment::body::Json`](crate::v1_1_4::request::pulls_create_reply_for_review_comment::body::Json)
+    /// - [`&v1_1_4::request::pulls_create_reply_for_review_comment::body::Json`](crate::v1_1_4::request::pulls_create_reply_for_review_comment::body::Json)
     pub fn pulls_create_reply_for_review_comment<Content>(
         &self,
         owner: &str,
@@ -30979,7 +30979,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::pulls_merge::body::Json>`](crate::v1_1_4::request::pulls_merge::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::pulls_merge::body::Json>`](crate::v1_1_4::request::pulls_merge::body::Json)
     pub fn pulls_merge<Content>(
         &self,
         owner: &str,
@@ -31082,7 +31082,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_request_reviewers::body::Json`](crate::v1_1_4::request::pulls_request_reviewers::body::Json)
+    /// - [`&v1_1_4::request::pulls_request_reviewers::body::Json`](crate::v1_1_4::request::pulls_request_reviewers::body::Json)
     pub fn pulls_request_reviewers<Content>(
         &self,
         owner: &str,
@@ -31136,7 +31136,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_remove_requested_reviewers::body::Json`](crate::v1_1_4::request::pulls_remove_requested_reviewers::body::Json)
+    /// - [`&v1_1_4::request::pulls_remove_requested_reviewers::body::Json`](crate::v1_1_4::request::pulls_remove_requested_reviewers::body::Json)
     pub fn pulls_remove_requested_reviewers<Content>(
         &self,
         owner: &str,
@@ -31247,7 +31247,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_create_review::body::Json`](crate::v1_1_4::request::pulls_create_review::body::Json)
+    /// - [`&v1_1_4::request::pulls_create_review::body::Json`](crate::v1_1_4::request::pulls_create_review::body::Json)
     pub fn pulls_create_review<Content>(
         &self,
         owner: &str,
@@ -31348,7 +31348,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_update_review::body::Json`](crate::v1_1_4::request::pulls_update_review::body::Json)
+    /// - [`&v1_1_4::request::pulls_update_review::body::Json`](crate::v1_1_4::request::pulls_update_review::body::Json)
     pub fn pulls_update_review<Content>(
         &self,
         owner: &str,
@@ -31502,7 +31502,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_dismiss_review::body::Json`](crate::v1_1_4::request::pulls_dismiss_review::body::Json)
+    /// - [`&v1_1_4::request::pulls_dismiss_review::body::Json`](crate::v1_1_4::request::pulls_dismiss_review::body::Json)
     pub fn pulls_dismiss_review<Content>(
         &self,
         owner: &str,
@@ -31558,7 +31558,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::pulls_submit_review::body::Json`](crate::v1_1_4::request::pulls_submit_review::body::Json)
+    /// - [`&v1_1_4::request::pulls_submit_review::body::Json`](crate::v1_1_4::request::pulls_submit_review::body::Json)
     pub fn pulls_submit_review<Content>(
         &self,
         owner: &str,
@@ -31616,7 +31616,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&::std::option::Option<request::pulls_update_branch::body::Json>`](crate::v1_1_4::request::pulls_update_branch::body::Json)
+    /// - [`&::std::option::Option<crate::v1_1_4::request::pulls_update_branch::body::Json>`](crate::v1_1_4::request::pulls_update_branch::body::Json)
     pub fn pulls_update_branch<Content>(
         &self,
         owner: &str,
@@ -31819,7 +31819,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_release::body::Json`](crate::v1_1_4::request::repos_create_release::body::Json)
+    /// - [`&v1_1_4::request::repos_create_release::body::Json`](crate::v1_1_4::request::repos_create_release::body::Json)
     pub fn repos_create_release<Content>(
         &self,
         owner: &str,
@@ -31961,7 +31961,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_release_asset::body::Json`](crate::v1_1_4::request::repos_update_release_asset::body::Json)
+    /// - [`&v1_1_4::request::repos_update_release_asset::body::Json`](crate::v1_1_4::request::repos_update_release_asset::body::Json)
     pub fn repos_update_release_asset<Content>(
         &self,
         owner: &str,
@@ -32017,7 +32017,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_generate_release_notes::body::Json`](crate::v1_1_4::request::repos_generate_release_notes::body::Json)
+    /// - [`&v1_1_4::request::repos_generate_release_notes::body::Json`](crate::v1_1_4::request::repos_generate_release_notes::body::Json)
     pub fn repos_generate_release_notes<Content>(
         &self,
         owner: &str,
@@ -32251,7 +32251,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_update_release::body::Json`](crate::v1_1_4::request::repos_update_release::body::Json)
+    /// - [`&v1_1_4::request::repos_update_release::body::Json`](crate::v1_1_4::request::repos_update_release::body::Json)
     pub fn repos_update_release<Content>(
         &self,
         owner: &str,
@@ -32478,7 +32478,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_release::body::Json`](crate::v1_1_4::request::reactions_create_for_release::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_release::body::Json`](crate::v1_1_4::request::reactions_create_for_release::body::Json)
     pub fn reactions_create_for_release<Content>(
         &self,
         owner: &str,
@@ -32694,7 +32694,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::secret_scanning_update_alert::body::Json`](crate::v1_1_4::request::secret_scanning_update_alert::body::Json)
+    /// - [`&v1_1_4::request::secret_scanning_update_alert::body::Json`](crate::v1_1_4::request::secret_scanning_update_alert::body::Json)
     pub fn secret_scanning_update_alert<Content>(
         &self,
         owner: &str,
@@ -33082,7 +33082,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_commit_status::body::Json`](crate::v1_1_4::request::repos_create_commit_status::body::Json)
+    /// - [`&v1_1_4::request::repos_create_commit_status::body::Json`](crate::v1_1_4::request::repos_create_commit_status::body::Json)
     pub fn repos_create_commit_status<Content>(
         &self,
         owner: &str,
@@ -33226,7 +33226,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::activity_set_repo_subscription::body::Json`](crate::v1_1_4::request::activity_set_repo_subscription::body::Json)
+    /// - [`&v1_1_4::request::activity_set_repo_subscription::body::Json`](crate::v1_1_4::request::activity_set_repo_subscription::body::Json)
     pub fn activity_set_repo_subscription<Content>(
         &self,
         owner: &str,
@@ -33414,7 +33414,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_tag_protection::body::Json`](crate::v1_1_4::request::repos_create_tag_protection::body::Json)
+    /// - [`&v1_1_4::request::repos_create_tag_protection::body::Json`](crate::v1_1_4::request::repos_create_tag_protection::body::Json)
     pub fn repos_create_tag_protection<Content>(
         &self,
         owner: &str,
@@ -33650,7 +33650,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_replace_all_topics::body::Json`](crate::v1_1_4::request::repos_replace_all_topics::body::Json)
+    /// - [`&v1_1_4::request::repos_replace_all_topics::body::Json`](crate::v1_1_4::request::repos_replace_all_topics::body::Json)
     pub fn repos_replace_all_topics<Content>(
         &self,
         owner: &str,
@@ -33880,7 +33880,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_transfer::body::Json`](crate::v1_1_4::request::repos_transfer::body::Json)
+    /// - [`&v1_1_4::request::repos_transfer::body::Json`](crate::v1_1_4::request::repos_transfer::body::Json)
     pub fn repos_transfer<Content>(
         &self,
         owner: &str,
@@ -34118,7 +34118,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_using_template::body::Json`](crate::v1_1_4::request::repos_create_using_template::body::Json)
+    /// - [`&v1_1_4::request::repos_create_using_template::body::Json`](crate::v1_1_4::request::repos_create_using_template::body::Json)
     pub fn repos_create_using_template<Content>(
         &self,
         template_owner: &str,
@@ -34426,7 +34426,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::actions_create_or_update_environment_secret::body::Json`](crate::v1_1_4::request::actions_create_or_update_environment_secret::body::Json)
+    /// - [`&v1_1_4::request::actions_create_or_update_environment_secret::body::Json`](crate::v1_1_4::request::actions_create_or_update_environment_secret::body::Json)
     pub fn actions_create_or_update_environment_secret<Content>(
         &self,
         repository_id: i64,
@@ -34578,7 +34578,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_provision_and_invite_enterprise_group::body::Json`](crate::v1_1_4::request::enterprise_admin_provision_and_invite_enterprise_group::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_provision_and_invite_enterprise_group::body::Json`](crate::v1_1_4::request::enterprise_admin_provision_and_invite_enterprise_group::body::Json)
     pub fn enterprise_admin_provision_and_invite_enterprise_group<Content>(
         &self,
         enterprise: &str,
@@ -34677,7 +34677,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_set_information_for_provisioned_enterprise_group::body::Json`](crate::v1_1_4::request::enterprise_admin_set_information_for_provisioned_enterprise_group::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_set_information_for_provisioned_enterprise_group::body::Json`](crate::v1_1_4::request::enterprise_admin_set_information_for_provisioned_enterprise_group::body::Json)
     pub fn enterprise_admin_set_information_for_provisioned_enterprise_group<Content>(
         &self,
         enterprise: &str,
@@ -34776,7 +34776,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_update_attribute_for_enterprise_group::body::Json`](crate::v1_1_4::request::enterprise_admin_update_attribute_for_enterprise_group::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_update_attribute_for_enterprise_group::body::Json`](crate::v1_1_4::request::enterprise_admin_update_attribute_for_enterprise_group::body::Json)
     pub fn enterprise_admin_update_attribute_for_enterprise_group<Content>(
         &self,
         enterprise: &str,
@@ -34898,7 +34898,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_provision_and_invite_enterprise_user::body::Json`](crate::v1_1_4::request::enterprise_admin_provision_and_invite_enterprise_user::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_provision_and_invite_enterprise_user::body::Json`](crate::v1_1_4::request::enterprise_admin_provision_and_invite_enterprise_user::body::Json)
     pub fn enterprise_admin_provision_and_invite_enterprise_user<Content>(
         &self,
         enterprise: &str,
@@ -34999,7 +34999,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_set_information_for_provisioned_enterprise_user::body::Json`](crate::v1_1_4::request::enterprise_admin_set_information_for_provisioned_enterprise_user::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_set_information_for_provisioned_enterprise_user::body::Json`](crate::v1_1_4::request::enterprise_admin_set_information_for_provisioned_enterprise_user::body::Json)
     pub fn enterprise_admin_set_information_for_provisioned_enterprise_user<Content>(
         &self,
         enterprise: &str,
@@ -35113,7 +35113,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::enterprise_admin_update_attribute_for_enterprise_user::body::Json`](crate::v1_1_4::request::enterprise_admin_update_attribute_for_enterprise_user::body::Json)
+    /// - [`&v1_1_4::request::enterprise_admin_update_attribute_for_enterprise_user::body::Json`](crate::v1_1_4::request::enterprise_admin_update_attribute_for_enterprise_user::body::Json)
     pub fn enterprise_admin_update_attribute_for_enterprise_user<Content>(
         &self,
         enterprise: &str,
@@ -35229,7 +35229,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::scim_provision_and_invite_user::body::Json`](crate::v1_1_4::request::scim_provision_and_invite_user::body::Json)
+    /// - [`&v1_1_4::request::scim_provision_and_invite_user::body::Json`](crate::v1_1_4::request::scim_provision_and_invite_user::body::Json)
     pub fn scim_provision_and_invite_user<Content>(
         &self,
         org: &str,
@@ -35326,7 +35326,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::scim_set_information_for_provisioned_user::body::Json`](crate::v1_1_4::request::scim_set_information_for_provisioned_user::body::Json)
+    /// - [`&v1_1_4::request::scim_set_information_for_provisioned_user::body::Json`](crate::v1_1_4::request::scim_set_information_for_provisioned_user::body::Json)
     pub fn scim_set_information_for_provisioned_user<Content>(
         &self,
         org: &str,
@@ -35436,7 +35436,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::scim_update_attribute_for_user::body::Json`](crate::v1_1_4::request::scim_update_attribute_for_user::body::Json)
+    /// - [`&v1_1_4::request::scim_update_attribute_for_user::body::Json`](crate::v1_1_4::request::scim_update_attribute_for_user::body::Json)
     pub fn scim_update_attribute_for_user<Content>(
         &self,
         org: &str,
@@ -35988,7 +35988,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_update_legacy::body::Json`](crate::v1_1_4::request::teams_update_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_update_legacy::body::Json`](crate::v1_1_4::request::teams_update_legacy::body::Json)
     pub fn teams_update_legacy<Content>(
         &self,
         team_id: i64,
@@ -36093,7 +36093,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_create_discussion_legacy::body::Json`](crate::v1_1_4::request::teams_create_discussion_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_create_discussion_legacy::body::Json`](crate::v1_1_4::request::teams_create_discussion_legacy::body::Json)
     pub fn teams_create_discussion_legacy<Content>(
         &self,
         team_id: i64,
@@ -36237,7 +36237,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_update_discussion_legacy::body::Json`](crate::v1_1_4::request::teams_update_discussion_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_update_discussion_legacy::body::Json`](crate::v1_1_4::request::teams_update_discussion_legacy::body::Json)
     pub fn teams_update_discussion_legacy<Content>(
         &self,
         team_id: i64,
@@ -36346,7 +36346,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_create_discussion_comment_legacy::body::Json`](crate::v1_1_4::request::teams_create_discussion_comment_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_create_discussion_comment_legacy::body::Json`](crate::v1_1_4::request::teams_create_discussion_comment_legacy::body::Json)
     pub fn teams_create_discussion_comment_legacy<Content>(
         &self,
         team_id: i64,
@@ -36496,7 +36496,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_update_discussion_comment_legacy::body::Json`](crate::v1_1_4::request::teams_update_discussion_comment_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_update_discussion_comment_legacy::body::Json`](crate::v1_1_4::request::teams_update_discussion_comment_legacy::body::Json)
     pub fn teams_update_discussion_comment_legacy<Content>(
         &self,
         team_id: i64,
@@ -36607,7 +36607,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_team_discussion_comment_legacy::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_comment_legacy::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_team_discussion_comment_legacy::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_comment_legacy::body::Json)
     pub fn reactions_create_for_team_discussion_comment_legacy<Content>(
         &self,
         team_id: i64,
@@ -36716,7 +36716,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::reactions_create_for_team_discussion_legacy::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_legacy::body::Json)
+    /// - [`&v1_1_4::request::reactions_create_for_team_discussion_legacy::body::Json`](crate::v1_1_4::request::reactions_create_for_team_discussion_legacy::body::Json)
     pub fn reactions_create_for_team_discussion_legacy<Content>(
         &self,
         team_id: i64,
@@ -37079,7 +37079,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_add_or_update_membership_for_user_legacy::body::Json`](crate::v1_1_4::request::teams_add_or_update_membership_for_user_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_add_or_update_membership_for_user_legacy::body::Json`](crate::v1_1_4::request::teams_add_or_update_membership_for_user_legacy::body::Json)
     pub fn teams_add_or_update_membership_for_user_legacy<Content>(
         &self,
         team_id: i64,
@@ -37276,7 +37276,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_add_or_update_project_permissions_legacy::body::Json`](crate::v1_1_4::request::teams_add_or_update_project_permissions_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_add_or_update_project_permissions_legacy::body::Json`](crate::v1_1_4::request::teams_add_or_update_project_permissions_legacy::body::Json)
     pub fn teams_add_or_update_project_permissions_legacy<Content>(
         &self,
         team_id: i64,
@@ -37473,7 +37473,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_add_or_update_repo_permissions_legacy::body::Json`](crate::v1_1_4::request::teams_add_or_update_repo_permissions_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_add_or_update_repo_permissions_legacy::body::Json`](crate::v1_1_4::request::teams_add_or_update_repo_permissions_legacy::body::Json)
     pub fn teams_add_or_update_repo_permissions_legacy<Content>(
         &self,
         team_id: i64,
@@ -37625,7 +37625,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::teams_create_or_update_idp_group_connections_legacy::body::Json`](crate::v1_1_4::request::teams_create_or_update_idp_group_connections_legacy::body::Json)
+    /// - [`&v1_1_4::request::teams_create_or_update_idp_group_connections_legacy::body::Json`](crate::v1_1_4::request::teams_create_or_update_idp_group_connections_legacy::body::Json)
     pub fn teams_create_or_update_idp_group_connections_legacy<Content>(
         &self,
         team_id: i64,
@@ -37763,7 +37763,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::users_update_authenticated::body::Json`](crate::v1_1_4::request::users_update_authenticated::body::Json)
+    /// - [`&v1_1_4::request::users_update_authenticated::body::Json`](crate::v1_1_4::request::users_update_authenticated::body::Json)
     pub fn users_update_authenticated<Content>(
         &self,
         theContent: Content,
@@ -38286,7 +38286,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::codespaces_create_or_update_secret_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_create_or_update_secret_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::codespaces_create_or_update_secret_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_create_or_update_secret_for_authenticated_user::body::Json)
     pub fn codespaces_create_or_update_secret_for_authenticated_user<Content>(
         &self,
         secret_name: &str,
@@ -38432,7 +38432,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::codespaces_set_repositories_for_secret_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_set_repositories_for_secret_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::codespaces_set_repositories_for_secret_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_set_repositories_for_secret_for_authenticated_user::body::Json)
     pub fn codespaces_set_repositories_for_secret_for_authenticated_user<Content>(
         &self,
         secret_name: &str,
@@ -38670,7 +38670,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::codespaces_update_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_update_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::codespaces_update_for_authenticated_user::body::Json`](crate::v1_1_4::request::codespaces_update_for_authenticated_user::body::Json)
     pub fn codespaces_update_for_authenticated_user<Content>(
         &self,
         codespace_name: &str,
@@ -38945,7 +38945,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::users_set_primary_email_visibility_for_authenticated_user::body::Json`](crate::v1_1_4::request::users_set_primary_email_visibility_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::users_set_primary_email_visibility_for_authenticated_user::body::Json`](crate::v1_1_4::request::users_set_primary_email_visibility_for_authenticated_user::body::Json)
     pub fn users_set_primary_email_visibility_for_authenticated_user<Content>(
         &self,
         theContent: Content,
@@ -39390,7 +39390,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::users_create_gpg_key_for_authenticated_user::body::Json`](crate::v1_1_4::request::users_create_gpg_key_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::users_create_gpg_key_for_authenticated_user::body::Json`](crate::v1_1_4::request::users_create_gpg_key_for_authenticated_user::body::Json)
     pub fn users_create_gpg_key_for_authenticated_user<Content>(
         &self,
         theContent: Content,
@@ -39751,7 +39751,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&schema::InteractionLimit`](crate::v1_1_4::schema::InteractionLimit)
+    /// - [`&v1_1_4::schema::InteractionLimit`](crate::v1_1_4::schema::InteractionLimit)
     pub fn interactions_set_restrictions_for_authenticated_user<Content>(
         &self,
         theContent: Content,
@@ -39940,7 +39940,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::users_create_public_ssh_key_for_authenticated_user::body::Json`](crate::v1_1_4::request::users_create_public_ssh_key_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::users_create_public_ssh_key_for_authenticated_user::body::Json`](crate::v1_1_4::request::users_create_public_ssh_key_for_authenticated_user::body::Json)
     pub fn users_create_public_ssh_key_for_authenticated_user<Content>(
         &self,
         theContent: Content,
@@ -40238,7 +40238,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::orgs_update_membership_for_authenticated_user::body::Json`](crate::v1_1_4::request::orgs_update_membership_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::orgs_update_membership_for_authenticated_user::body::Json`](crate::v1_1_4::request::orgs_update_membership_for_authenticated_user::body::Json)
     pub fn orgs_update_membership_for_authenticated_user<Content>(
         &self,
         org: &str,
@@ -40333,7 +40333,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::migrations_start_for_authenticated_user::body::Json`](crate::v1_1_4::request::migrations_start_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::migrations_start_for_authenticated_user::body::Json`](crate::v1_1_4::request::migrations_start_for_authenticated_user::body::Json)
     pub fn migrations_start_for_authenticated_user<Content>(
         &self,
         theContent: Content,
@@ -41056,7 +41056,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::projects_create_for_authenticated_user::body::Json`](crate::v1_1_4::request::projects_create_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::projects_create_for_authenticated_user::body::Json`](crate::v1_1_4::request::projects_create_for_authenticated_user::body::Json)
     pub fn projects_create_for_authenticated_user<Content>(
         &self,
         theContent: Content,
@@ -41216,7 +41216,7 @@ where
     ///
     /// # Content
     ///
-    /// - [`&request::repos_create_for_authenticated_user::body::Json`](crate::v1_1_4::request::repos_create_for_authenticated_user::body::Json)
+    /// - [`&v1_1_4::request::repos_create_for_authenticated_user::body::Json`](crate::v1_1_4::request::repos_create_for_authenticated_user::body::Json)
     pub fn repos_create_for_authenticated_user<Content>(
         &self,
         theContent: Content,

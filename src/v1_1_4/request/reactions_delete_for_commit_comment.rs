@@ -1,4 +1,3 @@
-
 //! Delete a commit comment reaction
 //! 
 //! **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.

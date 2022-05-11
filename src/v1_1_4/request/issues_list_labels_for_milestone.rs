@@ -1,4 +1,3 @@
-
 //! List labels for issues in a milestone
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#list-labels-for-issues-in-a-milestone)

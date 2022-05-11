@@ -1,4 +1,3 @@
-
 //! Unblock a user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/users#unblock-a-user)

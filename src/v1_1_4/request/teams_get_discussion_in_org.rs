@@ -1,4 +1,3 @@
-
 //! Get a discussion
 //! 
 //! Get a specific discussion on a team's page. OAuth access tokens require the `read:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).

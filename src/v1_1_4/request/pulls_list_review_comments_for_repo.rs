@@ -1,4 +1,3 @@
-
 //! List review comments in a repository
 //! 
 //! Lists review comments for all pull requests in a repository. By default, review comments are in ascending order by ID.

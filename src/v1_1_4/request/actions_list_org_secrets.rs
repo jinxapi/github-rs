@@ -1,4 +1,3 @@
-
 //! List organization secrets
 //! 
 //! Lists all secrets available in an organization without revealing their encrypted values. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.

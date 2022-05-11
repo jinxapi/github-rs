@@ -1,4 +1,3 @@
-
 //! Get a user installation for the authenticated app
 //! 
 //! Enables an authenticated GitHub App to find the user’s installation information.

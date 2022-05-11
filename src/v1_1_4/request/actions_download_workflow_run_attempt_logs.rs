@@ -1,4 +1,3 @@
-
 //! Download workflow run attempt logs
 //! 
 //! Gets a redirect URL to download an archive of log files for a specific workflow run attempt. This link expires after

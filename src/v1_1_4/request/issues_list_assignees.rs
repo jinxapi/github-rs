@@ -1,4 +1,3 @@
-
 //! List assignees
 //! 
 //! Lists the [available assignees](https://docs.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/) for issues in a repository.

@@ -1,4 +1,3 @@
-
 //! Get SCIM provisioning information for a user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/scim#get-scim-provisioning-information-for-a-user)

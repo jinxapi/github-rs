@@ -1,4 +1,3 @@
-
 //! Get a delivery for an app webhook
 //! 
 //! Returns a delivery for the webhook configured for a GitHub App.

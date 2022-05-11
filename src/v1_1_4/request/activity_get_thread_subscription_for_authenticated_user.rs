@@ -1,4 +1,3 @@
-
 //! Get a thread subscription for the authenticated user
 //! 
 //! This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/rest/reference/activity#get-a-repository-subscription).

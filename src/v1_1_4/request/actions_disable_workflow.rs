@@ -1,4 +1,3 @@
-
 //! Disable a workflow
 //! 
 //! Disables a workflow and sets the `state` of the workflow to `disabled_manually`. You can replace `workflow_id` with the workflow file name. For example, you could use `main.yaml`.

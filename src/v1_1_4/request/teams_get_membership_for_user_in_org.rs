@@ -1,4 +1,3 @@
-
 //! Get team membership for a user
 //! 
 //! Team members will include the members of child teams.

@@ -1,4 +1,3 @@
-
 //! Get a release
 //! 
 //! **Note:** This returns an `upload_url` key corresponding to the endpoint for uploading release assets. This key is a [hypermedia resource](https://docs.github.com/rest/overview/resources-in-the-rest-api#hypermedia).

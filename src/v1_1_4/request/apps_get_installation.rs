@@ -1,4 +1,3 @@
-
 //! Get an installation for the authenticated app
 //! 
 //! Enables an authenticated GitHub App to find an installation's information using the installation id.

@@ -1,4 +1,3 @@
-
 //! Get a repository README for a directory
 //! 
 //! Gets the README from a repository directory.

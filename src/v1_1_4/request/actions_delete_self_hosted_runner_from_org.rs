@@ -1,4 +1,3 @@
-
 //! Delete a self-hosted runner from an organization
 //! 
 //! Forces the removal of a self-hosted runner from an organization. You can use this endpoint to completely remove the runner when the machine you were using no longer exists.

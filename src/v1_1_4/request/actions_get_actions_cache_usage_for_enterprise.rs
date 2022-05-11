@@ -1,4 +1,3 @@
-
 //! Get GitHub Actions cache usage for an enterprise
 //! 
 //! Gets the total GitHub Actions cache usage for an enterprise.

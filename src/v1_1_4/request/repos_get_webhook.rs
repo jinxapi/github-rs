@@ -1,4 +1,3 @@
-
 //! Get a repository webhook
 //! 
 //! Returns a webhook configured in a repository. To get only the webhook `config` properties, see "[Get a webhook configuration for a repository](/rest/reference/repos#get-a-webhook-configuration-for-a-repository)."

@@ -1,4 +1,3 @@
-
 //! Ping an organization webhook
 //! 
 //! This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event) to be sent to the hook.

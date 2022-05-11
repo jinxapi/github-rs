@@ -1,4 +1,3 @@
-
 //! Remove a repository collaborator
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#remove-a-repository-collaborator)

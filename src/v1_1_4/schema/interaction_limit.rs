@@ -1,4 +1,3 @@
-
 /// Interaction Restrictions
 /// 
 /// Limit interactions to a specific type of user for a specified duration

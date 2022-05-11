@@ -1,4 +1,3 @@
-
 //! Restore a package for the authenticated user
 //! 
 //! Restores a package owned by the authenticated user.

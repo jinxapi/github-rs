@@ -1,4 +1,3 @@
-
 //! Get community profile metrics
 //! 
 //! This endpoint will return all community profile metrics, including an

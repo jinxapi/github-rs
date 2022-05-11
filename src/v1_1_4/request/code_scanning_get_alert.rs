@@ -1,4 +1,3 @@
-
 //! Get a code scanning alert
 //! 
 //! Gets a single code scanning alert. You must use an access token with the `security_events` scope to use this endpoint with private repos, the `public_repo` scope also grants permission to read security events on public repos only. GitHub Apps must have the `security_events` read permission to use this endpoint.

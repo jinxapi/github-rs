@@ -1,4 +1,3 @@
-
 //! Start a codespace for the authenticated user
 //! 
 //! Starts a user's codespace.

@@ -1,4 +1,3 @@
-
 //! Delete package version for an organization
 //! 
 //! Deletes a specific package version in an organization. If the package is public and the package version has more than 5,000 downloads, you cannot delete the package version. In this scenario, contact GitHub support for further assistance.

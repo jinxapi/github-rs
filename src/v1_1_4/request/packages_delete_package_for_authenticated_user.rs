@@ -1,4 +1,3 @@
-
 //! Delete a package for the authenticated user
 //! 
 //! Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance.

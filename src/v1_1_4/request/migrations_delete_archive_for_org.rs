@@ -1,4 +1,3 @@
-
 //! Delete an organization migration archive
 //! 
 //! Deletes a previous migration archive. Migration archives are automatically deleted after seven days.

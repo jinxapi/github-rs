@@ -1,4 +1,3 @@
-
 //! List repositories with GitHub Actions cache usage for an organization
 //! 
 //! Lists repositories and their GitHub Actions cache usage for an organization.

@@ -1,4 +1,3 @@
-
 //! List repositories for a user
 //! 
 //! Lists public repositories for the specified user. Note: For GitHub AE, this endpoint will list internal repositories for the specified user.

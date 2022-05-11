@@ -1,4 +1,3 @@
-
 //! Get all repository topics
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#get-all-repository-topics)

@@ -1,4 +1,3 @@
-
 //! Cancel an organization invitation
 //! 
 //! Cancel an organization invitation. In order to cancel an organization invitation, the authenticated user must be an organization owner.

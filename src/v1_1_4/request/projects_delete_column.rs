@@ -1,4 +1,3 @@
-
 //! Delete a project column
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/projects#delete-a-project-column)

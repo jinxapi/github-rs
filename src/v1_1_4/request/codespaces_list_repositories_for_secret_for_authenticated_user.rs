@@ -1,4 +1,3 @@
-
 //! List selected repositories for a user secret
 //! 
 //! List the repositories that have been granted the ability to use a user's codespace secret.

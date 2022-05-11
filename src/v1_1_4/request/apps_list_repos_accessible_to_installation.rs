@@ -1,4 +1,3 @@
-
 //! List repositories accessible to the app installation
 //! 
 //! List repositories that an app installation can access.

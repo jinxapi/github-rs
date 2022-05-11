@@ -1,4 +1,3 @@
-
 //! List team repositories
 //! 
 //! Lists a team's repositories visible to the authenticated user.

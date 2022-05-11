@@ -1,4 +1,3 @@
-
 //! List code scanning analyses for a repository
 //! 
 //! Lists the details of all code scanning analyses for a repository,

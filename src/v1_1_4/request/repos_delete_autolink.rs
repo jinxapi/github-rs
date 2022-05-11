@@ -1,4 +1,3 @@
-
 //! Delete an autolink reference from a repository
 //! 
 //! This deletes a single autolink reference by ID that was configured for the given repository.

@@ -1,4 +1,3 @@
-
 //! List repository notifications for the authenticated user
 //! 
 //! List all notifications for the current user.

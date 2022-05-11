@@ -1,4 +1,3 @@
-
 //! Delete a repository
 //! 
 //! Deleting a repository requires admin access. If OAuth is used, the `delete_repo` scope is required.

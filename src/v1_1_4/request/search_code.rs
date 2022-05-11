@@ -1,4 +1,3 @@
-
 //! Search code
 //! 
 //! Searches for query terms inside of a file. This method returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).

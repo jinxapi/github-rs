@@ -1,4 +1,3 @@
-
 //! Get the audit log for an enterprise
 //! 
 //! Gets the audit log for an enterprise. To use this endpoint, you must be an enterprise admin, and you must use an access token with the `admin:enterprise` scope.

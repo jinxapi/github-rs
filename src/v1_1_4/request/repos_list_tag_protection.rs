@@ -1,4 +1,3 @@
-
 //! List tag protection states for a repository
 //! 
 //! This returns the tag protection states of a repository.

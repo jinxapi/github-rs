@@ -1,4 +1,3 @@
-
 //! List organizations for a user
 //! 
 //! List [public organization memberships](https://docs.github.com/articles/publicizing-or-concealing-organization-membership) for the specified user.

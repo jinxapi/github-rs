@@ -1,4 +1,3 @@
-
 //! Delete a release asset
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-release-asset)

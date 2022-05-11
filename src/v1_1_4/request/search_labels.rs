@@ -1,4 +1,3 @@
-
 //! Search labels
 //! 
 //! Find labels in a repository with names or descriptions that match search keywords. Returns up to 100 results [per page](https://docs.github.com/rest/overview/resources-in-the-rest-api#pagination).

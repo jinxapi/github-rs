@@ -1,4 +1,3 @@
-
 //! Get a delivery for a repository webhook
 //! 
 //! Returns a delivery for a webhook configured in a repository.

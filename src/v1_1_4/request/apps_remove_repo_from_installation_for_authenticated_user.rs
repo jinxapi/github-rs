@@ -1,4 +1,3 @@
-
 //! Remove a repository from an app installation
 //! 
 //! Remove a single repository from an installation. The authenticated user must have admin access to the repository.

@@ -1,4 +1,3 @@
-
 //! Check if a user follows another user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/users#check-if-a-user-follows-another-user)

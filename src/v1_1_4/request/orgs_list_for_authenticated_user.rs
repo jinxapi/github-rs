@@ -1,4 +1,3 @@
-
 //! List organizations for the authenticated user
 //! 
 //! List organizations for the authenticated user.

@@ -1,4 +1,3 @@
-
 //! List codespaces in a repository for the authenticated user
 //! 
 //! Lists the codespaces associated to a specified repository and the authenticated user.

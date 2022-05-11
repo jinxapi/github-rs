@@ -1,4 +1,3 @@
-
 //! List users blocked by an organization
 //! 
 //! List the users blocked by an organization.

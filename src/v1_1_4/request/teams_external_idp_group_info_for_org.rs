@@ -1,4 +1,3 @@
-
 //! Get an external group
 //! 
 //! Displays information about the specific group's usage.  Provides a list of the group's external members as well as a list of teams that this group is connected to.

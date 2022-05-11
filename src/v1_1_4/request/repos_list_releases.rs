@@ -1,4 +1,3 @@
-
 //! List releases
 //! 
 //! This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/rest/reference/repos#list-repository-tags).

@@ -1,4 +1,3 @@
-
 //! List organization issues assigned to the authenticated user
 //! 
 //! List issues in an organization assigned to the authenticated user.

@@ -1,4 +1,3 @@
-
 //! Check team permissions for a repository
 //! 
 //! Checks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a repository. Repositories inherited through a parent team will also be checked.

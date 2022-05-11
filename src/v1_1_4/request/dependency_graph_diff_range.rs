@@ -1,4 +1,3 @@
-
 //! Get a diff of the dependencies between commits
 //! 
 //! Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.

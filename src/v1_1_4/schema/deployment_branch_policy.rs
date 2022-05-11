@@ -1,4 +1,3 @@
-
 /// The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.
 #[allow(non_snake_case)]
 #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]

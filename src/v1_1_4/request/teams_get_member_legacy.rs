@@ -1,4 +1,3 @@
-
 //! Get team member (Legacy)
 //! 
 //! The "Get team member" endpoint (described below) is deprecated.

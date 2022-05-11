@@ -1,4 +1,3 @@
-
 //! List codespaces for the authenticated user
 //! 
 //! Lists the authenticated user's codespaces.

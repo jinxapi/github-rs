@@ -1,4 +1,3 @@
-
 //! Unblock a user from an organization
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#unblock-a-user-from-an-organization)

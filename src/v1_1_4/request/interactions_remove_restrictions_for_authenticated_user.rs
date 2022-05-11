@@ -1,4 +1,3 @@
-
 //! Remove interaction restrictions from your public repositories
 //! 
 //! Removes any interaction restrictions from your public repositories.

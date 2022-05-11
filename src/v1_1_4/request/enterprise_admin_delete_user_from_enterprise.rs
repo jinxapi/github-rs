@@ -1,4 +1,3 @@
-
 //! Delete a SCIM user from an enterprise
 //! 
 //! **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.

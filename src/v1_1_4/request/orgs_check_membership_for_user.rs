@@ -1,4 +1,3 @@
-
 //! Check organization membership for a user
 //! 
 //! Check if a user is, publicly or privately, a member of the organization.

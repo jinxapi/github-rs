@@ -1,4 +1,3 @@
-
 //! Get a gist revision
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/gists#get-a-gist-revision)

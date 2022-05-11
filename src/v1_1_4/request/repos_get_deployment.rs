@@ -1,4 +1,3 @@
-
 //! Get a deployment
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#get-a-deployment)

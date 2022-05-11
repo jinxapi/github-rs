@@ -1,4 +1,3 @@
-
 //! List all autolinks of a repository
 //! 
 //! This returns a list of autolinks configured for the given repository.

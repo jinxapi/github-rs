@@ -1,4 +1,3 @@
-
 //! List reactions for a commit comment
 //! 
 //! List the reactions to a [commit comment](https://docs.github.com/rest/reference/repos#comments).

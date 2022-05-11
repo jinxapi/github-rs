@@ -1,4 +1,3 @@
-
 //! Redeliver a delivery for an organization webhook
 //! 
 //! Redeliver a delivery for a webhook configured in an organization.

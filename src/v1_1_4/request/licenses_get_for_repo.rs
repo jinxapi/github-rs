@@ -1,4 +1,3 @@
-
 //! Get the license for a repository
 //! 
 //! This method returns the contents of the repository's license file, if one is detected.

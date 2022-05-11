@@ -1,4 +1,3 @@
-
 //! Get the authenticated user
 //! 
 //! If the authenticated user is authenticated through basic authentication or OAuth with the `user` scope, then the response lists public and private profile information.

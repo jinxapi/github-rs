@@ -1,4 +1,3 @@
-
 //! List repositories watched by a user
 //! 
 //! Lists repositories a user is watching.

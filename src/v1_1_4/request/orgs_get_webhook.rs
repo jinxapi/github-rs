@@ -1,4 +1,3 @@
-
 //! Get an organization webhook
 //! 
 //! Returns a webhook configured in an organization. To get only the webhook `config` properties, see "[Get a webhook configuration for an organization](/rest/reference/orgs#get-a-webhook-configuration-for-an-organization)."

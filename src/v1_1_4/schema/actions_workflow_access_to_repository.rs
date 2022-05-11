@@ -1,4 +1,3 @@
-
 #[allow(non_snake_case)]
 #[derive(Clone, Eq, PartialEq, Debug, Default, ::serde::Serialize, ::serde::Deserialize)]
 pub struct ActionsWorkflowAccessToRepository<'a> {

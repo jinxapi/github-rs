@@ -1,4 +1,3 @@
-
 //! Delete a discussion comment
 //! 
 //! Deletes a comment on a team discussion. OAuth access tokens require the `write:discussion` [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).

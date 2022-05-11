@@ -1,4 +1,3 @@
-
 //! List teams
 //! 
 //! Lists all teams in an organization that are visible to the authenticated user.

@@ -1,4 +1,3 @@
-
 //! Set allowed actions and reusable workflows for an enterprise
 //! 
 //! Sets the actions and reusable workflows that are allowed in an enterprise. To use this endpoint, the enterprise permission policy for `allowed_actions` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."
@@ -192,38 +191,41 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&crate::v1_1_4::schema::SelectedActions<'a>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
+/// Types for body parameter in [`super::enterprise_admin_set_allowed_actions_enterprise`]
+pub mod body {
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&crate::v1_1_4::schema::SelectedActions<'a>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::schema::SelectedActions<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &crate::v1_1_4::schema::SelectedActions<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&crate::v1_1_4::schema::SelectedActions<'a>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&crate::v1_1_4::schema::SelectedActions<'a>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::schema::SelectedActions<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &crate::v1_1_4::schema::SelectedActions<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
-}
 
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&crate::v1_1_4::schema::SelectedActions<'a>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&crate::v1_1_4::schema::SelectedActions<'a>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
 
-    fn try_from(value: &crate::v1_1_4::schema::SelectedActions<'a>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
+        fn try_from(value: &crate::v1_1_4::schema::SelectedActions<'a>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
 }

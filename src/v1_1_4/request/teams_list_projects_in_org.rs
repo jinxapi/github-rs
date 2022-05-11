@@ -1,4 +1,3 @@
-
 //! List team projects
 //! 
 //! Lists the organization projects for a team.

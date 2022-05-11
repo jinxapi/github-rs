@@ -1,4 +1,3 @@
-
 //! Delete a repository webhook
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#delete-a-repository-webhook)

@@ -1,4 +1,3 @@
-
 //! Get a package version for a user
 //! 
 //! Gets a specific package version for a public package owned by a specified user.

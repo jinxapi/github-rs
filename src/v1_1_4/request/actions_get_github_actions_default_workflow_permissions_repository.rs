@@ -1,4 +1,3 @@
-
 //! Get default workflow permissions for a repository
 //! 
 //! Gets the default workflow permissions granted to the `GITHUB_TOKEN` when running workflows in a repository,

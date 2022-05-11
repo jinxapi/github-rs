@@ -1,4 +1,3 @@
-
 //! List a connection between an external group and a team
 //! 
 //! Lists a connection between a team and an external group.

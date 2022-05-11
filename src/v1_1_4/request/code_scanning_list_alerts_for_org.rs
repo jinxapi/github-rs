@@ -1,4 +1,3 @@
-
 //! List code scanning alerts for an organization
 //! 
 //! Lists all code scanning alerts for the default branch (usually `main`

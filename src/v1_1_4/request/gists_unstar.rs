@@ -1,4 +1,3 @@
-
 //! Unstar a gist
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/gists#unstar-a-gist)

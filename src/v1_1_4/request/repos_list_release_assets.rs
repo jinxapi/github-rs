@@ -1,4 +1,3 @@
-
 //! List release assets
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#list-release-assets)

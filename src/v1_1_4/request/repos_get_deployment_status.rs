@@ -1,4 +1,3 @@
-
 //! Get a deployment status
 //! 
 //! Users with pull access can view a deployment status for a deployment:

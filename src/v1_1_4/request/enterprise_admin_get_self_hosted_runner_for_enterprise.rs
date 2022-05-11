@@ -1,4 +1,3 @@
-
 //! Get a self-hosted runner for an enterprise
 //! 
 //! Gets a specific self-hosted runner configured in an enterprise.

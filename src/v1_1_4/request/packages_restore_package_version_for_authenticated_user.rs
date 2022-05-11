@@ -1,4 +1,3 @@
-
 //! Restore a package version for the authenticated user
 //! 
 //! Restores a package version owned by the authenticated user.

@@ -1,4 +1,3 @@
-
 //! List locations for a secret scanning alert
 //! 
 //! Lists all locations for a given secret scanning alert for an eligible repository.

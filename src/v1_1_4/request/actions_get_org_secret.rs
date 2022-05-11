@@ -1,4 +1,3 @@
-
 //! Get an organization secret
 //! 
 //! Gets a single organization secret without revealing its encrypted value. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `secrets` organization permission to use this endpoint.

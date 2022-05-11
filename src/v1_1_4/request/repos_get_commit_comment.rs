@@ -1,4 +1,3 @@
-
 //! Get a commit comment
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#get-a-commit-comment)

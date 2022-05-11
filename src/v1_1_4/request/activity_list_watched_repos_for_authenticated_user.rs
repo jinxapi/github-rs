@@ -1,4 +1,3 @@
-
 //! List repositories watched by the authenticated user
 //! 
 //! Lists repositories the authenticated user is watching.

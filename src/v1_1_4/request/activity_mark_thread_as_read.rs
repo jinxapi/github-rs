@@ -1,4 +1,3 @@
-
 //! Mark a thread as read
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/activity#mark-a-thread-as-read)

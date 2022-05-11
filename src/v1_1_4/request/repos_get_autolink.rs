@@ -1,4 +1,3 @@
-
 //! Get an autolink reference of a repository
 //! 
 //! This returns a single autolink reference by ID that was configured for the given repository.

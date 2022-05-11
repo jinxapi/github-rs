@@ -1,4 +1,3 @@
-
 //! Download an organization migration archive
 //! 
 //! Fetches the URL to a migration archive.

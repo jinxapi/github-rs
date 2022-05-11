@@ -1,4 +1,3 @@
-
 //! List repository issues
 //! 
 //! List issues in a repository.

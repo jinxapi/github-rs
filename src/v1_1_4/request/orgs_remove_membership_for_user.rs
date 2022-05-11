@@ -1,4 +1,3 @@
-
 //! Remove organization membership for a user
 //! 
 //! In order to remove a user's membership with an organization, the authenticated user must be an organization owner.

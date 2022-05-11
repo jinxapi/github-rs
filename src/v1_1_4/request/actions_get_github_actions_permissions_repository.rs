@@ -1,4 +1,3 @@
-
 //! Get GitHub Actions permissions for a repository
 //! 
 //! Gets the GitHub Actions permissions policy for a repository, including whether GitHub Actions is enabled and the actions and reusable workflows allowed to run in the repository.

@@ -1,4 +1,3 @@
-
 //! Remove a selected repository from a user secret
 //! 
 //! Removes a repository from the selected repositories for a user's codespace secret.

@@ -1,4 +1,3 @@
-
 //! List starred gists
 //! 
 //! List the authenticated user's starred gists:

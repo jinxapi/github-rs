@@ -1,4 +1,3 @@
-
 //! Create a remove token for an enterprise
 //! 
 //! Returns a token that you can pass to the `config` script to remove a self-hosted runner from an enterprise. The token expires after one hour.

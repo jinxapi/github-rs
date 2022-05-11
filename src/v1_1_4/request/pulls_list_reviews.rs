@@ -1,4 +1,3 @@
-
 //! List reviews for a pull request
 //! 
 //! The list of reviews returns in chronological order.

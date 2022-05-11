@@ -1,4 +1,3 @@
-
 //! Get the audit log for an organization
 //! 
 //! Gets the audit log for an organization. For more information, see "[Reviewing the audit log for your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization)."

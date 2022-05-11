@@ -1,4 +1,3 @@
-
 //! List available machine types for a repository
 //! 
 //! List the machine types available for a given repository based on its configuration.

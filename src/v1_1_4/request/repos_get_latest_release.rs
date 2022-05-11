@@ -1,4 +1,3 @@
-
 //! Get the latest release
 //! 
 //! View the latest published full release for the repository.

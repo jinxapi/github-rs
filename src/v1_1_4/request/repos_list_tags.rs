@@ -1,4 +1,3 @@
-
 //! List repository tags
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-tags)

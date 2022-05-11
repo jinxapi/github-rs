@@ -1,4 +1,3 @@
-
 //! List workflow runs for a repository
 //! 
 //! Lists all workflow runs for a repository. You can use parameters to narrow the list of results. For more information about using parameters, see [Parameters](https://docs.github.com/rest/overview/resources-in-the-rest-api#parameters).

@@ -1,4 +1,3 @@
-
 //! Get a gist comment
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/gists#get-a-gist-comment)

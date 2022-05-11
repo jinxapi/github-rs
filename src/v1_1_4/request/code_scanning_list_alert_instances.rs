@@ -1,4 +1,3 @@
-
 //! List instances of a code scanning alert
 //! 
 //! Lists all instances of the specified code scanning alert.

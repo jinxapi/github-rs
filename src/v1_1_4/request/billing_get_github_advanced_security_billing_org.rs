@@ -1,4 +1,3 @@
-
 //! Get GitHub Advanced Security active committers for an organization
 //! 
 //! Gets the GitHub Advanced Security active committers for an organization per repository.

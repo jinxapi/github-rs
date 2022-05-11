@@ -1,4 +1,3 @@
-
 //! Get a package version for the authenticated user
 //! 
 //! Gets a specific package version for a package owned by the authenticated user.

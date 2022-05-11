@@ -1,4 +1,3 @@
-
 //! Delete a SCIM user from an organization
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/scim#delete-a-scim-user-from-an-organization)

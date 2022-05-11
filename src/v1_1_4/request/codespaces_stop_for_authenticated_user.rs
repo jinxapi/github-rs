@@ -1,4 +1,3 @@
-
 //! Stop a codespace for the authenticated user
 //! 
 //! Stops a user's codespace.

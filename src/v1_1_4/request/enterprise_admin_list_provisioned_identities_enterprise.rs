@@ -1,4 +1,3 @@
-
 //! List SCIM provisioned identities for an enterprise
 //! 
 //! **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.

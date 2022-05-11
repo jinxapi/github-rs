@@ -1,4 +1,3 @@
-
 //! List selected repositories for an organization secret
 //! 
 //! Lists all repositories that have been selected when the `visibility` for repository access to a secret is set to `selected`. You must authenticate using an access token with the `admin:org` scope to use this endpoint. GitHub Apps must have the `dependabot_secrets` organization permission to use this endpoint.

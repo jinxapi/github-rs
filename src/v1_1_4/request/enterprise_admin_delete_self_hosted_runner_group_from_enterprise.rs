@@ -1,4 +1,3 @@
-
 //! Delete a self-hosted runner group from an enterprise
 //! 
 //! Deletes a self-hosted runner group for an enterprise.

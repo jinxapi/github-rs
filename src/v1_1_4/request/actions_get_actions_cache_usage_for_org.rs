@@ -1,4 +1,3 @@
-
 //! Get GitHub Actions cache usage for an organization
 //! 
 //! Gets the total GitHub Actions cache usage for an organization.

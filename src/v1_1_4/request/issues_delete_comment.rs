@@ -1,4 +1,3 @@
-
 //! Delete an issue comment
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/issues#delete-an-issue-comment)

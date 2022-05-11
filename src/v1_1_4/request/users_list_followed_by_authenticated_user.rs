@@ -1,4 +1,3 @@
-
 //! List the people the authenticated user follows
 //! 
 //! Lists the people who the authenticated user follows.

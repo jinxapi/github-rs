@@ -1,4 +1,3 @@
-
 //! List commit statuses for a reference
 //! 
 //! Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.

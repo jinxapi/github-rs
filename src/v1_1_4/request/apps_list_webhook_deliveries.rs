@@ -1,4 +1,3 @@
-
 //! List deliveries for an app webhook
 //! 
 //! Returns a list of webhook deliveries for the webhook configured for a GitHub App.

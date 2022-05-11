@@ -1,4 +1,3 @@
-
 //! List GPG keys for a user
 //! 
 //! Lists the GPG keys for a user. This information is accessible by anyone.

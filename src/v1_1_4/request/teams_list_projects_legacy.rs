@@ -1,4 +1,3 @@
-
 //! List team projects (Legacy)
 //! 
 //! **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List team projects`](https://docs.github.com/rest/reference/teams#list-team-projects) endpoint.

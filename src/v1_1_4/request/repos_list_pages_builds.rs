@@ -1,4 +1,3 @@
-
 //! List GitHub Pages builds
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#list-github-pages-builds)

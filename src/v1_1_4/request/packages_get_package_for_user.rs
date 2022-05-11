@@ -1,4 +1,3 @@
-
 //! Get a package for a user
 //! 
 //! Gets a specific package metadata for a public package owned by a user.

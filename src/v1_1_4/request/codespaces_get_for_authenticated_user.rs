@@ -1,4 +1,3 @@
-
 //! Get a codespace for the authenticated user
 //! 
 //! Gets information about a user's codespace.

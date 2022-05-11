@@ -1,4 +1,3 @@
-
 //! Get a commit
 //! 
 //! Gets a Git [commit object](https://git-scm.com/book/en/v1/Git-Internals-Git-Objects#Commit-Objects).

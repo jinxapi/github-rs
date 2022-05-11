@@ -1,4 +1,3 @@
-
 //! List deployment statuses
 //! 
 //! Users with pull access can view deployment statuses for a deployment:

@@ -1,4 +1,3 @@
-
 //! List self-hosted runners for an organization
 //! 
 //! Lists all self-hosted runners configured in an organization.

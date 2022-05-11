@@ -1,4 +1,3 @@
-
 //! Disable Git LFS for a repository
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#disable-git-lfs-for-a-repository)

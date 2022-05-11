@@ -1,4 +1,3 @@
-
 //! Remove public organization membership for the authenticated user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#remove-public-organization-membership-for-the-authenticated-user)

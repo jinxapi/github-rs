@@ -1,4 +1,3 @@
-
 //! List public organization events
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/activity#list-public-organization-events)

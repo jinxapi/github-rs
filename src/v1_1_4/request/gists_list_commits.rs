@@ -1,4 +1,3 @@
-
 //! List gist commits
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/gists#list-gist-commits)

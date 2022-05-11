@@ -1,4 +1,3 @@
-
 //! Decline a repository invitation
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#decline-a-repository-invitation)

@@ -1,4 +1,3 @@
-
 //! Get a GitHub Pages site
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#get-a-github-pages-site)

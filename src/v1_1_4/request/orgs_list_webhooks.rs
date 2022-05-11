@@ -1,4 +1,3 @@
-
 //! List organization webhooks
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#list-organization-webhooks)

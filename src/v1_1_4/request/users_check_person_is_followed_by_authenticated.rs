@@ -1,4 +1,3 @@
-
 //! Check if a person is followed by the authenticated user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/users#check-if-a-person-is-followed-by-the-authenticated-user)

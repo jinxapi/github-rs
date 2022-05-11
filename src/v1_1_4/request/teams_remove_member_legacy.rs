@@ -1,4 +1,3 @@
-
 //! Remove team member (Legacy)
 //! 
 //! The "Remove team member" endpoint (described below) is deprecated.

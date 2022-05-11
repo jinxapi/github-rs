@@ -1,4 +1,3 @@
-
 //! Get GitHub Actions cache usage for a repository
 //! 
 //! Gets GitHub Actions cache usage for a repository.

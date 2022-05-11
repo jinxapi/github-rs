@@ -1,4 +1,3 @@
-
 //! List labels for a self-hosted runner for an enterprise
 //! 
 //! Lists all labels for a self-hosted runner configured in an enterprise.

@@ -1,4 +1,3 @@
-
 //! Unsuspend an app installation
 //! 
 //! Removes a GitHub App installation suspension.

@@ -1,4 +1,3 @@
-
 //! Check if a gist is starred
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/gists#check-if-a-gist-is-starred)

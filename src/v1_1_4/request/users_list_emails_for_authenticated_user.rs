@@ -1,4 +1,3 @@
-
 //! List email addresses for the authenticated user
 //! 
 //! Lists all of your email addresses, and specifies which one is visible to the public. This endpoint is accessible with the `user:email` scope.

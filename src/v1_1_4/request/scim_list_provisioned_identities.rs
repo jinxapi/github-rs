@@ -1,4 +1,3 @@
-
 //! List SCIM provisioned identities
 //! 
 //! Retrieves a paginated list of all provisioned organization members, including pending invitations. If you provide the `filter` parameter, the resources for all matching provisions members are returned.

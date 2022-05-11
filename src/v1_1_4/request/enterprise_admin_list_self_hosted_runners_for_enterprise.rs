@@ -1,4 +1,3 @@
-
 //! List self-hosted runners for an enterprise
 //! 
 //! Lists all self-hosted runners configured for an enterprise.

@@ -1,4 +1,3 @@
-
 //! Get emojis
 //! 
 //! Lists all the emojis available to use on GitHub.

@@ -1,4 +1,3 @@
-
 //! List public organization members
 //! 
 //! Members of an organization can choose to have their membership publicized or not.

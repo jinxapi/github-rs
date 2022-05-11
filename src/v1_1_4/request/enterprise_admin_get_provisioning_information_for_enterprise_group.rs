@@ -1,4 +1,3 @@
-
 //! Get SCIM provisioning information for an enterprise group
 //! 
 //! **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to change.

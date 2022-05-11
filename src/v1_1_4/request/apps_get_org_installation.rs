@@ -1,4 +1,3 @@
-
 //! Get an organization installation for the authenticated app
 //! 
 //! Enables an authenticated GitHub App to find the organization's installation information.

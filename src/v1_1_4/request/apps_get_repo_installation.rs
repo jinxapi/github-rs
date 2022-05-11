@@ -1,4 +1,3 @@
-
 //! Get a repository installation for the authenticated app
 //! 
 //! Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.

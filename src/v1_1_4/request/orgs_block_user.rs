@@ -1,4 +1,3 @@
-
 //! Block a user from an organization
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#block-a-user-from-an-organization)

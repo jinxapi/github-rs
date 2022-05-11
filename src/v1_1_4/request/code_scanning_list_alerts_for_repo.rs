@@ -1,4 +1,3 @@
-
 //! List code scanning alerts for a repository
 //! 
 //! Lists all open code scanning alerts for the default branch (usually `main`

@@ -1,4 +1,3 @@
-
 //! Check if a user is blocked by an organization
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#check-if-a-user-is-blocked-by-an-organization)

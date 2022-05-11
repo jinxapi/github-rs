@@ -1,4 +1,3 @@
-
 //! List secrets for the authenticated user
 //! 
 //! Lists all secrets available for a user's Codespaces without revealing their

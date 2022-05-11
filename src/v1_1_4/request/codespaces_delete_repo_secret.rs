@@ -1,4 +1,3 @@
-
 //! Delete a repository secret
 //! 
 //! Deletes a secret in a repository using the secret name. You must authenticate using an access token with the `repo` scope to use this endpoint. GitHub Apps must have the `codespaces_secrets` repository permission to use this endpoint.

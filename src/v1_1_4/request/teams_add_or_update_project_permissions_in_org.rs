@@ -1,4 +1,3 @@
-
 //! Add or update team project permissions
 //! 
 //! Adds an organization project to a team. To add a project to a team or update the team's permission on a project, the authenticated user must have `admin` permissions for the project. The project and team must be part of the same organization.
@@ -209,42 +208,6 @@ impl From<::reqwest::blocking::Body> for Content<::reqwest::blocking::Body> {
     }
 }
 
-#[cfg(feature = "hyper")]
-impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>> for Content<::hyper::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest")]
-impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>> for Content<::reqwest::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
-#[cfg(feature = "reqwest-blocking")]
-impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>> for Content<::reqwest::blocking::Body> {
-    type Error = crate::v1_1_4::ApiError;
-
-    fn try_from(value: &::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>) -> Result<Self, Self::Error> {
-        Ok(
-            Self::new(::serde_json::to_vec(value)?.into())
-            .with_content_type(&b"application/json"[..])
-        )
-    }
-}
-
 /// Types for body parameter in [`super::teams_add_or_update_project_permissions_in_org`]
 pub mod body {
     #[allow(non_snake_case)]
@@ -260,5 +223,41 @@ pub mod body {
 
         #[serde(flatten)]
         pub additionalProperties: ::std::collections::HashMap<::std::borrow::Cow<'a, str>, ::serde_json::value::Value>
+    }
+
+    #[cfg(feature = "hyper")]
+    impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>> for super::Content<::hyper::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest")]
+    impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>> for super::Content<::reqwest::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
+    }
+
+    #[cfg(feature = "reqwest-blocking")]
+    impl<'a> TryFrom<&::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>> for super::Content<::reqwest::blocking::Body> {
+        type Error = crate::v1_1_4::ApiError;
+
+        fn try_from(value: &::std::option::Option<crate::v1_1_4::request::teams_add_or_update_project_permissions_in_org::body::Json<'a>>) -> Result<Self, Self::Error> {
+            Ok(
+                Self::new(::serde_json::to_vec(value)?.into())
+                .with_content_type(&b"application/json"[..])
+            )
+        }
     }
 }

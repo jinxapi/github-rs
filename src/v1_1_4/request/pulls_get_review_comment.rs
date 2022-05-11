@@ -1,4 +1,3 @@
-
 //! Get a review comment for a pull request
 //! 
 //! Provides details for a review comment.

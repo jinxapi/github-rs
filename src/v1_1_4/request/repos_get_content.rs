@@ -1,4 +1,3 @@
-
 //! Get repository content
 //! 
 //! Gets the contents of a file or directory in a repository. Specify the file path or directory in `:path`. If you omit

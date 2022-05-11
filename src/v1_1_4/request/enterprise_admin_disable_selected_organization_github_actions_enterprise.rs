@@ -1,4 +1,3 @@
-
 //! Disable a selected organization for GitHub Actions in an enterprise
 //! 
 //! Removes an organization from the list of selected organizations that are enabled for GitHub Actions in an enterprise. To use this endpoint, the enterprise permission policy for `enabled_organizations` must be configured to `selected`. For more information, see "[Set GitHub Actions permissions for an enterprise](#set-github-actions-permissions-for-an-enterprise)."

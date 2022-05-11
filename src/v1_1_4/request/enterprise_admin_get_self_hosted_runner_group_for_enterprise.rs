@@ -1,4 +1,3 @@
-
 //! Get a self-hosted runner group for an enterprise
 //! 
 //! Gets a specific self-hosted runner group for an enterprise.

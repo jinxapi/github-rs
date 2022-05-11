@@ -1,4 +1,3 @@
-
 //! Set public organization membership for the authenticated user
 //! 
 //! The user can publicize their own membership. (A user cannot publicize the membership for another user.)

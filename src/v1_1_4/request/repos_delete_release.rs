@@ -1,4 +1,3 @@
-
 //! Delete a release
 //! 
 //! Users with push access to the repository can delete a release.

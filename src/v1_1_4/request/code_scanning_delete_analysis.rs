@@ -1,4 +1,3 @@
-
 //! Delete a code scanning analysis from a repository
 //! 
 //! Deletes a specified code scanning analysis from a repository. For

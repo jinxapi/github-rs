@@ -1,4 +1,3 @@
-
 //! Create a remove token for a repository
 //! 
 //! Returns a token that you can pass to remove a self-hosted runner from a repository. The token expires after one hour.

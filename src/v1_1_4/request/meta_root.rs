@@ -1,4 +1,3 @@
-
 //! GitHub API Root
 //! 
 //! Get Hypermedia links to resources accessible in GitHub's REST API

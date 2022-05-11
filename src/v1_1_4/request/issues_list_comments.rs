@@ -1,4 +1,3 @@
-
 //! List issue comments
 //! 
 //! Issue Comments are ordered by ascending ID.

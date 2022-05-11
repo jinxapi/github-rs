@@ -1,4 +1,3 @@
-
 //! List repository teams
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/repos#list-repository-teams)

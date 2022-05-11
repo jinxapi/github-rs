@@ -1,4 +1,3 @@
-
 //! Get GitHub Actions permissions for an enterprise
 //! 
 //! Gets the GitHub Actions permissions policy for organizations and allowed actions and reusable workflows in an enterprise.

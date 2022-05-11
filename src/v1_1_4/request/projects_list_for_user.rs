@@ -1,4 +1,3 @@
-
 //! List user projects
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/projects#list-user-projects)

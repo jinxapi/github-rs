@@ -1,4 +1,3 @@
-
 //! Get a blob
 //! 
 //! The `content` in the response will always be Base64 encoded.

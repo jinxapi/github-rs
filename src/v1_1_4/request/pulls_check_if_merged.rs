@@ -1,4 +1,3 @@
-
 //! Check if a pull request has been merged
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/pulls#check-if-a-pull-request-has-been-merged)

@@ -1,4 +1,3 @@
-
 //! Remove outside collaborator from an organization
 //! 
 //! Removing a user from this list will remove them from all the organization's repositories.

@@ -1,4 +1,3 @@
-
 //! Get an organization migration status
 //! 
 //! Fetches the status of a migration.

@@ -1,4 +1,3 @@
-
 //! List users blocked by the authenticated user
 //! 
 //! List the users you've blocked on your personal account.

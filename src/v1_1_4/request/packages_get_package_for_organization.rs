@@ -1,4 +1,3 @@
-
 //! Get a package for an organization
 //! 
 //! Gets a specific package in an organization.

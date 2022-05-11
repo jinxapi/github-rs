@@ -1,4 +1,3 @@
-
 //! Get a tag
 //! 
 //! **Signature verification object**

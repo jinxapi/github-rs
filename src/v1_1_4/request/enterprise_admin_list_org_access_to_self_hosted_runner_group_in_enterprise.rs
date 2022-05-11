@@ -1,4 +1,3 @@
-
 //! List organization access to a self-hosted runner group in an enterprise
 //! 
 //! Lists the organizations with access to a self-hosted runner group.

@@ -1,4 +1,3 @@
-
 //! Get feeds
 //! 
 //! GitHub provides several timeline resources in [Atom](http://en.wikipedia.org/wiki/Atom_(standard)) format. The Feeds API lists all the feeds available to the authenticated user:

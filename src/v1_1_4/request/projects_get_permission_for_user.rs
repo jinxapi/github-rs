@@ -1,4 +1,3 @@
-
 //! Get project permission for a user
 //! 
 //! Returns the collaborator's permission level for an organization project. Possible values for the `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project `admin` to review a user's permission level.

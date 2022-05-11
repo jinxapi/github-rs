@@ -1,4 +1,3 @@
-
 //! Remove a SAML SSO authorization for an organization
 //! 
 //! Listing and deleting credential authorizations is available to organizations with GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products).

@@ -1,4 +1,3 @@
-
 //! Delete a review comment for a pull request
 //! 
 //! Deletes a review comment.

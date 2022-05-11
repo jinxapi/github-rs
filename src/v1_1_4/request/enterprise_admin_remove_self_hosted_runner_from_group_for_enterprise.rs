@@ -1,4 +1,3 @@
-
 //! Remove a self-hosted runner from a group for an enterprise
 //! 
 //! Removes a self-hosted runner from a group configured in an enterprise. The runner is then returned to the default group.

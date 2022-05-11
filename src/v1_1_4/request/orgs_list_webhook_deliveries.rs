@@ -1,4 +1,3 @@
-
 //! List deliveries for an organization webhook
 //! 
 //! Returns a list of webhook deliveries for a webhook configured in an organization.

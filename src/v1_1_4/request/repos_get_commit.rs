@@ -1,4 +1,3 @@
-
 //! Get a commit
 //! 
 //! Returns the contents of a single commit reference. You must have `read` access for the repository to use this endpoint.

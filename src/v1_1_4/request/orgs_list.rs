@@ -1,4 +1,3 @@
-
 //! List organizations
 //! 
 //! Lists all organizations, in the order that they were created on GitHub.

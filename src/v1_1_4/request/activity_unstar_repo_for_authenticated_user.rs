@@ -1,4 +1,3 @@
-
 //! Unstar a repository for the authenticated user
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/activity#unstar-a-repository-for-the-authenticated-user)

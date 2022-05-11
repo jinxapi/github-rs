@@ -1,4 +1,3 @@
-
 //! List repositories accessible to the user access token
 //! 
 //! List repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access for an installation.

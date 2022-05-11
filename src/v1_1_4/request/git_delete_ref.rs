@@ -1,4 +1,3 @@
-
 //! Delete a reference
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/git#delete-a-reference)

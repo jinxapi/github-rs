@@ -1,4 +1,3 @@
-
 //! Remove all custom labels from a self-hosted runner for an organization
 //! 
 //! Remove all custom labels from a self-hosted runner configured in an

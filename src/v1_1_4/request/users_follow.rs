@@ -1,4 +1,3 @@
-
 //! Follow a user
 //! 
 //! Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP verbs](https://docs.github.com/rest/overview/resources-in-the-rest-api#http-verbs)."

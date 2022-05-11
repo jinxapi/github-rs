@@ -1,4 +1,3 @@
-
 //! Get a team by name
 //! 
 //! Gets a team using the team's `slug`. GitHub generates the `slug` from the team `name`.

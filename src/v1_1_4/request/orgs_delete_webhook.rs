@@ -1,4 +1,3 @@
-
 //! Delete an organization webhook
 //! 
 //! [API method documentation](https://docs.github.com/rest/reference/orgs#delete-an-organization-webhook)

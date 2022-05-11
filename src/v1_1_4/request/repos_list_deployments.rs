@@ -1,4 +1,3 @@
-
 //! List deployments
 //! 
 //! Simple filtering of deployments is available via query parameters:

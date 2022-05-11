@@ -1,4 +1,3 @@
-
 //! List watchers
 //! 
 //! Lists the people watching the specified repository.

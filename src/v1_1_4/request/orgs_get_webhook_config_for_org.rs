@@ -1,4 +1,3 @@
-
 //! Get a webhook configuration for an organization
 //! 
 //! Returns the webhook configuration for an organization. To get more information about the webhook, including the `active` state and `events`, use "[Get an organization webhook ](/rest/reference/orgs#get-an-organization-webhook)."

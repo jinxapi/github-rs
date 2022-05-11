@@ -1,4 +1,3 @@
-
 //! Get a secret for the authenticated user
 //! 
 //! Gets a secret available to a user's codespaces without revealing its encrypted value.

@@ -1,4 +1,3 @@
-
 //! Delete a codespace for the authenticated user
 //! 
 //! Deletes a user's codespace.

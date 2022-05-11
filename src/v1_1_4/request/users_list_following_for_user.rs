@@ -1,4 +1,3 @@
-
 //! List the people a user follows
 //! 
 //! Lists the people who the specified user follows.

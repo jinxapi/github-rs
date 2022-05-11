@@ -1,4 +1,3 @@
-
 //! List CODEOWNERS errors
 //! 
 //! List any syntax errors that are detected in the CODEOWNERS

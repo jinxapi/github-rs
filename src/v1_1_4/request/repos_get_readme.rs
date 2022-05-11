@@ -1,4 +1,3 @@
-
 //! Get a repository README
 //! 
 //! Gets the preferred README for a repository.

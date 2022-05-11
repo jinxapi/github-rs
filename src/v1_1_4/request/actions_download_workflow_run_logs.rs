@@ -1,4 +1,3 @@
-
 //! Download workflow run logs
 //! 
 //! Gets a redirect URL to download an archive of log files for a workflow run. This link expires after 1 minute. Look for
