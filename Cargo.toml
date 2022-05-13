@@ -1,7 +1,7 @@
 [package]
 edition = "2021"
 name = "jinxapi-github"
-version = "0.2.5"
+version = "0.2.6"
 authors = ["Jonathan Giddy"]
 description = "GitHub API client"
 categories = ["api-bindings"]
@@ -14,12 +14,12 @@ all-features = true
 
 [features]
 default = ["hyper-client"]
-hyper-client = ["hyper", "authentic/hyper_async"]
-reqwest-async = ["reqwest", "authentic/reqwest_async"]
-reqwest-blocking = ["reqwest/blocking", "authentic/reqwest_blocking"]
+hyper-client = ["hyper", "authentic/hyper-client"]
+reqwest-async = ["reqwest", "authentic/reqwest-async"]
+reqwest-blocking = ["reqwest/blocking", "authentic/reqwest-blocking"]
 
 [dependencies]
-authentic = { version = "0.4.3", default-features = false, features = ["jwt"] }
+authentic = { version = "0.5.0", features = ["jwt", "step"] }
 http = "0.2.6"
 hyper = { version = "0.14.17", features = ["client", "http1"], optional = true }
 log = "0.4.16"
